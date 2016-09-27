@@ -75,12 +75,12 @@
     .closebtn{
         position: absolute;
         top: 0;
-        right: 15px;
+        right: -4px;
         margin-left: 50px;
     }
     .closebtn:hover{
       background-color: transparent!important;
-      color: red !important;
+      color: #3498db !important;
     }
 
     /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -166,11 +166,8 @@
     
     $role = $this->crud_model->get_by_condition('users',array('id' => $this->session->userdata('is_active')))->row('role');
    ?>
-
-
-
-    <div class="container-fluid">
-      <div id="mySidenav" class="sidenav" >
+  
+  <div id="mySidenav" class="sidenav" >
        <a id="menu-button" onclick="openNav()" style="cursor:pointer"><i id="nav-button" class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
         <div class="company_logo" style="display:none;margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:7px solid #000">
           <img src="<?php echo base_url()?>assets/logo.png" width="100px" style="margin-left:15%;">
@@ -189,13 +186,17 @@
 
         <a href="<?php echo base_url('user/settings')?>" ><i id="setting-button" class="fa fa-cogs" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Settings</span></a>
 
-        <a href="<?php echo base_url('main/faq') ?>"><i class="fa fa-question" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">FAQ and How</span></a>
+        <a href=""><i class="fa fa-question" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">FAQ and How</span></a>
 
         <a href="<?php echo base_url('') ?>"><i class="fa fa-headphones" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Customer Service</span></a>
 
         <div class="bottom-align-text-2 text-center">Hassee Stock System V1.0</div>
         <div class="bottom-align-text text-center">For help and feedback contact office@gethassee.com</div>
       </div>
+
+
+    <div class="container-fluid">
+      
 
        <div id="main" >
            
