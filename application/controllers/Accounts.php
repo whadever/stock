@@ -94,7 +94,8 @@ class Accounts extends CI_Controller
 			//Username Is not found
 			else
 			{
-				
+				$sesData['exception']='Your username or password is incorrect, please try again.';
+				$this->session->set_userdata($sesData);
 			}
 		}
 

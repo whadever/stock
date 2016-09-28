@@ -82,6 +82,18 @@
       input:-ms-input-placeholder { /* Internet Explorer 10-11 */
          color:    #fff !important;
       }
+      #error-wrapper{
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+      }
+      #error-wrapper{
+        background-color: rgba(44, 62, 80,0.7);
+        color: #fff;
+      }
+      #error-wrapper a{
+        color: rgba(44, 62, 80,0.7);
+      }
 
 
     </style>
