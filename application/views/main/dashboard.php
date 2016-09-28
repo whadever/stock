@@ -42,7 +42,7 @@
 
 
 <div class="row">
-	<div class="col-md-12" style="background-color: white">
+	<div class="col-md-12" style="background-color: #f7fbfe; height: 400px">
 		
 	</div>
 </div>

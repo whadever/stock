@@ -35,6 +35,10 @@
 
     <!-- CSS and Javascript -->
     <style>
+    @font-face {
+        font-family: bebas-neue;
+        src: url("<?php echo base_url('fonts/BebasNeue.otf') ?>");
+    }
     body{
       font-family: 'helvetica', sans-serif !important;
       background-color: #e8ecf0;
@@ -160,15 +164,17 @@
       font-size: 12px!important;
     }
     .page_subtitle{
-      font-size: 48px;
+      font-size: 60px;
       font-weight: bold;
       display: inline-block;
+      font-family: 'bebas-neue';
+      line-height: 1;
 
     }
     .container-fluid{
-      padding-left: 35px;
-      padding-right: 35px;
-      padding-top: 20px;
+      padding-left: 55px;
+      padding-right: 55px;
+      
     }
 
   </style>
@@ -253,7 +259,7 @@
                        
 
                      ?>')"></a></td>
-                     <td style="padding-left: 10px;max-width: 135px"><b>Welcome</b>,<br><?php echo $active_user->name ?></td>
+                     <td style="padding-left: 10px;max-width: 135px"><b style="font-family:'bebas-neue';  font-weight: 100; font-size: 18px;">Welcome</b>,<br><?php echo $active_user->name ?></td>
           </tr>
         </table>
           
@@ -290,11 +296,11 @@
            
      
              
-          <div class="row" style="padding: 15px 10px">
+          <div class="row" style="padding: 20px 0 0">
           
-              <div class="col-xs-12">
+              <div class="col-xs-12" style="padding:0">
                 <p class="page_subtitle"><?php echo $subtitle ?></p>
-                <a class="pull-right" href="<?php echo base_url('user/settings')?>"><i class="fa fa-cog fa-3x" aria-hidden="true"></i></a>
+                <a class="pull-right" href="<?php echo base_url('user/settings')?>" style="padding:10px 0;"><i class="fa fa-cog fa-3x" aria-hidden="true"></i></a>
               </div>
             
           </div>

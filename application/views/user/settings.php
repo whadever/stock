@@ -73,7 +73,7 @@
 			<div class="col-md-6">
 				<div class="form-group">	
 					<label for="">Username</label>
-					<input type="text" class="form-control" name="username" value="<?php echo $users->username ?>" disabled="disabled">
+					<input type="text" class="form-control" name="username" value="<?php echo $users->username ?>" readonly="readonly">
 				</div>
 				<div id="changepassword">	
 					<a onclick="change_password()" style="cursor:pointer;">Change Password</a>
