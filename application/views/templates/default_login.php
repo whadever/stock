@@ -18,7 +18,7 @@
     <!-- CSS and Javascript -->
     <style>
       body{
-        background-image: url("<?php echo base_url().'assets/123.jpg' ?>");
+        background-image: url("<?php echo base_url().'assets/log2.jpg' ?>");
         background-position: center;
         background-attachment: fixed;
         background-size: cover;
@@ -36,10 +36,10 @@
         color:white;
       }
       a{
-        color: #fbb900 ;
+        color: #5bc0de ;
       }
       a:hover{
-        color: #fbb900;
+        color: #fff;
         text-decoration: underline;
         -webkit-transition: all 0.3s ease-in;
         -moz-transition: all 0.3s ease-in;
@@ -48,7 +48,7 @@
         transition: all 0.3s ease-in;
       }
       .form-control:focus {
-          border-color: #fbb900;
+          border-color: rgba(44, 62, 80,1.0);
           outline: 0;
           -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
           box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
@@ -59,8 +59,8 @@
         color: white;
       }
       .btn-default.active, .btn-default.focus, .btn-default:active, .btn-default:focus, .btn-default:hover, .open>.dropdown-toggle.btn-default {
-          color: #feb811;
-          background: rgba(200,200,200,0.5);
+          color: #fff;
+          background: rgba(44, 62, 80,0.6);
           border-color: #ccc;
           -webkit-transition: all 0.3s ease-in;
           -moz-transition: all 0.3s ease-in;
