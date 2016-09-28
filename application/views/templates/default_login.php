@@ -18,7 +18,7 @@
     <!-- CSS and Javascript -->
     <style>
       body{
-        background-image: url("<?php echo base_url().'assets/log2.jpg' ?>");
+        background-image: url("<?php echo base_url().'assets/log'.rand(1,8).'.jpg' ?>");
         background-position: center;
         background-attachment: fixed;
         background-size: cover;

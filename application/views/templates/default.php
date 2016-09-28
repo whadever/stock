@@ -173,41 +173,9 @@
           <img src="<?php echo base_url()?>assets/logo.png" width="100px" style="margin-left:15%;">
         </div>
 
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="border-bottom: none;font-size:25px!important; display:none">&times;</a>
-
-        <a href="<?php echo base_url('main') ?>"><i class="fa fa-home" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Home</span></a>
-       
-        <a href="" ><i id="submit-button" class="fa fa-hand-pointer-o" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Submit</span></a>
-        
-
-       
-        <a href="" ><i id="template-button" class="fa fa-file-text" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Template</span></a>
-
-
-        <a href="<?php echo base_url('user/settings')?>" ><i id="setting-button" class="fa fa-cogs" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Settings</span></a>
-
-        <a href=""><i class="fa fa-question" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">FAQ and How</span></a>
-
-        <a href="<?php echo base_url('') ?>"><i class="fa fa-headphones" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Customer Service</span></a>
-
-        <div class="bottom-align-text-2 text-center">Hassee Stock System V1.0</div>
-        <div class="bottom-align-text text-center">For help and feedback contact office@gethassee.com</div>
-      </div>
-
-
-    <div class="container-fluid">
-      
-
-       <div id="main" >
-           
-     
-             
-           <div class="row" style="padding: 30px 20px 20px 20px; text-align:right">
-             <div class="col-md-3"></div>
-              <div class="col-md-4"></div>
-             <div class="col-md-5">                
-                
-                <a class="show-pop pull-right" data-animation="pop"  data-placement="vertical"
+        <div class="company_logo" style="display:none;margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:1px solid #000">
+        <div style="display:inline-block">
+          <a class="show-pop" data-animation="pop"  data-placement="right"
                     data-content="<?php if($this->session->userdata('user_logged')){
 
                         echo "<a href='".base_url('accounts/switch_account/'.$active_user->id)."' style='display:block'><img src='".$active_photo."' width='80'><div style='display:inline-block'><p>".$active_user->name."</p><p>".$active_user->email."</p> </div></a>";
@@ -254,7 +222,7 @@
                       <a href='<?php echo base_url('accounts/login') ?>'>Add Account</a>
                       <a href='<?php echo base_url('accounts/logout') ?>'>Sign Out</a>"
 
-                    style="cursor:pointer;height: 50px; width: 50px; border-radius: 10px;background-size: cover;background-position: center; background-image: url('<?php
+                    style="display:inline-block;cursor:pointer;height: 80px; width: 80px; border-radius: 50%;background-size: cover;background-position: center; background-image: url('<?php
                       if($active_user->photo == ''){
                         echo base_url()."uploads/photos/no-photo.png";
                       }else{
@@ -263,6 +231,47 @@
                        
 
                      ?>')"></a>
+                     </div>
+                     <div style="display:inline-block">
+                     <p style="display: inline-block;">Welcome,<br><?php echo $active_user->name ?></p>
+                     </div>
+        </div>
+
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="border-bottom: none;font-size:25px!important; display:none">&times;</a>
+
+        <a href="<?php echo base_url('main') ?>"><i class="fa fa-home" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Home</span></a>
+       
+        <a href="" ><i id="submit-button" class="fa fa-hand-pointer-o" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Submit</span></a>
+        
+
+       
+        <a href="" ><i id="template-button" class="fa fa-file-text" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Template</span></a>
+
+
+        <a href="<?php echo base_url('user/settings')?>" ><i id="setting-button" class="fa fa-cogs" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Settings</span></a>
+
+        <a href=""><i class="fa fa-question" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">FAQ and How</span></a>
+
+        <a href="<?php echo base_url('') ?>"><i class="fa fa-headphones" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Customer Service</span></a>
+
+        <div class="bottom-align-text-2 text-center">Hassee Stock System V1.0</div>
+        <div class="bottom-align-text text-center">For help and feedback contact office@gethassee.com</div>
+      </div>
+
+
+    <div class="container-fluid">
+      
+
+       <div id="main" >
+           
+     
+             
+           <div class="row" style="padding: 30px 20px 20px 20px; text-align:right">
+             <div class="col-md-3"></div>
+              <div class="col-md-4"></div>
+             <div class="col-md-5">                
+                
+                
                 <p class="pull-right" style="margin-right: 10px; font-size: 18px">Welcome to Reporting System,<br><?php echo $active_user->name ?></p>
              </div>
            </div>                  
