@@ -37,6 +37,7 @@
     <style>
     body{
       font-family: 'helvetica', sans-serif !important;
+      background-color: #e8ecf0;
     }
 
     .sidenav {
@@ -88,6 +89,7 @@
         transition: margin-left .5s;
         padding: 0px;
         margin-left: 30px;
+
     }
 
     /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -148,7 +150,12 @@
     .popover-content{
       font-size: 12px!important;
     }
-    
+    .page_subtitle{
+      font-size: 48px;
+      font-weight: bold;
+      display: inline-block;
+
+    }
 
   </style>
 
@@ -170,12 +177,13 @@
   <div id="mySidenav" class="sidenav" >
        <a id="menu-button" onclick="openNav()" style="cursor:pointer"><i id="nav-button" class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
         <div class="company_logo" style="display:none;margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:1px solid #000">
-          <img src="<?php echo base_url()?>assets/logo.png" width="100px" style="margin-left:15%;">
+          <img src="<?php echo base_url()?>assets/logo.png" width="100px" style="margin-left:23%;">
         </div>
 
         <div class="company_logo" style="display:none;margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:1px solid #000">
-        <div style="display:inline-block">
-          <a class="show-pop" data-animation="pop"  data-placement="right"
+        <table>
+          <tr>
+            <td><a class="show-pop" data-animation="pop"  data-placement="right"
                     data-content="<?php if($this->session->userdata('user_logged')){
 
                         echo "<a href='".base_url('accounts/switch_account/'.$active_user->id)."' style='display:block'><img src='".$active_photo."' width='80'><div style='display:inline-block'><p>".$active_user->name."</p><p>".$active_user->email."</p> </div></a>";
@@ -230,11 +238,11 @@
                       }
                        
 
-                     ?>')"></a>
-                     </div>
-                     <div style="display:inline-block">
-                     <p style="display: inline-block;">Welcome,<br><?php echo $active_user->name ?></p>
-                     </div>
+                     ?>')"></a></td>
+                     <td style="padding-left: 10px;max-width: 135px"><b>Welcome</b>,<br><?php echo $active_user->name ?></td>
+          </tr>
+        </table>
+          
         </div>
 
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="border-bottom: none;font-size:25px!important; display:none">&times;</a>
@@ -266,15 +274,14 @@
            
      
              
-           <div class="row" style="padding: 30px 20px 20px 20px; text-align:right">
-             <div class="col-md-3"></div>
-              <div class="col-md-4"></div>
-             <div class="col-md-5">                
-                
-                
-                <p class="pull-right" style="margin-right: 10px; font-size: 18px">Welcome to Reporting System,<br><?php echo $active_user->name ?></p>
-             </div>
-           </div>                  
+          <div class="row" style="padding: 15px 10px">
+          
+              <div class="col-xs-12">
+                <p class="page_subtitle">HOME</p>
+                <i class="fa fa-cog fa-3x pull-right" aria-hidden="true"></i>
+              </div>
+            
+          </div>
             
               <?php echo $body ?>
            
@@ -314,9 +321,9 @@
      <script>
     /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
       function openNav() {
-          document.getElementById("mySidenav").style.width = "200px";
-          document.getElementById("main").style.marginLeft = "200px";
-          
+          document.getElementById("mySidenav").style.width = "250px";
+          document.getElementById("main").style.marginLeft = "250px";
+        
           
           $('.menu-text').show();
           $('.company_logo').show();

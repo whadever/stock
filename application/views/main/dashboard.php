@@ -28,10 +28,7 @@
 
 	}
 
-	.page_subtitle{
-		font-size: 18px;
-		font-weight: bold;
-	}
+	
 
 	a:hover{
 		text-decoration: none;
@@ -42,16 +39,7 @@
 </style>
 
 
-<div class="row" style="background-color: #f4f4f4; padding: 15px 10px">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<p class="page_subtitle">DASHBOARD</p>
-			</div>
-		
-		</div>
-	</div>
-</div>
+
 
 <div class="row">
 	<div class="col-xs-12">
