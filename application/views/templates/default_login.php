@@ -18,15 +18,19 @@
     <!-- CSS and Javascript -->
     <style>
       body{
-        background-image: url("<?php echo base_url().'assets/log'.rand(1,8).'.jpg' ?>");
+        background-image: url("<?php echo base_url().'assets/log'.rand(1,2).'.jpg' ?>");
         background-position: center;
         background-attachment: fixed;
         background-size: cover;
       }
+      .form-group{
+        margin-bottom: 10px;
+      }
       .form-control{
-        background:rgba(200,200,200,0.5);
-        color: white;
+        background-color: white;
+        color: black;
         font-size: 16px;
+        border-radius: 10px;
       }
       .input-group-addon{
         background: rgba(200,200,200,0.5);
@@ -68,21 +72,7 @@
           -o-transition: all 0.3s ease-in;
           transition: all 0.3s ease-in;
       }
-      input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-          color:    #fff !important;
-      }
-      input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-         color:    #fff !important;
-         opacity:  1 !important;
-      }
-      input::-moz-placeholder { /* Mozilla Firefox 19+ */
-         color:    #fff !important;
-         opacity:  1 !important;
-      }
-      input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-         color:    #fff !important;
-      }
-
+      
 
     </style>
 

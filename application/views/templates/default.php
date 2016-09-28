@@ -197,7 +197,7 @@
   <div id="mySidenav" class="sidenav" >
        <a id="menu-button" onclick="openNav()" style="cursor:pointer"><i id="nav-button" class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
         <div class="company_logo" style="display:none;margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:1px solid #000">
-          <img src="<?php echo base_url()?>assets/logo.png" width="100px" style="margin-left:23%;">
+          <img src="<?php echo base_url()?>assets/logo1.png" width="100px" style="margin-left:23%;">
         </div>
 
         <div class="company_logo" style="display:none;margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:1px solid #000">
