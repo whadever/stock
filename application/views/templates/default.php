@@ -46,7 +46,7 @@
         z-index: 1; /* Stay on top */
         top: 0;
         left: 0;
-        background-color: #5c5c5c; /* Black*/
+        background-color: #203244; /* Black*/
         color: #fff;
         overflow-x: hidden; /* Disable horizontal scroll */
         padding-top: 20px; /* Place content 60px from the top */
@@ -169,7 +169,7 @@
   
   <div id="mySidenav" class="sidenav" >
        <a id="menu-button" onclick="openNav()" style="cursor:pointer"><i id="nav-button" class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-        <div class="company_logo" style="display:none;margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:7px solid #000">
+        <div class="company_logo" style="display:none;margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:1px solid #000">
           <img src="<?php echo base_url()?>assets/logo.png" width="100px" style="margin-left:15%;">
         </div>
 
