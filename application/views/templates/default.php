@@ -40,6 +40,15 @@
       background-color: #e8ecf0;
     }
 
+    #main a{
+      color: black;
+    }
+
+    #main a:hover{
+      text-decoration: none;
+      color: black;
+    }
+
     .sidenav {
         height: 100%; /* 100% Full-height */
         width: 40px; /* 0 width - change this with JavaScript */
@@ -156,6 +165,11 @@
       display: inline-block;
 
     }
+    .container-fluid{
+      padding-left: 35px;
+      padding-right: 35px;
+      padding-top: 20px;
+    }
 
   </style>
 
@@ -249,18 +263,20 @@
 
         <a href="<?php echo base_url('main') ?>"><i class="fa fa-home" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Home</span></a>
        
-        <a href="" ><i id="submit-button" class="fa fa-hand-pointer-o" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Submit</span></a>
+        <a href="" ><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span><span class="menu-text pull-right" style="display:none">Scan Items</span></a>
         
 
        
-        <a href="" ><i id="template-button" class="fa fa-file-text" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Template</span></a>
+        <a href="" ><i id="template-button" class="fa fa-archive" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Products</span></a>
 
 
-        <a href="<?php echo base_url('user/settings')?>" ><i id="setting-button" class="fa fa-cogs" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Settings</span></a>
+        <a href="" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" style="display:none">Outlets</span></a>
 
-        <a href=""><i class="fa fa-question" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">FAQ and How</span></a>
+        <a href=""><i class="fa fa-car" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Driver</span></a>
 
-        <a href="<?php echo base_url('') ?>"><i class="fa fa-headphones" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Customer Service</span></a>
+        <a href="<?php echo base_url('') ?>"><i class="fa fa-file-text" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Notes</span></a>
+
+        <a href="<?php echo base_url('') ?>"><i class="fa fa-comments" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Private Message</span></a>
 
         <div class="bottom-align-text-2 text-center">Hassee Stock System V1.0</div>
         <div class="bottom-align-text text-center">For help and feedback contact office@gethassee.com</div>
@@ -277,8 +293,8 @@
           <div class="row" style="padding: 15px 10px">
           
               <div class="col-xs-12">
-                <p class="page_subtitle">HOME</p>
-                <i class="fa fa-cog fa-3x pull-right" aria-hidden="true"></i>
+                <p class="page_subtitle"><?php echo $subtitle ?></p>
+                <a class="pull-right" href="<?php echo base_url('user/settings')?>"><i class="fa fa-cog fa-3x" aria-hidden="true"></i></a>
               </div>
             
           </div>

@@ -42,17 +42,8 @@
 
 
 <div class="row">
-	<div class="col-xs-12">
-		<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<div id="cal-body" class="wrap" style="margin-bottom:20px;">
-				
-				</div>
-			</div>
-		</div>
-			
-		</div>
+	<div class="col-md-12" style="background-color: white">
+		
 	</div>
 </div>
 

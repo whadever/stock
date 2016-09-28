@@ -7,7 +7,8 @@ class Main extends MY_Controller{
 	}
 
 	public function index(){
-		$data['title'] = 'Dashboard';
+		$data['title'] = 'Home';
+		$data['subtitle'] = 'HOME';
 		$this->template->load('default','main/dashboard',$data);
 	}
 

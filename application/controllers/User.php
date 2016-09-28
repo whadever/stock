@@ -17,6 +17,7 @@ class User extends MY_Controller {
 
 	public function settings(){
 		$data['title'] = 'Settings';
+		$data['subtitle'] = 'SETTINGS';
 		$data['users'] = $this->crud_model->get_by_condition('users',array('id'=>$this->id))->row();
 		$this->template->load('default','user/settings',$data);
 	}
