@@ -134,6 +134,38 @@
       transition: all 0.6s ease;
     }
 */
+
+    .btn-default{
+        background-color: white;
+        color: #24082f;
+      }
+      .btn-default.active, .btn-default.focus, .btn-default:active, .btn-default:focus, .btn-default:hover, .open>.dropdown-toggle.btn-default {
+          color: #fff;
+          background-color: #24082f;
+          border-color: #ccc;
+          -webkit-transition: all 0.3s ease-in;
+          -moz-transition: all 0.3s ease-in;
+          -ms-transition: all 0.3s ease-in;
+          -o-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in;
+      }
+
+      .btn-primary{
+        background-color: #24082f;
+        color: white;
+      }
+
+      .btn-primary.active, .btn-primary.focus, .btn-primary:active, .btn-primary:focus, .btn-primary:hover, .open>.dropdown-toggle.btn-primary {
+          color: #24082f;
+          background-color: white;
+          
+          -webkit-transition: all 0.3s ease-in;
+          -moz-transition: all 0.3s ease-in;
+          -ms-transition: all 0.3s ease-in;
+          -o-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in;
+      }
+
     #background-btn{
 
       padding-top: 10px;
@@ -186,6 +218,8 @@
       margin-bottom: 24px;
       margin-right: 7px;
       border-radius: 25px;
+      height: 50px;
+      width: 50px;
     }
     .profile-pop{
       text-align: left;
@@ -236,9 +270,9 @@
         <table>
           <tr>
             <td><a class="show-pop" data-animation="pop"  data-placement="right"
-                    data-content="<?php if($this->session->userdata('user_logged')){
+                    data-content='<?php if($this->session->userdata('user_logged')){
 
-                        echo "<a href='".base_url('accounts/switch_account/'.$active_user->id)."' class='profile-pop btn btn-default' style='display:block;'><img src='".$active_photo."' width='50' class='pop-photo'><div style='display:inline-block' class='pop-detail'><p class='pop-name'>".$active_user->name."</p><p>".$active_user->email."</p> </div></a>";
+                        echo '<a href="'.base_url('accounts/switch_account/'.$active_user->id).'" class="profile-pop btn btn-default" style="display:block;"><span class="pop-photo" style="display:inline-flex; background-size:cover;background-image: url('.$active_photo.')"></span><div style="display:inline-block" class="pop-detail"><p class="pop-name">'.$active_user->name.'</p><p>'.$active_user->email.'</p> </div></a>';
                         $i = 0;
                         foreach ($this->session->userdata as $user)
                         { 
@@ -267,7 +301,7 @@
                           $user_id = $user['user_id'];
 
                           if($user_id != $this->session->userdata('is_active')){
-                            echo"<a href='".base_url('accounts/switch_account/'.$profile->id)."' style='display:block' class='profile-pop btn btn-default'><img src='".$photo."' width='50' class='pop-photo'><div class='pop-detail' style='display:inline-block'><p class='pop-name'>".$profile->name."</p><p>".$profile->email."</p> </div></a>";
+                            echo'<a href="'.base_url('accounts/switch_account/'.$profile->id).'" style="display:block" class="profile-pop btn btn-default"><span class="pop-photo" style="display:inline-flex; background-size:cover;background-image: url('.$photo.')"></span><div class="pop-detail" style="display:inline-block"><p class="pop-name">'.$profile->name.'</p><p>'.$profile->email.'</p> </div></a>';
                           }
                                                    
                        
@@ -279,11 +313,11 @@
                         }
 
                       } ?>
-                      <div class='row btn-collection text-center'>
-                      <a href='<?php echo base_url('accounts/login') ?>' class='btn btn-default pop-btn'>Add Account</a>
-                      <a href='<?php echo base_url('accounts/logout') ?>' class='btn btn-default pop-btn'>Sign Out</a>
+                      <div class="row btn-collection text-center">
+                      <a href="<?php echo base_url('accounts/login') ?>" class="btn btn-primary pop-btn">Add Account</a>
+                      <a href="<?php echo base_url('accounts/logout') ?>" class="btn btn-default pop-btn">Sign Out</a>
                       </div>
-                      "
+                      '
 
 
                     style="display:inline-block;cursor:pointer;height: 80px; width: 80px; border-radius: 50%;background-size: cover;background-position: center; background-image: url('<?php

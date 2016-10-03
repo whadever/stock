@@ -12,6 +12,13 @@ class Main extends MY_Controller{
 		$this->template->load('default','main/dashboard',$data);
 	}
 
+	public function scan_item(){
+		$data['title'] = 'Scan Items';
+		$data['subtitle'] = 'SCAN ITEMS';
+		$this->template->load('default','main/scan_item',$data);
+	}
+
+
 
 }
 
