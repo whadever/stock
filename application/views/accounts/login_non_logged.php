@@ -51,51 +51,6 @@
 </div> -->
 
 
-<style>
-	
-	#login_wrapper{
-		margin-top: 10%;
-	}
-	#login_box{
-		background: rgba(255,255,255,0.5);
-		padding: 20px 40px;
-	}
-	#hassee_logo{
-		margin:auto;
-		display: block;
-		margin-bottom: 20px;
-	}
-	#remember{
-		font-size: 12px;
-		display: inline;
-		color: white;
-	}
-	#forgotPass{
-		font-size: 12px;
-		color: white;
-	}
-	.login-button{
-		background-color: #24082f;
-		color: white;
-		border: none;
-		width: 100%;
-		border-radius: 10px;
-		margin-top: 20px;
-		
-	}
-	.btn-primary.active, .btn-primary.focus, .btn-primary:active, .btn-primary:focus, .btn-primary:hover, .open>.dropdown-toggle.btn-primary {
-          color: #24082f;
-          background-color: white;
-          
-          -webkit-transition: all 0.3s ease-in;
-          -moz-transition: all 0.3s ease-in;
-          -ms-transition: all 0.3s ease-in;
-          -o-transition: all 0.3s ease-in;
-          transition: all 0.3s ease-in;
-      }
-</style>
-
-
 <div class="row" id="login_wrapper">
 	<div class="col-md-4"></div>
 	<div class="col-md-4" id="login_box">
