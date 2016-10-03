@@ -215,7 +215,6 @@
       overflow-x: hidden !important;
     }
     .pop-photo{
-      margin-bottom: 24px;
       margin-right: 7px;
       border-radius: 25px;
       height: 50px;
@@ -235,9 +234,6 @@
     .pop-btn{
       margin-top: 5px;
       font-size: 11px !important;
-    }
-    .pop-name{
-      font-weight: bold;
     }
     .btn-collection{
       overflow-x: hidden !important;
@@ -272,7 +268,10 @@
             <td><a class="show-pop" data-animation="pop"  data-placement="right"
                     data-content='<?php if($this->session->userdata('user_logged')){
 
-                        echo '<a href="'.base_url('accounts/switch_account/'.$active_user->id).'" class="profile-pop btn btn-default" style="display:block;"><span class="pop-photo" style="display:inline-flex; background-size:cover;background-image: url('.$active_photo.')"></span><div style="display:inline-block" class="pop-detail"><p class="pop-name">'.$active_user->name.'</p><p>'.$active_user->email.'</p> </div></a>';
+                        echo '<a href="'.base_url('accounts/switch_account/'.$active_user->id).'" class="profile-pop btn btn-default" style="display:block;">
+                          <table>
+                          <tr>
+                          <td><span class="pop-photo" style="display:inline-flex; background-size:cover;background-image: url('.$active_photo.')"></span></td><td><div style="display:inline-block" class="pop-detail"><p class="pop-name">'.$active_user->name.'</p><p>'.$active_user->email.'</p> </div></td></tr></table></a>';
                         $i = 0;
                         foreach ($this->session->userdata as $user)
                         { 
