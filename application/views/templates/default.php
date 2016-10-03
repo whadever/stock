@@ -300,7 +300,11 @@
                           $user_id = $user['user_id'];
 
                           if($user_id != $this->session->userdata('is_active')){
-                            echo'<a href="'.base_url('accounts/switch_account/'.$profile->id).'" style="display:block" class="profile-pop btn btn-default"><span class="pop-photo" style="display:inline-flex; background-size:cover;background-image: url('.$photo.')"></span><div class="pop-detail" style="display:inline-block"><p class="pop-name">'.$profile->name.'</p><p>'.$profile->email.'</p> </div></a>';
+                            echo'<a href="'.base_url('accounts/switch_account/'.$profile->id).'" style="display:block" class="profile-pop btn btn-default">
+                            <table>
+                            <tr>
+                            <td>
+                            <span class="pop-photo" style="display:inline-flex; background-size:cover;background-image: url('.$photo.')"></span></td><td><div class="pop-detail" style="display:inline-block"><p class="pop-name">'.$profile->name.'</p><p>'.$profile->email.'</p> </div></td></tr></table></a>';
                           }
                                                    
                        
@@ -338,11 +342,11 @@
 
         <a href="<?php echo base_url('main') ?>"><i class="fa fa-home" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Home</span></a>
        
-        <a href="" ><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span><span class="menu-text pull-right" style="display:none">Scan Items</span></a>
+        <a href="<?php echo base_url('main/scan_item') ?>" ><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span><span class="menu-text pull-right" style="display:none">Scan Items</span></a>
         
 
        
-        <a href="" ><i id="template-button" class="fa fa-archive" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Products</span></a>
+        <a href="<?php echo base_url('products') ?>" ><i id="template-button" class="fa fa-archive" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Products</span></a>
 
 
         <a href="" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" style="display:none">Outlets</span></a>
