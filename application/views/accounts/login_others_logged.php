@@ -38,7 +38,7 @@
 		<div class="row">
 		<?php if($this->session->userdata('user_logged')){
                         $i = 0;
-                        foreach ($this->session->userdata as $user)
+                        foreach ($this->session->userdata() as $user)
                         { 
                           //Skip the first 3 keys
                           if($i < 3)
@@ -49,6 +49,7 @@
                           {
                             $i++;
                           }
+                          
                           $profile = $this->crud_model->get_by_condition('users',array('id' => $user['user_id']))->row();
                           //After 3 keys are bypassed user info are passed!
                           

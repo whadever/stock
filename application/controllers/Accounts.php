@@ -34,7 +34,7 @@ class Accounts extends CI_Controller
 
 							'user_id' 	=> $userdata->id,
 							'username'	=> $userdata->username,
-							'company_id'=> $userdata->company_id
+							
 
 							)
 
@@ -95,7 +95,7 @@ class Accounts extends CI_Controller
 			else
 			{
 				$sesData['exception']='Your username or password is incorrect, please try again.';
-				$this->session->set_userdata($sesData);
+				$this->session->set_flashdata($sesData);
 			}
 		}
 

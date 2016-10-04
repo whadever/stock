@@ -287,7 +287,7 @@
                           <tr>
                           <td><span class="pop-photo" style="display:inline-flex; background-size:cover;background-image: url('.$active_photo.')"></span></td><td><div style="display:inline-block" class="pop-detail"><p class="pop-name">'.$active_user->name.'</p><p>'.$active_user->email.'</p> </div></td></tr></table></a>';
                         $i = 0;
-                        foreach ($this->session->userdata as $user)
+                        foreach ($this->session->userdata() as $user)
                         { 
 
                           //Skip the first 4 keys
@@ -363,7 +363,7 @@
         <a href="<?php echo base_url('products') ?>" ><i id="template-button" class="fa fa-archive" aria-hidden="true"></i><span class="menu-text pull-right" >Products</span></a>
 
 
-        <a href="" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Outlets</span></a>
+        <a href="<?php echo base_url('outlets') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Outlets</span></a>
 
         <a href=""><i class="fa fa-car" aria-hidden="true"></i><span class="menu-text pull-right" >Driver</span></a>
 
