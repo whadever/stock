@@ -388,7 +388,7 @@
 
         <a href="<?php echo base_url('outlets') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Outlets</span></a>
 
-        <a href=""><i class="fa fa-car" aria-hidden="true"></i><span class="menu-text pull-right" >Driver</span></a>
+        <a href="<?php echo base_url('drivers') ?>"><i class="fa fa-car" aria-hidden="true"></i><span class="menu-text pull-right" >Driver</span></a>
 
         <a href="<?php echo base_url('') ?>"><i class="fa fa-file-text" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" >Notes</span></a>
 
