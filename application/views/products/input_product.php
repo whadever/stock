@@ -8,17 +8,7 @@
 	.table_detail{
 		width: 24% !important;
 	}
-	.btn-custom{
-		background-color: #2c3e50;
-		color: #fff !important;
-		font-family: 'bebas-neue';
-		letter-spacing: 1px;
-     	font-size: 22px;
-      	line-height: 30px;
-      	font-weight: 100;
-      	padding: 12px;
-      	border-radius: 10px;
-	}
+	
 </style>
 <div class="row">
 	<div class="col-md-12 content-wrap">

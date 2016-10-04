@@ -151,8 +151,22 @@
     .btn-default{
         background-color: white;
         color: #24082f;
-      }
-      .btn-default.active, .btn-default.focus, .btn-default:active, .btn-default:focus, .btn-default:hover, .open>.dropdown-toggle.btn-default {
+    }
+
+    .btn-custom{
+      background-color: #2c3e50;
+      color: #fff !important;
+      font-family: 'bebas-neue';
+      letter-spacing: 1px;
+      font-size: 22px;
+      line-height: 30px;
+      font-weight: 100;
+      padding: 12px;
+      border-radius: 10px;
+      min-width: 150px;
+    }
+
+    .btn-default.active, .btn-default.focus, .btn-default:active, .btn-default:focus, .btn-default:hover, .open>.dropdown-toggle.btn-default {
           color: #fff;
           background-color: #24082f;
           border-color: #ccc;
@@ -260,7 +274,7 @@
     .btn-collection{
       overflow-x: hidden !important;
     }
-    
+
 
   </style>
 
