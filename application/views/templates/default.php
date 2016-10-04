@@ -52,6 +52,7 @@
     #main a:hover{
       text-decoration: none;
       color: black;
+
     }
     .form-control{
         background-color: white;
@@ -69,7 +70,7 @@
     .sidenav {
         overflow-y: hidden;
         height: 100%; /* 100% Full-height */
-        width: 40px; /* 0 width - change this with JavaScript */
+        width: 250px; /* 0 width - change this with JavaScript */
         position: fixed; /* Stay in place */
         z-index: 1; /* Stay on top */
         top: 0;
@@ -115,7 +116,7 @@
     #main {
         transition: margin-left .5s;
         padding: 0px;
-        margin-left: 30px;
+        margin-left: 250px;
 
     }
 
@@ -192,7 +193,7 @@
       width: 100%;
       font-size: 11px;
       line-height: 11px;
-      display: none;
+      
     }
     .bottom-align-text-2 {
       position: absolute;
@@ -201,7 +202,7 @@
       font-size: 11px;
       margin-bottom: 35px;
       line-height: 11px;
-      display: none;
+      
     }
     #mySidenav .fa{
       font-size: 19px;
@@ -270,12 +271,12 @@
    ?>
   
   <div id="mySidenav" class="sidenav" >
-       <a id="menu-button" onclick="openNav()" style="cursor:pointer"><i id="nav-button" class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-        <div class="company_logo" style="display:none;margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:1px solid #000">
+       <a id="menu-button" onclick="openNav()" style="cursor:pointer;display: none"><i id="nav-button" class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+        <div class="company_logo" style="margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:1px solid #000">
           <img src="<?php echo base_url()?>assets/logo1.png" width="100px" style="margin-left:23%;">
         </div>
 
-        <div class="company_logo" style="display:none;margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:1px solid #000">
+        <div class="company_logo" style="margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:1px solid #000">
         <table>
           <tr>
             <td><a class="show-pop" data-animation="pop"  data-placement="right"
@@ -351,24 +352,24 @@
           
         </div>
 
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="border-bottom: none;font-size:25px!important; display:none">&times;</a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="border-bottom: none;font-size:25px!important;">&times;</a>
 
-        <a href="<?php echo base_url('main') ?>"><i class="fa fa-home" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Home</span></a>
+        <a href="<?php echo base_url('main') ?>"><i class="fa fa-home" aria-hidden="true"></i><span class="menu-text pull-right">Home</span></a>
        
-        <a href="<?php echo base_url('main/scan_item') ?>" ><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span><span class="menu-text pull-right" style="display:none">Scan Items</span></a>
+        <a href="<?php echo base_url('main/scan_item') ?>" ><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span><span class="menu-text pull-right" >Scan Items</span></a>
         
 
        
-        <a href="<?php echo base_url('products') ?>" ><i id="template-button" class="fa fa-archive" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Products</span></a>
+        <a href="<?php echo base_url('products') ?>" ><i id="template-button" class="fa fa-archive" aria-hidden="true"></i><span class="menu-text pull-right" >Products</span></a>
 
 
-        <a href="" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" style="display:none">Outlets</span></a>
+        <a href="" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Outlets</span></a>
 
-        <a href=""><i class="fa fa-car" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Driver</span></a>
+        <a href=""><i class="fa fa-car" aria-hidden="true"></i><span class="menu-text pull-right" >Driver</span></a>
 
-        <a href="<?php echo base_url('') ?>"><i class="fa fa-file-text" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Notes</span></a>
+        <a href="<?php echo base_url('') ?>"><i class="fa fa-file-text" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" >Notes</span></a>
 
-        <a href="<?php echo base_url('') ?>"><i class="fa fa-comments" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" style="display:none">Private Message</span></a>
+        <a href="<?php echo base_url('') ?>"><i class="fa fa-comments" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" >Private Message</span></a>
 
         <div class="bottom-align-text-2 text-center">Hassee Stock System V1.0</div>
         <div class="bottom-align-text text-center">For help and feedback contact office@gethassee.com</div>
