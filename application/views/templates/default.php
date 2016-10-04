@@ -53,6 +53,18 @@
       text-decoration: none;
       color: black;
     }
+    .form-control{
+        background-color: white;
+        color: black;
+        font-size: 14px;
+        border-radius: 10px;
+        border-color: #000;
+      }
+      .content-wrap{
+        background-color: #f7fbfe; 
+        height: 400px;
+        padding:30px;
+      }
 
     .sidenav {
         overflow-y: hidden;
@@ -203,6 +215,7 @@
       display: inline-block;
       font-family: 'bebas-neue';
       line-height: 1;
+      letter-spacing: 1px;
 
     }
     .container-fluid{
