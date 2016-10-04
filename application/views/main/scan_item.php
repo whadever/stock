@@ -29,8 +29,8 @@
 				<div class="row">
 				<table>
 					<tr>
-						<td class="input-label">Hari</td>
-						<td><input type="text" name="username" placeholder="Hari" class="form-control" aria-describedby="username-addon"></td>
+						<td class="input-label">Tanggal</td>
+						<td><input type="text" name="date" placeholder="Tanggal" class="form-control"></td>
 					</tr>
 				</table>
 				</div>
@@ -40,7 +40,7 @@
 					<table>
 						<tr>
 							<td class="input-label">Waktu</td>
-							<td><input type="text" name="username" placeholder="Waktu" class="form-control" aria-describedby="username-addon" disabled="true"></td>
+							<td><input type="text" name="time" placeholder="Waktu" class="form-control" disabled="true"></td>
 						</tr>
 					</table>
 				</div>
@@ -50,7 +50,7 @@
 					<table>
 						<tr>
 							<td class="input-label">Jumlah Terima</td>
-							<td><input type="text" name="username" placeholder="Jumlah Terima" class="form-control" aria-describedby="username-addon"></td>
+							<td><input type="text" name="total_amount" placeholder="Jumlah Terima" class="form-control"></td>
 						</tr>
 					</table>				
 				</div>

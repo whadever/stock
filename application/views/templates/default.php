@@ -63,7 +63,7 @@
       }
       .content-wrap{
         background-color: #f7fbfe; 
-        height: 400px;
+        
         padding:30px;
       }
 
@@ -166,7 +166,7 @@
       .btn-primary{
         background-color: #24082f;
         border-color: #24082f;
-        color: white;
+        color: white !important;
       }
 
       .btn-primary.active, .btn-primary.focus, .btn-primary:active, .btn-primary:focus, .btn-primary:hover, .open>.dropdown-toggle.btn-primary {
@@ -213,9 +213,10 @@
     }
     .bebas{
       font-family: 'bebas-neue';
-      font-size: 20px;
-      line-height: 1;
-      
+      font-size: 25px;
+      line-height: 30px;
+      font-weight: bolder;
+
     }
     .page_subtitle{
       font-size: 60px;
@@ -259,6 +260,7 @@
     .btn-collection{
       overflow-x: hidden !important;
     }
+    
 
   </style>
 
