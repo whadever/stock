@@ -2,8 +2,20 @@
 	.input-label{
 		padding-right: 12px;
 	}
+	.table-bordered thead th,.table-bordered tbody td{
+		border:1px solid #24082f !important;
+		color: #fff;
+	}
 	thead{
 		background-color: #2c3e50;
+	}
+	.btn-danger{
+		border-radius: 10px;
+		color: #fff !important;
+	}
+	.btn-success{
+		border-radius: 10px;
+		color: #fff !important;
 	}
 </style>
 <div class="row">

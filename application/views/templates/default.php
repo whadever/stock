@@ -165,6 +165,7 @@
 
       .btn-primary{
         background-color: #24082f;
+        border-color: #24082f;
         color: white;
       }
 
@@ -209,6 +210,12 @@
     }
     .popover-content{
       font-size: 12px!important;
+    }
+    .bebas{
+      font-family: 'bebas-neue';
+      font-size: 20px;
+      line-height: 1;
+      
     }
     .page_subtitle{
       font-size: 60px;
