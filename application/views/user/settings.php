@@ -90,11 +90,20 @@
 	function change_password(){
 		
 		$('#changepassword').empty();
-		$('#changepassword').append('<div class="form-group"><label for="old_pass">Old Password</label> <input type="password" class="form-control" name="old_pass" id="old_pass" onblur="check_password()" ><div id="old_pass_error" style="margin-top:5px;"></div></div>');
-		$('#changepassword').append('<div class="form-group"><label for="new_pass">New Password</label> <input type="password" name="new_pass" id="new_pass" class="form-control" onblur="match_password()"></div>');
-		$('#changepassword').append('<div class="form-group"><label for="re_pass">Re-Type Password</label> <input type="password" class="form-control" name="re_pass" id="re_pass" onblur="match_password()"><div id="re_pass_error" style="margin-top:5px;color:red;"></div></div>');
+		$('#changepassword').append('<div class="form-group"><label for="old_pass">Old Password</label> <input type="password" class="form-control" name="old_pass" id="old_pass" required="required" onblur="check_password()" ><div id="old_pass_error" style="margin-top:5px;"></div></div>');
+		$('#changepassword').append('<div class="form-group"><label for="new_pass">New Password</label> <input type="password" name="new_pass" id="new_pass" required="required" class="form-control" onblur="match_password()"></div>');
+		$('#changepassword').append('<div class="form-group"><label for="re_pass">Re-Type Password</label> <input type="password" class="form-control" name="re_pass" id="re_pass" required="required" onblur="match_password()"><div id="re_pass_error" style="margin-top:5px;color:red;"></div></div>');
+		$('#changepassword').append('<div class="form-group"><a onclick=collapsePassword() style="cursor:pointer" id="backToggle">Back</a></div>');
 	}
 </script>
+
+<script>
+	function collapsePassword(){
+		$('#changepassword').empty();
+		$('#changepassword').append('<a onclick="change_password()" style="cursor:pointer;">Change Password</a>')
+	}
+</script>
+
 <script>
 	function check_password(){
 
