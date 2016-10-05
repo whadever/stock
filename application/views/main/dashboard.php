@@ -47,14 +47,12 @@
 	</div>
 </div>
 
+<pre>
+	<?php print_r($this->session->userdata()) ?>
+</pre>
 
 
 
-<script>
-	$(function () {
-	  $('[data-toggle="tooltip"]').tooltip()
-	})
-</script>
 <script type="text/javascript">
     $(function () {
         $('#datepicker1').datepicker({
@@ -90,15 +88,3 @@ $(document).ready(function(){
 });
 
 </script>
-
-<!-- get timezone -->
-<!-- 
-<script type="text/javascript" src="<?php echo base_url().'js/timezone.js' ?>">
-</script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    var tz = jstz.determine();
-    var timezone = tz.name();
-    alert(timezone);
-  });
-</script> -->

@@ -308,7 +308,7 @@
                         echo '<a href="'.base_url('accounts/switch_account/'.$active_user->id).'" class="profile-pop btn btn-default" style="display:block;">
                           <table>
                           <tr>
-                          <td><span class="pop-photo" style="display:inline-flex; background-size:cover;background-image: url('.$active_photo.')"></span></td><td><div style="display:inline-block" class="pop-detail"><p class="pop-name">'.$active_user->name.'</p><p>'.$active_user->email.'</p> </div></td></tr></table></a>';
+                          <td><span class="pop-photo" style="display:inline-flex; background-position:center; background-size:cover;background-image: url('.$active_photo.')"></span></td><td><div style="display:inline-block" class="pop-detail"><p class="pop-name">'.$active_user->name.'</p><p>'.$active_user->email.'</p> </div></td></tr></table></a>';
                         $i = 0;
                         foreach ($this->session->userdata() as $user)
                         { 

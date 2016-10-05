@@ -20,24 +20,13 @@
 	}
 </style>
 
-<div class="row" style="background-color: #f4f4f4; padding: 15px 10px">
-	<div class="col-xs-12">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12">
-					<p style="font-size: 16px; font-weight: 600; margin: 0; display: inline">SETTINGS</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
 <div class="row" style="padding:15px 10px">
-	<div class="col-xs-12">
-		<div class="container">
+	<div class="col-xs-12 content-wrap">
+		<div class="row" style="border-bottom: 2px solid #2c3e50">
+			<p class="page_subtitle" style="font-size: 28px;margin-bottom: 0px;">USER SETTINGS</p>
+		</div>
 		<?php echo form_open_multipart('user/save_settings/'.$users->id) ?>
-		<div class="row">
+		<div class="row" style="margin-top: 20px">
 			<div class="col-sm-2 col-md-1">
 				<div class="avatar" style="background-image : url(<?php echo base_url().$users->photo ?>); ">
 				</div>
@@ -81,15 +70,12 @@
 			</div>
 
 		</div>
-		<div class="row" style="padding-top:50px;">	
+		<div class="row" style="padding-top:20px;">	
 			<div class="col-md-4">	</div>
 			<div class="col-md-4">
 				<div class="row">	
-					<div class="col-md-6">	
-						
-					</div>
-					<div class="col-md-6">	
-						<input type="submit" name="save" value="SAVE" class="btn btn-primary form-control" style="border-radius:10px;">
+					<div class="col-md-12 text-center">	
+						<input type="submit" name="save" value="SAVE" class="btn btn-default btn-custom" style="border-radius:10px;">
 					</div>
 				</div>
 			</div>
@@ -97,7 +83,7 @@
 		</div>
 		<?php echo form_close() ?>
 			
-		</div>
+	
 	</div>
 </div>
 <script>
@@ -146,3 +132,6 @@
 		}
 	}
 </script>
+
+
+

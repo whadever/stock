@@ -16,4 +16,6 @@ class Outlets extends MY_Controller{
 
 }
 
+
+
  ?>
