@@ -11,26 +11,25 @@
     <link href="<?php echo base_url() ?>css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url() ?>css/custom.css">
-
     <link rel="stylesheet" href="<?php echo base_url() ?>css/datepicker.css">
-
     <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap-tour.css">
-
-
     <link rel="stylesheet" href="<?php echo base_url();?>css/jquery.webui-popover.min.css">
+    <link href="<?php echo base_url() ?>css/footable.core.css" type="text/css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>css/footable.metro.min.css" type="text/css" rel="stylesheet">
     
     
     
-    
+    <!-- Javascript -->
     <script src="<?php echo base_url() ?>js/jquery-1.12.4.min.js"></script>
     <script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
     <script src="<?php echo base_url() ?>js/bootstrap-tour.js"></script>
     <script src="<?php echo base_url() ?>js/jscolor.js"></script>
-    
+    <script src="<?php echo base_url() ?>js/footable.js"></script>
+    <script src="<?php echo base_url() ?>js/footable.filter.js"></script>
+    <script src="<?php echo base_url() ?>js/footable.paginate.js"></script>
+    <script src="<?php echo base_url() ?>js/footable.sort.js" type="text/javascript"></script>
     <script type="text/javascript" src="<?php echo base_url() ?>js/moment.js"></script>
-
     <script src="<?php echo base_url() ?>js/bootstrap-datepicker.js"></script>
-  
     <script src="<?php echo base_url();?>js/jquery.webui-popover.min.js"></script> 
 
     <!-- CSS and Javascript -->
@@ -274,14 +273,34 @@
     .btn-collection{
       overflow-x: hidden !important;
     }
-
+    #txt{
+      font-family: 'bebas-neue';
+      font-size: 18px;
+    }
 
   </style>
-
+  
+<script>
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML =
+        h + ":" + m + ":" + s;
+        var t = setTimeout(startTime, 500);
+    }
+    function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+    }
+</script>
  
 
   </head>
-  <body>
+  <body onload="startTime()">
   <?php 
     $active_user = $this->crud_model->get_by_condition('users',array('id' => $this->session->userdata('is_active')))->row();
     if($active_user->photo == ''){
@@ -298,6 +317,8 @@
         <div class="company_logo" style="margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:1px solid #000">
           <img src="<?php echo base_url()?>assets/logo1.png" width="100px" style="margin-left:23%;">
         </div>
+       
+
 
         <div class="company_logo" style="margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:1px solid #000">
         <table>
@@ -410,7 +431,10 @@
           
               <div class="col-xs-12" style="padding:0">
                 <p class="page_subtitle"><?php echo $subtitle ?></p>
-                <a class="pull-right" href="<?php echo base_url('user/settings')?>" style="padding:10px 0;"><i class="fa fa-cog fa-3x" aria-hidden="true"></i></a>
+                <div class="pull-right" style="overflow: hidden; display: inline-block;">
+                  <a href="<?php echo base_url('user/settings')?>" style="float:right;padding:10px 0;"><i class="fa fa-cog fa-3x" aria-hidden="true"></i></a>
+                  <div id="txt" style="float: left; margin: 20px 20px 0 0"></div>
+                </div>
               </div>
             
           </div>

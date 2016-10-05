@@ -36,30 +36,36 @@
 			<p>Status User:</p>
 		</div>
 		<div class="row" style="margin-top: 20px;">
+		<?php echo form_open_multipart('products/add_product') ?>
 			<table class="table product-table">
 				<tbody>
 				<tr>
 					<td class="table_detail"><p class="bebas">NAMA BARANG</p></td>
-					<td style="padding-right: 9%;"><input type="text" name="item_name" placeholder="Nama Barang" class="form-control"></td>
+					<td style="padding-right: 9%;"><input type="text" name="item_name" required="1" placeholder="Nama Barang" class="form-control"></td>
 				</tr>
 				<tr>
-					<td class="table_detail"><p class="bebas">HARGA BARANG</p></td>
-					<td style="padding-right: 9%;"><input type="text" name="item_price" placeholder="Harga Barang" class="form-control"></td>
+					<td class="table_detail"><p class="bebas">HARGA BELI</p></td>
+					<td style="padding-right: 9%;"><input type="text" pattern="\d*" required="1" name="item_price" placeholder="Harga Barang" class="form-control"></td>
 				</tr>
 				<tr>
 					<td class="table_detail"><p class="bebas">KATEGORI BARANG</p></td>
-					<td style="padding-right: 9%;"><input type="text" name="item_category" placeholder="Kategori Barang" class="form-control"></td>
+					<td style="padding-right: 9%;"><select name="item_category" required="1" class="form-control" id="">
+						<option value="">--Pilih Kategori--</option>
+						<?php foreach($categories as $category): ?>
+							<option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
+						<?php endforeach; ?>
+					</select></td>
 				</tr>
 				<tr>
 					<td class="table_detail"><p class="bebas">KODE BARANG</p></td>
-					<td style="padding-right: 9%;"><input type="text" id="item_code" onblur="generate_barcode()" name="item_code" placeholder="Kode Barang" class="form-control" required="1"></td>
+					<td style="padding-right: 9%;"><input type="text" pattern="^\S{1,20}" title="Kode Barang tidak boleh mengandung spasi dan panjang maksimal 20 karakter" id="item_code" onblur="generate_barcode()" name="item_code" placeholder="Kode Barang" class="form-control" required="1"></td>
 					
 				</tr>
 				<tr>
 					<td class="table_detail"><p class="bebas">UPLOAD FOTO BARANG</p></td>
 					<td style="padding-right: 9%;"><div class="fileUpload btn btn-primary">
 													    <span>Upload</span>
-													    <input type="file" id="photo" class="upload" />
+													    <input type="file" id="photo" class="upload" name="photo" />
 													</div></td>
 				</tr>
 				<tr>
@@ -74,8 +80,9 @@
 		</div>
 		
 		<div class="row text-center">
-			<a class="btn btn-default btn-custom">Save</a>
+			<input type="submit" class="btn btn-default btn-custom" value="SAVE" name="save">
 		</div>	
+		<?php echo form_close(); ?>
 	</div>
 </div>
 

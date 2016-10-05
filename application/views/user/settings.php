@@ -69,13 +69,14 @@
 				</div>
 			</div>
 
+
 		</div>
 		<div class="row" style="padding-top:20px;">	
 			<div class="col-md-4">	</div>
 			<div class="col-md-4">
 				<div class="row">	
 					<div class="col-md-12 text-center">	
-						<input type="submit" name="save" value="SAVE" class="btn btn-default btn-custom" style="border-radius:10px;">
+						<input type="submit" name="save" id="btnSubmit" value="SAVE" class="btn btn-default btn-custom" style="border-radius:10px;">
 					</div>
 				</div>
 			</div>
@@ -94,13 +95,15 @@
 		$('#changepassword').append('<div class="form-group"><label for="new_pass">New Password</label> <input type="password" name="new_pass" id="new_pass" required="required" class="form-control" onblur="match_password()"></div>');
 		$('#changepassword').append('<div class="form-group"><label for="re_pass">Re-Type Password</label> <input type="password" class="form-control" name="re_pass" id="re_pass" required="required" onblur="match_password()"><div id="re_pass_error" style="margin-top:5px;color:red;"></div></div>');
 		$('#changepassword').append('<div class="form-group"><a onclick=collapsePassword() style="cursor:pointer" id="backToggle">Back</a></div>');
+		$('#btnSubmit').attr("disabled","disabled");
 	}
 </script>
 
 <script>
 	function collapsePassword(){
 		$('#changepassword').empty();
-		$('#changepassword').append('<a onclick="change_password()" style="cursor:pointer;">Change Password</a>')
+		$('#changepassword').append('<a onclick="change_password()" style="cursor:pointer;">Change Password</a>');
+		$('#btnSubmit').removeAttr("disabled");
 	}
 </script>
 
@@ -110,16 +113,19 @@
 		var password = $("#old_pass").val();
 		if(password!=''){
 			$.ajax({
-	          url: "<?php echo base_url('user/check_password/'.$users->id)?>",
+	          url: "<?php echo base_url('user/check_password/')?>",
 	          data: {old_pass:password},
 	          type: 'POST',
 	          cache : false,
 	          success: function(result){
+	          	alert(result);
 	            if(result == 'mismatch'){
 	              $('#old_pass_error').empty();
 	              $('#old_pass_error').append('<p style="color:red"><i class="fa fa-times-circle-o" aria-hidden="true"></i> Password that you type is wrong</p>');
+	              $('#btnSubmit').attr("disabled","disabled");
 	            }else if(result == 'match'){
 	              $('#old_pass_error').empty();
+	              
 	            } 
           }
         });
@@ -135,6 +141,7 @@
 		if(new_password!=re_password){
 			$('#re_pass_error').empty();
 			$('#re_pass_error').append('<i class="fa fa-times-circle-o" aria-hidden="true"></i>Password doesn\'t match');
+			$('#btnSubmit').attr("disabled","disabled");
 		}
 		else{
 			$('#re_pass_error').empty();

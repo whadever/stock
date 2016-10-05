@@ -1,1 +1,31 @@
 @import url('media.css');
+
+ /* footable */
+ 	@font-face {
+        font-family: bebas-neue;
+        src: url("<?php echo base_url('fonts/BebasNeue.otf') ?>");
+    }
+    .footable{
+      background :white !important;
+      border : 2px solid #203244 !important;
+      width: 100% !important;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    }
+
+    .footable>thead>tr>th, .footable>thead>tr>td { 
+      
+      background-color : #203244 !important;
+      border : 1px solid #203244 !important;
+      color: white !important;
+
+    }
+
+    .footable>tfoot>tr>th, .footable>tfoot>tr>td { 
+      
+      background-color : #203244 !important;
+      border : 1px solid #203244 !important
+
+    }
+    .footable>tbody{
+    	background-color: #F7FBFE;
+    }
