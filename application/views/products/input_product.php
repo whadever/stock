@@ -11,6 +11,22 @@
 	.table_detail{
 		width: 24% !important;
 	}
+
+	.fileUpload {
+	    position: relative;
+	    overflow: hidden;
+	}
+	.fileUpload input.upload {
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    margin: 0;
+	    padding: 0;
+	    font-size: 20px;
+	    cursor: pointer;
+	    opacity: 0;
+	    filter: alpha(opacity=0);
+	}
 	
 </style>
 <div class="row">
@@ -41,7 +57,10 @@
 				</tr>
 				<tr>
 					<td class="table_detail"><p class="bebas">UPLOAD FOTO BARANG</p></td>
-					<td style="padding-right: 9%;"><a class="btn btn-primary">Upload</a></td>
+					<td style="padding-right: 9%;"><div class="fileUpload btn btn-primary">
+													    <span>Upload</span>
+													    <input type="file" id="photo" class="upload" />
+													</div></td>
 				</tr>
 				<tr>
 					<td class="table_detail"><p class="bebas">BARCODE</p></td>
@@ -81,6 +100,7 @@
 					  }, type, 1);
 		
 	}
+
 </script>
 
 
