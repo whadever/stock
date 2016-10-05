@@ -31,6 +31,7 @@
     <script type="text/javascript" src="<?php echo base_url() ?>js/moment.js"></script>
     <script src="<?php echo base_url() ?>js/bootstrap-datepicker.js"></script>
     <script src="<?php echo base_url();?>js/jquery.webui-popover.min.js"></script> 
+    <script src="<?php echo base_url();?>js/script.js"></script> 
 
     <!-- CSS and Javascript -->
     <style>
@@ -281,15 +282,21 @@
   </style>
   
 <script>
+
+
     function startTime() {
         var today = new Date();
         var h = today.getHours();
         var m = today.getMinutes();
         var s = today.getSeconds();
+        var d = today.getDate();
+        var D = today.getDay();
+        var M = today.getMonth();
+        var Y = today.getFullYear();
         m = checkTime(m);
         s = checkTime(s);
         document.getElementById('txt').innerHTML =
-        h + ":" + m + ":" + s;
+        getDayName(D) + ", "+ d + " " + getMonthName(M) + " " + Y + " " + h + ":" + m + ":" + s;
         var t = setTimeout(startTime, 500);
     }
     function checkTime(i) {
