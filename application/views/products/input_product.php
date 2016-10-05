@@ -1,3 +1,6 @@
+<script src="<?php echo base_url() ?>js/JsBarcode.all.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>js/canvas-toblob.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>js/filesaver.js"></script>
 <style type="text/css">
 	.product-table td{
 		padding-left: 0px !important;
@@ -33,20 +36,51 @@
 				</tr>
 				<tr>
 					<td class="table_detail"><p class="bebas">KODE BARANG</p></td>
-					<td style="padding-right: 9%;"><input type="text" name="item_code" placeholder="Kode Barang" class="form-control"></td>
+					<td style="padding-right: 9%;"><input type="text" id="item_code" onblur="generate_barcode()" name="item_code" placeholder="Kode Barang" class="form-control" required="1"></td>
+					
 				</tr>
 				<tr>
 					<td class="table_detail"><p class="bebas">UPLOAD FOTO BARANG</p></td>
 					<td style="padding-right: 9%;"><a class="btn btn-primary">Upload</a></td>
 				</tr>
+				<tr>
+					<td class="table_detail"><p class="bebas">BARCODE</p></td>
+					<td style="padding-right: 9%;"><canvas id="barcode" width=1 height=1 style="border:1px solid #fff"></canvas>
+					<div><a id="saveas" class="btn btn-primary" href="javascript:saveCanvas('image/png','.png')" style="display: none">Save As PNG</a></div>
+					</td>
+				</tr>
 
 				</tbody>
 			</table>
 		</div>
+		
 		<div class="row text-center">
-			<a class="btn btn-default btn-custom">Save and Generate Barcode</a>
+			<a class="btn btn-default btn-custom">Save</a>
 		</div>	
 	</div>
 </div>
+
+<script>
+	function generate_barcode(){
+
+		if (!$('#item_code').val()) {
+			
+			alert('Kode Barang Harus diisi');
+		}else{
+			$('#saveas').show();
+			JsBarcode("#barcode", $('#item_code').val());
+		}
+		
+		
+	}
+
+	function saveCanvas(type, ext) {
+		var canvas = document.getElementById('barcode');
+		canvas.toBlob(function (blob) {
+						  saveAs(blob, $('#item_code').val() + ext);
+					  }, type, 1);
+		
+	}
+</script>
 
 
