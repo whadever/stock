@@ -19,14 +19,14 @@
 					<td class="table_detail"><p class="bebas">NAMA OUTLET</p></td>
 					<td style="padding-right: 9%;"><input type="text" name="outlet_name" placeholder="Nama Outlet" class="form-control"></td>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<td class="table_detail"><p class="bebas">HARGA OUTLET</p></td>
 					<td style="padding-right: 9%;"><input type="text" name="outlet_price" placeholder="Harga Outlet" class="form-control"></td>
-				</tr>
-				<tr>
+				</tr> -->
+				<!-- <tr>
 					<td class="table_detail"><p class="bebas">KATEGORI OUTLET</p></td>
 					<td style="padding-right: 9%;"><input type="text" name="outlet_category" placeholder="Kategori Outlet" class="form-control"></td>
-				</tr>
+				</tr> -->
 				<tr>
 					<td class="table_detail"><p class="bebas">PIC OUTLET</p></td>
 					<td style="padding-right: 9%;"><input type="text" name="outlet_pic" placeholder="Penanggungjawab Outlet" class="form-control"></td>
@@ -35,10 +35,10 @@
 					<td class="table_detail"><p class="bebas">KODE OUTLET</p></td>
 					<td style="padding-right: 9%;"><input type="text" name="outlet_code" placeholder="Kode Outlet" class="form-control"></td>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<td class="table_detail"><p class="bebas">UPLOAD FOTO OUTLET</p></td>
 					<td style="padding-right: 9%;"><a class="btn btn-primary">Upload</a></td>
-				</tr>
+				</tr> -->
 
 				</tbody>
 			</table>

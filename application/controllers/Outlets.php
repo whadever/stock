@@ -7,9 +7,14 @@ class Outlets extends MY_Controller{
 	}
 
 	public function index(){
+		$this->all_outlets();
+	}
+
+	public function all_outlets(){
 		$data['title'] = 'Outlets';
 		$data['subtitle'] = 'OUTLETS';
-		$this->template->load('default','outlets/add_outlet',$data);
+		$data['outlets']=$this->crud_model->get_data('users')->result();
+		$this->template->load('default','outlets/all_outlet',$data);
 	}
 
 
