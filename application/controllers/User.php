@@ -18,12 +18,12 @@ class User extends MY_Controller {
 	public function settings(){
 		$data['title'] = 'Settings';
 		$data['subtitle'] = 'SETTINGS';
-		$data['users'] = $this->crud_model->get_by_condition('users',array('id'=>$this->id))->row();
+		$data['outlets'] = $this->crud_model->get_by_condition('outlets',array('id'=>$this->id))->row();
 		$this->template->load('default','user/settings',$data);
 	}
 
 	public function save_settings(){
-		$data['users'] = $this->crud_model->get_by_condition('users',array('id' => $this->id))->row();
+		$data['outlets'] = $this->crud_model->get_by_condition('outlets',array('id' => $this->id))->row();
 		if($this->input->post('save')){
 			
 			$config['allowed_types']        = 'jpg|png|jpeg';
@@ -50,7 +50,7 @@ class User extends MY_Controller {
                 //Get the link for the database
                 $photo = $config ['upload_path'] . '/' . $config ['file_name'];
             }else{
-           		$photo = $data['users']->photo;
+           		$photo = $data['outlets']->photo;
             }
 
 			$data = array(
@@ -75,14 +75,14 @@ class User extends MY_Controller {
 			);
 		}
 
-		$this->crud_model->update_data('users',$data,array('id'=>$this->id));
+		$this->crud_model->update_data('outlets',$data,array('id'=>$this->id));
 		redirect('user/settings/');
 		
 	}
 	function check_password(){
-		$data['users'] = $this->crud_model->get_by_condition('users',array('id' => $this->id))->row();
+		$data['outlets'] = $this->crud_model->get_by_condition('outlets',array('id' => $this->id))->row();
 
-		$password = $data['users']->password;
+		$password = $data['outlets']->password;
 
 		if(hash_password($this->input->post('old_pass')) != $password){
 			echo 'mismatch';

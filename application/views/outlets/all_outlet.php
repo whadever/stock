@@ -21,7 +21,7 @@
 			<div class="form-group" style="margin-bottom: 20px">
 				<label for="">Search :</label>
 				<input type="text" class="form-control" id="filter">
-				<a href="<?php echo base_url('outlets/all_outlets') ?>" class="btn btn-primary pull-right">Add Outlet</a>
+				<a href="<?php echo base_url('outlets') ?>" class="btn btn-primary pull-right">Add Outlet</a>
 			</div>
 			<div class="table-responsive toggle-circle-filled">
 			<table class="table table-condensed" data-filter="#filter" data-page-size="10" id="table_product">

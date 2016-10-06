@@ -21,7 +21,7 @@ class Accounts extends CI_Controller
 			$password = hash_password($this->input->post('password'));
 
 			//Check for username and password validness
-			if($userdata = $this->db->get_where('users', array('username' => $username, 'password' => $password))->row())
+			if($userdata = $this->db->get_where('outlets', array('username' => $username, 'password' => $password))->row())
 			{
 				//Set The Session with no one logged
 				if($this->session->userdata('user_logged') == NULL)

@@ -50,7 +50,7 @@
                             $i++;
                           }
                           
-                          $profile = $this->crud_model->get_by_condition('users',array('id' => $user['user_id']))->row();
+                          $profile = $this->crud_model->get_by_condition('outlets',array('id' => $user['user_id']))->row();
                           //After 3 keys are bypassed user info are passed!
                           
                           

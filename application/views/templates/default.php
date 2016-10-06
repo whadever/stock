@@ -310,14 +310,14 @@
   </head>
   <body onload="startTime()">
   <?php 
-    $active_user = $this->crud_model->get_by_condition('users',array('id' => $this->session->userdata('is_active')))->row();
+    $active_user = $this->crud_model->get_by_condition('outlets',array('id' => $this->session->userdata('is_active')))->row();
     if($active_user->photo == ''){
       $active_photo = base_url()."uploads/photos/no-photo.png";
     }else{
       $active_photo = base_url().$active_user->photo; 
     }
     
-    $role = $this->crud_model->get_by_condition('users',array('id' => $this->session->userdata('is_active')))->row('role');
+    $role = $this->crud_model->get_by_condition('outlets',array('id' => $this->session->userdata('is_active')))->row('role');
    ?>
   
   <div id="mySidenav" class="sidenav" >
@@ -353,7 +353,7 @@
                             $i++;
                           }
 
-                          $profile = $this->crud_model->get_by_condition('users',array('id' => $user['user_id']))->row();
+                          $profile = $this->crud_model->get_by_condition('outlets',array('id' => $user['user_id']))->row();
                           //After 3 keys are bypassed user info are passed!
                           
                           

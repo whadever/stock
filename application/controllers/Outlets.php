@@ -13,7 +13,7 @@ class Outlets extends MY_Controller{
 	public function all_outlets(){
 		$data['title'] = 'Outlets';
 		$data['subtitle'] = 'OUTLETS';
-		$data['outlets']=$this->crud_model->get_data('users')->result();
+		$data['outlets']=$this->crud_model->get_by_condition('outlets',array('role' => 'outlet'))->result();
 		$this->template->load('default','outlets/all_outlet',$data);
 	}
 

@@ -25,10 +25,10 @@
 		<div class="row" style="border-bottom: 2px solid #2c3e50">
 			<p class="page_subtitle" style="font-size: 28px;margin-bottom: 0px;">USER SETTINGS</p>
 		</div>
-		<?php echo form_open_multipart('user/save_settings/'.$users->id) ?>
+		<?php echo form_open_multipart('user/save_settings/'.$outlets->id) ?>
 		<div class="row" style="margin-top: 20px">
 			<div class="col-sm-2 col-md-1">
-				<div class="avatar" style="background-image : url(<?php echo base_url().$users->photo ?>); ">
+				<div class="avatar" style="background-image : url(<?php echo base_url().$outlets->photo ?>); ">
 				</div>
 				
 			</div>
@@ -41,28 +41,28 @@
 		<div class="row" id="fields" style="padding-top:20px">	
 			
 			<div class="col-md-6">
-				<input type="hidden" name="id" id="id" value="<?php echo $users->id ?>">
+				<input type="hidden" name="id" id="id" value="<?php echo $outlets->id ?>">
 				<div class="form-group">	
 					<label for="">Name</label>
-					<input type="text" class="form-control" name="name" value="<?php echo $users->name ?>">
+					<input type="text" class="form-control" name="name" value="<?php echo $outlets->name ?>">
 				</div>
 				<div class="form-group">	
 					<label for="">Address</label>
-					<input type="text" class="form-control" name="address" value="<?php echo $users->address ?>">
+					<input type="text" class="form-control" name="address" value="<?php echo $outlets->address ?>">
 				</div>
 				<div class="form-group">	
 					<label for="">Phone No.</label>
-					<input type="text" class="form-control" name="phone_number" value="<?php echo $users->phone_number ?>">
+					<input type="text" class="form-control" name="phone_number" value="<?php echo $outlets->phone_number ?>">
 				</div>
 				<div class="form-group">	
 					<label for="">Mobile No.</label>
-					<input type="text" class="form-control" name="mobile_number" value="<?php echo $users->mobile_number ?>">
+					<input type="text" class="form-control" name="mobile_number" value="<?php echo $outlets->mobile_number ?>">
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="form-group">	
 					<label for="">Username</label>
-					<input type="text" class="form-control" name="username" value="<?php echo $users->username ?>" readonly="readonly">
+					<input type="text" class="form-control" name="username" value="<?php echo $outlets->username ?>" readonly="readonly">
 				</div>
 				<div id="changepassword">	
 					<a onclick="change_password()" style="cursor:pointer;">Change Password</a>
