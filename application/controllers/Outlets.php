@@ -23,9 +23,11 @@ class Outlets extends MY_Controller{
 			$pic = $this->input->post('outlet_pic');
 			$address = $this->input->post('outlet_address');
 			$data=array(
-				'username'=> $name,
-				'pic'=>$pic,
-				'address'=>$address
+				'username'	=> $name,
+				'name' 		=> $name,
+				'pic'		=> $pic,
+				'address'	=> $address,
+				'password'	=> hash_password($this->input->post('outlet_password'))
 				);
 			$this->crud_model->insert_data('outlets',$data);
 			redirect('outlets');

@@ -13,7 +13,7 @@
 			<p>Status User:</p>
 		</div>
 		<div class="row" style="margin-top: 20px;">
-			<?php form_open('outlets/add_outlet')?>
+			<?php echo form_open('outlets/add_outlet')?>
 			<table class="table product-table">
 				<tbody>
 				<tr>
@@ -35,6 +35,10 @@
 				<tr>
 					<td class="table_detail"><p class="bebas">PIC OUTLET</p></td>
 					<td style="padding-right: 9%;"><input type="text" name="outlet_pic" placeholder="Penanggungjawab Outlet" class="form-control"></td>
+				</tr>
+				<tr>
+					<td class="table_detail"><p class="bebas">PASSWORD</p></td>
+					<td style="padding-right: 9%;"><input type="password" name="outlet_password" placeholder="Password Outlet" class="form-control"></td>
 				</tr>
 				
 				<!-- <tr>

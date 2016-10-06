@@ -62,7 +62,7 @@
                        
 
 
-                            echo"<a href='".base_url('accounts/switch_account/'.$profile->id)."' class='profile-box btn btn-default'><img src='".$photo."' width='50' class='acc-photo'><div class='acc-detail'><p>".$profile->name."</p><p>".$profile->email."</p> </div></a>";
+                            echo"<a href='".base_url('accounts/switch_account/'.$profile->id)."' class='profile-box btn btn-default'><img src='".$photo."' width='50' class='acc-photo'><div class='acc-detail'><p>".$profile->name."</p><p>".$profile->pic."</p> </div></a>";
 
                         
                         }

@@ -40,7 +40,7 @@
 						<tr>
 							
 							<td><?php echo $outlet->id ?></td>
-							<td><?php echo $outlet->name ?></td>
+							<td><?php echo $outlet->username ?></td>
 							<td><?php echo $outlet->address ?></td>
 							<td><?php echo $outlet->pic ?></td>
 							<td><a href="<?php echo base_url('outlets/edit_outlet').'/'.$outlet->id?>">edit</a> | delete</td>
