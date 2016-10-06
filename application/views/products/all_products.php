@@ -47,7 +47,7 @@
 							<td><?php echo rupiah($product->buying_price) ?></td>
 							<td><?php echo rupiah($product->selling_price) ?></td>
 							<td><img src="<?php echo base_url().$product->thumb ?>" alt="<?php echo $product->name ?>" width="40"/></td>
-							<td>edit | delete</td>
+							<td><a href="<?php echo base_url('products/edit_product').'/'.$product->code?>">edit</a> | delete</td>
 						</tr>
 					<?php $i++; endforeach; ?>
 				</tbody>

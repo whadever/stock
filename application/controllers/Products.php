@@ -25,6 +25,24 @@ class Products extends MY_Controller{
 		$this->template->load('default','products/all_products',$data);
 	}
 
+	public function edit_product($code){
+		$data['title'] = 'Products';
+		$data['subtitle'] = 'PRODUCTS';
+		$data['product']=$this->crud_model->get_by_condition('products',array('code'=>$code) )->row();
+		$this->template->load('default','products/edit_products',$data);
+		// if($this->input->post('edit')){
+		// 	$data=array(
+		// 			'name' 			=> $this->input->post('item_name'),
+		// 			'buying_price' 	=> $this->input->post('item_price'),
+		// 			'category' 		=> $this->input->post('item_category'),
+		// 			'photo' 		=> $photo,
+		// 			'thumb' 		=> $thumb,
+		// 		);
+		// 	$this->crud_model->update_data('products',$data,array('id' => $code));
+		// 	redirect('products');
+		// }	
+	}
+
 	public function add_product(){
 		if ($this->input->post('save')) {
 			$config['allowed_types']        = 'jpg|png|jpeg';

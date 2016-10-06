@@ -293,6 +293,7 @@
         var D = today.getDay();
         var M = today.getMonth();
         var Y = today.getFullYear();
+        h = checkTime(h);
         m = checkTime(m);
         s = checkTime(s);
         document.getElementById('txt').innerHTML =
