@@ -36,7 +36,7 @@
 			<p>Status User:</p>
 		</div>
 		<div class="row" style="margin-top: 20px;">
-		<?php echo form_open_multipart('products/add_product') ?>
+		<?php echo form_open_multipart('products/edit_product/'.$product->code) ?>
 			<table class="table product-table">
 				<tbody>
 				<tr>
@@ -58,7 +58,7 @@
 				</tr>
 				<tr>
 					<td class="table_detail"><p class="bebas">KODE BARANG</p></td>
-					<td style="padding-right: 9%;"><input type="text" pattern="^\S{1,20}" title="Kode Barang tidak boleh mengandung spasi dan panjang maksimal 20 karakter" id="item_code" onblur="generate_barcode()" name="item_code" placeholder="Kode Barang" class="form-control" required="1" value="<?php echo $product->code;?>"></td>
+					<td style="padding-right: 9%;"><input type="text" pattern="^\S{1,20}" title="Kode Barang tidak boleh mengandung spasi dan panjang maksimal 20 karakter" id="item_code" onblur="generate_barcode()" name="item_code" placeholder="Kode Barang" class="form-control" required="1" value="<?php echo $product->code;?>" readonly="readonly"></td>
 					
 				</tr>
 				<tr>
@@ -69,19 +69,19 @@
 													    <input type="file" id="photo" class="upload" name="photo" />
 													</div></td>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<td class="table_detail"><p class="bebas">BARCODE</p></td>
 					<td style="padding-right: 9%;"><canvas id="barcode" width=1 height=1 style="border:1px solid #fff"></canvas>
 					<div><a id="saveas" class="btn btn-primary" href="javascript:saveCanvas('image/png','.png')" style="display: none">Save As PNG</a></div>
 					</td>
-				</tr>
+				</tr> -->
 
 				</tbody>
 			</table>
 		</div>
 		
 		<div class="row text-center">
-			<input type="submit" class="btn btn-default btn-custom" value="SAVE" name="save">
+			<input type="submit" class="btn btn-default btn-custom" value="SAVE" name="update">
 		</div>	
 		<?php echo form_close(); ?>
 	</div>
