@@ -11,7 +11,59 @@ class Drivers extends CI_Controller
 	public function index(){
 		$data['title'] = 'Drivers';
 		$data['subtitle'] = 'DRIVERS';
-		$this->template->load('default','drivers/add_driver',$data);
+		$data['drivers'] = $this->crud_model->get_data('drivers')->result();
+		$this->template->load('default','drivers/all_drivers',$data);
+	}
+
+	public function input_driver(){
+
+		if($this->input->post()){
+			$config['allowed_types']        = 'jpg|png|jpeg';
+		    $config['max_size']             = 2000;
+		    // $config['max_width']            = 1000;
+		    // $config['max_height']           = 768;
+
+		    
+								
+			$config['upload_path']          = 'uploads/driver/' . $this->input->post('name');
+			$config['overwrite']			= True;
+			$config['file_name']			= 'photo.jpg';
+			$this->upload->initialize($config);
+
+			//Check if the folder for the upload existed
+			if(!file_exists($config['upload_path']))
+			{
+				//if not make the folder so the upload is possible
+				mkdir($config['upload_path'], 0777, true);
+			}
+
+		    if ($this->upload->do_upload('photo'))
+		    {
+		    	$image = $this->upload->data();
+		        //Get the link for the database
+		        $photo = $config ['upload_path'] . '/' . $config ['file_name'];
+		    }else{
+		    	$photo = '';
+		    }
+
+			$data = array(
+				'code' => $this->input->post('driver_code'),
+				'name' => $this->input->post('driver_name'),
+				'address' => $this->input->post('driver_address'),
+				'photo' => $photo
+				);
+
+			$this->crud_model->insert_data('drivers',$data);
+			$this->session->set_flashdata("success","Success");
+			redirect('drivers');
+		}
+		else{
+			$data['title'] = 'Input Drivers';
+			$data['subtitle'] = 'DRIVERS';
+			$this->template->load('default','drivers/add_driver',$data);
+		}
+
+		
 	}
 }
 ?>
