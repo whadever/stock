@@ -66,7 +66,12 @@
 							<td><?php echo $driver->name ?></td>
 							<td><?php echo $driver->address ?></td>
 							<td><img src="<?php echo base_url().$driver->photo ?>" alt="<?php echo $driver->name ?>" width="40"/></td>
-							<td>edit | delete</td>
+							<td>
+								<a href="<?php echo base_url('drivers/edit_driver/'.$driver->code) ?>">Edit</a> | 
+								<a href="" data-toggle="modal" data-target="#deleteDriver" data-code="<?php echo $driver->code?>">
+								  Delete
+								</a>
+							</td>
 						</tr>
 					<?php $i++; endforeach; ?>
 				</tbody>
@@ -75,6 +80,29 @@
 		</div>
 	</div>
 </div>
+
+<!-- Modal delete user -->
+<div id="deleteDriver" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+<!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Delete Driver</h4>
+      </div>
+      <div class="modal-body">
+        <?php echo form_open('drivers/delete'); ?>
+      <p>By doing so, driver will be deleted from database. Proceed?</p>
+      </div>
+      <div class="modal-footer">
+        <input type="hidden" name="code" value="">
+        <input type="submit" name="delete" value="Confirm" class="btn btn-danger">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <?php echo form_close() ?>
+      </div>
+    </div>
+  </div>
+</div><!-- Modal delete user end -->
 
 <script>
 	function generate_barcode(){
@@ -100,7 +128,18 @@
 
 </script>
 
+<script>
+	$('#deleteDriver').on('show.bs.modal', function(e) {
 
+	    //get data-id attribute of the clicked element
+
+	    var code = $(e.relatedTarget).data('code');
+
+	    //populate the textbox
+	    $(e.currentTarget).find('input[name="code"]').val(code);
+
+	});
+</script>
 
 <script>
 	$(document).ready(function() {
