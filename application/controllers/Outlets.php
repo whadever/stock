@@ -17,6 +17,26 @@ class Outlets extends MY_Controller{
 		$this->template->load('default','outlets/all_outlet',$data);
 	}
 
+	public function add_outlet(){
+		if($this->input->post('save')){
+			$name = $this->input->post('outlet_name');
+			$pic = $this->input->post('outlet_pic');
+			$address = $this->input->post('outlet_address');
+			$data=array(
+				'username'=> $name,
+				'pic'=>$pic,
+				'address'=>$address
+				);
+			$this->crud_model->insert_data('outlets',$data);
+			redirect('outlets');
+		}
+		else{
+			$data['title']='Outlets';
+			$data['subtitle']='OUTLETS';
+			$this->template->load('default','outlets/add_outlet',$data);	
+		}
+	}
+
 
 
 }

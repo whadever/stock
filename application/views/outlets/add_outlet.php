@@ -13,6 +13,7 @@
 			<p>Status User:</p>
 		</div>
 		<div class="row" style="margin-top: 20px;">
+			<?php form_open('outlets/add_outlet')?>
 			<table class="table product-table">
 				<tbody>
 				<tr>
@@ -28,13 +29,14 @@
 					<td style="padding-right: 9%;"><input type="text" name="outlet_category" placeholder="Kategori Outlet" class="form-control"></td>
 				</tr> -->
 				<tr>
+					<td class="table_detail"><p class="bebas">ALAMAT OUTLET</p></td>
+					<td style="padding-right: 9%;"><input type="text" name="outlet_address" placeholder="Alamat Outlet" class="form-control"></td>
+				</tr>
+				<tr>
 					<td class="table_detail"><p class="bebas">PIC OUTLET</p></td>
 					<td style="padding-right: 9%;"><input type="text" name="outlet_pic" placeholder="Penanggungjawab Outlet" class="form-control"></td>
 				</tr>
-				<tr>
-					<td class="table_detail"><p class="bebas">KODE OUTLET</p></td>
-					<td style="padding-right: 9%;"><input type="text" name="outlet_code" placeholder="Kode Outlet" class="form-control"></td>
-				</tr>
+				
 				<!-- <tr>
 					<td class="table_detail"><p class="bebas">UPLOAD FOTO OUTLET</p></td>
 					<td style="padding-right: 9%;"><a class="btn btn-primary">Upload</a></td>
@@ -42,9 +44,11 @@
 
 				</tbody>
 			</table>
+
 		</div>
 		<div class="row text-center">
-			<a class="btn btn-default btn-custom">Save</a>
+			<input type="submit" name="save" value="Save" class="btn btn-default btn-custom">
 		</div>	
+		<?php echo form_close()?>
 	</div>
 </div>

@@ -21,13 +21,13 @@
 			<div class="form-group" style="margin-bottom: 20px">
 				<label for="">Search :</label>
 				<input type="text" class="form-control" id="filter">
-				<a href="<?php echo base_url('outlets') ?>" class="btn btn-primary pull-right">Add Outlet</a>
+				<a href="<?php echo base_url('outlets/add_outlet') ?>" class="btn btn-primary pull-right">Add Outlet</a>
 			</div>
 			<div class="table-responsive toggle-circle-filled">
 			<table class="table table-condensed" data-filter="#filter" data-page-size="10" id="table_product">
 				<thead>
 					 <tr>
-					 	<th data-type="numeric" data-sort-initial="true">No</th>
+					 	
 					 	<th data-hide="phone">Kode Outlet</th>
 					 	<th data-toggle="true">Nama Outlet</th>
 					 	<th data-hide="phone">Alamat</th>					 	
@@ -36,16 +36,16 @@
 					 </tr>
 				</thead>
 				<tbody>
-					<?php $i=1; foreach($outlets as $outlet): ?>
+					<?php foreach($outlets as $outlet): ?>
 						<tr>
-							<td><?php echo $i ?></td>
+							
 							<td><?php echo $outlet->id ?></td>
 							<td><?php echo $outlet->name ?></td>
 							<td><?php echo $outlet->address ?></td>
 							<td><?php echo $outlet->pic ?></td>
 							<td><a href="<?php echo base_url('outlets/edit_outlet').'/'.$outlet->id?>">edit</a> | delete</td>
 						</tr>
-					<?php $i++; endforeach; ?>
+					<?php  endforeach; ?>
 				</tbody>
 			</table>
 		</div>
