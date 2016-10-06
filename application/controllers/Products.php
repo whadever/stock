@@ -31,7 +31,7 @@ class Products extends MY_Controller{
 		if ($this->input->post('update')) {
 			$config['allowed_types']        = 'jpg|png|jpeg';
             $config['max_size']             = 5000;			
-			$config['upload_path']          = 'uploads/'.$this->input->post('item_code');
+			$config['upload_path']          = 'uploads/products/'.$this->input->post('item_code');
 			$config['overwrite']			= true;
 			$this->upload->initialize($config);
 
@@ -93,7 +93,7 @@ class Products extends MY_Controller{
 		if ($this->input->post('save')) {
 			$config['allowed_types']        = 'jpg|png|jpeg';
             $config['max_size']             = 5000;			
-			$config['upload_path']          = 'uploads/'.$this->input->post('item_code');
+			$config['upload_path']          = 'uploads/products/'.$this->input->post('item_code');
 			$config['overwrite']			= true;
 			$this->upload->initialize($config);
 
