@@ -86,7 +86,6 @@
 		<?php echo form_close(); ?>
 	</div>
 </div>
-
 <script>
 	function generate_barcode(){
 

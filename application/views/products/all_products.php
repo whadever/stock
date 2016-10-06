@@ -58,7 +58,22 @@
 	
 	</div>
 </div>
-
+<!-- <div class="modal fade" id="delete">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				Delete Product
+			</div>
+			<?php //echo form_open('products/delete_product')?>
+			<div class="modal-body">Delete this data?</div>
+			<div class="modal-footer">
+				<
+			</div>
+			<?php //echo form_close()?>
+		</div>
+	</div>
+</div> -->
 <script>
 	function generate_barcode(){
 
