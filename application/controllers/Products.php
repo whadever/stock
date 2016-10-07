@@ -156,7 +156,8 @@ class Products extends MY_Controller{
 			);
 
 		$data['products'] = $this->product_model->getAllProducts();
-		$data['outlets'] = $this->crud_model->get_data('outlets');
+		$data['outlets'] = $this->crud_model->get_data('outlets')->result();
+		$data['drivers'] = $this->crud_model->get_data('drivers')->result();
 		$this->template->load('default','products/distribute',$data);
 
 	}

@@ -40,11 +40,7 @@ class Outlets extends MY_Controller{
                 $thumb = $config ['upload_path'] . '/' . $image['raw_name'].'_thumb'.$image['file_ext'];
 
                //image_moo
-				$this->image_moo
-					->load($config ['upload_path'] . '/' . $image['file_name'])
-					->resize_crop(300,300)
-					->save_pa('','_thumb');
-
+				
 				$this->image_moo
 					->load($config ['upload_path'] . '/' . $image['file_name'])
 					->resize_crop(800,600)
@@ -100,11 +96,7 @@ class Outlets extends MY_Controller{
                 $thumb = $config ['upload_path'] . '/' . $image['raw_name'].'_thumb'.$image['file_ext'];
 
                //image_moo
-				$this->image_moo
-					->load($config ['upload_path'] . '/' . $image['file_name'])
-					->resize_crop(300,300)
-					->save_pa('','_thumb');
-
+				
 				$this->image_moo
 					->load($config ['upload_path'] . '/' . $image['file_name'])
 					->resize_crop(800,600)
@@ -140,8 +132,9 @@ class Outlets extends MY_Controller{
 		if($this->input->post('delete')){
 			$id=$this->input->post('delete_id');
 			$outlet=$this->crud_model->get_by_condition('outlets',array('id'=>$id))->row();
-			unlink($outlet->pic);
+			
 			unlink($outlet->photo);
+			rmdir('uploads/photos/'.$outlet->username);
 			$this->crud_model->delete_data('outlets',array('id'=>$id));
 			redirect('outlets');
 		}
