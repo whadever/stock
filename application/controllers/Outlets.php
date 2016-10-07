@@ -61,6 +61,14 @@ class Outlets extends MY_Controller{
 		}
 	}
 
+	public function delete_outlet(){
+		if($this->input->post('delete')){
+			$id=$this->input->post('delete_id');
+			$this->crud_model->delete_data('outlets',array('id'=>$id));
+			redirect('outlets');
+		}
+	}
+
 }
 
 

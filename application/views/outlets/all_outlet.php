@@ -43,7 +43,7 @@
 							<td><?php echo $outlet->username ?></td>
 							<td><?php echo $outlet->address ?></td>
 							<td><?php echo $outlet->pic ?></td>
-							<td><a href="<?php echo base_url('outlets/edit_outlet').'/'.$outlet->id?>">edit</a> | delete</td>
+							<td><a href="<?php echo base_url('outlets/edit_outlet').'/'.$outlet->id?>">edit</a> | <a data-toggle="modal" data-target="#delete" style="cursor: pointer" data-id="<?php echo $outlet->id?>">delete</a></td>
 						</tr>
 					<?php  endforeach; ?>
 				</tbody>
@@ -54,23 +54,37 @@
 	
 	</div>
 </div>
-<!-- <div class="modal fade" id="delete">
+<div class="modal fade" id="delete" style="border-radius:0px; ">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header">
+			<div class="modal-header" style="background-color: #2c3e50;color: #fff; ">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				Delete Product
 			</div>
-			<?php //echo form_open('products/delete_product')?>
+			<?php echo form_open('outlets/delete_outlet')?>
 			<div class="modal-body">Delete this data?</div>
-			<div class="modal-footer">
-				<
+			<div class="modal-footer" style="padding: 6px; border-radius: 0px;">
+				<input type="hidden" name="delete_id" value="">
+		        <input type="submit" name="delete" value="Confirm" class="btn btn-danger">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
-			<?php //echo form_close()?>
+			<?php echo form_close()?>
 		</div>
 	</div>
-</div> -->
+</div>
+<script>
+	$('#delete').on('show.bs.modal', function(e) {
 
+    //get data-id attribute of the clicked element
+
+    var id = $(e.relatedTarget).data('id');
+
+
+    //populate the textbox
+    $(e.currentTarget).find('input[name="delete_id"]').val(id);
+
+	});
+</script>
 <script>
 	$(document).ready(function() {
    	 $('#table_product').footable();
