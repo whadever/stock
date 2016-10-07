@@ -39,7 +39,27 @@ class Outlets extends MY_Controller{
 		}
 	}
 
-
+	public function edit_outlet($id){
+		if($this->input->post('edit')){
+			$name = $this->input->post('outlet_name');
+			$pic = $this->input->post('outlet_pic');
+			$address = $this->input->post('outlet_address');
+			$data=array(
+				'username'	=> $name,
+				'name' 		=> $name,
+				'pic'		=> $pic,
+				'address'	=> $address,
+				);
+			$this->crud_model->update_data('outlets',$data,array('id'=>$id));
+			redirect('outlets');
+		}
+		else{
+			$data['title']='Outlets';
+			$data['subtitle']='OUTLETS';
+			$data['outlet']=$this->crud_model->get_by_condition('outlets',array('id' => $id))->row();
+			$this->template->load('default','outlets/edit_outlet',$data);
+		}
+	}
 
 }
 
