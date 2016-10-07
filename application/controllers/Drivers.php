@@ -43,7 +43,7 @@ class Drivers extends CI_Controller
 		        //Get the link for the database
 		        $photo = $config ['upload_path'] . '/' . $config ['file_name'];
 		    }else{
-		    	$photo = '';
+		    	$photo = 'uploads/driver/no-photo.png';
 		    }
 
 			$data = array(
@@ -96,7 +96,7 @@ class Drivers extends CI_Controller
 		        //Get the link for the database
 		        $photo = $config ['upload_path'] . '/' . $config ['file_name'];
 		    }else{
-		    	$photo = '';
+		    	$photo = $data['drivers']->photo;
 		    }
 
 			$data = array(

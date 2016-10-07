@@ -33,6 +33,7 @@ class Products extends MY_Controller{
             $config['max_size']             = 5000;			
 			$config['upload_path']          = 'uploads/products/'.$this->input->post('item_code');
 			$config['overwrite']			= true;
+			$config['file_name']			= 'photo';
 			$this->upload->initialize($config);
 
 			//Check if the folder for the upload existed
@@ -46,19 +47,19 @@ class Products extends MY_Controller{
             {	
             	$image = $this->upload->data();
                 //Get the link for the database
-                $photo = $config ['upload_path'] . '/' . $image['file_name'];
-                $thumb = $config ['upload_path'] . '/' . $image['raw_name'].'_thumb'.$image['file_ext'];
+                $photo = $config ['upload_path'] . '/' . $config['file_name'];
+                $thumb = $config ['upload_path'] . '/' . $config['raw_name'].'_thumb'.$image['file_ext'];
 
                //image_moo
 				$this->image_moo
-					->load($config ['upload_path'] . '/' . $image['file_name'])
+					->load($config ['upload_path'] . '/' . $config['file_name'])
 					->resize_crop(300,300)
 					->save_pa('','_thumb');
 
 				$this->image_moo
-					->load($config ['upload_path'] . '/' . $image['file_name'])
+					->load($config ['upload_path'] . '/' . $config['file_name'])
 					->resize_crop(800,600)
-					->save($config ['upload_path'] . '/' . $image['file_name'],TRUE);
+					->save($config ['upload_path'] . '/' . $config['file_name'],TRUE);
 
             }
             else{
@@ -96,6 +97,7 @@ class Products extends MY_Controller{
             $config['max_size']             = 5000;			
 			$config['upload_path']          = 'uploads/products/'.$this->input->post('item_code');
 			$config['overwrite']			= true;
+			$config['file_name']			= 'photo';
 			$this->upload->initialize($config);
 
 			//Check if the folder for the upload existed
@@ -109,24 +111,24 @@ class Products extends MY_Controller{
             {	
             	$image = $this->upload->data();
                 //Get the link for the database
-                $photo = $config ['upload_path'] . '/' . $image['file_name'];
-                $thumb = $config ['upload_path'] . '/' . $image['raw_name'].'_thumb'.$image['file_ext'];
+                $photo = $config ['upload_path'] . '/' . $config['file_name'];
+                $thumb = $config ['upload_path'] . '/' . $config['raw_name'].'_thumb'.$image['file_ext'];
 
                //image_moo
 				$this->image_moo
-					->load($config ['upload_path'] . '/' . $image['file_name'])
+					->load($config ['upload_path'] . '/' . $config['file_name'])
 					->resize_crop(300,300)
 					->save_pa('','_thumb');
 
 				$this->image_moo
-					->load($config ['upload_path'] . '/' . $image['file_name'])
+					->load($config ['upload_path'] . '/' . $config['file_name'])
 					->resize_crop(800,600)
-					->save($config ['upload_path'] . '/' . $image['file_name'],TRUE);
+					->save($config ['upload_path'] . '/' . $config['file_name'],TRUE);
 
             }
             else{
-            	$photo = '';
-            	$thumb = '';
+            	$photo = 'uploads/products/no-photo.png';
+            	$thumb = 'uploads/products/no-photo.png';
             }
 
 			

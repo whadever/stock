@@ -1,8 +1,3 @@
-
-<script src="<?php echo base_url() ?>js/JsBarcode.all.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>js/canvas-toblob.js"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>js/filesaver.js"></script>
-
 <style>
 	#filter{
 		width: 25%;
