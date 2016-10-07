@@ -5,6 +5,21 @@
 	.table_detail{
 		width: 24% !important;
 	}
+	.fileUpload {
+	    position: relative;
+	    overflow: hidden;
+	}
+	.fileUpload input.upload {
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    margin: 0;
+	    padding: 0;
+	    font-size: 20px;
+	    cursor: pointer;
+	    opacity: 0;
+	    filter: alpha(opacity=0);
+	}
 </style>
 <div class="row">
 	<div class="col-md-12 content-wrap">
@@ -13,7 +28,7 @@
 			<p>Status User:</p>
 		</div>
 		<div class="row" style="margin-top: 20px;">
-			<?php echo form_open('outlets/edit_outlet/'.$outlet->id)?>
+			<?php echo form_open_multipart('outlets/edit_outlet/'.$outlet->id)?>
 			<table class="table product-table">
 				<tbody>
 				<tr>
@@ -36,7 +51,14 @@
 					<td class="table_detail"><p class="bebas">PIC OUTLET</p></td>
 					<td style="padding-right: 9%;"><input type="text" name="outlet_pic" placeholder="Penanggungjawab Outlet" class="form-control" value="<?php echo $outlet->pic?>"></td>
 				</tr>
-
+				<tr>
+					<td class="table_detail"><p class="bebas">UPLOAD FOTO BARANG</p></td>
+					<td style="padding-right: 9%;"><div class="fileUpload btn btn-primary">
+						<img src="<?php echo base_url().$outlet->photo ?>" alt="<?php echo $outlet->username ?>" width="60"/>
+					    <span>Upload</span>
+					    <input type="file" id="photo" class="upload" name="photo" />
+					</div></td>
+				</tr>
 				
 				<!-- <tr>
 					<td class="table_detail"><p class="bebas">UPLOAD FOTO OUTLET</p></td>
