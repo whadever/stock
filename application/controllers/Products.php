@@ -72,6 +72,7 @@ class Products extends MY_Controller{
 					'code' 			=> $this->input->post('item_code'),
 					'name' 			=> $this->input->post('item_name'),
 					'buying_price' 	=> $this->input->post('item_price'),
+					'quantity'		=> $this->input->post('item_quantity'),
 					'category' 		=> $this->input->post('item_category'),
 					'photo' 		=> $photo,
 					'thumb' 		=> $thumb,
@@ -134,6 +135,7 @@ class Products extends MY_Controller{
 					'code' 			=> $this->input->post('item_code'),
 					'name' 			=> $this->input->post('item_name'),
 					'buying_price' 	=> $this->input->post('item_price'),
+					'quantity'		=> $this->input->post('item_quantity'),
 					'category' 		=> $this->input->post('item_category'),
 					'photo' 		=> $photo,
 					'thumb' 		=> $thumb,
@@ -143,6 +145,18 @@ class Products extends MY_Controller{
 
 			redirect('products');
 		}
+	}
+
+	public function distribute(){
+		$data = array(
+				'title' => 'Distribusi Produk',
+				'subtitle' => 'DISTRIBUSI PRODUK',
+			);
+
+		$data['products'] = $this->product_model->getAllProducts();
+		$data['outlets'] = $this->crud_model->get_data('outlets');
+		$this->template->load('default','products/distribute',$data);
+
 	}
 
 

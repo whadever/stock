@@ -30,6 +30,7 @@
 					 	<th data-type="numeric" data-sort-initial="true">No</th>
 					 	<th data-hide="phone">Code</th>
 					 	<th data-toggle="true">Name</th>
+					 	<th data-type="numeric">Jumlah Barang</th>
 					 	<th data-hide="phone">Category</th>
 					 	<th data-type="numeric" data-hide="phone">Harga Beli</th>
 					 	<th data-type="numeric" data-hide="phone">Harga Jual</th>
@@ -43,6 +44,7 @@
 							<td><?php echo $i ?></td>
 							<td><?php echo $product->code ?></td>
 							<td><?php echo $product->name ?></td>
+							<td><?php echo $product->quantity ?></td>
 							<td><?php echo $product->category ?></td>
 							<td><?php echo rupiah($product->buying_price) ?></td>
 							<td><?php echo rupiah($product->selling_price) ?></td>

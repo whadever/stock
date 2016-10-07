@@ -44,6 +44,10 @@
 					<td style="padding-right: 9%;"><input type="text" name="item_name" required="1" placeholder="Nama Barang" class="form-control"></td>
 				</tr>
 				<tr>
+					<td class="table_detail"><p class="bebas">JUMLAH BARANG</p></td>
+					<td style="padding-right: 9%;"><input type="text" pattern="\d*" required="1" name="item_quantity" placeholder="Jumlah Barang" class="form-control"></td>
+				</tr>
+				<tr>
 					<td class="table_detail"><p class="bebas">HARGA BELI</p></td>
 					<td style="padding-right: 9%;"><input type="text" pattern="\d*" required="1" name="item_price" placeholder="Harga Barang" class="form-control"></td>
 				</tr>
