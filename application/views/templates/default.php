@@ -45,10 +45,6 @@
       background-color: #e8ecf0;
     }
 
-    #main a{
-      color: black;
-    }
-
     #main a:hover{
       text-decoration: none;
       color: black;

@@ -45,7 +45,7 @@
 						<select required="1" class="form-control" id="" name="outlet_distribute">
 						<option value="">--Pilih Outlet--</option>
 						<?php foreach($outlets as $outlet): ?>
-							<option value="<?php echo $outlet->id ?>"><?php echo $outlet->username ?></option>
+							<option value="<?php echo $outlet->code ?>"><?php echo $outlet->username ?></option>
 						<?php endforeach; ?>
 						</select>
 					</td>

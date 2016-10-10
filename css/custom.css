@@ -23,9 +23,13 @@
     .footable>tfoot>tr>th, .footable>tfoot>tr>td { 
       
       background-color : #203244 !important;
-      border : 1px solid #203244 !important
+      border : 1px solid #203244 !important;
 
     }
     .footable>tbody{
     	background-color: #F7FBFE;
+    }
+
+    .pagination>a{
+      color: white !important;
     }

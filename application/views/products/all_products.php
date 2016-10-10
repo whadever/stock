@@ -28,10 +28,10 @@
 				<thead>
 					 <tr>
 					 	<th data-type="numeric" data-sort-initial="true">No</th>
-					 	<th data-hide="phone">Code</th>
+					 	<th data-hide="phone">Kode</th>
 					 	<th data-toggle="true">Name</th>
-					 	<th data-type="numeric">Jumlah Barang</th>
-					 	<th data-hide="phone">Category</th>
+					 	<th data-type="numeric">Model</th>
+					 	<th data-hide="phone">Kategori</th>
 					 	<th data-type="numeric" data-hide="phone">Harga Beli</th>
 					 	<th data-type="numeric" data-hide="phone">Harga Jual</th>
 					 	<th data-hide="phone">Gambar</th>
@@ -44,7 +44,7 @@
 							<td><?php echo $i ?></td>
 							<td><?php echo $product->code ?></td>
 							<td><?php echo $product->name ?></td>
-							<td><?php echo $product->quantity ?></td>
+							<td><?php echo $product->model ?></td>
 							<td><?php echo $product->category ?></td>
 							<td><?php echo rupiah($product->buying_price) ?></td>
 							<td><?php echo rupiah($product->selling_price) ?></td>
@@ -53,6 +53,12 @@
 						</tr>
 					<?php $i++; endforeach; ?>
 				</tbody>
+				<tfoot class="hide-if-no-paging">
+					<td colspan="9">
+						<div class="pagination"></div>
+					</td>
+					
+				</tfoot>
 			</table>
 		</div>
 		

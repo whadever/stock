@@ -27,7 +27,7 @@
 	    opacity: 0;
 	    filter: alpha(opacity=0);
 	}
-	
+
 </style>
 <div class="row">
 	<div class="col-md-12 content-wrap">
@@ -48,8 +48,9 @@
 					<td style="padding-right: 9%;"><input type="text" pattern="\d*" required="1" name="item_quantity" placeholder="Jumlah Barang" class="form-control"></td>
 				</tr>
 				<tr>
-					<td class="table_detail"><p class="bebas">HARGA BELI</p></td>
-					<td style="padding-right: 9%;"><input type="text" pattern="\d*" required="1" name="item_price" placeholder="Harga Barang" class="form-control"></td>
+					<td class="table_detail"><p class="bebas">KODE MODEL</p></td>
+					<td style="padding-right: 9%;"><input type="text" pattern="^\S{1,20}" title="Kode Model tidak boleh mengandung spasi dan panjang maksimal 20 karakter" name="item_model" placeholder="Kode Model" class="form-control" required="1"></td>
+					
 				</tr>
 				<tr>
 					<td class="table_detail"><p class="bebas">KATEGORI BARANG</p></td>
@@ -61,11 +62,6 @@
 					</select></td>
 				</tr>
 				<tr>
-					<td class="table_detail"><p class="bebas">KODE BARANG</p></td>
-					<td style="padding-right: 9%;"><input type="text" pattern="^\S{1,20}" title="Kode Barang tidak boleh mengandung spasi dan panjang maksimal 20 karakter" id="item_code" onblur="generate_barcode()" name="item_code" placeholder="Kode Barang" class="form-control" required="1"></td>
-					
-				</tr>
-				<tr>
 					<td class="table_detail"><p class="bebas">UPLOAD FOTO BARANG</p></td>
 					<td style="padding-right: 9%;"><div class="fileUpload btn btn-primary">
 													    <span>Upload</span>
@@ -73,12 +69,38 @@
 													</div></td>
 				</tr>
 				<tr>
+					<td class="table_detail"><p class="bebas">KODE BARANG</p></td>
+					<td style="padding-right: 9%;"><input type="text" pattern="^\S{1,20}" title="Kode Barang tidak boleh mengandung spasi dan panjang maksimal 20 karakter" id="item_code" onblur="generate_barcode()" name="item_code" placeholder="Kode Barang" class="form-control" required="1"></td>
+					
+				</tr>				
+				<tr>
 					<td class="table_detail"><p class="bebas">BARCODE</p></td>
 					<td style="padding-right: 9%;"><canvas id="barcode" width=1 height=1 style="border:1px solid #fff"></canvas>
 					<div><a id="saveas" class="btn btn-primary" href="javascript:saveCanvas('image/png','.png')" style="display: none">Save As PNG</a></div>
 					</td>
 				</tr>
-
+				<tr>
+					<td colspan="2">
+						<table class="table">
+							<tr>
+								<td style="padding: 8px 8px 8px 0"><p class="bebas">HARGA BELI</p></td>
+								<td><input type="text" pattern="\d*" required="1" onkeyup="sell_price()" id="buy" name="item_buy" placeholder="Harga Beli" class="form-control"></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td class="table_detail"><p class="bebas">HARGA BELI</p></td>
+					<td style="padding-right: 9%;"><input type="text" pattern="\d*" required="1" onkeyup="sell_price()" id="buy" name="item_buy" placeholder="Harga Beli" class="form-control"></td>
+				</tr>
+				<tr>
+					<td class="table_detail"><p class="bebas">MARGIN</p></td>
+					<td style="padding-right: 9%;"><input type="text" pattern="\d*" required="1" onkeyup="sell_price()" id="margin" placeholder="Margin" class="form-control"></td>
+				</tr>
+				<tr>
+					<td class="table_detail"><p class="bebas">HARGA JUAL</p></td>
+					<td style="padding-right: 9%;"><input type="text" pattern="\d*" id="sell" required="1" readonly="readonly" name="item_sell" placeholder="Harga Jual" class="form-control"></td>
+				</tr>
 				</tbody>
 			</table>
 		</div>
@@ -110,6 +132,15 @@
 						  saveAs(blob, $('#item_code').val() + ext);
 					  }, type, 1);
 		
+	}
+
+	function sell_price(){
+		if (!$('#margin').val() || !$('#buy').val()) {
+			$('#sell').val(0);
+			
+		}else{
+			$('#sell').val(+$('#margin').val() / +100 * +$('#buy').val() + +$('#buy').val());
+		}
 	}
 
 </script>
