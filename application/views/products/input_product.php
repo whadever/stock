@@ -30,6 +30,12 @@
 	.table .table{
 		background-color: transparent;
 	}
+	.input-group-addon{
+		background-color: #2c3e50;
+		color: #fff;
+		border-radius: 10px;
+		border-color: #2c3e50;
+	}
 
 </style>
 <div class="row">
@@ -83,22 +89,49 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">
-						<table class="table spec-table" style="margin-bottom: 0px;">
+					<td colspan="2" style="padding-bottom: 0px !important;"><p class="bebas" style="margin-bottom: 0px;">SPESIFIKASI</p></td>
+				</tr>
+					<td colspan="2" style="padding-top: 0px;">
+						<table class="table spec-table" style="margin-bottom: 0px; margin-left: 20px; width: 80%">
 							<tr>
-								<td colspan="4"><p class="bebas">SPESIFIKASI</p></td>
+								<td colspan="3" style="padding-bottom: 0px;"><p class="bebas" style="font-size: 20px;"> Emas Putih</p></td>
 							</tr>
 							<tr>
-								<td><input type="number" name="diamond_amount[]" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Jumlah Diamond"></td>
-								<td>rd</td>
-								<td><input type="number" name="diamond_carat[]" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Ct."></td>
-								<td><select name="spec_option[]" id="" class="form-control">
-									<option value="diamond">rd</option>
-									<option value="white">w</option>
-									<option value="gold">g</option>
-								</select></td>
-								<td></td>
-								<td></td>
+								<td style="padding-top: 0px;">
+								<div class="input-group">
+									<input type="number" name="w_amount" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Jumlah Emas Putih">
+									<span class="input-group-addon">w</span>
+								</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3" style="padding-bottom: 0px;"><p class="bebas" style="font-size: 20px;"> Emas</p></td>
+							</tr>
+							<tr>
+								<td style="padding-top: 0px;">
+								<div class="input-group">
+									<input type="number" name="g_amount" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Jumlah Emas">
+									<span class="input-group-addon">g</span>
+								</div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3" style="padding-bottom: 0px;"><p class="bebas" style="font-size: 20px;"> Diamond</p></td>
+							</tr>
+							<tr>
+								<td style="padding-top: 0px;">
+								<div class="input-group">
+									<input type="number" name="diamond_amount[]" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Jumlah Diamond">
+									<span class="input-group-addon">rd</span>
+								</div>
+								</td>
+								<td style="padding-top: 0px;">
+								<div class="input-group">
+									<input type="number" name="diamond_carat[]" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Ct.">
+									<span class="input-group-addon">ct.</span>	
+								</div>
+								</td>
+								<td style="padding-top: 0px;"><a href="#" class="btn btn-primary spec-add">Tambah Spesifikasi Diamond</a></td>
 							</tr>
 							
 						</table>
@@ -106,7 +139,7 @@
 				</tr>
 				<tr>
 								<td colspan="2" style="padding-top: 0px;padding-bottom: 20px;">
-									<a href="#" class="btn btn-primary spec-add">Tambah Spesifikasi Barang</a>
+									
 								</td>
 							</tr>
 				<tr>
@@ -170,7 +203,7 @@
     	jQuery('a.spec-add').click(function(event){
 	        event.preventDefault();
 
-	        var newRow = jQuery('<tr><td><input type="number" name="spec_amount[]" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Jumlah Barang"></td><td><select name="spec_option[]" id="" class="form-control"><option value="diamond">rd</option><option value="white">w</option><option value="gold">g</option></select></td><td></td><td></td></tr>');
+	        var newRow = jQuery('<tr><td><div class="input-group"><input type="number" name="diamond_amount[]" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Jumlah Diamond"><span class="input-group-addon">rd</span></div></td><td><div class="input-group"><input type="number" name="diamond_carat[]" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Ct."><span class="input-group-addon">ct.</span></div></tr>');
 	        jQuery('table.spec-table').append(newRow);
 
     	});
