@@ -27,6 +27,9 @@
 	    opacity: 0;
 	    filter: alpha(opacity=0);
 	}
+	.table .table{
+		background-color: transparent;
+	}
 
 </style>
 <div class="row">
@@ -83,8 +86,10 @@
 					<td colspan="2">
 						<table class="table">
 							<tr>
-								<td style="padding: 8px 8px 8px 0"><p class="bebas">HARGA BELI</p></td>
-								<td><input type="text" pattern="\d*" required="1" onkeyup="sell_price()" id="buy" name="item_buy" placeholder="Harga Beli" class="form-control"></td>
+								<td style="padding: 8px 8px 8px 0"><p class="bebas">SPESIFIKASI</p></td>
+								<td><input type="text"></td>
+								<td><select name="" id=""><option value="">test</option></select></td>
+								<td><input type="text"></td>
 							</tr>
 						</table>
 					</td>
