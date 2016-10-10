@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2016 at 04:55 AM
+-- Generation Time: Oct 10, 2016 at 03:28 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -51,6 +51,14 @@ CREATE TABLE `drivers` (
   `photo` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `drivers`
+--
+
+INSERT INTO `drivers` (`code`, `name`, `address`, `photo`) VALUES
+('D08', 'saranghae', 'koreaa', 'uploads/driver/D08/photo.jpg'),
+('D09', 'irvan', 'kelapa gading', 'uploads/driver/no-photo.png');
+
 -- --------------------------------------------------------
 
 --
@@ -93,24 +101,29 @@ INSERT INTO `outlets` (`id`, `role`, `username`, `password`, `name`, `email`, `a
 CREATE TABLE `products` (
   `code` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `model` varchar(255) NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT '1',
   `category` int(11) NOT NULL,
   `buying_price` double NOT NULL,
   `selling_price` double NOT NULL DEFAULT '0',
   `photo` varchar(255) NOT NULL,
-  `thumb` varchar(255) NOT NULL
+  `thumb` varchar(255) NOT NULL,
+  `outlet_id` int(11) NOT NULL DEFAULT '1',
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `products`
+-- Table structure for table `spesifikasi`
 --
 
-INSERT INTO `products` (`code`, `name`, `category`, `buying_price`, `selling_price`, `photo`, `thumb`) VALUES
-('41234', 'adf', 1, 1234, 0, '', ''),
-('BV000001', 'Green Tea', 1, 5000, 0, '', ''),
-('BV000002', 'Milk Tea', 1, 7000, 0, '', ''),
-('BV000003', 'test', 1, 10000, 0, 'uploads/BV000003/Black-Logo-Batman-wallpapers.jpg', 'uploads/BV000003/Black-Logo-Batman-wallpapers_thumb.jpg'),
-('BV000004', 'Alazka Tea', 1, 8000, 0, '', ''),
-('BV000005', 'Bro', 1, 9000, 0, 'uploads/BV000005/ironman_desktop.jpg', 'uploads/BV000005/ironman_desktop_thumb.jpg');
+CREATE TABLE `spesifikasi` (
+  `kode_barang` int(11) NOT NULL,
+  `type` enum('diamond','gold','white','') NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `amount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
