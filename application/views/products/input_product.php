@@ -84,16 +84,25 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<table class="table">
+						<table class="table spec-table">
 							<tr>
-								<td style="padding: 8px 8px 8px 0"><p class="bebas">SPESIFIKASI</p></td>
-								<td><input type="text"></td>
-								<td><select name="" id=""><option value="">test</option></select></td>
-								<td><input type="text"></td>
+								<td colspan="4"><p class="bebas">SPESIFIKASI</p></td>
 							</tr>
+							<tr>
+								<td><input type="number" name="spec_amount[]" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Jumlah Barang"></td>
+								<td><select name="spec_option[]" id="" class="form-control"><option value="">test</option></select></td>
+								<td></td>
+								<td></td>
+							</tr>
+							
 						</table>
 					</td>
 				</tr>
+				<tr>
+								<td colspan="2">
+									<a href="#" class="btn btn-primary spec-add">Tambah Spesifikasi Barang</a>
+								</td>
+							</tr>
 				<tr>
 					<td class="table_detail"><p class="bebas">HARGA BELI</p></td>
 					<td style="padding-right: 9%;"><input type="text" pattern="\d*" required="1" onkeyup="sell_price()" id="buy" name="item_buy" placeholder="Harga Beli" class="form-control"></td>
@@ -149,5 +158,16 @@
 	}
 
 </script>
+<script>
+	jQuery(function(){
+    	var counter = 1;
+    	jQuery('a.spec-add').click(function(event){
+	        event.preventDefault();
 
+	        var newRow = jQuery('<tr><td><input type="number" name="spec_amount[]" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Jumlah Barang"></td><td><select name="spec_option[]" id="" class="form-control"><option value="">test</option></select></td><td></td><td></td></tr>');
+	        jQuery('table.spec-table').append(newRow);
+
+    	});
+	});
+</script>
 
