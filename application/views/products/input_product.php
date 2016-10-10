@@ -91,7 +91,8 @@
 				<tr>
 					<td colspan="2" style="padding-bottom: 0px !important;"><p class="bebas" style="margin-bottom: 0px;">SPESIFIKASI</p></td>
 				</tr>
-					<td colspan="2" style="padding-top: 0px;">
+				<tr>
+					<!-- <td colspan="2" style="padding-top: 0px;">
 						<table class="table spec-table" style="margin-bottom: 0px; margin-left: 20px; width: 80%">
 							<tr>
 								<td colspan="3" style="padding-bottom: 0px;"><p class="bebas" style="font-size: 20px;"> Emas Putih</p></td>
@@ -130,12 +131,16 @@
 									<input type="number" name="diamond_carat[]" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Ct.">
 									<span class="input-group-addon">ct.</span>	
 								</div>
-								</td>
-								<td style="padding-top: 0px;"><a href="#" class="btn btn-primary spec-add">Tambah Spesifikasi Diamond</a></td>
-							</tr>
+								</td> -->
+						<td colspan="2" style="padding-top: 0px;">
+							<table class="table spec-table" style="margin-bottom: 0px; margin-left: 20px; width: 80%">
+								<tr>
+									<td style="padding-top: 0px;"><input type="text" name="spec" class="form-control" placeholder="Keterangan Spesifikasi"></td>
+									<td style="padding-top: 0px;"><a href="#" class="btn btn-primary spec-add">Tambah Spesifikasi</a></td>
+								</tr>
 							
-						</table>
-					</td>
+							</table>
+						</td>
 				</tr>
 				<tr>
 								<td colspan="2" style="padding-top: 0px;padding-bottom: 20px;">
@@ -203,7 +208,8 @@
     	jQuery('a.spec-add').click(function(event){
 	        event.preventDefault();
 
-	        var newRow = jQuery('<tr><td><div class="input-group"><input type="number" name="diamond_amount[]" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Jumlah Diamond"><span class="input-group-addon">rd</span></div></td><td><div class="input-group"><input type="number" name="diamond_carat[]" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Ct."><span class="input-group-addon">ct.</span></div></tr>');
+	        // var newRow = jQuery('<tr><td><div class="input-group"><input type="number" name="diamond_amount[]" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Jumlah Diamond"><span class="input-group-addon">rd</span></div></td><td><div class="input-group"><input type="number" name="diamond_carat[]" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Ct."><span class="input-group-addon">ct.</span></div></tr>');
+	        var newRow = jQuery('<tr><td style="padding-top: 0px;"><input type="text" name="spec" class="form-control" placeholder="Keterangan Spesifikasi"></td></tr>');
 	        jQuery('table.spec-table').append(newRow);
 
     	});
