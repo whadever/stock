@@ -40,115 +40,13 @@
         font-family: bebas-neue;
         src: url("<?php echo base_url('fonts/BebasNeue.otf') ?>");
     }
-    body{
-      font-family: 'helvetica', sans-serif !important;
-      background-color: #e8ecf0;
-    }
-
-    #main a:hover{
-      text-decoration: none;
-      color: black;
+    .bebas{
+      font-family: 'bebas-neue';
+      font-size: 25px;
+      line-height: 30px;
+      font-weight: bolder;
 
     }
-    .form-control{
-        background-color: white;
-        color: black;
-        font-size: 14px;
-        border-radius: 10px;
-        border-color: #000;
-      }
-      .content-wrap{
-        background-color: #f7fbfe; 
-        
-        padding:30px;
-      }
-
-    .sidenav {
-        overflow-y: hidden;
-        height: 100%; /* 100% Full-height */
-        width: 250px; /* 0 width - change this with JavaScript */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Stay on top */
-        top: 0;
-        left: 0;
-        background-color: #203244; /* Black*/
-        color: #fff;
-        overflow-x: hidden; /* Disable horizontal scroll */
-        padding-top: 20px; /* Place content 60px from the top */
-        transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-
-    }
-
-    /* The navigation menu links */
-    .sidenav a {
-        padding: 8px 17px 5px 12px;
-        text-decoration: none;
-        font-size: 16px !important;
-        color: #fff;
-        display: block;
-        transition: 0.3s;
-        
-    }
-
-    /* When you mouse over the navigation links, change their color */
-    .sidenav a:hover, .offcanvas a:focus{
-      background-color: rgba(236, 240, 241,0.5);
-        color: #f1f1f1;
-    }
-
-    /* Position and style the close button (top right corner) */
-    .closebtn{
-        position: absolute;
-        top: 0;
-        right: -4px;
-        margin-left: 50px;
-    }
-    .closebtn:hover{
-      background-color: transparent!important;
-      color: #3498db !important;
-    }
-
-    /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-    #main {
-        transition: margin-left .5s;
-        padding: 0px;
-        margin-left: 250px;
-
-    }
-
-    /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-    @media screen and (max-height: 450px) {
-        .sidenav {padding-top: 15px;}
-        .sidenav a {font-size: 18px;}
-    }
-
-    /*#menu-button{
-      
-      background-color: transparent;
-      border: none;
-      border-radius: 5px;
-      margin-left: 12px;
-      margin-bottom: 10px;
-
-      
-
-    }
-
-    #menu-button:hover{
-      background-color: rgba(236, 240, 241,0.5);
-      -webkit-transition: all 1s ease;
-      -moz-transition: all 0.6s ease;
-      -ms-transition: all 0.6s ease;
-      -o-transition: all 0.6s ease;
-      transition: all 0.6s ease;
-    }
-*/
-
-    .btn-default{
-        background-color: white;
-        color: #24082f;
-    }
-
     .btn-custom{
       background-color: #2c3e50;
       color: #fff !important;
@@ -161,73 +59,6 @@
       border-radius: 10px;
       min-width: 150px;
     }
-
-    .btn-default.active, .btn-default.focus, .btn-default:active, .btn-default:focus, .btn-default:hover, .open>.dropdown-toggle.btn-default {
-          color: #fff;
-          background-color: #24082f;
-          border-color: #ccc;
-          -webkit-transition: all 0.3s ease-in;
-          -moz-transition: all 0.3s ease-in;
-          -ms-transition: all 0.3s ease-in;
-          -o-transition: all 0.3s ease-in;
-          transition: all 0.3s ease-in;
-      }
-
-      .btn-primary{
-        background-color: #24082f;
-        border-color: #24082f;
-        color: white !important;
-      }
-
-      .btn-primary.active, .btn-primary.focus, .btn-primary:active, .btn-primary:focus, .btn-primary:hover, .open>.dropdown-toggle.btn-primary {
-          color: #24082f !important;
-          background-color: white;
-          
-          -webkit-transition: all 0.3s ease-in;
-          -moz-transition: all 0.3s ease-in;
-          -ms-transition: all 0.3s ease-in;
-          -o-transition: all 0.3s ease-in;
-          transition: all 0.3s ease-in;
-      }
-
-    #background-btn{
-
-      padding-top: 10px;
-      padding-bottom: 10px;
-      padding-left: 0;
-      padding-right: 0;
-
-    }
-    .bottom-align-text {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      font-size: 11px;
-      line-height: 11px;
-      
-    }
-    .bottom-align-text-2 {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      font-size: 11px;
-      margin-bottom: 35px;
-      line-height: 11px;
-      
-    }
-    #mySidenav .fa{
-      font-size: 19px;
-    }
-    .popover-content{
-      font-size: 12px!important;
-    }
-    .bebas{
-      font-family: 'bebas-neue';
-      font-size: 25px;
-      line-height: 30px;
-      font-weight: bolder;
-
-    }
     .page_subtitle{
       font-size: 60px;
       font-weight: bold;
@@ -236,42 +67,6 @@
       line-height: 1;
       letter-spacing: 1px;
 
-    }
-    .container-fluid{
-      padding-left: 55px;
-      padding-right: 55px;
-      
-    }
-    .webui-popover-content{
-      padding:5px 5px !important;
-      overflow-x: hidden !important;
-    }
-    .pop-photo{
-      margin-right: 7px;
-      border-radius: 25px;
-      height: 50px;
-      width: 50px;
-      background-position: center;
-      display:inline-flex;
-      background-size:cover;
-    }
-    .profile-pop{
-      text-align: left;
-      margin-bottom: 0px;
-      margin-left: 0px;
-      margin-right: 0px;
-      border:none;
-      height: 67px;
-      font-size: 11px !important;
-      width: 100%;
-      border-radius: 0px;
-    }
-    .pop-btn{
-      margin-top: 5px;
-      font-size: 11px !important;
-    }
-    .btn-collection{
-      overflow-x: hidden !important;
     }
     #txt{
       font-family: 'bebas-neue';
@@ -320,7 +115,7 @@
    ?>
   
   <div id="mySidenav" class="sidenav" >
-       <a id="menu-button" onclick="openNav()" style="cursor:pointer;display: none"><i id="nav-button" class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       <a id="menu-button" onclick="openNav()" style="cursor:pointer;"><i id="nav-button" class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
         <div class="company_logo" style="margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:1px solid #000">
           <img src="<?php echo base_url()?>assets/logo1.png" width="100px" style="margin-left:23%;">
         </div>
@@ -398,7 +193,7 @@
           
         </div>
 
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="border-bottom: none;font-size:25px!important;">&times;</a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="border-bottom: none;font-size:25px!important; display: none">&times;</a>
 
         <a href="<?php echo base_url('main') ?>"><i class="fa fa-home" aria-hidden="true"></i><span class="menu-text pull-right">Home</span></a>
        
@@ -485,7 +280,7 @@
     /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
       function openNav() {
           document.getElementById("mySidenav").style.width = "250px";
-          document.getElementById("main").style.marginLeft = "250px";
+          
         
           
           $('.menu-text').show();
