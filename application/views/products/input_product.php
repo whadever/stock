@@ -52,10 +52,10 @@
 					<td class="table_detail"><p class="bebas">NAMA BARANG</p></td>
 					<td style="padding-right: 9%;"><input type="text" name="item_name" required="1" placeholder="Nama Barang" class="form-control"></td>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<td class="table_detail"><p class="bebas">JUMLAH BARANG</p></td>
 					<td style="padding-right: 9%;"><input type="text" pattern="\d*" required="1" name="item_quantity" placeholder="Jumlah Barang" class="form-control"></td>
-				</tr>
+				</tr> -->
 				<tr>
 					<td class="table_detail"><p class="bebas">KODE MODEL</p></td>
 					<td style="padding-right: 9%;"><input type="text" pattern="^\S{1,20}" title="Kode Model tidak boleh mengandung spasi dan panjang maksimal 20 karakter" name="item_model" placeholder="Kode Model" class="form-control" required="1"></td>
@@ -135,7 +135,7 @@
 						<td colspan="2" style="padding-top: 0px;">
 							<table class="table spec-table" style="margin-bottom: 0px; margin-left: 20px; width: 80%">
 								<tr>
-									<td style="padding-top: 0px;"><input type="text" name="spec" class="form-control" placeholder="Keterangan Spesifikasi"></td>
+									<td style="padding-top: 0px;"><input type="text" name="spec[]" class="form-control" placeholder="Keterangan Spesifikasi"></td>
 									<td style="padding-top: 0px;"><a href="#" class="btn btn-primary spec-add">Tambah Spesifikasi</a></td>
 								</tr>
 							
@@ -152,7 +152,7 @@
 					<td style="padding-right: 9%;"><input type="text" pattern="\d*" required="1" onkeyup="sell_price()" id="buy" name="item_buy" placeholder="Harga Beli" class="form-control"></td>
 				</tr>
 				<tr>
-					<td class="table_detail"><p class="bebas">MARGIN</p></td>
+					<td class="table_detail"><p class="bebas">MARKUP</p></td>
 					<td style="padding-right: 9%;"><input type="text" pattern="\d*" required="1" onkeyup="sell_price()" id="margin" placeholder="Margin" class="form-control"></td>
 				</tr>
 				<tr>
@@ -209,7 +209,7 @@
 	        event.preventDefault();
 
 	        // var newRow = jQuery('<tr><td><div class="input-group"><input type="number" name="diamond_amount[]" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Jumlah Diamond"><span class="input-group-addon">rd</span></div></td><td><div class="input-group"><input type="number" name="diamond_carat[]" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" class="form-control" placeholder="Ct."><span class="input-group-addon">ct.</span></div></tr>');
-	        var newRow = jQuery('<tr><td style="padding-top: 0px;"><input type="text" name="spec" class="form-control" placeholder="Keterangan Spesifikasi"></td></tr>');
+	        var newRow = jQuery('<tr><td style="padding-top: 0px;"><input type="text" name="spec[]" class="form-control" placeholder="Keterangan Spesifikasi"></td></tr>');
 	        jQuery('table.spec-table').append(newRow);
 
     	});

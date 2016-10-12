@@ -2,9 +2,14 @@
 
 class Products extends MY_Controller{
 
+	private $id;
+	private $user_role;
+
 	function __construct(){
 		parent::__construct();
 		$this->load->model('product_model');
+		$this->id = $this->session->userdata('is_active');
+		$this->user_role = $this->crud_model->get_by_condition('outlets',array('id' => $this->session->userdata('is_active')))->row('role');
 	}
 
 	public function index(){
@@ -12,6 +17,9 @@ class Products extends MY_Controller{
 	}
 
 	public function add(){
+		if($this->user_role == 'admin'){
+			redirect('products');
+		}
 		$data['title'] = 'Products';
 		$data['subtitle'] = 'PRODUCTS';
 		$data['categories'] = $this->crud_model->get_data('category')->result();
@@ -21,7 +29,11 @@ class Products extends MY_Controller{
 	public function all_products(){
 		$data['title'] = 'Products';
 		$data['subtitle'] = 'PRODUCTS';
-		$data['products'] = $this->product_model->getAllProducts();
+		if($this->user_role != 'admin'){
+			$data['products'] = $this->product_model->getAllProducts($this->id);
+		}else{
+			$data['products'] = $this->product_model->getAdminProducts();
+		}
 		$this->template->load('default','products/all_products',$data);
 	}
 
@@ -33,7 +45,7 @@ class Products extends MY_Controller{
             $config['max_size']             = 5000;			
 			$config['upload_path']          = 'uploads/products/'.$this->input->post('item_code');
 			$config['overwrite']			= true;
-			$config['file_name']			= 'photo';
+			$config['file_name']			= 'photo.jpg';
 			$this->upload->initialize($config);
 
 			//Check if the folder for the upload existed
@@ -48,7 +60,7 @@ class Products extends MY_Controller{
             	$image = $this->upload->data();
                 //Get the link for the database
                 $photo = $config ['upload_path'] . '/' . $config['file_name'];
-                $thumb = $config ['upload_path'] . '/' . $config['raw_name'].'_thumb'.$image['file_ext'];
+                $thumb = $config ['upload_path'] . '/' . 'photo_thumb'.$image['file_ext'];
 
                //image_moo
 				$this->image_moo
@@ -93,11 +105,12 @@ class Products extends MY_Controller{
 
 	public function add_product(){
 		if ($this->input->post('save')) {
+
 			$config['allowed_types']        = 'jpg|png|jpeg';
             $config['max_size']             = 5000;			
 			$config['upload_path']          = 'uploads/products/'.$this->input->post('item_code');
 			$config['overwrite']			= true;
-			$config['file_name']			= 'photo';
+			$config['file_name']			= 'photo.jpg';
 			$this->upload->initialize($config);
 
 			//Check if the folder for the upload existed
@@ -112,13 +125,13 @@ class Products extends MY_Controller{
             	$image = $this->upload->data();
                 //Get the link for the database
                 $photo = $config ['upload_path'] . '/' . $config['file_name'];
-                $thumb = $config ['upload_path'] . '/' . $config['raw_name'].'_thumb'.$image['file_ext'];
+                $thumb = $config ['upload_path'] . '/' .'photo_thumb'.$image['file_ext'];
 
                //image_moo
 				$this->image_moo
 					->load($config ['upload_path'] . '/' . $config['file_name'])
 					->resize_crop(300,300)
-					->save_pa('','_thumb');
+					->save_pa('' ,'_thumb');
 
 				$this->image_moo
 					->load($config ['upload_path'] . '/' . $config['file_name'])
@@ -131,18 +144,36 @@ class Products extends MY_Controller{
             	$thumb = 'uploads/products/no-photo.png';
             }
 
+            $code = $this->input->post('item_code');
 			
 			$data_insert = array(
 
-					'code' 			=> $this->input->post('item_code'),
+					'code' 			=> $code,
 					'name' 			=> $this->input->post('item_name'),
-					'buying_price' 	=> $this->input->post('item_price'),
-					'quantity'		=> $this->input->post('item_quantity'),
+					'model'			=> $this->input->post('item_model'),
+					'buying_price' 	=> $this->input->post('item_buy'),
+					'selling_price'	=> $this->input->post('item_sell'),
 					'category' 		=> $this->input->post('item_category'),
 					'photo' 		=> $photo,
 					'thumb' 		=> $thumb,
+					'outlet_id'		=> $this->id
 
 				);
+
+			if($this->input->post('spec')){
+				for($i = 0; $i < count($this->input->post('spec')); $i++){
+					if($this->input->post('spec')[$i] != ''){
+						$data_spec = array(
+								'kode_barang' => $code,
+								'spec'		  => $this->input->post('spec')[$i]
+
+							);
+						$this->crud_model->insert_data('spesifikasi',$data_spec);
+					}
+				}
+				
+			}
+
 			$this->crud_model->insert_data('products',$data_insert);
 
 			redirect('products');

@@ -15,6 +15,7 @@
 		padding-bottom: 3px;
 		padding-top: 0px;
 		border-radius: 0px;
+		overflow: hidden;
 	}
 	.choose{
 		background: rgba(200,200,200,0.6);

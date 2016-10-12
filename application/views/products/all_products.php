@@ -2,6 +2,8 @@
 <script src="<?php echo base_url() ?>js/JsBarcode.all.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>js/canvas-toblob.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>js/filesaver.js"></script>
+<link rel="stylesheet" href="<?php echo base_url() ?>fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="<?php echo base_url() ?>fancybox/source/jquery.fancybox.pack.js"></script>
 
 <style>
 	#filter{
@@ -10,6 +12,7 @@
 	}
 
 </style>
+<?php $role = $this->crud_model->get_by_condition('outlets',array('id' => $this->session->userdata('is_active')))->row('role'); ?>
 
 <div class="row">
 	<div class="col-md-12 content-wrap">
@@ -21,7 +24,9 @@
 			<div class="form-group" style="margin-bottom: 20px">
 				<label for="">Search :</label>
 				<input type="text" class="form-control" id="filter">
-				<a href="<?php echo base_url('products/add') ?>" class="btn btn-primary pull-right">Add Product</a>
+				<?php if($role != 'admin'): ?>
+					<a href="<?php echo base_url('products/add') ?>" class="btn btn-primary pull-right">Add Product</a>
+				<?php endif; ?>
 			</div>
 			<div class="table-responsive toggle-circle-filled">
 			<table class="table table-condensed" data-filter="#filter" data-page-size="10" id="table_product">
@@ -35,7 +40,11 @@
 					 	<th data-type="numeric" data-hide="phone">Harga Beli</th>
 					 	<th data-type="numeric" data-hide="phone">Harga Jual</th>
 					 	<th data-hide="phone">Gambar</th>
-					 	<th data-hide="phone">Tindakan</th>
+					 	<?php if($role != 'admin'): ?>
+					 		<th data-hide="phone">Tindakan</th>
+						<?php else: ?>
+						 	<th data-hide="phone">Lokasi</th>
+						<?php endif; ?>
 					 </tr>
 				</thead>
 				<tbody>
@@ -48,8 +57,13 @@
 							<td><?php echo $product->category ?></td>
 							<td><?php echo rupiah($product->buying_price) ?></td>
 							<td><?php echo rupiah($product->selling_price) ?></td>
-							<td><img src="<?php echo base_url().$product->thumb ?>" alt="<?php echo $product->name ?>" width="40"/></td>
-							<td><a href="<?php echo base_url('products/edit_product').'/'.$product->code?>">edit</a> | delete</td>
+							<td><a class="fancybox" rel="group" href="<?php echo base_url().$product->photo ?>"><img src="<?php echo base_url().$product->thumb ?>" alt="<?php echo $product->name ?>" width="40"/></a></td>
+							<?php if($role != 'admin'): ?>
+						 		<td><a href="<?php echo base_url('products/edit_product').'/'.$product->code?>">edit</a> | delete</td>
+							<?php else: ?>
+							 	<td><?php echo $product->outlet_name ?></td>
+							<?php endif; ?>
+							
 						</tr>
 					<?php $i++; endforeach; ?>
 				</tbody>
@@ -109,7 +123,9 @@
 <script>
 	$(document).ready(function() {
    	 $('#table_product').footable();
+   	 $(".fancybox").fancybox();
 	} );
 </script>
+
 
 

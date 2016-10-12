@@ -21,6 +21,6 @@ function verification_code(){
 
 function rupiah($number){
 
-		return 'Rp '.number_format($number,2,'.',',');
+		return '$ '.number_format($number,2);
 
 }

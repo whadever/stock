@@ -251,6 +251,9 @@
       border-radius: 25px;
       height: 50px;
       width: 50px;
+      background-position: center;
+      display:inline-flex;
+      background-size:cover;
     }
     .profile-pop{
       text-align: left;
@@ -321,8 +324,6 @@
         <div class="company_logo" style="margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:1px solid #000">
           <img src="<?php echo base_url()?>assets/logo1.png" width="100px" style="margin-left:23%;">
         </div>
-       
-
 
         <div class="company_logo" style="margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:1px solid #000">
         <table>
@@ -330,10 +331,7 @@
             <td><a class="show-pop" data-animation="pop"  data-placement="right"
                     data-content='<?php if($this->session->userdata('user_logged')){
 
-                        echo '<a href="'.base_url('accounts/switch_account/'.$active_user->id).'" class="profile-pop btn btn-default" style="display:block;">
-                          <table>
-                          <tr>
-                          <td><span class="pop-photo" style="display:inline-flex; background-position:center; background-size:cover;background-image: url('.$active_photo.')"></span></td><td><div style="display:inline-block; width:100px" class="pop-detail"><p class="pop-name">'.$active_user->name.'</p><p>'.$active_user->pic.'</p> </div></td></tr></table></a>';
+                        
                         $i = 0;
                         foreach ($this->session->userdata() as $user)
                         { 
@@ -366,7 +364,7 @@
                             <table>
                             <tr>
                             <td>
-                            <span class="pop-photo" style="display:inline-flex; background-size:cover;background-image: url('.$photo.')"></span></td><td><div class="pop-detail" style="display:inline-block; width:100px"><p class="pop-name">'.$profile->name.'</p><p>'.$profile->pic.'</p> </div></td></tr></table></a>';
+                            <span class="pop-photo" style="background-image: url('.$photo.')"></span></td><td><div class="pop-detail" style="display:inline-block; width:100px"><p class="pop-name">'.$profile->name.'</p><p>'.$profile->pic.'</p> </div></td></tr></table></a>';
                           }
                                                    
                        
@@ -405,15 +403,20 @@
         <a href="<?php echo base_url('main') ?>"><i class="fa fa-home" aria-hidden="true"></i><span class="menu-text pull-right">Home</span></a>
        
         <a href="<?php echo base_url('main/scan_item') ?>" ><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span><span class="menu-text pull-right" >Scan Items</span></a>
-        
+              
 
        
         <a href="<?php echo base_url('products') ?>" ><i id="template-button" class="fa fa-archive" aria-hidden="true"></i><span class="menu-text pull-right" >Products</span></a>
+        <a href="<?php echo base_url('products') ?>" ><i id="template-button" class="fa fa-archive" aria-hidden="true"></i><span class="menu-text pull-right" >Category</span></a>
+        <?php if($role == 'admin'): ?>
 
+          <a href="<?php echo base_url('outlets') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Outlets</span></a>
+        <?php else: ?>
+          <a href="<?php echo base_url('outlets') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Mutasi</span></a>
+          <a href="<?php echo base_url('outlets') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Penjualan</span></a>
+        <?php endif; ?>
 
-        <a href="<?php echo base_url('outlets') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Outlets</span></a>
-
-        <a href="<?php echo base_url('drivers') ?>"><i class="fa fa-car" aria-hidden="true"></i><span class="menu-text pull-right" >Driver</span></a>
+        <!-- <a href="<?php echo base_url('drivers') ?>"><i class="fa fa-car" aria-hidden="true"></i><span class="menu-text pull-right" >Driver</span></a> -->
 
         <a href="<?php echo base_url('') ?>"><i class="fa fa-file-text" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" >Notes</span></a>
 
@@ -593,5 +596,7 @@
         });
     });
   </script>
+
+  
   </body>
 </html>
