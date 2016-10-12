@@ -176,6 +176,16 @@ class Products extends MY_Controller{
 
 			$this->crud_model->insert_data('products',$data_insert);
 
+			$category=$this->crud_model->get_by_condition('category',array('id'=> $this->input->post('item_category')))->row();
+
+			$data_category = array(
+
+					'total_product' => $category->total_product+1 
+
+				);
+
+			$this->crud_model->update_data('category',$data_category,array('name'=>$category->name));
+
 			redirect('products');
 		}
 	}
@@ -191,6 +201,27 @@ class Products extends MY_Controller{
 		$data['drivers'] = $this->crud_model->get_data('drivers')->result();
 		$this->template->load('default','products/distribute',$data);
 
+	}
+
+	public function all_category(){
+		$data['title'] = 'Categories';
+		$data['subtitle'] = 'CATEGORIES';
+		$data['categories'] = $this->crud_model->get_data('category')->result();
+		$this->template->load('default','products/category',$data);
+	}
+
+	public function add_category(){
+		if ($this->input->post('save')) {
+			
+			$data_insert = array(
+					'name' 			=> $this->input->post('category_name'),
+				);
+
+
+			$this->crud_model->insert_data('category',$data_insert);
+
+			redirect('products/all_category');
+		}
 	}
 
 
