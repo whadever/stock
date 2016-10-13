@@ -48,14 +48,26 @@
 					</tr>
 				</thead>
 				<tbody>
+				<pre>
+					<?php print_r($categories) ?>
+				</pre>
 					<?php foreach($categories as $category) : ?>
-						<div class="row">
-							<tr>
-								<td><?php echo $category->name ?></td>
-								<td><?php echo $category->total_product ?></td>
-							</tr>
-							
-						</div>
+						<?php foreach ($category as $row): ?>
+
+							<div class="row">
+								<tr>
+									<td><?php echo $row->name ?></td>
+									<?php if ($row->quantity > 0): ?>
+										<td><?php echo $row->quantity ?></td>
+									<?php else: ?>
+										<td>0</td>
+									<?php endif ?>
+									
+								</tr>
+								
+							</div>
+						<?php endforeach; ?>
+						
 					<?php endforeach; ?>
 				</tbody>
 				

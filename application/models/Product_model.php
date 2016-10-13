@@ -18,6 +18,21 @@ class Product_model extends CI_Model{
 		$this->db->order_by('products.name','asc');
 		return $this->db->get()->result();
 	}
+	function getCategory(){
+
+		$category = $this->db->get('category')->result();
+		$result = array();
+		foreach ($category as $row) {
+			$this->db->select('category.*');
+			$this->db->select_sum('products.quantity');
+			$this->db->from('category');
+			$this->db->join('products', 'products.category = category.id','left');
+			$this->db->where('category.name',$row->name);
+			array_push($result,$this->db->get()->result());
+		}
+
+		return $result;
+	}
 
 }
 
