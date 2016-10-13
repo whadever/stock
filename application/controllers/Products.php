@@ -190,16 +190,16 @@ class Products extends MY_Controller{
 		}
 	}
 
-	public function distribute(){
+	public function mutasi(){
 		$data = array(
-				'title' => 'Distribusi Produk',
-				'subtitle' => 'DISTRIBUSI PRODUK',
+				'title' => 'Mutasi Barang',
+				'subtitle' => 'MUTASI BARANG',
 			);
 
-		$data['products'] = $this->product_model->getAllProducts();
+		$data['products'] = $this->product_model->getAllProducts($this->id);
 		$data['outlets'] = $this->crud_model->get_data('outlets')->result();
-		$data['drivers'] = $this->crud_model->get_data('drivers')->result();
-		$this->template->load('default','products/distribute',$data);
+		
+		$this->template->load('default','products/mutasi',$data);
 
 	}
 
