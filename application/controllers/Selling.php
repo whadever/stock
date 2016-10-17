@@ -22,10 +22,15 @@ class Selling extends MY_Controller{
 		if($this->db->get_where('products',array('code'=>$barcode))->num_rows() > 0){
 			$products = $this->db->get_where('products',array('code'=>$barcode))->row();
 			$category = $this->crud_model->get_by_condition('category',array('id'=>$products->category))->row();
+			$specification = $this->crud_model->get_by_condition('spesifikasi',array('kode_barang'=>$products->code))->row();
 			echo '<table class="table" style="width:45%"><tr><td><p class="bebas">Nama Barang</p></td>';
 			echo '<td><p class="bebas">'.$products->name.'</p></td></tr>';
 			echo '<tr><td><p class="bebas">Kategori</p></td>';
-			echo '<td> <p class="bebas">'.$category->name.'</p></td></tr></table>';
+			echo '<td> <p class="bebas">'.$category->name.'</p></td></tr>';
+			echo '<tr><td><p class="bebas">Kode Model</p></td>';
+			echo '<td> <p class="bebas">'.$products->model.'</p></td></tr>';
+			echo '<tr><td><p class="bebas">Spesifikasi</p></td>';
+			echo '<td> <p class="bebas">'.$specification->spec.'</p></td></tr></table>';
 
 		}
 		else{

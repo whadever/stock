@@ -45,7 +45,7 @@
 			<p>Status User:</p>
 		</div>
 		<div class="row" style="margin-top: 20px;">
-		<?php echo form_open_multipart('products/add_product') ?>
+		<?php echo form_open_multipart('products/add_product','id="product_form"') ?>
 			<table class="table product-table">
 				<tbody>
 				<tr>
@@ -171,6 +171,27 @@
 </div>
 
 <script>
+	// function photoload(){
+	// 	var data = new FormData($('#product_form'));
+ 
+ 
+	//      $.ajax({
+	//                type:"POST",
+	//                url:"<?php echo site_url('products/add_product');?>",
+	//                data:data,
+	//                mimeType: "multipart/form-data",
+	//                 contentType: false,
+	//                 cache: false,
+	//                 processData: false,
+	//                beforeSend: function() {    
+	// 			            $("#loading").html('Please wait....');
+	// 			            },
+	// 		    success:function(data)
+	// 			      {
+	// 			         console.log(data);
+	// 			      }
+	//        });
+	// }
 	function generate_barcode(){
 
 		if (!$('#item_code').val()) {

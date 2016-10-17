@@ -137,6 +137,7 @@ class Products extends MY_Controller{
 					->load($config ['upload_path'] . '/' . $config['file_name'])
 					->resize_crop(800,600)
 					->save($config ['upload_path'] . '/' . $config['file_name'],TRUE);
+				echo "success";
 
             }
             else{
