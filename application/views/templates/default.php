@@ -72,7 +72,9 @@
       font-family: 'bebas-neue';
       font-size: 18px;
     }
-
+    .webui-popover-content{
+      width: 175px;
+    }
   </style>
   
 <script>
@@ -171,7 +173,7 @@
                         }
 
                       } ?>
-                      <div class="row btn-collection text-center">
+                      <div class="row btn-collection text-center" style="margin:0">
                       <a href="<?php echo base_url('accounts/login') ?>" class="btn btn-primary pop-btn">Add Account</a>
                       <a href="<?php echo base_url('accounts/logout') ?>" class="btn btn-default pop-btn">Sign Out</a>
                       </div>

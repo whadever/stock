@@ -13,7 +13,7 @@
 
 </style>
 <?php $role = $this->crud_model->get_by_condition('outlets',array('id' => $this->session->userdata('is_active')))->row('role'); ?>
-
+<button onclick="javascript:window.print()">print</button>
 <div class="row">
 	<div class="col-md-12 content-wrap">
 		<div class="row" style="border-bottom: 2px solid #2c3e50">
