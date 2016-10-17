@@ -118,11 +118,11 @@
   
   <div id="mySidenav" class="sidenav" >
        <a id="menu-button" onclick="openNav()" style="cursor:pointer;"><i id="nav-button" class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-        <div class="company_logo" style="margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:1px solid #000">
+        <div class="company_logo" style="margin-bottom: 5px; padding-left: 15px; padding-bottom:10px; border-bottom:1px solid #000">
           <img src="<?php echo base_url()?>assets/logo1.png" width="100px" style="margin-left:23%;">
         </div>
 
-        <div class="company_logo" style="margin-bottom: 10px; padding-left: 15px; padding-bottom:20px; border-bottom:1px solid #000">
+        <div class="company_logo" style="margin-bottom: 10px; padding-left: 15px; padding-bottom:0px; border-bottom:1px solid #000">
         <table>
           <tr>
             <td><a class="show-pop" data-animation="pop"  data-placement="right"
@@ -204,13 +204,13 @@
 
        
         <a href="<?php echo base_url('products') ?>" ><i id="template-button" class="fa fa-archive" aria-hidden="true"></i><span class="menu-text pull-right" >Products</span></a>
-        <a href="<?php echo base_url('products/all_category') ?>" ><i id="template-button" class="fa fa-archive" aria-hidden="true"></i><span class="menu-text pull-right" >Category</span></a>
+        <a href="<?php echo base_url('products/all_category') ?>" ><i id="template-button" class="glyphicon glyphicon-tags" aria-hidden="true"></i><span class="menu-text pull-right" >Category</span></a>
         <?php if($role == 'admin'): ?>
 
           <a href="<?php echo base_url('outlets') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Outlets</span></a>
         <?php else: ?>
-          <a href="<?php echo base_url('products/mutasi') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Mutasi</span></a>
-          <a href="<?php echo base_url('outlets') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Penjualan</span></a>
+          <a href="<?php echo base_url('products/mutasi') ?>" ><span class="fa fa-money" aria-hidden="true"></span><span class="menu-text pull-right" >Mutasi</span></a>
+          <a href="<?php echo base_url('selling') ?>" ><span class="fa fa-shopping-cart" aria-hidden="true"></span><span class="menu-text pull-right" >Penjualan</span></a>
         <?php endif; ?>
 
         <!-- <a href="<?php echo base_url('drivers') ?>"><i class="fa fa-car" aria-hidden="true"></i><span class="menu-text pull-right" >Driver</span></a> -->
