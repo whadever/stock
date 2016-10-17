@@ -47,6 +47,10 @@
       font-weight: bolder;
 
     }
+    .menu-text,fa{
+      font-size: 12px !important;
+    }
+    
     .btn-custom{
       background-color: #2c3e50;
       color: #fff !important;
@@ -212,6 +216,7 @@
           <a href="<?php echo base_url('products/mutasi') ?>" ><span class="fa fa-money" aria-hidden="true"></span><span class="menu-text pull-right" >Mutasi</span></a>
           <a href="<?php echo base_url('selling') ?>" ><span class="fa fa-shopping-cart" aria-hidden="true"></span><span class="menu-text pull-right" >Penjualan</span></a>
         <?php endif; ?>
+        <a href="<?php echo base_url('customers') ?>" ><i id="template-button" class="fa fa-users" aria-hidden="true"></i><span class="menu-text pull-right" >Customer</span></a>
 
         <!-- <a href="<?php echo base_url('drivers') ?>"><i class="fa fa-car" aria-hidden="true"></i><span class="menu-text pull-right" >Driver</span></a> -->
 
