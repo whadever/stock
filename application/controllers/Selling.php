@@ -19,41 +19,47 @@ class Selling extends MY_Controller{
 	}
 
 	public function get_barcode($barcode){
-
 		if($this->db->get_where('products',array('code'=>$barcode))->num_rows() > 0){
 			$product = $this->db->get_where('products',array('code'=>$barcode))->row();
 			$category = $this->crud_model->get_by_condition('category',array('id'=>$product->category))->row();
 			$specifications = $this->crud_model->get_by_condition('spesifikasi',array('kode_barang'=>$product->code))->result();
 			$customers = $this->crud_model->get_data('customers')->result();
-			echo '<table class="table" style="width:83%"><tr><td><p class="bebas">Nama Barang</p></td>';
-			echo '<td><p class="bebas">'.$product->name.'</p></td>';
-			if($product->quantity != 0){
-				echo '<td><p class="bebas">Pembeli</p></td>';
+			echo ($product->quantity == 0)? '<div class="text-center"><p class="bebas" style="color:red">Out of Stock</p></div>': null;
 
-				echo '<td><select class="form-control" name="">';
-				foreach ($customers as $customer) {
-					echo '<option value='.$customer->id.'>'.$customer->name.'</option>';
-				}	
-			}
-			else{
-				echo '<td colspan="2"><p class="bebas" style="color:red">OUT OF STOCK</p></td>';
-			}
+			echo '<table class="table" style="width:50%"><tr><td style="width:25%"><p class="bebas">Nama Barang</p></td>';
+			echo '<td style="width:25%"><p class="bebas">'.$product->name.'</p></td</tr>';
+			
 			
 			echo '</select></td></tr>';
 			echo '<tr><td><p class="bebas">Kategori</p></td>';
 			echo '<td> <p class="bebas">'.$category->name.'</p></td></tr>';
 			echo '<tr><td><p class="bebas">Kode Model</p></td>';
 			echo '<td> <p class="bebas">'.$product->model.'</p></td></tr>';
-			echo '<tr><td><p class="bebas">Harga Jual</p></td>';
-			echo '<td> <p class="bebas">Rp&nbsp;'.$product->selling_price.'</p></td></tr>';
-			echo '<tr><td><p class="bebas">Customer</p></td>';
-			echo '<td> <p class="bebas">Rp&nbsp;'.$product->selling_price.'</p></td></tr>';
-			echo '<tr><td><p class="bebas">Spesifikasi</p></td><td><ul>';
+			echo '<tr><td><p class="bebas">Spesifikasi</p></td><td><ul  style="padding-left:6px;">';
 
 			foreach ($specifications as $specification) {
 				echo '<li> <p class="bebas">'.$specification->spec.'</p></li>';
 			}
-			echo '</ul></td></tr></table>';
+			echo '</ul></td></tr>';
+			if($product->quantity != 0){
+
+				echo '<tr><td style="width:10%"><p class="bebas">Pembeli</p></td>';
+
+				echo '<td style="width:25%"><select class="form-control" name="">';
+				foreach ($customers as $customer) {
+					echo '<option value='.$customer->id.'>'.$customer->name.'</option>';
+				}
+				echo '</td></tr>';	
+			
+				echo '<tr><td><p class="bebas">Discount</p></td>';
+				echo '<td><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="discount" placeholder="Discount" class="form-control"></div></td></tr>';
+
+				echo '<tr><td><p class="bebas">Harga Jual</p></td>';
+				echo '<td> <p class="bebas">Rp&nbsp;'.$product->selling_price.'</p></td></tr>';
+			}
+			
+			
+			echo '</table>';
 			if($product->quantity != 0){
 				echo '<div class="text-center"><input type="submit" class="btn btn-default btn-custom" value="SAVE" name="save"></div>';
 			}
