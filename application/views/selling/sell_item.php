@@ -41,11 +41,11 @@
 <div class="row">
 	<div class="col-md-12 content-wrap">
 		<div class="row" style="border-bottom: 2px solid #2c3e50">
-			<p class="page_subtitle" style="font-size: 28px;margin-bottom: 0px;">JUAL BARANG</p>
+			<p class="page_subtitle" style="font-size: 28px;margin-bottom: 0px;"><?php echo $subtitle?></p>
 			<p>Status User:</p>
 		</div>
 		<div class="row" style="margin-top: 20px;">
-		<?php echo form_open_multipart('products/add_product') ?>
+		<?php echo form_open('selling/sell_product') ?>
 			<table class="table product-table">
 				<tbody>
 				<tr>
@@ -61,12 +61,9 @@
 				
 				</tbody>
 			</table>
-		</div>
-		
-
-		
+		</div>		
 		<div class="row text-center">
-			<input type="submit" class="btn btn-default btn-custom" value="SAVE" name="save">
+			
 		</div>	
 		<?php echo form_close(); ?>
 	</div>

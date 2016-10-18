@@ -36,10 +36,23 @@ class Customers extends CI_Controller
 	}
 
 	public function edit_customer($id){
-		$data['title'] = 'Customers';
-		$data['subtitle'] = 'CUSTOMERS';
-		$data['customer'] = $this->crud_model->get_by_condition('customers',array('id'=>$id))->row();
-		$this->template->load('default','customers/edit_customer',$data);
+		if($this->input->post('update')){
+			$customer=array(
+				'name' => $this->input->post('customer_name'),
+				'address' => $this->input->post('customer_address'),
+				'phone' => $this->input->post('customer_telp'),
+				'email' => $this->input->post('customer_mail'),
+			);
+			$this->crud_model->update_data('customers',$customer,array('id'=>$id));
+			redirect('customers');
+		}
+		else{
+			$data['title'] = 'Customers';
+			$data['subtitle'] = 'CUSTOMERS';
+			$data['customer'] = $this->crud_model->get_by_condition('customers',array('id'=>$id))->row();
+			$this->template->load('default','customers/edit_customer',$data);	
+		}
+		
 	}
 
 	

@@ -35,7 +35,7 @@
 					 	<th data-type="numeric" data-sort-initial="true">No</th>
 					 	
 					 	<th data-toggle="true">Nama</th>
-					 	<th data-type="numeric">No.Telp</th>
+					 	<th data-type="numeric" data-hide="phone">No.Telp</th>
 					 	<th data-hide="phone">E-mail</th>
 					 	<th data-type="numeric" data-hide="phone">Alamat</th>
 					 	<th data-hide="phone">Tindakan</th>

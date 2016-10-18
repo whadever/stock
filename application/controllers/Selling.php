@@ -19,29 +19,65 @@ class Selling extends MY_Controller{
 	}
 
 	public function get_barcode($barcode){
+
 		if($this->db->get_where('products',array('code'=>$barcode))->num_rows() > 0){
-			$products = $this->db->get_where('products',array('code'=>$barcode))->row();
-			$category = $this->crud_model->get_by_condition('category',array('id'=>$products->category))->row();
-			$specifications = $this->crud_model->get_by_condition('spesifikasi',array('kode_barang'=>$products->code))->result();
-			echo '<table class="table" style="width:47%"><tr><td><p class="bebas">Nama Barang</p></td>';
-			echo '<td><p class="bebas">'.$products->name.'</p></td></tr>';
+			$product = $this->db->get_where('products',array('code'=>$barcode))->row();
+			$category = $this->crud_model->get_by_condition('category',array('id'=>$product->category))->row();
+			$specifications = $this->crud_model->get_by_condition('spesifikasi',array('kode_barang'=>$product->code))->result();
+			$customers = $this->crud_model->get_data('customers')->result();
+			echo '<table class="table" style="width:83%"><tr><td><p class="bebas">Nama Barang</p></td>';
+			echo '<td><p class="bebas">'.$product->name.'</p></td>';
+			if($product->quantity != 0){
+				echo '<td><p class="bebas">Pembeli</p></td>';
+
+				echo '<td><select class="form-control" name="">';
+				foreach ($customers as $customer) {
+					echo '<option value='.$customer->id.'>'.$customer->name.'</option>';
+				}	
+			}
+			else{
+				echo '<td colspan="2"><p class="bebas" style="color:red">OUT OF STOCK</p></td>';
+			}
+			
+			echo '</select></td></tr>';
 			echo '<tr><td><p class="bebas">Kategori</p></td>';
 			echo '<td> <p class="bebas">'.$category->name.'</p></td></tr>';
 			echo '<tr><td><p class="bebas">Kode Model</p></td>';
-			echo '<td> <p class="bebas">'.$products->model.'</p></td></tr>';
+			echo '<td> <p class="bebas">'.$product->model.'</p></td></tr>';
 			echo '<tr><td><p class="bebas">Harga Jual</p></td>';
-			echo '<td> <p class="bebas">Rp&nbsp;'.$products->selling_price.'</p></td></tr>';
+			echo '<td> <p class="bebas">Rp&nbsp;'.$product->selling_price.'</p></td></tr>';
 			echo '<tr><td><p class="bebas">Customer</p></td>';
-			echo '<td> <p class="bebas">Rp&nbsp;'.$products->selling_price.'</p></td></tr>';
+			echo '<td> <p class="bebas">Rp&nbsp;'.$product->selling_price.'</p></td></tr>';
 			echo '<tr><td><p class="bebas">Spesifikasi</p></td><td><ul>';
+
 			foreach ($specifications as $specification) {
 				echo '<li> <p class="bebas">'.$specification->spec.'</p></li>';
 			}
 			echo '</ul></td></tr></table>';
+			if($product->quantity != 0){
+				echo '<div class="text-center"><input type="submit" class="btn btn-default btn-custom" value="SAVE" name="save"></div>';
+			}
 
 		}
 		else{
-			echo '<table><tr><td></td><td><p class="bebas">Item not found</p></td></tr></table>';
+			echo '<div class="text-center"><p class="bebas">Item not found</p></div>';
+		}
+	}
+
+	public function sell_product(){
+		if($this->input->post('save')){
+			$code = $this->input->post('item_code');
+			$product = $this->crud_model->get_by_condition('products',array('code'=>$code))->row();
+			if($product_quantity>0){
+				$data['quantity'] = $product->quantity - 1;	
+				$this->crud_model->update_data('products',$data,array('code'=>$code));
+			}			
+			redirect('selling');
+		}
+		else{
+			$data['title'] = 'Penjualan';
+			$data['subtitle'] = 'PENJUALAN';
+			$this->template->load('default','selling/sell_item',$data);
 		}
 	}
 

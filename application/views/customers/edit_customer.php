@@ -37,16 +37,16 @@
 			<p>Status User:</p>
 		</div>
 		<div class="row" style="margin-top: 20px;">
-			<?php echo form_open_multipart('customers/edit_customer') ?>
+			<?php echo form_open('customers/edit_customer/'.$customer->id) ?>
 			<table class="table product-table">
 				<tbody>
 				<tr>
 					<td class="table_detail"><p class="bebas">NAMA</p></td>
-					<td style="padding-right: 9%;"><input type="text" name="customer_name" placeholder="Nama Customer" class="form-control"></td>
+					<td style="padding-right: 9%;"><input type="text" name="customer_name" placeholder="Nama Customer" class="form-control" value="<?php echo $customer->name?>"></td>
 				</tr>
 				<tr>
 					<td class="table_detail"><p class="bebas">ALAMAT</p></td>
-					<td style="padding-right: 9%;"><input type="text" name="customer_address" placeholder="Alamat Customer" class="form-control"></td>
+					<td style="padding-right: 9%;"><input type="text" name="customer_address" placeholder="Alamat Customer" class="form-control" value="<?php echo $customer->address?>"></td>
 				</tr>
 				<!-- <tr>
 					<td class="table_detail"><p class="bebas">DRIVER UNTUK OUTLET</p></td>
@@ -54,18 +54,18 @@
 				</tr> -->
 				<tr>
 					<td class="table_detail"><p class="bebas">NO.TELP</p></td>
-					<td style="padding-right: 9%;"><input type="text" name="customer_telp" placeholder="Nomor Telepon" class="form-control"></td>
+					<td style="padding-right: 9%;"><input type="text" name="customer_telp" placeholder="Nomor Telepon" class="form-control" value="<?php echo $customer->phone?>"></td>
 				</tr>
 				<tr>
 					<td class="table_detail"><p class="bebas">EMAIL</p></td>
-					<td style="padding-right: 9%;"><input type="email" name="customer_mail" placeholder="Email Customer" class="form-control"></td>
+					<td style="padding-right: 9%;"><input type="email" name="customer_mail" placeholder="Email Customer" class="form-control" value="<?php echo $customer->email?>"></td>
 				</tr>
 				</tbody>
 			</table>
 			
 		</div>
 		<div class="row text-center">
-			<input type="submit" class="btn btn-default btn-custom" name="save" value="SAVE">
+			<input type="submit" class="btn btn-default btn-custom" name="update" value="UPDATE">
 		</div>
 		<?php echo form_close(); ?>	
 	</div>

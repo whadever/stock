@@ -10,6 +10,9 @@
 		width: 25%;
 		display: inline-block;
 	}
+	.nostock{
+		color: red;
+	}
 
 </style>
 <?php $role = $this->crud_model->get_by_condition('outlets',array('id' => $this->session->userdata('is_active')))->row('role'); ?>
@@ -39,6 +42,7 @@
 					 	<th data-hide="phone">Kategori</th>
 					 	<th data-type="numeric" data-hide="phone">Harga Beli</th>
 					 	<th data-type="numeric" data-hide="phone">Harga Jual</th>
+						<th data-hide="phone">Status</th>
 					 	<th data-hide="phone">Gambar</th>
 					 	<?php if($role != 'admin'): ?>
 					 		<th data-hide="phone">Tindakan</th>
@@ -57,6 +61,9 @@
 							<td><?php echo $product->category ?></td>
 							<td><?php echo rupiah($product->buying_price) ?></td>
 							<td><?php echo rupiah($product->selling_price) ?></td>
+							<td>
+							<?php echo ($product->quantity==0)? '<p class="nostock">Out of stock</p>':'Available' ?>	
+							</td>
 							<td><a class="fancybox" rel="group" href="<?php echo base_url().$product->photo ?>"><img src="<?php echo base_url().$product->thumb ?>" alt="<?php echo $product->name ?>" width="40"/></a></td>
 							<?php if($role != 'admin'): ?>
 						 		<td><a href="<?php echo base_url('products/edit_product').'/'.$product->code?>">edit</a> | delete</td>
