@@ -45,12 +45,12 @@
 			<p>Status User:</p>
 		</div>
 		<div class="row" style="margin-top: 20px;">
-		<?php echo form_open('selling/sell_product') ?>
+		<?php echo form_open('selling/sell_product', array('onsubmit' => 'return(p)')) ?>
 			<table class="table product-table">
 				<tbody>
 				<tr>
 					<td class="table_detail"><p class="bebas">KODE BARANG</p></td>
-					<td style="padding-right: 9%;"><input type="text" pattern="^\S{1,20}" title="Kode Barang tidak boleh mengandung spasi dan panjang maksimal 20 karakter" id="item_code" onblur="get_barcode()" id="item_code" name="item_code" placeholder="Kode Barang" class="form-control" required="1"></td>
+					<td style="padding-right: 9%;"><input type="text" title="Kode Barang tidak boleh mengandung spasi dan panjang maksimal 20 karakter" id="item_code"  id="item_code" name="item_code" onkeyup="get_barcode()" placeholder="Kode Barang" class="form-control" required="1"></td>
 				</tr>
 				<tr>
 					<td colspan="2" id="felita">
@@ -108,6 +108,8 @@
 	}
 
 </script>
+<script language="javascript">var p = false;</script>
+
 <script>
 	jQuery(function(){
     	var counter = 1;

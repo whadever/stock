@@ -55,7 +55,7 @@ class Selling extends MY_Controller{
 			}
 			echo '</ul></td></tr></table>';
 			if($product->quantity != 0){
-				echo '<div class="text-center"><input type="submit" class="btn btn-default btn-custom" value="SAVE" name="save"></div>';
+				echo '<div class="text-center"><input type="submit" onClick = "javascript: p=true;" class="btn btn-default btn-custom" value="SAVE" name="save"></div>';
 			}
 
 		}
