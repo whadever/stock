@@ -68,7 +68,7 @@ class Selling extends MY_Controller{
 		if($this->input->post('save')){
 			$code = $this->input->post('item_code');
 			$product = $this->crud_model->get_by_condition('products',array('code'=>$code))->row();
-			if($product_quantity>0){
+			if($product->quantity>0){
 				$data['quantity'] = $product->quantity - 1;	
 				$this->crud_model->update_data('products',$data,array('code'=>$code));
 			}			
