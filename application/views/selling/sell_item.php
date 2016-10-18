@@ -45,7 +45,7 @@
 			<p>Status User:</p>
 		</div>
 		<div class="row" style="margin-top: 20px;">
-		<?php echo form_open('selling/sell_product', array('onsubmit' => 'return(p)')) ?>
+		<?php echo form_open('selling/sell_product') ?>
 			<table class="table product-table">
 				<tbody>
 				<tr>
@@ -108,7 +108,13 @@
 	}
 
 </script>
-<script language="javascript">var p = false;</script>
+<script>
+	$("#item_code").keypress(function(event){
+	    if (event.which == '10' || event.which == '13') {
+	        event.preventDefault();
+	    }
+	});
+</script>
 
 <script>
 	jQuery(function(){
