@@ -50,7 +50,7 @@
 				<tbody>
 				<tr>
 					<td class="table_detail"><p class="bebas">KODE BARANG</p></td>
-					<td style="padding-right: 9%;"><input type="text" title="Kode Barang tidak boleh mengandung spasi dan panjang maksimal 20 karakter" id="item_code"  id="item_code" name="item_code" onkeyup="get_barcode()" placeholder="Kode Barang" class="form-control" required="1"></td>
+					<td style="padding-right: 9%;"><input type="text" title="Kode Barang tidak boleh mengandung spasi dan panjang maksimal 20 karakter" id="item_code" name="item_code" onkeyup="get_barcode()" placeholder="Kode Barang" class="form-control" required="1"></td>
 				</tr>
 				<tr>
 					<td colspan="2" id="felita">
@@ -83,11 +83,16 @@
 				success : function(result){
 					$('#felita').empty();
 					$('#felita').append(result);
+					$('#customer_name').change(function(){
+						if($(this).val()=='others'){
+							$('#customer').append('<table><tbody><tr><td><input type="text" class="form-control" name="new_customer_name" placeholder="Name" required=1 ></td></tr><tr><td><input type="text" class="form-control" name="new_customer_email" placeholder="Email" required=1></td></tr><tr><td><input type="text" class="form-control" name="new_customer_phone" placeholder="Phone" required=1></td></tr><tr><td><input type="text" class="form-control" name="new_customer_address" placeholder="Address" required=1></td></tr></tbody></table>');	
+						}
+						
+					});
+
 				}
 			})
 		}
-		
-		
 	}
 
 	function saveCanvas(type, ext) {

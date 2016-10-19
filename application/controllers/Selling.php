@@ -41,11 +41,16 @@ class Selling extends MY_Controller{
 
 				echo '<tr><td style="width:10%"><p class="bebas">Pembeli</p></td>';
 
-				echo '<td style="width:25%"><select class="form-control" name="">';
+				echo '<td id="customer" style="width:25%"><select class="form-control" id="customer_name" name="customer_name">';
 				foreach ($customers as $customer) {
 					echo '<option value='.$customer->id.'>'.$customer->name.'</option>';
 				}
-				echo '</td></tr>';	
+				echo '<option value="others" id="others">Others</option>';
+				echo '</td></tr>';
+
+
+				// echo '<td style="width:25%">';
+				// echo '<input type="text" class="form-control" required="1" name="customer_name">';
 			
 				echo '<tr><td><p class="bebas">Discount</p></td>';
 				echo '<td><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="discount" placeholder="Discount" class="form-control"></div></td></tr>';
@@ -70,10 +75,29 @@ class Selling extends MY_Controller{
 		if($this->input->post('save')){
 			$code = $this->input->post('item_code');
 			$product = $this->crud_model->get_by_condition('products',array('code'=>$code))->row();
+			$transaction = array(
+
+					'code' => 'abcdef',
+					'transaction_type_id' => 1,
+					'transaction_date' => date('Y-m-d H:i:s'),
+					'detail' => 'unknown'
+
+				);
 			if($product->quantity>0){
 				$data['quantity'] = $product->quantity - 1;	
 				$this->crud_model->update_data('products',$data,array('code'=>$code));
-			}			
+				$this->crud_model->insert_data('transaction',$transaction);
+			}
+			if($this->input->post('customer_name')=='others'){
+					$new_customer = array(
+						'name'=>$this->input->post('new_customer_name'),
+						'email'=>$this->input->post('new_customer_email'),
+						'phone'=>$this->input->post('new_customer_phone'),
+						'address'=>$this->input->post('new_customer_address')
+					);
+
+			}
+			$this->crud_model->insert_data('customers',$new_customer);
 			redirect('selling');
 		}
 		else{
