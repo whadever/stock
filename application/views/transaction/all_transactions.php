@@ -16,19 +16,19 @@
 
 </style>
 <?php $role = $this->crud_model->get_by_condition('outlets',array('id' => $this->session->userdata('is_active')))->row('role'); ?>
-<button onclick="javascript:window.print()">print</button>
 <div class="row">
 	<div class="col-md-12 content-wrap">
 		<div class="row" style="border-bottom: 2px solid #2c3e50">
-			<p class="page_subtitle" style="font-size: 28px;margin-bottom: 0px;">ALL PRODUCTS</p>
+			<p class="page_subtitle" style="font-size: 28px;margin-bottom: 0px;"><?php echo $subtitle?></p>
 			<p>Status User:</p>
 		</div>
 		<div class="row" style="margin-top: 20px;">
+		<p class="bebas">PENJUALAN</p>
 			<div class="form-group" style="margin-bottom: 20px">
 				<label for="">Search :</label>
 				<input type="text" class="form-control" id="filter">
 				<?php if($role != 'admin'): ?>
-					<a href="<?php echo base_url('products/add') ?>" class="btn btn-primary pull-right">Add Product</a>
+					<a href="<?php echo base_url('products/add') ?>" class="btn btn-primary pull-right">Transaksi Baru</a>
 				<?php endif; ?>
 			</div>
 			<div class="table-responsive toggle-circle-filled">
@@ -37,13 +37,11 @@
 					 <tr>
 					 	<th data-type="numeric" data-sort-initial="true">No</th>
 					 	<th data-hide="phone">Kode</th>
-					 	<th data-toggle="true">Name</th>
-					 	<th data-type="numeric">Model</th>
-					 	<th data-hide="phone">Kategori</th>
-					 	<th data-type="numeric" data-hide="phone">Harga Beli</th>
-					 	<th data-type="numeric" data-hide="phone">Harga Jual</th>
-						<th data-hide="phone">Status</th>
-					 	<th data-hide="phone">Gambar</th>
+					 	<th data-toggle="true">Tanggal</th>
+					 	<th data-type="numeric">Nama Barang</th>
+					 	<th data-hide="phone">Kuantitas</th>
+					 	<th data-type="numeric" data-hide="phone">Customer</th>
+					 	<th data-type="numeric" data-hide="phone">Detail</th>
 					 	<?php if($role != 'admin'): ?>
 					 		<th data-hide="phone">Tindakan</th>
 						<?php else: ?>
@@ -52,11 +50,11 @@
 					 </tr>
 				</thead>
 				<tbody>
-					<?php $i=1; foreach($products as $product): ?>
+					<?php $i=1; foreach($sellings as $selling): ?>
 						<tr>
 							<td><?php echo $i ?></td>
-							<td><?php echo $product->code ?></td>
-							<td><?php echo $product->name ?></td>
+							<td><?php echo $selling->code ?></td>
+							<td><?php echo $selling->name ?></td>
 							<td><?php echo $product->model ?></td>
 							<td><?php echo $product->category ?></td>
 							<td><?php echo rupiah($product->buying_price) ?></td>
@@ -103,29 +101,6 @@
 		</div>
 	</div>
 </div> -->
-<script>
-	function generate_barcode(){
-
-		if (!$('#item_code').val()) {
-			
-			alert('Kode Barang Harus diisi');
-		}else{
-			$('#saveas').show();
-			JsBarcode("#barcode", $('#item_code').val());
-		}
-		
-		
-	}
-
-	function saveCanvas(type, ext) {
-		var canvas = document.getElementById('barcode');
-		canvas.toBlob(function (blob) {
-						  saveAs(blob, $('#item_code').val() + ext);
-					  }, type, 1);
-		
-	}
-
-</script>
 
 <script>
 	$(document).ready(function() {

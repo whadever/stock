@@ -15,10 +15,11 @@ class Transaction extends MY_Controller{
 	public function index(){
 		$data['title'] = 'Transaksi';
 		$data['subtitle'] = 'DAFTAR TRANSAKSI';
-		$data['selling']=$this->transaction_model->getAllTransactions('1');
-		$data['buying']=$this->transaction_model->getAllTransactions('2');
-		$data['mutation']=$this->transaction_model->getAllTransactions('3');
-		$this->template->load('default','transaction/all_transaction',$data);
+		$data['sellings']=$this->transaction_model->getAllTransactions('1');
+		$data['buyings']=$this->transaction_model->getAllTransactions('2');
+		$data['mutations']=$this->transaction_model->getAllTransactions('3');
+
+		$this->template->load('default','transaction/all_transactions',$data);
 	}
 
 }

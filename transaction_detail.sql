@@ -23,14 +23,15 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaction`
+-- Table structure for table `transaction_detail`
 --
 
-CREATE TABLE `transaction` (
-  `code` varchar(11) NOT NULL,
-  `transaction_type_id` int(11) NOT NULL,
-  `transaction_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `detail` varchar(255) NOT NULL
+CREATE TABLE `transaction_detail` (
+  `transaction_code` varchar(255) NOT NULL,
+  `product_code` varchar(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `from_client_id` int(11) NOT NULL,
+  `to_client_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -38,10 +39,10 @@ CREATE TABLE `transaction` (
 --
 
 --
--- Indexes for table `transaction`
+-- Indexes for table `transaction_detail`
 --
-ALTER TABLE `transaction`
-  ADD PRIMARY KEY (`code`);
+ALTER TABLE `transaction_detail`
+  ADD PRIMARY KEY (`transaction_code`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

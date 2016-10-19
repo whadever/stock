@@ -23,26 +23,42 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaction`
+-- Table structure for table `transaction_type`
 --
 
-CREATE TABLE `transaction` (
-  `code` varchar(11) NOT NULL,
-  `transaction_type_id` int(11) NOT NULL,
-  `transaction_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `detail` varchar(255) NOT NULL
+CREATE TABLE `transaction_type` (
+  `id` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaction_type`
+--
+
+INSERT INTO `transaction_type` (`id`, `type`) VALUES
+(1, 'penjualan'),
+(2, 'pembelian'),
+(3, 'mutasi');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `transaction`
+-- Indexes for table `transaction_type`
 --
-ALTER TABLE `transaction`
-  ADD PRIMARY KEY (`code`);
+ALTER TABLE `transaction_type`
+  ADD PRIMARY KEY (`id`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `transaction_type`
+--
+ALTER TABLE `transaction_type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
