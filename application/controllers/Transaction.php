@@ -1,6 +1,10 @@
 <?php 
 
-class Selling extends MY_Controller{
+class Transaction extends MY_Controller{
+
+	private $id;
+	private $user_role;
+
 	function __construct(){
 		parent::__construct();
 		$this->load->model('product_model');
@@ -9,8 +13,12 @@ class Selling extends MY_Controller{
 	}
 
 	public function index(){
-		$data['title'] = 'Penjualan';
-		$data['subtitle'] = 'PENJUALAN';
+		$data['title'] = 'Transaksi';
+		$data['subtitle'] = 'DAFTAR TRANSAKSI';
+		$data['selling']=$this->crud_model->get_by_condition('transaction',array('transaction_type_id'=>'1'))->result();
+		$data['buying']=$this->crud_model->get_by_condition('transaction',array('transaction_type_id'=>'2'))->result();
+		$data['mutation']= $this->crud_model->get_by_condition('transaction',array('transaction_type_id'=>'3'))->result();
+		$data['transaction_detail'] = $this->crud_model->get_data('transaction_detail')->result();
 		$this->template->load('default','selling/sell_item',$data);
 	}
 
