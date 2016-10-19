@@ -50,7 +50,7 @@
 				<tbody>
 				<tr>
 					<td class="table_detail"><p class="bebas">KODE BARANG</p></td>
-					<td style="padding-right: 9%;"><input type="text" title="Kode Barang tidak boleh mengandung spasi dan panjang maksimal 20 karakter" id="item_code" name="item_code" onkeyup="get_barcode()" placeholder="Kode Barang" class="form-control" required="1"></td>
+					<td style="padding-right: 9%;"><input type="text" title="Kode Barang tidak boleh mengandung spasi dan panjang maksimal 20 karakter" id="item_code" name="item_code" onblur="get_barcode()" placeholder="Kode Barang" class="form-control" required="1"></td>
 				</tr>
 				<tr>
 					<td colspan="2" id="felita">
@@ -71,17 +71,25 @@
 
 <script>
 
+	$(document).ready(function(){
+
+		$('#item_code').focus();
+
+	});
+
 	function get_barcode(){
+
+		$('#item_code').focusout();
 		var barcode = $('#item_code').val();
 		if (barcode == '') {	
-			$('#felita').empty();
-			alert('Kode Barang Harus diisi');
+			
+			
 		}else{
 			$.ajax({
 				url:"<?php echo base_url('selling/get_barcode')?>" +'/'+ barcode,
 				type: "GET",
 				success : function(result){
-					$('#felita').empty();
+
 					$('#felita').append(result);
 					$('#customer_name').change(function(){
 						if($(this).val()=='others'){
@@ -90,8 +98,12 @@
 						
 					});
 
+					$('#item_code').val('');
+					$('#item_code').focus();
+
 				}
-			})
+			});
+
 		}
 	}
 
@@ -117,6 +129,7 @@
 	$("#item_code").keypress(function(event){
 	    if (event.which == '10' || event.which == '13') {
 	        event.preventDefault();
+	        $('#item_code').blur();
 	    }
 	});
 </script>
