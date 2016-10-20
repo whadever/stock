@@ -52,18 +52,23 @@
 					<td class="table_detail"><p class="bebas">KODE BARANG</p></td>
 					<td style="padding-right: 9%;"><input type="text" title="Kode Barang tidak boleh mengandung spasi dan panjang maksimal 20 karakter" id="item_code" name="item_code" onblur="get_barcode()" placeholder="Kode Barang" class="form-control" required="1"></td>
 				</tr>
-				<tr>
-					<td colspan="2" id="felita">
-						
+				</tbody>
+			</table>
+
+				<!-- <tr>
+					<td id="detail">		
+					</td>
+					<td id="bon">
 					</td>
 				</tr>
 				
 				
 				</tbody>
-			</table>
+			</table> -->
 		</div>		
-		<div class="row text-center">
-			
+		<div class="row">
+			<div id="detail" class="col-md-6"></div>
+			<div id="bon" class="col-md-6"></div>
 		</div>	
 		<?php echo form_close(); ?>
 	</div>
@@ -79,7 +84,7 @@
 
 	function get_barcode(){
 
-		$('#item_code').focusout();
+		$('#detail').empty();
 		var barcode = $('#item_code').val();
 		if (barcode == '') {	
 			
@@ -90,7 +95,7 @@
 				type: "GET",
 				success : function(result){
 
-					$('#felita').append(result);
+					$('#detail').append(result);
 					$('#customer_name').change(function(){
 						if($(this).val()=='others'){
 							$('#customer').append('<table><tbody><tr><td><input type="text" class="form-control" name="new_customer_name" placeholder="Name" required=1 ></td></tr><tr><td><input type="text" class="form-control" name="new_customer_email" placeholder="Email" required=1></td></tr><tr><td><input type="text" class="form-control" name="new_customer_phone" placeholder="Phone" required=1></td></tr><tr><td><input type="text" class="form-control" name="new_customer_address" placeholder="Address" required=1></td></tr></tbody></table>');	

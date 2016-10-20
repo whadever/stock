@@ -22,7 +22,7 @@ class Selling extends MY_Controller{
 			$customers = $this->crud_model->get_data('customers')->result();
 			echo ($product->quantity == 0)? '<div class="text-center"><p class="bebas" style="color:red">Out of Stock</p></div>': null;
 
-			echo '<table class="table" style="width:50%"><tr><td style="width:25%"><p class="bebas">Nama Barang</p></td>';
+			echo '<table class="table"><tr><td style="width:25%"><p class="bebas">Nama Barang</p></td>';
 			echo '<td style="width:25%"><p class="bebas">'.$product->name.'</p></td</tr>';
 			
 			
@@ -67,7 +67,8 @@ class Selling extends MY_Controller{
 
 		}
 		else{
-			echo '<div class="text-center"><p class="bebas">Item not found</p></div>';
+			//echo '<div class="text-center"><p class="bebas">Item not found</p></div>';
+			echo '<script>$("#detail").append("<div class=\"text-center\"><p class=\"bebas\" id=\"not_found\">Item not found</p></div>")</script>';
 		}
 	}
 
