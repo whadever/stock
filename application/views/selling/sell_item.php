@@ -11,7 +11,6 @@
 	.table_detail{
 		width: 24% !important;
 	}
-
 	.fileUpload {
 	    position: relative;
 	    overflow: hidden;
@@ -70,13 +69,36 @@
 				</tbody>
 			</table> -->
 		</div>		
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-md-6">
-				<div class="row" id="detail" style="margin-left: -23px!important;"></div>
+				<div class="row"  style="margin-left: -23px!important;"></div>
 			</div>
-			<div id="bon" class="col-md-6"></div>
-		</div>	
+			<div class="col-md-6">
+				<div class="row"  style="padding-left: 10px;">
+					
+				</div>
+			</div>
+		</div> -->	
 		<?php echo form_close(); ?>
+	</div>
+</div>
+<div class="row content-wrap" style="margin-top: 10px;padding: 0px;">
+	<div class="col-md-6" style="border-right:8px solid #e8ecf0;">
+		<div class="row text-center">
+			<P class="bebas" style="margin-top: 10px">DETAIL PRODUK</P>
+		</div>
+		<div class="row text-center no-item" style="margin-top: 20PX;">
+			<P class="bebas" style="color:red">BELUM ADA BARANG</P>
+		</div>
+		<div class="row" id="detail"></div>
+	</div>
+	<div class="col-md-6" id="item_list">
+		<div class="row text-center">
+			<P class="bebas" style="margin-top: 10px"> PRODUK YANG DIBELI</P>
+		</div>
+		<div class="row text-center no-item" style="margin-top: 20PX;">
+			<P class="bebas" style="color:red">BELUM ADA BARANG</P>
+		</div>
 	</div>
 </div>
 
@@ -88,14 +110,31 @@
 
 	});
 
-	function get_barcode(){
+	function list_item(){
+		var barcode = $('#item_code').val();
+		if(barcode==''){
 
+		}
+		else{
+			$.ajax({
+				url:"<?php echo base_url('selling/list_item')?>"+'/'+ barcode,
+				type:"GET",
+				success : function(result){
+						$('#item_list').append(result);
+				}
+			})
+		}
 		
+	}
+
+	function get_barcode(){
+		list_item();
 		var barcode = $('#item_code').val();
 		if (barcode == '') {	
 			
 			
 		}else{
+			$('.no-item').remove();
 			$('#found').remove();
 			$('#detail').empty();
 			$.ajax({
