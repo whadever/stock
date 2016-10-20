@@ -36,13 +36,6 @@
 		border-radius: 10px;
 		border-color: #2c3e50;
 	}
-	#table-detail{
-		margin-left: 0px;
-	}
-
-	#table-detail>tr>td{
-		
-	}
 	
 
 </style>
@@ -79,7 +72,7 @@
 		</div>		
 		<div class="row">
 			<div class="col-md-6">
-				<div class="row" id="detail"></div>
+				<div class="row" id="detail" style="margin-left: -23px!important;"></div>
 			</div>
 			<div id="bon" class="col-md-6"></div>
 		</div>	
