@@ -88,7 +88,6 @@ class Selling extends MY_Controller{
 			$product = $this->crud_model->get_by_condition('products',array('code'=>$code))->row();
 			$transaction = array(
 
-					'code' => 'abcdef',
 					'transaction_type_id' => 1,
 					'transaction_date' => date('Y-m-d H:i:s'),
 					'detail' => 'unknown'
@@ -98,6 +97,8 @@ class Selling extends MY_Controller{
 				$data['quantity'] = $product->quantity - 1;	
 				$this->crud_model->update_data('products',$data,array('code'=>$code));
 				$this->crud_model->insert_data('transaction',$transaction);
+				$id = 'S'.$this->db->insert_id();
+				$this->crud_model->update_data('transaction',array('code' => $id));
 			}
 			if($this->input->post('customer_name')=='others'){
 					$new_customer = array(
