@@ -77,7 +77,10 @@ class Selling extends MY_Controller{
 			$product = $this->db->get_where('products',array('code'=>$barcode))->row();
 			$customers = $this->crud_model->get_data('customers')->result();
 			if($product->quantity>0){
-				echo '<p class="bebas">'.$product->name.'</p>';
+				echo '<tr>';
+				echo '<td><p class="bebas">'.$product->name.'</p></td>';
+				echo '<td><p class="bebas">Rp&nbsp;'.$product->selling_price.'</p></td>';
+				echo '</tr>';
 			}
 		}
 	}

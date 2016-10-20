@@ -82,7 +82,7 @@
 		<?php echo form_close(); ?>
 	</div>
 </div>
-<div class="row content-wrap" style="margin-top: 10px;padding: 0px;">
+<div class="row content-wrap" style="margin-top: 10px;padding: 0px 5px 0px 5px;">
 	<div class="col-md-6" style="border-right:8px solid #e8ecf0;">
 		<div class="row text-center">
 			<P class="bebas" style="margin-top: 10px">DETAIL PRODUK</P>
@@ -92,13 +92,15 @@
 		</div>
 		<div class="row" id="detail"></div>
 	</div>
-	<div class="col-md-6" id="item_list">
+	<div class="col-md-6">
 		<div class="row text-center">
 			<P class="bebas" style="margin-top: 10px"> PRODUK YANG DIBELI</P>
 		</div>
 		<div class="row text-center no-item" style="margin-top: 20PX;">
 			<P class="bebas" style="color:red">BELUM ADA BARANG</P>
 		</div>
+		<table class="table" id="item_list">
+		</table>
 	</div>
 </div>
 
