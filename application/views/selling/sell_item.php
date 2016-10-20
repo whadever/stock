@@ -36,6 +36,14 @@
 		border-radius: 10px;
 		border-color: #2c3e50;
 	}
+	#table-detail{
+		margin-left: 0px;
+	}
+
+	#table-detail>tr>td{
+		
+	}
+	
 
 </style>
 <div class="row">
@@ -44,13 +52,16 @@
 			<p class="page_subtitle" style="font-size: 28px;margin-bottom: 0px;"><?php echo $subtitle?></p>
 			<p>Status User:</p>
 		</div>
-		<div class="row" style="margin-top: 20px;">
+		<div class="row" style="margin-top: 20px;padding-bottom: 0px!important;">
 		<?php echo form_open('selling/sell_product') ?>
-			<table class="table product-table">
+			<table class="table product-table" style="margin-bottom: 0px;">
 				<tbody>
 				<tr>
 					<td class="table_detail"><p class="bebas">KODE BARANG</p></td>
 					<td style="padding-right: 9%;"><input type="text" title="Kode Barang tidak boleh mengandung spasi dan panjang maksimal 20 karakter" id="item_code" name="item_code" onblur="get_barcode()" placeholder="Kode Barang" class="form-control" required="1"></td>
+				</tr>
+				<tr id="found">
+					<td colspan="2" id="found-row"></td>
 				</tr>
 				</tbody>
 			</table>
@@ -67,7 +78,9 @@
 			</table> -->
 		</div>		
 		<div class="row">
-			<div id="detail" class="col-md-6"></div>
+			<div class="col-md-6">
+				<div class="row" id="detail"></div>
+			</div>
 			<div id="bon" class="col-md-6"></div>
 		</div>	
 		<?php echo form_close(); ?>
@@ -84,12 +97,14 @@
 
 	function get_barcode(){
 
-		$('#detail').empty();
+		
 		var barcode = $('#item_code').val();
 		if (barcode == '') {	
 			
 			
 		}else{
+			$('#found').remove();
+			$('#detail').empty();
 			$.ajax({
 				url:"<?php echo base_url('selling/get_barcode')?>" +'/'+ barcode,
 				type: "GET",

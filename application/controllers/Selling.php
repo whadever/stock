@@ -21,8 +21,8 @@ class Selling extends MY_Controller{
 			$specifications = $this->crud_model->get_by_condition('spesifikasi',array('kode_barang'=>$product->code))->result();
 			$customers = $this->crud_model->get_data('customers')->result();
 			echo ($product->quantity == 0)? '<div class="text-center"><p class="bebas" style="color:red">Out of Stock</p></div>': null;
-
-			echo '<table class="table"><tr><td style="width:25%"><p class="bebas">Nama Barang</p></td>';
+			echo '<style>#table-detail>tbody>tr>th, #table-detail>tfoot>tr>td, #table-detail>tfoot>tr>th, #table-detail>thead>tr>td, #table-detail>thead>tr>th {padding-left: 0px !important;}</style>';
+			echo '<table class="table" id="table-detail"><tbody><tr><td><p class="bebas">Nama Barang</p></td>';
 			echo '<td style="width:25%"><p class="bebas">'.$product->name.'</p></td</tr>';
 			
 			
@@ -60,7 +60,7 @@ class Selling extends MY_Controller{
 			}
 			
 			
-			echo '</table>';
+			echo '</tbody></table>';
 			if($product->quantity != 0){
 				echo '<div class="text-center"><input type="submit" class="btn btn-default btn-custom" value="SAVE" name="save"></div>';
 			}
@@ -68,7 +68,7 @@ class Selling extends MY_Controller{
 		}
 		else{
 			//echo '<div class="text-center"><p class="bebas">Item not found</p></div>';
-			echo '<script>$("#detail").append("<div class=\"text-center\"><p class=\"bebas\" id=\"not_found\">Item not found</p></div>")</script>';
+			echo '<script>$(".product-table>tbody").append("<tr id=\"found\"><td colspan=\"2\"><div class=\"text-center\"><p class=\"bebas\" id=\"not_found\">Item not found</p></div></td></tr>")</script>';
 		}
 	}
 
