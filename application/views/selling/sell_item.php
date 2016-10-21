@@ -88,7 +88,7 @@
 	</div>
 </div>
 <div class="row content-wrap" style="margin-top: 10px;margin-bottom:10px;padding: 0px 5px 0px 5px;">
-	<div class="col-md-6" style="border-right:8px solid #e8ecf0;margin-bottom: 0px;padding-bottom: 10px;min-height: 130px" id="detailrow">
+	<div class="col-md-6" style="border-right:8px solid #e8ecf0;margin-bottom: 0px;padding-bottom: 10px;min-height: 170px" id="detailrow">
 		<div class="row text-center">
 			<P class="bebas" style="margin-top: 10px">DETAIL PRODUK</P>
 		</div>
@@ -101,10 +101,20 @@
 		<div class="row text-center">
 			<P class="bebas" style="margin-top: 10px"> PRODUK YANG DIBELI</P>
 		</div>
-		<div class="row text-center no-item" style="margin-top: 20PX;">
-			<P class="bebas" style="color:red">BELUM ADA BARANG</P>
-		</div>
-		<table class="table" id="item_list">
+		<table class="table table-striped" >
+			<thead><tr>
+				<th>Nama Barang</th>
+				<th width="60px">Qty.</th>
+				<th>Harga</th>
+				<th>Disc.</th>
+				<th>Total</th>
+			</tr></thead>
+			<?php $i=1;?>
+			<tbody id="item_list"><tr class="no-item">
+				<td colspan="4" class="text-center"><P class="bebas" style="color:red">BELUM ADA BARANG</P></td>
+			</tr>
+
+			</tbody>
 		</table>
 	</div>
 </div>
@@ -127,7 +137,8 @@
 				url:"<?php echo base_url('selling/list_item')?>"+'/'+ barcode,
 				type:"GET",
 				success : function(result){
-						$('#item_list').append(result);
+						var test = JSON.parse(result);
+						$('#item_list').append('<tr><td>'+test.name+'</td><td>'+test.quantity+'</td><td>'+test.selling_price+'</td><td>'+test.selling_price+'</td></tr>');
 				}
 			})
 		}
