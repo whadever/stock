@@ -213,7 +213,7 @@
 
           <a href="<?php echo base_url('outlets') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Outlets</span></a>
         <?php else: ?>
-          <a href="<?php echo base_url('products/mutasi') ?>" ><span class="fa fa-money" aria-hidden="true"></span><span class="menu-text pull-right" >Mutasi</span></a>
+          <a href="<?php echo base_url('mutasi') ?>" ><span class="fa fa-money" aria-hidden="true"></span><span class="menu-text pull-right" >Mutasi</span></a>
           <a href="<?php echo base_url('transaction') ?>" ><span class="fa fa-shopping-cart" aria-hidden="true"></span><span class="menu-text pull-right" >Transaksi</span></a>
         <?php endif; ?>
         <a href="<?php echo base_url('customers') ?>" ><i id="template-button" class="fa fa-users" aria-hidden="true"></i><span class="menu-text pull-right" >Customer</span></a>

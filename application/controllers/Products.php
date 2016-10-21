@@ -183,18 +183,7 @@ class Products extends MY_Controller{
 		}
 	}
 
-	public function mutasi(){
-		$data = array(
-				'title' => 'Mutasi Barang',
-				'subtitle' => 'MUTASI BARANG',
-			);
 
-		$data['products'] = $this->product_model->getAllProducts($this->id);
-		$data['outlets'] = $this->crud_model->get_data('outlets')->result();
-		
-		$this->template->load('default','products/mutasi',$data);
-
-	}
 
 	public function all_category(){
 		$data['title'] = 'Categories';
