@@ -35,6 +35,11 @@
 		border-radius: 10px;
 		border-color: #2c3e50;
 	}
+	@media only screen and (max-device-width: 767px){
+		#detailrow{
+			border-right: none !important;
+		}
+	}
 	
 
 </style>
@@ -83,7 +88,7 @@
 	</div>
 </div>
 <div class="row content-wrap" style="margin-top: 10px;margin-bottom:10px;padding: 0px 5px 0px 5px;">
-	<div class="col-md-6" style="border-right:8px solid #e8ecf0;margin-bottom: 0px;padding-bottom: 10px;min-height: 130px">
+	<div class="col-md-6" style="border-right:8px solid #e8ecf0;margin-bottom: 0px;padding-bottom: 10px;min-height: 130px" id="detailrow">
 		<div class="row text-center">
 			<P class="bebas" style="margin-top: 10px">DETAIL PRODUK</P>
 		</div>
