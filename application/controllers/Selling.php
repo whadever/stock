@@ -56,7 +56,7 @@ class Selling extends MY_Controller{
 				// echo '<td><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="discount" placeholder="Discount" class="form-control"></div></td></tr>';
 
 				echo '<tr><td><p class="bebas">Harga Jual</p></td>';
-				echo '<td> <p class="bebas">Rp&nbsp;'.$product->selling_price.'</p></td></tr>';
+				echo '<td> <p class="bebas">$&nbsp;'.$product->selling_price.'</p></td></tr>';
 //			}
 			
 			

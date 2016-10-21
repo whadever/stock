@@ -104,17 +104,23 @@
 		<table class="table table-striped" >
 			<thead><tr>
 				<th>Nama Barang</th>
-				<th width="60px">Qty.</th>
+				<th width="12%">Qty.</th>
 				<th>Harga</th>
-				<th>Disc.</th>
+				<th width="20%">Disc.</th>
 				<th>Total</th>
+				<th></th>
 			</tr></thead>
 			<?php $i=1;?>
 			<tbody id="item_list"><tr class="no-item">
-				<td colspan="4" class="text-center"><P class="bebas" style="color:red">BELUM ADA BARANG</P></td>
+				<td colspan="5" class="text-center"><P class="bebas" style="color:red">BELUM ADA BARANG</P></td>
 			</tr>
-
 			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="4"><strong>Total Price</strong></td>
+					<td colspan="2" id="total_price">$ &nbsp; 0</td>
+				</tr>	
+			</tfoot>			
 		</table>
 	</div>
 </div>
@@ -126,8 +132,9 @@
 		$('#item_code').focus();
 
 	});
-
+	var total_price=0;
 	function list_item(){
+		var disc = $('')
 		var barcode = $('#item_code').val();
 		if(barcode==''){
 
@@ -138,10 +145,29 @@
 				type:"GET",
 				success : function(result){
 						var test = JSON.parse(result);
-						$('#item_list').append('<tr><td>'+test.name+'</td><td>'+test.quantity+'</td><td>'+test.selling_price+'</td><td>'+test.selling_price+'</td></tr>');
+						var price = test.selling_price;
+						total_price = +total_price + +price;
+						$('#item_list').append("<tr><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td> <input type='number' class='form-control' onblur='disc("+"\""+test.code+"\""+",this)' name='disc'> </td><td id='harga_disc_"+test.code+"'>$. "+total_price+"</td><td><a onclick='"+test.code+"' style='cursor: pointer'>&times;</a></td></tr>");
+						$('#total_price').empty();
+						$('#total_price').append('$&nbsp;'+total_price)
+
 				}
 			})
 		}
+		
+	}
+
+	function disc(code,el){
+		var harga = $('#harga_'+code).html();
+		harga = harga.replace(/[^0-9.]/g, "");
+		var disc = $(el).val();		
+		disc = harga * disc / 100;
+		harga -= disc;
+		harga = harga.toFixed(2);
+		
+		 $('#harga_disc_'+code).empty();
+		 $('#harga_disc_'+code).append("$. "+harga);
+
 		
 	}
 
