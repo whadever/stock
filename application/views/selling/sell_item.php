@@ -34,9 +34,11 @@
 		color: #fff;
 		border-radius: 10px;
 		border-color: #2c3e50;
+		padding-left: 1px;
+		padding-right: 1px;
 	}
 	@media only screen and (max-device-width: 767px){
-		#detailrow{
+		#buyrow{
 			border-left: none !important;
 		}
 	}
@@ -50,7 +52,7 @@
 			<p>Status User:</p>
 		</div>
 		<div class="row" style="margin-top: 20px;padding-bottom: 0px!important;">
-		<?php echo form_open('selling/sell_product') ?>
+		
 			<table class="table product-table" style="margin-bottom: 0px;">
 				<tbody>
 				<tr>
@@ -84,11 +86,11 @@
 				</div>
 			</div>
 		</div> -->	
-		<?php echo form_close(); ?>
+		<?php echo form_open_multipart('selling/sell_product') ?>
 	</div>
 </div>
 <div class="row content-wrap" style="margin-top: 10px;margin-bottom:10px;padding: 0px 5px 0px 5px;">
-	<div class="col-md-6" style="border-right:8px solid #e8ecf0;margin-bottom: 0px;padding-bottom: 10px;min-height: 220px" id="detailrow">
+	<div class="col-md-6" style="margin-bottom: 0px;padding-bottom: 10px;" id="detailrow">
 		<div class="row text-center">
 			<P class="bebas" style="margin-top: 10px">DETAIL PRODUK</P>
 		</div>
@@ -97,13 +99,16 @@
 		</div>
 		<div class="row" id="detail"></div>
 	</div>
-	<div class="col-md-6" style="margin-bottom: 0px;" id="buyrow">
+	<div class="col-md-6" style="border-left:8px solid #e8ecf0;margin-bottom: 0px;" id="buyrow">
 		<div class="row text-center">
-			<P class="bebas" style="margin-top: 10px"> PRODUK YANG DIBELI</P>
+			<P class="bebas" style="margin-top: 10px">PRODUK YANG DIBELI</P>
+		</div>
+		<div class="row" style="margin-bottom: 15px;">
+			<div class="col-sm-5"><label>Kode Transaksi</label><input type="text" name="transaction_code" class="form-control" placeholder="Kode Transaksi"></div>
 		</div>
 		<table class="table table-striped" >
 			<thead><tr>
-				<th width="22%">Nama Barang</th>
+				<th width="22%">Nama</th>
 				<th width="12%">Qty.</th>
 				<th>Harga</th>
 				<th width="18%">Disc.</th>
@@ -119,6 +124,7 @@
 				<tr>
 					<td colspan="4"><strong>Total Price</strong></td>
 					<td colspan="2" id="total_price">$ &nbsp; 0</td>
+					<input type="hidden" name="total_harga" id="total_harga" value="">
 				</tr>
 				<tr>
 					<td colspan="6" class="text-center"><input type="submit" name="save" class="btn btn-primary" value="Save"></td>
@@ -126,6 +132,7 @@
 			</tfoot>			
 		</table>
 	</div>
+	<?php echo form_close(); ?>
 </div>
 
 <script>
@@ -150,7 +157,7 @@
 						var test = JSON.parse(result);
 						var price = test.selling_price;
 						total_price = +total_price + +price;
-						$('#item_list').append("<tr><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td> <div class='input-group'><input type='number' class='form-control' onblur='disc("+"\""+test.code+"\""+",this)' name='disc'><span class='input-group-addon'>%</span></div></td><td id='harga_disc_"+test.code+"'>$ "+total_price+"</td><td><a onclick='"+test.code+"' style='cursor: pointer'>&times;</a></td></tr>");
+						$('#item_list').append("<tr><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td> <div class='input-group'><input type='number' class='form-control' onblur='disc("+"\""+test.code+"\""+",this)' name='disc'><span class='input-group-addon'>%</span></div></td><td id='harga_disc_"+test.code+"'>$ "+test.selling_price+"</td><td><a onclick='"+test.code+"' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'><input type='hidden' name='disc_price[]' id='disc_price_"+test.code+"' value='"+test.selling_price+"'> ");
 						$('#total_price').empty();
 						$('#total_price').append('$&nbsp;'+total_price);
 
@@ -161,16 +168,44 @@
 	}
 
 	function disc(code,el){
-		var harga = $('#harga_'+code).html();
-		harga = harga.replace(/[^0-9.]/g, "");
-		var disc = $(el).val();		
-		disc = harga * disc / 100;
-		harga -= disc;
-		harga = harga.toFixed(2);
-		
-		 $('#harga_disc_'+code).empty();
-		 $('#harga_disc_'+code).append("$. "+harga);
+		if($(el).val() != ''){
+			var harga = $('#harga_'+code).html();
+			var disc_price = $('#harga_disc_'+code).html();
+			harga = harga.replace(/[^0-9.]/g, "");
+			disc_price = disc_price.replace(/[^0-9.]/g, "");
+			var disc = $(el).val();	
+			total_price = +total_price - +disc_price;
+			disc = harga * disc / 100;
+			harga -= disc;
+			harga = harga.toFixed(2);
+			total_price += +harga;
+			total_price = Number(total_price).toFixed(2);
 
+			$('#disc_price_'+code).val(harga);
+			$('#harga_disc_'+code).empty();
+			$('#harga_disc_'+code).append("$ "+harga);
+			$('#total_price').empty();
+			$('#total_price').append("$ "+total_price);
+			$('#total_harga').val(total_price);
+			
+		}else{
+			var harga = $('#harga_'+code).html();
+			harga = harga.replace(/[^0-9.]/g, "");
+			var disc_price = $('#harga_disc_'+code).html();
+			disc_price = disc_price.replace(/[^0-9.]/g, "");
+			total_price = +total_price - +disc_price;
+			total_price += +harga;
+			total_price = Number(total_price).toFixed(2);
+			
+			$('#disc_price_'+code).val(harga);
+			$('#harga_disc_'+code).empty();
+			$('#harga_disc_'+code).append("$ "+harga);
+			$('#total_price').empty();
+			$('#total_price').append("$ "+total_price);
+
+			$('#total_harga').val(total_price);
+			
+		}
 		
 	}
 

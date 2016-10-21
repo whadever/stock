@@ -79,40 +79,43 @@ class Selling extends MY_Controller{
 			
 			if($product->quantity>0){
 				echo json_encode($product);
-				
+
 			}
 		}
 	}
 
 	public function sell_product(){
 		if($this->input->post('save')){
-			$code = $this->input->post('item_code');
-			$product = $this->crud_model->get_by_condition('products',array('code'=>$code))->row();
-			$transaction = array(
+			// $code = $this->input->post('item_code');
+			// $product = $this->crud_model->get_by_condition('products',array('code'=>$code))->row();
+			// $transaction = array(
 
-					'transaction_type_id' => 1,
-					'transaction_date' => date('Y-m-d H:i:s'),
-					'detail' => 'unknown'
+			// 		'transaction_type_id' => 1,
+			// 		'transaction_date' => date('Y-m-d H:i:s'),
+			// 		'detail' => 'unknown'
 
-				);
-			if($product->quantity>0){
-				$data['quantity'] = $product->quantity - 1;	
-				$this->crud_model->update_data('products',$data,array('code'=>$code));
-				$this->crud_model->insert_data('transaction',$transaction);
-				$id = 'S'.$this->db->insert_id();
-				$this->crud_model->update_data('transaction',array('code' => $id));
-			}
-			if($this->input->post('customer_name')=='others'){
-					$new_customer = array(
-						'name'=>$this->input->post('new_customer_name'),
-						'email'=>$this->input->post('new_customer_email'),
-						'phone'=>$this->input->post('new_customer_phone'),
-						'address'=>$this->input->post('new_customer_address')
-					);
+			// 	);
+			// if($product->quantity>0){
+			// 	$data['quantity'] = $product->quantity - 1;	
+			// 	$this->crud_model->update_data('products',$data,array('code'=>$code));
+			// 	$this->crud_model->insert_data('transaction',$transaction);
+			// 	$id = 'S'.$this->db->insert_id();
+			// 	$this->crud_model->update_data('transaction',array('code' => $id));
+			// }
+			// if($this->input->post('customer_name')=='others'){
+			// 		$new_customer = array(
+			// 			'name'=>$this->input->post('new_customer_name'),
+			// 			'email'=>$this->input->post('new_customer_email'),
+			// 			'phone'=>$this->input->post('new_customer_phone'),
+			// 			'address'=>$this->input->post('new_customer_address')
+			// 		);
 
-			}
-			$this->crud_model->insert_data('customers',$new_customer);
-			redirect('selling');
+			// }
+			// $this->crud_model->insert_data('customers',$new_customer);
+			// redirect('selling');
+			echo "<pre>";
+			print_r($this->input->post());
+			echo "</pre>";
 		}
 		else{
 			$data['title'] = 'Penjualan';
