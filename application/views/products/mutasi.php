@@ -26,18 +26,14 @@
 	}
 	
 </style>
+
 <div class="row">
 	<div class="col-md-12 content-wrap">
 		<div class="row" style="border-bottom: 2px solid #2c3e50">
 			<p class="page_subtitle" style="font-size: 28px;margin-bottom: 0px;"> BARANG</p>
 			<p>Status User:</p>
 		</div>
-		<div id="barcode">
-	<video id="barcodevideo" autoplay></video>
-	<canvas id="barcodecanvasg" ></canvas>
-</div>
-<canvas id="barcodecanvas" ></canvas>
-<div id="result"></div>
+
 		
 		<div class="row text-center">
 			<input type="submit" class="btn btn-default btn-custom" value="SAVE" name="update">
@@ -102,32 +98,7 @@
 			</table>
 		</div>
 		
-<link rel="stylesheet" href="<?php echo base_url(); ?>css/barcode.css" />
-<script type="text/javascript" src="<?php echo base_url(); ?>js/barcode.js"></script>
-
-<script type="text/javascript">
-
-var sound = new Audio("<?php echo base_url() ?>css/barcode.wav");
-
-$(document).ready(function() {
-
-	barcode.config.start = 0.1;
-	barcode.config.end = 0.9;
-	barcode.config.video = '#barcodevideo';
-	barcode.config.canvas = '#barcodecanvas';
-	barcode.config.canvasg = '#barcodecanvasg';
-	barcode.setHandler(function(barcode) {
-		$('#result').html(barcode);
-	});
-	barcode.init();
-
-	$('#result').bind('DOMSubtreeModified', function(e) {
-		sound.play();	
-	});
-
-});
-
-</script>
+		
 <script>
 	jQuery(function(){
     	var counter = 1;
