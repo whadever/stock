@@ -107,32 +107,36 @@
 		<div class="row" style="margin-bottom: 15px;">
 			<div class="col-sm-5"><label>Kode Transaksi</label><input type="text" name="transaction_code" class="form-control" placeholder="Kode Transaksi"></div>
 		</div>
-		
-		<table class="table table-striped" >
+
+		<?php echo form_open('selling/sell_product') ?>
+		<div class="table-responsive toggle-circle-filled">
+		<table class="table table-condensed table-sell" data-filter="#filter" data-page-size="10" >
+
 			<thead><tr>
-				<th width="22%">Nama</th>
-				<th width="12%">Qty.</th>
-				<th>Harga</th>
-				<th width="18%">Disc.</th>
-				<th>Total</th>
-				<th></th>
+				<th width="22%" data-sort-initial="true" data-toggle="true">Nama</th>
+				<th width="12%" data-type="numeric">Qty.</th>
+				<th data-hide="phone" data-type="numeric">Harga</th>
+				<th width="18%" data-hide="phone" data-type="numeric">Disc.</th>
+				<th data-type="numeric">Total</th>
+				<th data-hide="phone"></th>
 			</tr></thead>
 			<?php $i=1;?>
 			<tbody id="item_list"><tr class="no-item">
-				<td colspan="6" class="text-center"><P class="bebas" style="color:red">BELUM ADA BARANG</P></td>
-			</tr>
+				
+	 			</tr>
 			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="4"><strong>Total Price</strong></td>
-					<td colspan="2" id="total_price">$ &nbsp; 0</td>
-					<input type="hidden" name="total_harga" id="total_harga" value="">
-				</tr>
-				<tr>
-					<td colspan="6" class="text-center"><input type="submit" name="next" class="btn btn-primary" value="Next"></td>
-				</tr>	
-			</tfoot>			
 		</table>
+		<p>
+		
+		<strong class="pull-right" id="total_price">$ 0</strong>	
+		<strong class="pull-right" style="margin-right: 20px">Total Price</strong>
+		</p>
+		<input type="hidden" name="total_harga" id="total_harga" value="">
+		
+		</div>
+		<div class="row text-center">
+			<input type="submit" name="save" class="btn btn-primary" value="Save">
+		</div>	
 	</div>
 	<?php echo form_close(); ?>
 </div>
@@ -142,7 +146,7 @@
 	$(document).ready(function(){
 
 		$('#item_code').focus();
-
+		$('.table-sell').footable();
 	});
 	var total_price=0;
 	function list_item(){
@@ -164,6 +168,9 @@
 						$('#total_price').empty();
 						$('#total_price').append('$&nbsp;'+total_price);
 						$('#total_harga').val(total_price);
+
+						$('.table-sell').footable();
+
 
 				}
 			})
@@ -235,7 +242,7 @@
 						}
 						
 					});
-
+					$('#belum_ada').remove();
 					$('#item_code').val('');
 					$('#item_code').focus();
 
