@@ -82,8 +82,8 @@
 		<?php echo form_close(); ?>
 	</div>
 </div>
-<div class="row content-wrap" style="margin-top: 10px;padding: 0px 5px 0px 5px;">
-	<div class="col-md-6" style="border-right:8px solid #e8ecf0;">
+<div class="row content-wrap" style="margin-top: 10px;margin-bottom:10px;padding: 0px 5px 0px 5px;">
+	<div class="col-md-6" style="border-right:8px solid #e8ecf0;margin-bottom: 0px;padding-bottom: 10px;min-height: 130px">
 		<div class="row text-center">
 			<P class="bebas" style="margin-top: 10px">DETAIL PRODUK</P>
 		</div>
@@ -92,7 +92,7 @@
 		</div>
 		<div class="row" id="detail"></div>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-6" style="margin-bottom: 0px;">
 		<div class="row text-center">
 			<P class="bebas" style="margin-top: 10px"> PRODUK YANG DIBELI</P>
 		</div>
