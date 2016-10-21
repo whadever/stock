@@ -1,6 +1,9 @@
 <?php 
 
 class Selling extends MY_Controller{
+	private $id;
+	private $user_role;
+
 	function __construct(){
 		parent::__construct();
 		$this->load->model('product_model');
@@ -85,37 +88,13 @@ class Selling extends MY_Controller{
 	}
 
 	public function sell_product(){
-		if($this->input->post('save')){
-			// $code = $this->input->post('item_code');
-			// $product = $this->crud_model->get_by_condition('products',array('code'=>$code))->row();
-			// $transaction = array(
+		if($this->input->post('next')){
+			$data['transaction_code'] = $this->input->post('transaction_code');
+			$data['product_id'] = $this->input->post('id');
+			$data['disc_price'] = $this->input->post('disc_price');
+			$data['total_harga'] = $this->input->post('total_harga');
 
-			// 		'transaction_type_id' => 1,
-			// 		'transaction_date' => date('Y-m-d H:i:s'),
-			// 		'detail' => 'unknown'
-
-			// 	);
-			// if($product->quantity>0){
-			// 	$data['quantity'] = $product->quantity - 1;	
-			// 	$this->crud_model->update_data('products',$data,array('code'=>$code));
-			// 	$this->crud_model->insert_data('transaction',$transaction);
-			// 	$id = 'S'.$this->db->insert_id();
-			// 	$this->crud_model->update_data('transaction',array('code' => $id));
-			// }
-			// if($this->input->post('customer_name')=='others'){
-			// 		$new_customer = array(
-			// 			'name'=>$this->input->post('new_customer_name'),
-			// 			'email'=>$this->input->post('new_customer_email'),
-			// 			'phone'=>$this->input->post('new_customer_phone'),
-			// 			'address'=>$this->input->post('new_customer_address')
-			// 		);
-
-			// }
-			// $this->crud_model->insert_data('customers',$new_customer);
-			// redirect('selling');
-			echo "<pre>";
-			print_r($this->input->post());
-			echo "</pre>";
+			$this->finish_transaction($data);
 		}
 		else{
 			$data['title'] = 'Penjualan';
@@ -124,7 +103,73 @@ class Selling extends MY_Controller{
 		}
 	}
 
+	public function finish_transaction($data= ''){
+		$data['customers'] = $this->crud_model->get_data('customers')->result();
+		if ($this->input->post('save')) {
+			$transaction = array(
+
+					'transaction_type_id' => 1,
+					'transaction_date' => date('Y-m-d H:i:s'),
+					'detail' => 'unknown',
+					'total_harga' => $this->input->post('total_harga')
+				);
+
+			$this->crud_model->insert_data('transaction',$transaction);
+			$id = $this->db->insert_id();
+			$code = $this->input->post('transaction_code'). $id;
+			$this->crud_model->update_data('transaction',array('code' => $code),array('id' => $id ));
+
+			if($this->input->post('customer_name')=='others'){
+						$new_customer = array(
+							'name'=>$this->input->post('new_customer_name'),
+							'email'=>$this->input->post('new_customer_email'),
+							'phone'=>$this->input->post('new_customer_phone'),
+							'address'=>$this->input->post('new_customer_address')
+						);
+						$this->crud_model->insert_data('customers',$new_customer);
+						$customer_id = $this->db->insert_id;
+				}
+				else{
+					$customer_id = $this->input->post('customer_id');
+				}
+
+			for($i = 0; $i < count($this->input->post('product_id')); $i++){
+				$product_code = $this->input->post('product_id')[$i];
+				$product = $this->crud_model->get_by_condition('products',array('code'=>$product_code))->row();
+				
+				$transaction_detail = array(
+						'transaction_code'	=> $code,
+						'product_code'		=> $product_code,
+						'quantity'			=> 1,
+						'from_client_id'	=> $this->id,
+						'to_client_id'		=> $customer_id,
+						'harga_jual'		=> $this->input->post('disc_price')[$i]
+					);
+
+				$this->db->insert('transaction_detail',$transaction_detail);
+
+				if($product->quantity>0){
+					$quantity = $product->quantity - 1;	
+					$this->crud_model->update_data('products',array('quantity' => $quantity),array('code'=>$product_code));
+					
+					
+				}
+				
+			}
+
+			redirect('selling');
+		
+		}else{
+
+			$data['title'] = 'Penjualan';
+			$data['subtitle'] = 'PENJUALAN';
+			$this->template->load('default','selling/customer',$data);
+
+		}
+		
 	
+		
+	}
 
 }
 

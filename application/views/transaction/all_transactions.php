@@ -87,7 +87,7 @@
 				<label for="">Search :</label>
 				<input type="text" class="form-control" id="filter">
 				<?php if($role != 'admin'): ?>
-					<a href="<?php echo base_url('selling') ?>" class="btn btn-primary pull-right">Transaksi Baru</a>
+					<a href="<?php echo base_url('purchase') ?>" class="btn btn-primary pull-right">Transaksi Baru</a>
 				<?php endif; ?>
 			</div>
 			<div class="table-responsive toggle-circle-filled">
