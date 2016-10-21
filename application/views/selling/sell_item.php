@@ -37,7 +37,7 @@
 	}
 	@media only screen and (max-device-width: 767px){
 		#detailrow{
-			border-right: none !important;
+			border-left: none !important;
 		}
 	}
 	
@@ -88,7 +88,7 @@
 	</div>
 </div>
 <div class="row content-wrap" style="margin-top: 10px;margin-bottom:10px;padding: 0px 5px 0px 5px;">
-	<div class="col-md-6" style="border-right:8px solid #e8ecf0;margin-bottom: 0px;padding-bottom: 10px;min-height: 170px" id="detailrow">
+	<div class="col-md-6" style="border-right:8px solid #e8ecf0;margin-bottom: 0px;padding-bottom: 10px;min-height: 220px" id="detailrow">
 		<div class="row text-center">
 			<P class="bebas" style="margin-top: 10px">DETAIL PRODUK</P>
 		</div>
@@ -97,28 +97,31 @@
 		</div>
 		<div class="row" id="detail"></div>
 	</div>
-	<div class="col-md-6" style="margin-bottom: 0px;">
+	<div class="col-md-6" style="margin-bottom: 0px;" id="buyrow">
 		<div class="row text-center">
 			<P class="bebas" style="margin-top: 10px"> PRODUK YANG DIBELI</P>
 		</div>
 		<table class="table table-striped" >
 			<thead><tr>
-				<th>Nama Barang</th>
+				<th width="22%">Nama Barang</th>
 				<th width="12%">Qty.</th>
 				<th>Harga</th>
-				<th width="20%">Disc.</th>
+				<th width="18%">Disc.</th>
 				<th>Total</th>
 				<th></th>
 			</tr></thead>
 			<?php $i=1;?>
 			<tbody id="item_list"><tr class="no-item">
-				<td colspan="5" class="text-center"><P class="bebas" style="color:red">BELUM ADA BARANG</P></td>
+				<td colspan="6" class="text-center"><P class="bebas" style="color:red">BELUM ADA BARANG</P></td>
 			</tr>
 			</tbody>
 			<tfoot>
 				<tr>
 					<td colspan="4"><strong>Total Price</strong></td>
 					<td colspan="2" id="total_price">$ &nbsp; 0</td>
+				</tr>
+				<tr>
+					<td colspan="6" class="text-center"><input type="submit" name="save" class="btn btn-primary" value="Save"></td>
 				</tr>	
 			</tfoot>			
 		</table>
@@ -147,9 +150,9 @@
 						var test = JSON.parse(result);
 						var price = test.selling_price;
 						total_price = +total_price + +price;
-						$('#item_list').append("<tr><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td> <input type='number' class='form-control' onblur='disc("+"\""+test.code+"\""+",this)' name='disc'> </td><td id='harga_disc_"+test.code+"'>$. "+total_price+"</td><td><a onclick='"+test.code+"' style='cursor: pointer'>&times;</a></td></tr>");
+						$('#item_list').append("<tr><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td> <div class='input-group'><input type='number' class='form-control' onblur='disc("+"\""+test.code+"\""+",this)' name='disc'><span class='input-group-addon'>%</span></div></td><td id='harga_disc_"+test.code+"'>$ "+total_price+"</td><td><a onclick='"+test.code+"' style='cursor: pointer'>&times;</a></td></tr>");
 						$('#total_price').empty();
-						$('#total_price').append('$&nbsp;'+total_price)
+						$('#total_price').append('$&nbsp;'+total_price);
 
 				}
 			})
@@ -178,7 +181,7 @@
 			
 			
 		}else{
-			$('.no-item').remove();
+			
 			$('#found').remove();
 			$('#detail').empty();
 			$.ajax({

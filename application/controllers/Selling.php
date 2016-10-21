@@ -16,6 +16,7 @@ class Selling extends MY_Controller{
 
 	public function get_barcode($barcode){
 		if($this->db->get_where('products',array('code'=>$barcode))->num_rows() > 0){
+			echo '<script>$(".no-item").remove()</script>';
 			$product = $this->db->get_where('products',array('code'=>$barcode))->row();
 			$category = $this->crud_model->get_by_condition('category',array('id'=>$product->category))->row();
 			$specifications = $this->crud_model->get_by_condition('spesifikasi',array('kode_barang'=>$product->code))->result();
@@ -61,14 +62,13 @@ class Selling extends MY_Controller{
 			
 			
 			echo '</tbody></table>';
-			if($product->quantity != 0){
-				echo '<div class="text-center"><input type="submit" class="btn btn-default btn-custom" value="SAVE" name="save"></div>';
-			}
 
 		}
 		else{
+			echo '<script>$(".no-item").remove()</script>';
 			//echo '<div class="text-center"><p class="bebas">Item not found</p></div>';
 			echo '<script>$(".product-table>tbody").append("<tr id=\"found\"><td colspan=\"2\"><div class=\"text-center\"><p class=\"bebas\" id=\"not_found\">Item not found</p></div></td></tr>")</script>';
+			echo '<script>$("#detail").append("<div class=\"text-center no-item\" style=\"margin-top: 20PX;\"><P class=\"bebas\" style=\"color:red\">PRODUK TIDAK ADA</P></div>")</script>';
 		}
 	}
 
@@ -79,6 +79,7 @@ class Selling extends MY_Controller{
 			
 			if($product->quantity>0){
 				echo json_encode($product);
+				
 			}
 		}
 	}
