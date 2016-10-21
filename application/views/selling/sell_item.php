@@ -86,9 +86,10 @@
 				</div>
 			</div>
 		</div> -->	
-		<?php echo form_open_multipart('selling/sell_product') ?>
+		
 	</div>
 </div>
+
 <div class="row content-wrap" style="margin-top: 10px;margin-bottom:10px;padding: 0px 5px 0px 5px;">
 	<div class="col-md-6" style="margin-bottom: 0px;padding-bottom: 10px;" id="detailrow">
 		<div class="row text-center">
@@ -106,6 +107,7 @@
 		<div class="row" style="margin-bottom: 15px;">
 			<div class="col-sm-5"><label>Kode Transaksi</label><input type="text" name="transaction_code" class="form-control" placeholder="Kode Transaksi"></div>
 		</div>
+		<?php echo form_open('selling/sell_product') ?>
 		<table class="table table-striped" >
 			<thead><tr>
 				<th width="22%">Nama</th>
@@ -157,7 +159,7 @@
 						var test = JSON.parse(result);
 						var price = test.selling_price;
 						total_price = +total_price + +price;
-						$('#item_list').append("<tr><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td> <div class='input-group'><input type='number' class='form-control' onblur='disc("+"\""+test.code+"\""+",this)' name='disc'><span class='input-group-addon'>%</span></div></td><td id='harga_disc_"+test.code+"'>$ "+test.selling_price+"</td><td><a onclick='"+test.code+"' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'><input type='hidden' name='disc_price[]' id='disc_price_"+test.code+"' value='"+test.selling_price+"'> ");
+						$('#item_list').append("<tr><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td> <div class='input-group'><input type='number' class='form-control' onblur='get_discount("+"\""+test.code+"\""+",this)' name='disc'><span class='input-group-addon'>%</span></div></td><td id='harga_disc_"+test.code+"'>$ "+test.selling_price+"</td><td><a onclick='"+test.code+"' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'><input type='hidden' name='disc_price[]' id='disc_price_"+test.code+"' value='"+test.selling_price+"'> ");
 						$('#total_price').empty();
 						$('#total_price').append('$&nbsp;'+total_price);
 
@@ -167,7 +169,7 @@
 		
 	}
 
-	function disc(code,el){
+	function get_discount(code,el){
 		if($(el).val() != ''){
 			var harga = $('#harga_'+code).html();
 			var disc_price = $('#harga_disc_'+code).html();
