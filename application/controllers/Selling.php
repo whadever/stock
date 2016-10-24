@@ -141,10 +141,10 @@ class Selling extends MY_Controller{
 						);
 						$this->crud_model->insert_data('customers',$new_customer);
 						$customer_id = $this->db->insert_id;
-				}
-				else{
-					$customer_id = $this->input->post('customer_id');
-				}
+			}
+			else{
+				$customer_id = $this->input->post('customer_name');
+			}
 
 			for($i = 0; $i < count($this->input->post('product_id')); $i++){
 				$product_code = $this->input->post('product_id')[$i];
@@ -170,7 +170,7 @@ class Selling extends MY_Controller{
 				
 			}
 
-			redirect('selling');
+			redirect('transaction');
 		
 		}else{
 

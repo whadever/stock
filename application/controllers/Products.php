@@ -16,15 +16,15 @@ class Products extends MY_Controller{
 		$this->all_products();
 	}
 
-	public function add(){
-		if($this->user_role == 'admin'){
-			redirect('products');
-		}
-		$data['title'] = 'Products';
-		$data['subtitle'] = 'PRODUCTS';
-		$data['categories'] = $this->crud_model->get_data('category')->result();
-		$this->template->load('default','products/input_product',$data);
-	}
+	// public function add(){
+	// 	if($this->user_role == 'admin'){
+	// 		redirect('products');
+	// 	}
+	// 	$data['title'] = 'Products';
+	// 	$data['subtitle'] = 'PRODUCTS';
+	// 	$data['categories'] = $this->crud_model->get_data('category')->result();
+	// 	$this->template->load('default','products/input_product',$data);
+	// }
 
 	public function all_products(){
 		$data['title'] = 'Products';
@@ -103,85 +103,85 @@ class Products extends MY_Controller{
 		}
 	}	
 
-	public function add_product(){
-		if ($this->input->post('save')) {
+	// public function add_product(){
+	// 	if ($this->input->post('save')) {
 
-			$config['allowed_types']        = 'jpg|png|jpeg';
-            $config['max_size']             = 5000;			
-			$config['upload_path']          = 'uploads/products/'.$this->input->post('item_code');
-			$config['overwrite']			= true;
-			$config['file_name']			= 'photo.jpg';
-			$this->upload->initialize($config);
+	// 		$config['allowed_types']        = 'jpg|png|jpeg';
+ //            $config['max_size']             = 5000;			
+	// 		$config['upload_path']          = 'uploads/products/'.$this->input->post('item_code');
+	// 		$config['overwrite']			= true;
+	// 		$config['file_name']			= 'photo.jpg';
+	// 		$this->upload->initialize($config);
 
-			//Check if the folder for the upload existed
-			if(!file_exists($config['upload_path']))
-			{
-				//if not make the folder so the upload is possible
-				mkdir($config['upload_path'], 0777, true);
-			}
+	// 		//Check if the folder for the upload existed
+	// 		if(!file_exists($config['upload_path']))
+	// 		{
+	// 			//if not make the folder so the upload is possible
+	// 			mkdir($config['upload_path'], 0777, true);
+	// 		}
 
-            if ($this->upload->do_upload('photo'))
-            {	
-            	$image = $this->upload->data();
-                //Get the link for the database
-                $photo = $config ['upload_path'] . '/' . $config['file_name'];
-                $thumb = $config ['upload_path'] . '/' .'photo_thumb'.$image['file_ext'];
+ //            if ($this->upload->do_upload('photo'))
+ //            {	
+ //            	$image = $this->upload->data();
+ //                //Get the link for the database
+ //                $photo = $config ['upload_path'] . '/' . $config['file_name'];
+ //                $thumb = $config ['upload_path'] . '/' .'photo_thumb'.$image['file_ext'];
 
-               //image_moo
-				$this->image_moo
-					->load($config ['upload_path'] . '/' . $config['file_name'])
-					->resize_crop(300,300)
-					->save_pa('' ,'_thumb');
+ //               //image_moo
+	// 			$this->image_moo
+	// 				->load($config ['upload_path'] . '/' . $config['file_name'])
+	// 				->resize_crop(300,300)
+	// 				->save_pa('' ,'_thumb');
 
-				$this->image_moo
-					->load($config ['upload_path'] . '/' . $config['file_name'])
-					->resize_crop(800,600)
-					->save($config ['upload_path'] . '/' . $config['file_name'],TRUE);
-				echo "success";
+	// 			$this->image_moo
+	// 				->load($config ['upload_path'] . '/' . $config['file_name'])
+	// 				->resize_crop(800,600)
+	// 				->save($config ['upload_path'] . '/' . $config['file_name'],TRUE);
+	// 			echo "success";
 
-            }
-            else{
-            	$photo = 'uploads/products/no-photo.png';
-            	$thumb = 'uploads/products/no-photo.png';
-            }
+ //            }
+ //            else{
+ //            	$photo = 'uploads/products/no-photo.png';
+ //            	$thumb = 'uploads/products/no-photo.png';
+ //            }
 
-            $code = $this->input->post('item_code');
+ //            $code = $this->input->post('item_code');
 			
-			$data_insert = array(
+	// 		$data_insert = array(
 
-					'code' 			=> $code,
-					'name' 			=> $this->input->post('item_name'),
-					'model'			=> $this->input->post('item_model'),
-					'buying_price' 	=> $this->input->post('item_buy'),
-					'selling_price'	=> $this->input->post('item_sell'),
-					'category' 		=> $this->input->post('item_category'),
-					'photo' 		=> $photo,
-					'thumb' 		=> $thumb,
-					'outlet_id'		=> $this->id
+	// 				'code' 			=> $code,
+	// 				'name' 			=> $this->input->post('item_name'),
+	// 				'model'			=> $this->input->post('item_model'),
+	// 				'buying_price' 	=> $this->input->post('item_buy'),
+	// 				'selling_price'	=> $this->input->post('item_sell'),
+	// 				'category' 		=> $this->input->post('item_category'),
+	// 				'photo' 		=> $photo,
+	// 				'thumb' 		=> $thumb,
+	// 				'outlet_id'		=> $this->id
 
-				);
+	// 			);
 
-			if($this->input->post('spec')){
-				for($i = 0; $i < count($this->input->post('spec')); $i++){
-					if($this->input->post('spec')[$i] != ''){
-						$data_spec = array(
-								'kode_barang' => $code,
-								'spec'		  => $this->input->post('spec')[$i]
+	// 		if($this->input->post('spec')){
+	// 			for($i = 0; $i < count($this->input->post('spec')); $i++){
+	// 				if($this->input->post('spec')[$i] != ''){
+	// 					$data_spec = array(
+	// 							'kode_barang' => $code,
+	// 							'spec'		  => $this->input->post('spec')[$i]
 
-							);
-						$this->crud_model->insert_data('spesifikasi',$data_spec);
-					}
-				}
+	// 						);
+	// 					$this->crud_model->insert_data('spesifikasi',$data_spec);
+	// 				}
+	// 			}
 				
-			}
+	// 		}
 
-			$this->crud_model->insert_data('products',$data_insert);
+	// 		$this->crud_model->insert_data('products',$data_insert);
 
 			
 
-			redirect('products');
-		}
-	}
+	// 		redirect('products');
+	// 	}
+	// }
 
 
 

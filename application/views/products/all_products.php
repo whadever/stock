@@ -27,9 +27,9 @@
 			<div class="form-group" style="margin-bottom: 20px">
 				<label for="">Search :</label>
 				<input type="text" class="form-control" id="filter">
-				<?php if($role != 'admin'): ?>
+				<!-- <?php #if($role != 'admin'): ?>
 					<a href="<?php echo base_url('products/add') ?>" class="btn btn-primary pull-right">Add Product</a>
-				<?php endif; ?>
+				<?php #endif; ?> -->
 			</div>
 			<div class="table-responsive toggle-circle-filled">
 			<table class="table table-condensed" data-filter="#filter" data-page-size="10" id="table_product">

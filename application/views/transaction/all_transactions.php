@@ -39,14 +39,14 @@
 					 	<th data-hide="phone">Kode</th>
 					 	<th data-toggle="true">Tanggal</th>
 					 	<th data-type="numeric">Nama Barang</th>
-					 	<th data-hide="phone">Kuantitas</th>
+					 	<!-- <th data-hide="phone">Kuantitas</th> -->
 					 	<th data-type="numeric" data-hide="phone">Customer</th>
-					 	<th data-type="numeric" data-hide="phone">Detail</th>
-					 	<?php if($role != 'admin'): ?>
+					 	<th data-type="numeric" data-hide="phone">Total Transaksi</th>
+					 	<!-- <?php //if($role != 'admin'): ?>
 					 		<th data-hide="phone">Tindakan</th>
-						<?php else: ?>
+						<?php //else: ?>
 						 	<th data-hide="phone">Lokasi</th>
-						<?php endif; ?>
+						<?php //endif; ?> -->
 					 </tr>
 				</thead>
 				<tbody>
@@ -54,20 +54,17 @@
 						<tr>
 							<td><?php echo $i ?></td>
 							<td><?php echo $selling->code ?></td>
-							<td><?php echo $selling->name ?></td>
-							<td><?php echo $product->model ?></td>
-							<td><?php echo $product->category ?></td>
-							<td><?php echo rupiah($product->buying_price) ?></td>
-							<td><?php echo rupiah($product->selling_price) ?></td>
-							<td>
-							<?php echo ($product->quantity==0)? '<p class="nostock">Out of stock</p>':'Available' ?>	
-							</td>
-							<td><a class="fancybox" rel="group" href="<?php echo base_url().$product->photo ?>"><img src="<?php echo base_url().$product->thumb ?>" alt="<?php echo $product->name ?>" width="40"/></a></td>
-							<?php if($role != 'admin'): ?>
-						 		<td><a href="<?php echo base_url('products/edit_product').'/'.$product->code?>">edit</a> | delete</td>
-							<?php else: ?>
-							 	<td><?php echo $product->outlet_name ?></td>
-							<?php endif; ?>
+							<?php $date = strtotime($selling->transaction_date)?>
+							<td><?php echo date('d/m/Y H:i',$date) ?></td>
+							<td><?php echo $selling->product_name ?></td>
+							<td><?php echo $selling->customer_name ?></td>
+							<td>$ <?php echo $selling->total_harga ?></td>
+							<!-- <td><a href="<?php #echo base_url('transactions/edit_customer').'/'.$selling->code?>">edit</a> | delete</td> -->
+							<!-- <?php //if($role != 'admin'): ?>
+						 		<td><a href="<?php //echo base_url('products/edit_product').'/'.$product->code?>">edit</a> | delete</td>
+							<?php //else: ?>
+							 	<td><?php #echo $product->outlet_name ?></td>
+							<?php #endif; ?> -->
 							
 						</tr>
 					<?php $i++; endforeach; ?>
