@@ -170,7 +170,7 @@
 						var price = test.selling_price;
 						total_price = +total_price + +price;
 						total_price = total_price.toFixed(2);
-						$('#item_list').append("<tr id='row_"+test.code+"' ><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td> <div class='input-group'><input type='number' class='form-control' onblur='get_discount("+"\""+test.code+"\""+",this)' max=100 min=0 name='disc'><span class='input-group-addon'>%</span></div></td><td id='harga_disc_"+test.code+"'>$ "+test.selling_price+"</td><td><a onclick='remove_item("+test.code+")' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'><input type='hidden' name='disc_price[]' id='disc_price_"+test.code+"' value='"+test.selling_price+"'> ");
+						$('#item_list').append("<tr id='row_"+test.code+"' ><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td> <div class='input-group'><input type='number' class='form-control' onblur='get_discount("+"\""+test.code+"\""+",this)' max=100 min=0 name='disc'><span class='input-group-addon'>%</span></div></td><td id='harga_disc_"+test.code+"'>$ "+test.selling_price+"</td><td><a onclick='remove_item(\""+test.code+"\")' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'><input type='hidden' name='disc_price[]' id='disc_price_"+test.code+"' value='"+test.selling_price+"'> ");
 						$('#total_price').empty();
 						$('#total_price').append('$&nbsp;'+total_price);
 						$('#total_harga').val(total_price);
@@ -269,6 +269,18 @@
               type: 'GET',
 
               success: function(result){
+              	var harga = $('#harga_'+code).html();
+				harga = harga.replace(/[^0-9.]/g, "");
+				var disc_price = $('#harga_disc_'+code).html();
+				disc_price = disc_price.replace(/[^0-9.]/g, "");
+				total_price = +total_price - +disc_price;
+				
+				total_price = Number(total_price).toFixed(2);
+				
+				$('#total_price').empty();
+				$('#total_price').append("$ "+total_price);
+
+				$('#total_harga').val(total_price);
               	$('#row_'+code).remove();
                     
                 
