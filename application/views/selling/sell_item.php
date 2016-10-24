@@ -135,7 +135,7 @@
 		
 		</div>
 		<div class="row text-center">
-			<input type="submit" name="save" class="btn btn-primary" value="Save">
+			<input type="submit" name="next" class="btn btn-primary" value="Next">
 		</div>	
 	</div>
 	<?php echo form_close(); ?>
@@ -160,6 +160,9 @@
 				url:"<?php echo base_url('selling/list_item')?>"+'/'+ barcode,
 				type:"GET",
 				success : function(result){
+					if(result == 'added'){
+
+					}else{
 						var test = JSON.parse(result);
 						var price = test.selling_price;
 						total_price = +total_price + +price;
@@ -170,6 +173,8 @@
 						$('#total_harga').val(total_price);
 
 						$('.table-sell').footable();
+					}
+						
 
 
 				}

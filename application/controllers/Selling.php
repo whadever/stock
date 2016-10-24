@@ -12,13 +12,12 @@ class Selling extends MY_Controller{
 	}
 
 	public function index(){
-		$data['title'] = 'Penjualan';
-		$data['subtitle'] = 'PENJUALAN';
-		$this->template->load('default','selling/sell_item',$data);
+		$this->sell_product();
 	}
 
 	public function get_barcode($barcode){
 		if($this->db->get_where('products',array('code'=>$barcode))->num_rows() > 0){
+
 			echo '<script>$(".no-item").remove()</script>';
 			$product = $this->db->get_where('products',array('code'=>$barcode))->row();
 			$category = $this->crud_model->get_by_condition('category',array('id'=>$product->category))->row();
@@ -64,7 +63,10 @@ class Selling extends MY_Controller{
 //			}
 			
 			
-			echo '</tbody></table>';
+			echo '</tbody></table>';	
+
+
+			
 
 		}
 		else{
@@ -80,10 +82,16 @@ class Selling extends MY_Controller{
 			$product = $this->db->get_where('products',array('code'=>$barcode))->row();
 			$customers = $this->crud_model->get_data('customers')->result();
 			
-			if($product->quantity>0){
-				echo json_encode($product);
+			if($this->db->get_where('cart',array('product_code'=>$barcode))->num_rows() > 0){
+				echo 'added';
+			}else{
+				$this->db->insert('cart',array('product_code' => $barcode, 'quantity' => 1));
+					if($product->quantity>0){
+					echo json_encode($product);
 
+				}
 			}
+			
 		}
 	}
 
@@ -97,6 +105,7 @@ class Selling extends MY_Controller{
 			$this->finish_transaction($data);
 		}
 		else{
+			$this->db->empty_table('cart');
 			$data['title'] = 'Penjualan';
 			$data['subtitle'] = 'PENJUALAN';
 			$this->template->load('default','selling/sell_item',$data);
