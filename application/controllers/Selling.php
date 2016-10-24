@@ -95,6 +95,10 @@ class Selling extends MY_Controller{
 		}
 	}
 
+	public function remove($code){
+		$this->db->delete('cart',array('product_code' => $code));
+	}
+
 	public function sell_product(){
 		if($this->input->post('next')){
 			$data['transaction_code'] = $this->input->post('transaction_code');
