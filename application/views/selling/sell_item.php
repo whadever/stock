@@ -244,12 +244,7 @@
 				success : function(result){
 
 					$('#detail').append(result);
-					$('#customer_name').change(function(){
-						if($(this).val()=='others'){
-							$('#customer').append('<table><tbody><tr><td><input type="text" class="form-control" name="new_customer_name" placeholder="Name" required=1 ></td></tr><tr><td><input type="text" class="form-control" name="new_customer_email" placeholder="Email" required=1></td></tr><tr><td><input type="text" class="form-control" name="new_customer_phone" placeholder="Phone" required=1></td></tr><tr><td><input type="text" class="form-control" name="new_customer_address" placeholder="Address" required=1></td></tr></tbody></table>');	
-						}
-						
-					});
+					
 					$('#belum_ada').remove();
 					$('#item_code').val('');
 					$('#item_code').focus();

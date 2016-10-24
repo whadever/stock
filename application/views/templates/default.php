@@ -203,18 +203,17 @@
 
         <a href="<?php echo base_url('main') ?>"><i class="fa fa-home" aria-hidden="true"></i><span class="menu-text pull-right">Home</span></a>
        
-        <a href="<?php echo base_url('main/scan_item') ?>" ><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span><span class="menu-text pull-right" >Scan Items</span></a>
-              
-
-       
         <a href="<?php echo base_url('products') ?>" ><i id="template-button" class="fa fa-archive" aria-hidden="true"></i><span class="menu-text pull-right" >Products</span></a>
         <a href="<?php echo base_url('products/all_category') ?>" ><i id="template-button" class="glyphicon glyphicon-tags" aria-hidden="true"></i><span class="menu-text pull-right" >Category</span></a>
         <?php if($role == 'admin'): ?>
 
           <a href="<?php echo base_url('outlets') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Outlets</span></a>
         <?php else: ?>
-          <a href="<?php echo base_url('mutasi') ?>" ><span class="fa fa-money" aria-hidden="true"></span><span class="menu-text pull-right" >Mutasi</span></a>
-          <a href="<?php echo base_url('transaction') ?>" ><span class="fa fa-shopping-cart" aria-hidden="true"></span><span class="menu-text pull-right" >Transaksi</span></a>
+          <a href="<?php echo base_url('mutasi') ?>" ><span class="fa fa-institution" aria-hidden="true"></span><span class="menu-text pull-right" >Mutasi</span></a>
+          <a href="<?php echo base_url('transaction') ?>" ><span class="fa fa-money" aria-hidden="true"></span><span class="menu-text pull-right" >Transaksi</span></a>
+
+          <a href="<?php echo base_url('selling') ?>" ><span class="fa fa-shopping-cart" aria-hidden="true"></span><span class="menu-text pull-right" >Penjualan</span></a>
+
         <?php endif; ?>
         <a href="<?php echo base_url('customers') ?>" ><i id="template-button" class="fa fa-users" aria-hidden="true"></i><span class="menu-text pull-right" >Customer</span></a>
 
