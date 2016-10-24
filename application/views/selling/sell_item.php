@@ -108,7 +108,7 @@
 			<P class="bebas" style="margin-top: 10px">PRODUK YANG DIBELI</P>
 		</div>
 		<div class="row" style="margin-bottom: 15px;">
-			<div class="col-sm-5"><label>Kode Transaksi</label><input type="text" name="transaction_code" class="form-control" placeholder="Kode Transaksi"></div>
+			<div class="col-sm-5"><label>Kode Transaksi</label><input type="text" name="transaction_code" class="form-control" placeholder="Kode Transaksi" required="1"></div>
 		</div>
 
 		<?php echo form_open('selling/sell_product') ?>
