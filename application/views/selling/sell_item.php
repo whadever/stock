@@ -164,7 +164,7 @@
 						var price = test.selling_price;
 						total_price = +total_price + +price;
 						total_price = total_price.toFixed(2);
-						$('#item_list').append("<tr><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td> <div class='input-group'><input type='number' class='form-control' onblur='get_discount("+"\""+test.code+"\""+",this)' max=100 min=0 name='disc'><span class='input-group-addon'>%</span></div></td><td id='harga_disc_"+test.code+"'>$ "+test.selling_price+"</td><td><a onclick='"+test.code+"' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'><input type='hidden' name='disc_price[]' id='disc_price_"+test.code+"' value='"+test.selling_price+"'> ");
+						$('#item_list').append("<tr><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td> <div class='input-group'><input type='number' class='form-control' onblur='get_discount("+"\""+test.code+"\""+",this)' max=100 min=0 name='disc'><span class='input-group-addon'>%</span></div></td><td id='harga_disc_"+test.code+"'>$ "+test.selling_price+"</td><td><a onclick='remove_item("+data+")' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'><input type='hidden' name='disc_price[]' id='disc_price_"+test.code+"' value='"+test.selling_price+"'> ");
 						$('#total_price').empty();
 						$('#total_price').append('$&nbsp;'+total_price);
 						$('#total_harga').val(total_price);
@@ -251,6 +251,23 @@
 
 		}
 	}
+
+	function remove_item(product){
+        
+        var result = confirm('Hapus barang?');
+        if(result){
+            $.ajax({
+              url: "<?php echo base_url('selling/remove')?>",
+              data: product,
+              type: 'POST',
+              success: function(result){
+              
+                    
+                location.reload();
+              } 
+            });
+        }
+    }
 
 	function saveCanvas(type, ext) {
 		var canvas = document.getElementById('barcode');
