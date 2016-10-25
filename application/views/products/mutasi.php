@@ -54,7 +54,7 @@
 						<select required="1" class="form-control" id="" name="outlet_distribute">
 						<option value="">--Pilih Outlet--</option>
 						<?php foreach($outlets as $outlet): ?>
-							<option value="<?php echo $outlet->code ?>"><?php echo $outlet->username ?></option>
+							<option value="<?php echo $outlet->id ?>"><?php echo $outlet->username ?></option>
 						<?php endforeach; ?>
 						</select>
 					</td>
@@ -62,7 +62,7 @@
 						<select required="1" class="form-control" id="" name="outlet_distribute">
 						<option value="">--Pilih Driver--</option>
 						<?php foreach($drivers as $driver): ?>
-							<option value="<?php echo $driver->id ?>"><?php echo $driver->name ?></option>
+							<option value="<?php echo $driver->code ?>"><?php echo $driver->name ?></option>
 						<?php endforeach; ?>
 						</select>
 					</td>

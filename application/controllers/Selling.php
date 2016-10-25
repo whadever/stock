@@ -9,6 +9,9 @@ class Selling extends MY_Controller{
 		$this->load->model('product_model');
 		$this->id = $this->session->userdata('is_active');
 		$this->user_role = $this->crud_model->get_by_condition('outlets',array('id' => $this->session->userdata('is_active')))->row('role');
+		if($this->user_role == 'admin'){
+			redirect('main');
+		}
 	}
 
 	public function index(){
