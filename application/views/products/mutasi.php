@@ -29,19 +29,22 @@
 
 <div class="row">
 	<div class="col-md-12 content-wrap">
-		<div class="row" style="border-bottom: 2px solid #2c3e50">
-			<p class="page_subtitle" style="font-size: 28px;margin-bottom: 0px;"> BARANG</p>
-			<p>Status User:</p>
-		</div>
 
-		
-		<div class="row text-center">
-			<input type="submit" class="btn btn-default btn-custom" value="SAVE" name="update">
-		</div>	
-		<?php echo form_close(); ?>
+		<div class="row">
+			<div class="col-xs-6 text-center">
+				<a href="#" class="btn btn-default btn-lg" style="width: 100px; height: 100px">
+				  <span class="glyphicon glyphicon-log-in" aria-hidden="true" style="font-size: 46px"></span><p class="bebas">TERIMA</p>
+				</a>
+			</div>
+			<div class="col-xs-6 text-center">
+				<a href="#" class="btn btn-default btn-lg" style="width: 100px; height: 100px">
+				  <span class="glyphicon glyphicon-log-out" aria-hidden="true" style="font-size: 46px"></span><p class="bebas">KIRIM</p>
+				</a>
+			</div>
+		</div>
 	</div>
 </div>
-		<div class="row" style="margin-top: 20px;">
+		<!-- <div class="row" style="margin-top: 20px;">
 		<?php echo form_open_multipart('products/distribute') ?>
 			<table class="table distribute-table">
 				<tbody>
@@ -97,7 +100,7 @@
 				</tbody>
 			</table>
 		</div>
-		
+		 -->
 		
 <script>
 	jQuery(function(){
