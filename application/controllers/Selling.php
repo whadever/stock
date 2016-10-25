@@ -140,7 +140,7 @@ class Selling extends MY_Controller{
 							'address'=>$this->input->post('new_customer_address')
 						);
 						$this->crud_model->insert_data('customers',$new_customer);
-						$customer_id = $this->db->insert_id;
+						$customer_id = $this->db->insert_id();
 			}
 			else{
 				$customer_id = $this->input->post('customer_name');

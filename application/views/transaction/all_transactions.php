@@ -53,12 +53,12 @@
 					<?php $i=1; foreach($sellings as $selling): ?>
 						<tr>
 							<td><?php echo $i ?></td>
-							<td><?php echo $selling->code ?></td>
+							<td><?php echo $selling->transaction_code ?></td>
 							<?php $date = strtotime($selling->transaction_date)?>
 							<td><?php echo date('d/m/Y H:i',$date) ?></td>
 							<td><?php echo $selling->product_name ?></td>
 							<td><?php echo $selling->customer_name ?></td>
-							<td>$ <?php echo $selling->total_harga ?></td>
+							<td>$ <?php echo $selling->harga_jual ?></td>
 							<!-- <td><a href="<?php #echo base_url('transactions/edit_customer').'/'.$selling->code?>">edit</a> | delete</td> -->
 							<!-- <?php //if($role != 'admin'): ?>
 						 		<td><a href="<?php //echo base_url('products/edit_product').'/'.$product->code?>">edit</a> | delete</td>
