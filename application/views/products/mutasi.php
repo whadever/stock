@@ -24,6 +24,10 @@
 	    opacity: 0;
 	    filter: alpha(opacity=0);
 	}
+	.btn-default:hover{
+		background-color: #e8ecf0;
+		border-color: #e8ecf0;
+	}
 	
 </style>
 
@@ -32,13 +36,19 @@
 
 		<div class="row">
 			<div class="col-xs-6 text-center">
-				<a href="#" class="btn btn-default btn-lg" style="width: 100px; height: 100px">
-				  <span class="glyphicon glyphicon-log-in" aria-hidden="true" style="font-size: 46px"></span><p class="bebas">TERIMA</p>
+				<a href="#" class="btn btn-default btn-lg">
+					<div class="row">
+						<div class="col-sm-6"><img class="img-responsive" src="<?php echo base_url('assets/receive.png')?>" style="max-height: 150px;"></div>
+						<div class="col-sm-6"><p class="bebas" style="font-size: 50px;margin-top: 35%">TERIMA</p></div>
+					</div>
 				</a>
 			</div>
 			<div class="col-xs-6 text-center">
-				<a href="#" class="btn btn-default btn-lg" style="width: 100px; height: 100px">
-				  <span class="glyphicon glyphicon-log-out" aria-hidden="true" style="font-size: 46px"></span><p class="bebas">KIRIM</p>
+				<a href="#" class="btn btn-default btn-lg">
+					<div class="row">
+						<div class="col-sm-6"><img class="img-responsive" src="<?php echo base_url('assets/send.png')?>" ></div>
+						<div class="col-sm-6"><p class="bebas" style="font-size: 50px;margin-top: 35%">KIRIM</p></div>
+					</div>
 				</a>
 			</div>
 		</div>
