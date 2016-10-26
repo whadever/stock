@@ -11,11 +11,6 @@
 		}
 
 		public function index(){
-			
-			$this->purchase_item();
-		}
-
-		public function purchase_item(){
 			if($this->user_role == 'admin'){
 				redirect('products');
 			}

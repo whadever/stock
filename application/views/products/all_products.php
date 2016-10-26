@@ -16,7 +16,6 @@
 
 </style>
 <?php $role = $this->crud_model->get_by_condition('outlets',array('id' => $this->session->userdata('is_active')))->row('role'); ?>
-<button onclick="javascript:window.print()">print</button>
 <div class="row">
 	<div class="col-md-12 content-wrap">
 		<div class="row" style="border-bottom: 2px solid #2c3e50">
@@ -66,7 +65,7 @@
 							</td>
 							<td><a class="fancybox" rel="group" href="<?php echo base_url().$product->photo ?>"><img src="<?php echo base_url().$product->thumb ?>" alt="<?php echo $product->name ?>" width="40"/></a></td>
 							<?php if($role != 'admin'): ?>
-						 		<td><a href="<?php echo base_url('products/edit_product').'/'.$product->code?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> | <i class="fa fa-trash" aria-hidden="true"></i> | <i class="fa fa-print" aria-hidden="true"></i></td>
+						 		<td><a href="<?php echo base_url('products/edit_product').'/'.$product->code?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> | <a onclick="delete_product('<?php echo $product->code ?>')"><i class="fa fa-trash" aria-hidden="true"></i></a> | <a href="<?php echo base_url('products/print_product').'/'.$product->code ?>"><i class="fa fa-print" aria-hidden="true"></i></a></td>
 							<?php else: ?>
 							 	<td><?php echo $product->outlet_name ?></td>
 							<?php endif; ?>
@@ -131,7 +130,20 @@
 	$(document).ready(function() {
    	 $('#table_product').footable();
    	 $(".fancybox").fancybox();
+   	 <?php if($this->session->flashdata('success')): ?>
+   	 <?php echo $this->session->flashdata('success') ?>
+   	 <?php endif; ?>
 	} );
+
+	function delete_product(code){
+		alertify.confirm("Message", function (e) {
+	    if (e) {
+	        location.replace("<?php echo base_url() ?>" + "products/delete_product/" + code);
+	    } else {
+	        // user clicked "cancel"
+	    }
+	});
+	}
 </script>
 
 
