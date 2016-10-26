@@ -1,13 +1,25 @@
+<style type="text/css">
+	.table>tbody>tr>td{
+		border:none !important;
+	}
+</style>
 		<div class="row content-wrap" style="margin-top: 20px;">
 		<?php echo form_open_multipart('products/distribute') ?>
 			<table class="table distribute-table">
 				<tbody>
 				<tr>
+					<td colspan="2"><p class="bebas">Kode Transaksi</p></td>
+					
+				</tr>
+				<tr>
+					<td colspan="2"><input type="text" name="transaction_code" placeholder="Kode Transaksi" class="form-control" required="1"></td>
+				</tr>
+				<tr>
 					<td><p class="bebas">PILIH OUTLET</p></td>
 					<td><p class="bebas">PILIH DRIVER</p></td>
 				</tr>
 				<tr>
-					<td style="padding-right: 5%;">
+					<td>
 						<select required="1" class="form-control" id="" name="outlet_distribute">
 						<option value="">--Pilih Outlet--</option>
 						<?php foreach($outlets as $outlet): ?>
@@ -25,14 +37,20 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="table_detail" colspan="2" style="padding-bottom: 0px;"><p class="bebas">PRODUK YANG DIKIRIM</p></td>
+					<td colspan="2"><p class="bebas">Daftar Barang</p></td>
 				</tr>
 				<tr>
+					<td colspan="2"><input type="text" name="product_code" placeholder="Kode Barang" class="form-control" required="1"></td>
+				</tr>
+				<!-- <tr>
+					<td class="table_detail" colspan="2" style="padding-bottom: 0px;"><p class="bebas">PRODUK YANG DIKIRIM</p></td>
+				</tr> -->
+				<!-- <tr>
 					<td colspan="2">
 					<table class="table product-table" id="product_table" style="background: transparent;margin-bottom: 0px;">
 						<tbody>
 							<tr>
-							<td>
+							<td style="padding-left: 0px;">
 								<select required="1" class="form-control" id="" name="product_distribute[]">
 									<option value="">--Pilih Produk--</option>
 									<?php foreach($products as $product): ?>
@@ -40,7 +58,7 @@
 									<?php endforeach; ?>
 								</select>
 							</td>
-							<td><input type="text" name="product_quantity[]" placeholder="Jumlah Barang" class="form-control" required="1"></td>
+							<td style="padding-right: 0px;"><input type="text" name="product_quantity[]" placeholder="Jumlah Barang" class="form-control" required="1"></td>
 							</tr>
 						</tbody>
 					</table>
@@ -50,7 +68,7 @@
 					<td>
 						<a href="#" class="btn btn-primary product-add">Tambah Barang</a>
 					</td>
-				</tr>
+				</tr> -->
 				</tbody>
 			</table>
 		</div>
@@ -61,7 +79,7 @@
     	jQuery('a.product-add').click(function(event){
 	        event.preventDefault();
 
-	        var newRow = jQuery('<tr><td><select required="1" class="form-control" id="" name="product_distribute[]"><option>--Pilih Barang--</option></select></td><td><input name="product_quantity[]" placeholder="Jumlah Barang" class="form-control" required="1"/></td></tr>');
+	        var newRow = jQuery('<tr><td style="padding-left: 0px;"><select required="1" class="form-control" id="" name="product_distribute[]"><option>--Pilih Barang--</option></select></td><td style="padding-right: 0px;"><input name="product_quantity[]" placeholder="Jumlah Barang" class="form-control" required="1"/></td></tr>');
 	        jQuery('table#product_table').append(newRow);
 
     	});

@@ -24,7 +24,7 @@
 	    opacity: 0;
 	    filter: alpha(opacity=0);
 	}
-	.btn-default:hover{
+	.btn-default:hover,.btn-default:focus{
 		background-color: #e8ecf0;
 		border-color: #e8ecf0;
 	}
@@ -44,7 +44,7 @@
 				</a>
 			</div>
 			<div class="col-xs-6 text-center">
-				<a href="#" class="btn btn-default btn-lg">
+				<a href="<?php echo base_url('mutasi/send')?>" class="btn btn-default btn-lg">
 					<div class="row">
 						<div class="col-sm-6"><img class="img-responsive" src="<?php echo base_url('assets/send.png')?>" ></div>
 						<div class="col-sm-6"><p class="bebas" style="font-size: 50px;margin-top: 35%">KIRIM</p></div>

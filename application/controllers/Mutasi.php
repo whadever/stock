@@ -23,7 +23,7 @@ class Mutasi extends MY_Controller
 		$data['products'] = $this->product_model->getAllProducts($this->id);
 		$data['outlets'] = $this->crud_model->get_data('outlets')->result();
 		$data['drivers'] = $this->crud_model->get_data('drivers')->result();
-		$this->template->load('default','products/mutasi',$data);
+		$this->template->load('default','mutasi/main',$data);
 
 	}
 
@@ -36,7 +36,7 @@ class Mutasi extends MY_Controller
 		$data['products'] = $this->product_model->getAllProducts($this->id);
 		$data['outlets'] = $this->crud_model->get_data('outlets')->result();
 		$data['drivers'] = $this->crud_model->get_data('drivers')->result();
-		$this->template->load('default','mutasi/kirim',$data);		
+		$this->template->load('default','mutasi/send',$data);		
 	}
 }
 
