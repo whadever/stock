@@ -12,7 +12,7 @@ class Transaction_model extends CI_Model{
 		$this->db->order_by('transaction_detail.product_code','asc');
 
 		return $this->db->get()->result();
-	}
+	}	
 
 }
 
