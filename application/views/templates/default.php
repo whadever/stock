@@ -16,10 +16,13 @@
     <link rel="stylesheet" href="<?php echo base_url();?>css/jquery.webui-popover.min.css">
     <link href="<?php echo base_url() ?>css/footable.core.css" type="text/css" rel="stylesheet">
     <link href="<?php echo base_url() ?>css/footable.metro.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url() ?>alertify/themes/alertify.core.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>alertify/themes/alertify.default.css">
     
     
     
     <!-- Javascript -->
+    <script src="<?php echo base_url() ?>alertify/lib/alertify.min.js"></script>
     <script src="<?php echo base_url() ?>js/jquery-1.12.4.min.js"></script>
     <script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
     <script src="<?php echo base_url() ?>js/bootstrap-tour.js"></script>

@@ -57,7 +57,9 @@ class Customers extends MY_Controller
 	}
 
 	public function delete_customer($id){
-			
+		$this->crud_model->delete_data('customers',array('id' => $id));
+		$this->session->set_flashdata('success',"alertify.success('Deleted successfully')");
+		redirect('customers');
 	}
 
 	

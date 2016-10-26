@@ -51,7 +51,7 @@
 							<td><?php echo $customer->phone ?></td>
 							<td><?php echo $customer->email ?></td>
 							<td><?php echo $customer->address ?></td>
-						 	<td><a href="<?php echo base_url('customers/edit_customer').'/'.$customer->id?>">edit</a> | delete</td>
+						 	<td><a href="<?php echo base_url('customers/edit_customer').'/'.$customer->id?>">Edit</a> | <a onclick="delete_cust(<?php echo $customer->id ?>)">Delete</a></td>
 							
 						</tr>
 					<?php $i++; endforeach; ?>
@@ -90,7 +90,20 @@
 	$(document).ready(function() {
    	 $('#table_product').footable();
    	 $(".fancybox").fancybox();
+   	 <?php if($this->session->flashdata('success')): ?>
+   	 <?php echo $this->session->flashdata('success') ?>
+   	 <?php endif; ?>
 	} );
+
+	function delete_cust(id){
+		alertify.confirm("Message", function (e) {
+	    if (e) {
+	        location.replace("<?php echo base_url() ?>" + "customers/delete_customer/" + id);
+	    } else {
+	        // user clicked "cancel"
+	    }
+	});
+	}
 </script>
 
 
