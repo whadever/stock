@@ -33,7 +33,7 @@
 </div>
 <div class="row">
 	<div class="col-md-12 content-wrap">
-	<button onclick="tambah()">tambah</button>
+	
 		<div class="row" style="border-bottom: 2px solid #2c3e50">
 			<p class="page_subtitle" style="font-size: 28px;margin-bottom: 0px;">NEW CUSTOMER</p>
 			<p>Status User:</p>
@@ -72,9 +72,3 @@
 		<?php echo form_close(); ?>	
 	</div>
 </div>
-
-<script>
-	function tambah(){
-		$('tbody').append("<tr><td class='table_detail'><p class='bebas'>SETY</p></td><td style='padding-right: 9%;'><input type='text' name='sety' placeholder='sety' class='form-control'><input type='hidden' name='hidden_sety[]' value='hiddensety'/></td></tr>");
-	}
-</script>

@@ -28,7 +28,7 @@
 		<?php echo form_open_multipart('user/save_settings/'.$outlets->id) ?>
 		<div class="row" style="margin-top: 20px">
 			<div class="col-sm-2 col-md-1">
-				<div class="avatar" style="background-image : url(<?php echo base_url().$outlets->photo ?>); ">
+				<div class="avatar" style="background-image : url('<?php echo base_url().$outlets->photo ?>'); ">
 				</div>
 				
 			</div>

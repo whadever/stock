@@ -27,7 +27,7 @@ class User extends MY_Controller {
 		if($this->input->post('save')){
 			
 			$config['allowed_types']        = 'jpg|png|jpeg';
-            $config['max_size']             = 2000;
+            $config['max_size']             = 5000;
             // $config['max_width']            = 1000;
             // $config['max_height']           = 768;
 
@@ -53,6 +53,11 @@ class User extends MY_Controller {
            		$photo = $data['outlets']->photo;
             }
 
+            $this->image_moo
+				->load($config ['upload_path'] . '/' . $config['file_name'])
+				->resize_crop(300,300)
+				->save($config ['upload_path'] . '/' . $config['file_name'],TRUE);
+
 			$data = array(
 
 				'name' => $this->input->post('name'),
@@ -60,19 +65,13 @@ class User extends MY_Controller {
 				'phone_number' => $this->input->post('phone_number'),
 				'mobile_number' => $this->input->post('mobile_number'),
 				'photo' => $photo,
-				'password'=>hash_password($this->input->post('new_pass'))
 
 				);
 
-		}
-		else{
-			$data = array(
-				'name' => $this->input->post('name'),
-				'address' => $this->input->post('address'),
-				'phone_number' => $this->input->post('phone_number'),
-				'mobile_number' => $this->input->post('mobile_number'),
-				'photo' => $photo
-			);
+			if($this->input->post('new_pass') != ''){
+				$data['password'] = hash_password($this->input->post('new_pass'));
+			}
+
 		}
 
 		$this->crud_model->update_data('outlets',$data,array('id'=>$this->id));

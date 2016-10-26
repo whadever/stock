@@ -18,17 +18,15 @@ class Customers extends MY_Controller
 	public function add_customer(){
 		if($this->input->post('save')){
 			
-			// $customer = array(
-			// 	'name' => $this->input->post('customer_name'),
-			// 	'address' => $this->input->post('customer_address'),
-			// 	'phone' => $this->input->post('customer_telp'),
-			// 	'email' => $this->input->post('customer_mail'),
-			// );
-			// $this->crud_model->insert_data('customers',$customer);
-			// redirect('customers');
-			echo "<pre>";
-			print_r($this->input->post());
-			echo "</pre>";
+			$customer = array(
+				'name' => $this->input->post('customer_name'),
+				'address' => $this->input->post('customer_address'),
+				'phone' => $this->input->post('customer_telp'),
+				'email' => $this->input->post('customer_mail'),
+			);
+			$this->crud_model->insert_data('customers',$customer);
+			redirect('customers');
+			
 		}
 		else{
 			$data['title'] = 'Customers';
@@ -56,6 +54,10 @@ class Customers extends MY_Controller
 			$this->template->load('default','customers/edit_customer',$data);	
 		}
 		
+	}
+
+	public function delete_customer($id){
+			
 	}
 
 	
