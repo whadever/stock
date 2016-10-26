@@ -49,6 +49,10 @@
 			<table class="table product-table">
 				<tbody>
 				<tr>
+					<td class="table_detail"><p class="bebas">KODE TRANSAKSI</p></td>
+					<td style="padding-right: 9%;"><input type="text" name="transaction_code" required="1" placeholder="Kode Transaksi" class="form-control"></td>
+				</tr>
+				<tr>
 					<td class="table_detail"><p class="bebas">NAMA BARANG</p></td>
 					<td style="padding-right: 9%;"><input type="text" name="item_name" required="1" placeholder="Nama Barang" class="form-control"></td>
 				</tr>

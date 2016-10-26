@@ -26,9 +26,10 @@
 			<p class="page_subtitle" style="font-size: 28px;margin-bottom: 0px;">USER SETTINGS</p>
 		</div>
 		<?php echo form_open_multipart('user/save_settings/'.$outlets->id) ?>
+		<?php $img = base_url().$outlets->photo.'?timestamp='.mt_rand(100000000,999999999) ?>
 		<div class="row" style="margin-top: 20px">
 			<div class="col-sm-2 col-md-1">
-				<div class="avatar" style="background-image : url('<?php echo base_url().$outlets->photo ?>'); ">
+				<div class="avatar" style="background-image : url('<?php echo $img ?>'); ">
 				</div>
 				
 			</div>

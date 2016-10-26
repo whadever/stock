@@ -61,7 +61,31 @@
 		            	$thumb = 'uploads/products/no-photo.png';
 		            }
 
+		            $transaction = array(
+
+						'transaction_type_id' => 2,
+						'transaction_date' => date('Y-m-d H:i:s'),
+						'detail' => 'unknown',
+						'total_harga' => $this->input->post('item_buy')
+					);
+
+					$this->crud_model->insert_data('transaction',$transaction);
+					$id = $this->db->insert_id();
+					$transaction_code = $this->input->post('transaction_code'). $id;
+					$this->crud_model->update_data('transaction',array('code' => $transaction_code),array('id' => $id ));
+
 		            $code = $this->input->post('item_code');
+
+		            $transaction_detail = array(
+						'transaction_code'	=> $transaction_code,
+						'product_code'		=> $code,
+						'quantity'			=> 1,
+						'from_client_id'	=> 1,
+						'to_client_id'		=> $this->id,
+						'harga_jual'		=> $this->input->post('item_sell')
+					);
+
+				$this->db->insert('transaction_detail',$transaction_detail);
 					
 					$data_insert = array(
 
