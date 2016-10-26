@@ -121,8 +121,8 @@ class Products extends MY_Controller{
 	public function print_product($code){
 		$data['title'] = 'Products';
 		$data['subtitle'] = 'PRODUCTS';
-		$data['products'] = $this->crud_model->get_by_condition('products',array('code'=>$code))->row();
-		$this->template->load('default','products/detail_product',$data);
+		$data['product'] = $this->crud_model->get_by_condition('products',array('code'=>$code))->row();
+		$this->load->view('products/detail_product',$data);
 	}
 
 

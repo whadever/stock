@@ -1,6 +1,5 @@
+<script src="<?php echo base_url() ?>js/jquery-1.12.4.min.js"></script>
 <script src="<?php echo base_url() ?>js/JsBarcode.all.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>js/canvas-toblob.js"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>js/filesaver.js"></script>
 <style type="text/css">
 	.product-table td{
 		padding-left: 0px !important;
@@ -35,8 +34,12 @@
 		<div class="row" style="margin-top: 20px;">
 			<table class="table product-table">
 				<tbody>
+							
 				<tr>
-					<td></td>
+					<td class="table_detail"><canvas id="barcode" width=1 height=1 style="border:1px solid #fff"></canvas></td>
+					<td style="padding-right: 9%;"
+					<div><a id="saveas" class="btn btn-primary" href="javascript:saveCanvas('image/png','.png')" style="display: none">Save As PNG</a></div>
+					</td>
 				</tr>
 				<tr>
 					<td class="table_detail"><p class="bebas">HARGA BELI</p></td>
@@ -82,27 +85,9 @@
 	</div>
 </div>
 <script>
-	function generate_barcode(){
-
-		if (!$('#item_code').val()) {
-			
-			alert('Kode Barang Harus diisi');
-		}else{
-			$('#saveas').show();
-			JsBarcode("#barcode", $('#item_code').val());
-		}
-		
-		
-	}
-
-	function saveCanvas(type, ext) {
-		var canvas = document.getElementById('barcode');
-		canvas.toBlob(function (blob) {
-						  saveAs(blob, $('#item_code').val() + ext);
-					  }, type, 1);
-		
-	}
-
+	$(document).ready(function(){
+		JsBarcode("#barcode", "<?php echo $product->code ?>");
+	});
 </script>
 
 
