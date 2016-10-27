@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2016 at 09:33 AM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 7.0.6
+-- Generation Time: Oct 27, 2016 at 11:19 AM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -30,20 +30,8 @@ CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
   `product_code` varchar(255) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `outlet_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cart_mutasi`
---
-
-CREATE TABLE `cart_mutasi` (
-  `id` int(11) NOT NULL,
-  `product_code` varchar(255) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `outlet_id` int(11) NOT NULL
+  `outlet_id` int(11) NOT NULL,
+  `transaction_type` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -98,7 +86,7 @@ INSERT INTO `customers` (`id`, `name`, `email`, `phone`, `address`) VALUES
 --
 
 CREATE TABLE `drivers` (
-  `code` varchar(255) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `photo` varchar(255) DEFAULT NULL
@@ -108,9 +96,9 @@ CREATE TABLE `drivers` (
 -- Dumping data for table `drivers`
 --
 
-INSERT INTO `drivers` (`code`, `name`, `address`, `photo`) VALUES
-('D08', 'saranghae', 'koreaa', 'uploads/driver/D08/photo.jpg'),
-('D09', 'irvan', 'kelapa gading', 'uploads/driver/no-photo.png');
+INSERT INTO `drivers` (`id`, `name`, `address`, `photo`) VALUES
+(1, 'saranghae', 'koreaa', 'uploads/driver/D08/photo.jpg'),
+(2, 'irvan', 'kelapa gading', 'uploads/driver/no-photo.png');
 
 -- --------------------------------------------------------
 
@@ -138,7 +126,7 @@ CREATE TABLE `outlets` (
 
 INSERT INTO `outlets` (`id`, `role`, `username`, `password`, `name`, `email`, `address`, `phone_number`, `mobile_number`, `pic`, `photo`) VALUES
 (1, 'admin', 'irvan', 'bccbd5d823fc568cbae5a82069d48c46f36ab27ed0f629af8cb739d984c1e4ea6c71888496d4c42018427401a83043eeae8707de4fdcd0a7108fa5b8996d9b06', 'Irvan Winata', 'irvan@gethassee.com', 'Gading Nirwana blok PF 17 no 11, Kelapa Gading, Jakarta Utara, 14240', '+6281316878995', '+6281316878995', 'irvan', 'uploads/photos/irvan/photo.jpg'),
-(2, 'outlet', 'setyawan', '2beb367e8f1ae90320a4268d7c84a68903be0248acdd63788206d415a7fcbc621279caf5052d7bbe126a0cf3920485b77307d5142eb6402a95ae2cad43298239', 'Setyawan Susanto', 'setyawan@gethassee.com', 'Apartment Puri Park View', '', '', 'setyawan', 'uploads/photos/setyawan/photo.jpg'),
+(2, 'outlet', 'setyawan', 'bccbd5d823fc568cbae5a82069d48c46f36ab27ed0f629af8cb739d984c1e4ea6c71888496d4c42018427401a83043eeae8707de4fdcd0a7108fa5b8996d9b06', 'Setyawan Susanto', 'setyawan@gethassee.com', 'Apartment Puri Park View', '', '', 'setyawan', 'uploads/photos/setyawan/photo.jpg'),
 (3, 'outlet', 'John', 'bccbd5d823fc568cbae5a82069d48c46f36ab27ed0f629af8cb739d984c1e4ea6c71888496d4c42018427401a83043eeae8707de4fdcd0a7108fa5b8996d9b06', 'Jonathan Hosea', 'jonathan@gethassee.com', '', '', '', '', ''),
 (4, 'outlet', 'felita', 'bccbd5d823fc568cbae5a82069d48c46f36ab27ed0f629af8cb739d984c1e4ea6c71888496d4c42018427401a83043eeae8707de4fdcd0a7108fa5b8996d9b06', 'Felita Setiawan', 'felita@gethassee.com', '', '', '', '', 'uploads/photos/felita/photo.jpg'),
 (6, 'outlet', 'FELITOT', 'bccbd5d823fc568cbae5a82069d48c46f36ab27ed0f629af8cb739d984c1e4ea6c71888496d4c42018427401a83043eeae8707de4fdcd0a7108fa5b8996d9b06', 'FELITOT', '', 'GBOLOKKK', '', '', 'FELITA', ''),
@@ -184,20 +172,20 @@ INSERT INTO `products` (`code`, `name`, `model`, `quantity`, `category`, `buying
 -- --------------------------------------------------------
 
 --
--- Table structure for table `spesifikasi`
+-- Table structure for table `specification`
 --
 
-CREATE TABLE `spesifikasi` (
+CREATE TABLE `specification` (
   `id` int(11) NOT NULL,
-  `kode_barang` varchar(255) NOT NULL,
+  `product_code` varchar(255) NOT NULL,
   `spec` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `spesifikasi`
+-- Dumping data for table `specification`
 --
 
-INSERT INTO `spesifikasi` (`id`, `kode_barang`, `spec`) VALUES
+INSERT INTO `specification` (`id`, `product_code`, `spec`) VALUES
 (1, 'RG12389190', '1 Rd D 0.114 Ct'),
 (2, 'awefc21423', '2 Sd 0.467 Ct.'),
 (3, 'awefc21423', '2 Sd 0.467 Ct.'),
@@ -221,26 +209,27 @@ INSERT INTO `spesifikasi` (`id`, `kode_barang`, `spec`) VALUES
 CREATE TABLE `transaction` (
   `id` int(11) NOT NULL,
   `code` varchar(255) NOT NULL,
+  `status` varchar(255) DEFAULT NULL,
   `transaction_type_id` int(11) NOT NULL COMMENT '1 = jual, 2 = beli, 3 = mutasi',
   `transaction_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `detail` varchar(255) NOT NULL,
-  `total_harga` double NOT NULL
+  `total_price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `transaction`
 --
 
-INSERT INTO `transaction` (`id`, `code`, `transaction_type_id`, `transaction_date`, `detail`, `total_harga`) VALUES
-(1, 'b1231', 1, '2016-10-24 00:30:16', 'unknown', 9680),
-(2, 'b98892', 1, '2016-10-24 11:13:36', 'unknown', 804.82),
-(3, 'va123', 1, '2016-10-24 11:16:59', 'unknown', 1188),
-(4, '87bb9874', 1, '2016-10-24 11:24:53', 'unknown', 13680),
-(5, '87bb9875', 1, '2016-10-24 11:25:23', 'unknown', 13680),
-(6, '8123016', 2, '2016-10-26 09:49:17', 'unknown', 8000),
-(7, 'alksdf7', 2, '2016-10-26 11:31:04', 'unknown', 200),
-(8, '19398138', 2, '2016-10-26 11:34:14', 'unknown', 8000),
-(9, '12039029', 2, '2016-10-27 01:00:06', 'unknown', 1500);
+INSERT INTO `transaction` (`id`, `code`, `status`, `transaction_type_id`, `transaction_date`, `detail`, `total_price`) VALUES
+(1, 'b1231', NULL, 1, '2016-10-24 00:30:16', 'unknown', 9680),
+(2, 'b98892', NULL, 1, '2016-10-24 11:13:36', 'unknown', 804.82),
+(3, 'va123', NULL, 1, '2016-10-24 11:16:59', 'unknown', 1188),
+(4, '87bb9874', NULL, 1, '2016-10-24 11:24:53', 'unknown', 13680),
+(5, '87bb9875', NULL, 1, '2016-10-24 11:25:23', 'unknown', 13680),
+(6, '8123016', NULL, 2, '2016-10-26 09:49:17', 'unknown', 8000),
+(7, 'alksdf7', NULL, 2, '2016-10-26 11:31:04', 'unknown', 200),
+(8, '19398138', NULL, 2, '2016-10-26 11:34:14', 'unknown', 8000),
+(9, '12039029', NULL, 2, '2016-10-27 01:00:06', 'unknown', 1500);
 
 -- --------------------------------------------------------
 
@@ -255,24 +244,25 @@ CREATE TABLE `transaction_detail` (
   `quantity` int(11) NOT NULL,
   `from_client_id` int(11) NOT NULL,
   `to_client_id` int(11) NOT NULL,
-  `harga_jual` double NOT NULL
+  `selling_price` double NOT NULL,
+  `receiver` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `transaction_detail`
 --
 
-INSERT INTO `transaction_detail` (`id`, `transaction_code`, `product_code`, `quantity`, `from_client_id`, `to_client_id`, `harga_jual`) VALUES
-(1, 'b1231', '4970129727514', 1, 2, 1, 9680),
-(3, '3', 'RG12389190', 1, 2, 1, 1600),
-(4, 'b98892', 'awefc21423', 1, 2, 2, 804.82),
-(6, 'va123', 'masmasmsas12', 1, 2, 1, 1188),
-(7, '87bb9875', '4970129727514', 1, 2, 4, 9680),
-(8, '87bb9875', '4970129000525', 1, 2, 4, 4000),
-(9, '8123016', '4970129727538', 1, 1, 2, 12000),
-(10, 'alksdf7', '12312', 1, 1, 2, 240),
-(11, '19398138', '9213892134', 1, 1, 2, 15200),
-(12, '12039029', '193102490123', 1, 1, 2, 3000);
+INSERT INTO `transaction_detail` (`id`, `transaction_code`, `product_code`, `quantity`, `from_client_id`, `to_client_id`, `selling_price`, `receiver`) VALUES
+(1, 'b1231', '4970129727514', 1, 2, 1, 9680, NULL),
+(3, '3', 'RG12389190', 1, 2, 1, 1600, NULL),
+(4, 'b98892', 'awefc21423', 1, 2, 2, 804.82, NULL),
+(6, 'va123', 'masmasmsas12', 1, 2, 1, 1188, NULL),
+(7, '87bb9875', '4970129727514', 1, 2, 4, 9680, NULL),
+(8, '87bb9875', '4970129000525', 1, 2, 4, 4000, NULL),
+(9, '8123016', '4970129727538', 1, 1, 2, 12000, NULL),
+(10, 'alksdf7', '12312', 1, 1, 2, 240, NULL),
+(11, '19398138', '9213892134', 1, 1, 2, 15200, NULL),
+(12, '12039029', '193102490123', 1, 1, 2, 3000, NULL);
 
 -- --------------------------------------------------------
 
@@ -305,12 +295,6 @@ ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `cart_mutasi`
---
-ALTER TABLE `cart_mutasi`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -326,7 +310,7 @@ ALTER TABLE `customers`
 -- Indexes for table `drivers`
 --
 ALTER TABLE `drivers`
-  ADD PRIMARY KEY (`code`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `outlets`
@@ -341,9 +325,9 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`code`);
 
 --
--- Indexes for table `spesifikasi`
+-- Indexes for table `specification`
 --
-ALTER TABLE `spesifikasi`
+ALTER TABLE `specification`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -374,11 +358,6 @@ ALTER TABLE `transaction_type`
 ALTER TABLE `cart`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `cart_mutasi`
---
-ALTER TABLE `cart_mutasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
@@ -389,14 +368,19 @@ ALTER TABLE `category`
 ALTER TABLE `customers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
+-- AUTO_INCREMENT for table `drivers`
+--
+ALTER TABLE `drivers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `outlets`
 --
 ALTER TABLE `outlets`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT for table `spesifikasi`
+-- AUTO_INCREMENT for table `specification`
 --
-ALTER TABLE `spesifikasi`
+ALTER TABLE `specification`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `transaction`
