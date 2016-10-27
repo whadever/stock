@@ -2,6 +2,21 @@
 	.table>tbody>tr>td{
 		border:none !important;
 	}
+	.fileUpload {
+	    position: relative;
+	    overflow: hidden;
+	}
+	.fileUpload input.upload {
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    margin: 0;
+	    padding: 0;
+	    font-size: 20px;
+	    cursor: pointer;
+	    opacity: 0;
+	    filter: alpha(opacity=0);
+	}
 </style>
 		<div class="row content-wrap" style="margin-top: 20px;">
 			<div class="col-md-12">
@@ -17,25 +32,35 @@
 							<td colspan="2"><input type="text" name="transaction_code" placeholder="Kode Transaksi" class="form-control" required="1"></td>
 						</tr>
 						<tr>
-							<td><p class="bebas">PILIH OUTLET</p></td>
+							<td width="50%"><p class="bebas">PILIH OUTLET</p></td>
 							<td><p class="bebas">PILIH DRIVER</p></td>
 						</tr>
 						<tr>
-							<td>
+							<td width="50%">
 								<select required="1" class="form-control" id="" name="outlet_distribute">
-								<option value="">--Pilih Outlet--</option>
+								<option value="new">--Pilih Outlet--</option>
 								<?php foreach($outlets as $outlet): ?>
 									<option value="<?php echo $outlet->id ?>"><?php echo $outlet->username ?></option>
 								<?php endforeach; ?>
+
 								</select>
 							</td>
-							<td>
-								<select required="1" class="form-control" id="" name="outlet_distribute">
-								<option value="">--Pilih Driver--</option>
+							<td id="select-driver-row">
+								<select required="1" class="form-control" id="select-driver" name="select-driver">
+								<option value="others">Driver Baru</option>
 								<?php foreach($drivers as $driver): ?>
-									<option value="<?php echo $driver->code ?>"><?php echo $driver->name ?></option>
+									<option value="<?php echo $driver->id ?>"><?php echo $driver->name ?></option>
 								<?php endforeach; ?>
 								</select>
+								<div id="new-driver">
+									<p class="bebas" style="margin-top: 15px;">Data Driver Baru</p>
+									<input type="text" name="driver_name" placeholder="Nama Driver" class="form-control" required="1">
+									<input type="text" name="driver_phone" placeholder="No.Telp Driver" class="form-control" required="1" style="margin-top: 5px;">
+									<div class="fileUpload btn btn-primary" style="margin-top: 5px;">
+									    <span>Upload Foto Driver</span>
+									    <input type="file" id="photo" class="upload" name="photo" />
+									</div>
+								</div>
 							</td>
 						</tr>
 						<tr>
@@ -75,9 +100,6 @@
 						<input type="hidden" name="total_harga" id="total_harga" value="">
 						
 						</div>
-						<div class="row text-center">
-							<input type="submit" name="next" class="btn btn-primary" value="Next">
-						</div>
 						
 					</div>
 					<div class="col-md-6" id="detailrow">
@@ -89,6 +111,9 @@
 						</div>
 						<div class="row" id="detail"></div>
 					</div> 
+				</div>
+				<div class="row text-center" id="continue">
+					
 				</div>
 			</div>
 		</div>
@@ -167,10 +192,12 @@
 
 						var test = JSON.parse(result);
 						var price = test.selling_price;
+						$('#continue').append('<input type="submit" name="next" class="btn btn-default btn-custom" value="Proceed">');
 						$('#item_list').append("<tr id='row_"+test.code+"' ><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td><a onclick='remove_item(\""+test.code+"\")' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'><input type='hidden' name='disc_price[]' id='disc_price_"+test.code+"' value='"+test.selling_price+"'> ");
 						// $('#total_price').empty();
 						// $('#total_price').append('$&nbsp;'+total_price);
 						// $('#total_harga').val(total_price);
+
 					}
 						
 
@@ -180,10 +207,23 @@
 		}
 		
 	}
+
 	$("#item_code").keypress(function(event){
 	    if (event.which == '10' || event.which == '13') {
 	        event.preventDefault();
 	        $('#item_code').blur();
 	    }
+
+	$('#select-driver').change(function(){
+		if($(this).val()=='others'){
+			$('#select-driver-row').append('<div id="new-driver"><p class="bebas" style="margin-top: 15px;">Data Driver Baru</p><input type="text" name="driver_name" placeholder="Nama Driver" class="form-control" required="1"><input type="text" name="driver_phone" placeholder="No.Telp Driver" class="form-control" required="1" style="margin-top: 5px;"><div class="fileUpload btn btn-primary" style="margin-top: 5px;"><span>Upload Foto Driver</span><input type="file" id="photo" class="upload" name="photo" /></div></div>');
+			
+		}
+		else{
+			$('#new-driver').remove();
+			
+		}
+		
+
 	});
 </script>
