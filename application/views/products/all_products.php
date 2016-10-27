@@ -65,7 +65,7 @@
 							</td>
 							<td><a class="fancybox" rel="group" href="<?php echo base_url().$product->photo ?>"><img src="<?php echo base_url().$product->thumb ?>" alt="<?php echo $product->name ?>" width="40"/></a></td>
 							<?php if($role != 'admin'): ?>
-						 		<td><a href="<?php echo base_url('products/edit_product').'/'.$product->code?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> | <a onclick="delete_product('<?php echo $product->code ?>')"><i class="fa fa-trash" aria-hidden="true"></i></a> | <a href="<?php echo base_url('products/print_product').'/'.$product->code ?>"><i class="fa fa-print" aria-hidden="true"></i></a></td>
+						 		<td><a href="<?php echo base_url('products/edit_product').'/'.$product->code?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> | <a onclick="delete_product('<?php echo $product->code ?>')"><i class="fa fa-trash" aria-hidden="true"></i></a> | <a target="_blank" href="<?php echo base_url('products/print_product').'/'.$product->code ?>"><i class="fa fa-print" aria-hidden="true"></i></a></td>
 							<?php else: ?>
 							 	<td><?php echo $product->outlet_name ?></td>
 							<?php endif; ?>

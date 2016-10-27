@@ -9,7 +9,7 @@
 <style>
 	p{
 		margin:0;
-		font-size: 12px;
+		font-size: 10px;
 	}
 
 	.content{
@@ -25,7 +25,7 @@
 			<div class="col-lg-4 content">
 				<div class="row content">
 					<div class="col-xs-3 text-center content">
-						<canvas id="barcode" width=1 height=1 style="border:1px solid #fff"></canvas>
+						<svg id="barcode" width=1 height=1 style="border:1px solid #fff"></svg>
 						<p><strong><?php echo $product->model ?></strong></p>
 						<p><strong><?php echo rupiah($product->selling_price) ?></strong></p>			
 					</div>

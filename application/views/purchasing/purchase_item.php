@@ -45,7 +45,7 @@
 			<p>Status User:</p>
 		</div>
 		<div class="row" style="margin-top: 20px;">
-		<?php echo form_open_multipart('purchasing/purchase_item','id="product_form"') ?>
+		<?php echo form_open_multipart('purchasing',array('id' => 'product_form')) ?>
 			<table class="table product-table">
 				<tbody>
 				<tr>
@@ -173,6 +173,19 @@
 		<?php echo form_close(); ?>
 	</div>
 </div>
+
+<script>
+	$(document).ready(function(){
+		$('#product_form').submit(function(){
+				setTimeout(function(){
+
+					var win = window.open("<?php echo base_url() ?>"+"/products/print_product/" + $('#item_code').val(), '_blank');
+  					win.focus();
+				},2000)
+				
+		});
+	});
+</script>
 
 <script>
 	// function photoload(){
