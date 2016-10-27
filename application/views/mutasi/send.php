@@ -121,7 +121,6 @@
               success: function(result){
  
               	$('#row_'+code).remove();
-                    
                 
               } 
             });
@@ -181,4 +180,10 @@
 		}
 		
 	}
+	$("#item_code").keypress(function(event){
+	    if (event.which == '10' || event.which == '13') {
+	        event.preventDefault();
+	        $('#item_code').blur();
+	    }
+	});
 </script>

@@ -55,7 +55,7 @@
 							<td><?php echo $i ?></td>
 							<td><?php echo $selling->transaction_code ?></td>
 							<?php $date = strtotime($selling->transaction_date)?>
-							<td><?php echo date('d/m/Y H:i',$date) ?></td>
+							<td><?php echo date('d-M-Y H:i',$date) ?></td>
 							<td><?php echo $selling->product_name ?></td>
 							<td><?php echo $selling->customer_name ?></td>
 							<td>$ <?php echo $selling->harga_jual ?></td>
@@ -106,23 +106,21 @@
 					 </tr>
 				</thead>
 				<tbody>
-					<?php $i=1; foreach($sellings as $selling): ?>
+					<?php $i=1; foreach($purchasing as $row): ?>
 						<tr>
 							<td><?php echo $i ?></td>
-							<td><?php echo $selling->code ?></td>
-							<td><?php echo $selling->name ?></td>
-							<td><?php echo $product->model ?></td>
-							<td><?php echo $product->category ?></td>
-							<td><?php echo rupiah($product->buying_price) ?></td>
-							<td><?php echo rupiah($product->selling_price) ?></td>
-							<td>
-							<?php echo ($product->quantity==0)? '<p class="nostock">Out of stock</p>':'Available' ?>	
-							</td>
-							<td><a class="fancybox" rel="group" href="<?php echo base_url().$product->photo ?>"><img src="<?php echo base_url().$product->thumb ?>" alt="<?php echo $product->name ?>" width="40"/></a></td>
+							<td><?php echo $row->transaction_code ?></td>
+							<?php $date = strtotime($row->transaction_date) ?>
+							<td><?php echo date('d-M-Y H:i:s',$date) ?></td>
+							<td><?php echo $row->product_name ?></td>
+							<td><?php echo $row->customer_name ?></td>
+							<td><?php echo rupiah($row->harga_jual) ?></td>
+							
+							
 							<?php if($role != 'admin'): ?>
-						 		<td><a href="<?php echo base_url('products/edit_product').'/'.$product->code?>">edit</a> | delete</td>
+						 		<td><a href="<?php echo base_url('products/edit_product').'/'.$row->product_code?>">edit</a> | delete</td>
 							<?php else: ?>
-							 	<td><?php echo $product->outlet_name ?></td>
+							 	<td><?php echo $row->outlet_name ?></td>
 							<?php endif; ?>
 							
 						</tr>

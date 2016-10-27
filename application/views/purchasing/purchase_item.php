@@ -1,4 +1,4 @@
-<script src="<?php echo base_url() ?>js/JsBarcode.all.min.js"></script>
+<script src="<?php echo base_url() ?>js/JsBarcode.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>js/canvas-toblob.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>js/filesaver.js"></script>
 <style type="text/css">
@@ -88,7 +88,7 @@
 				</tr>				
 				<tr>
 					<td class="table_detail"><p class="bebas">BARCODE</p></td>
-					<td style="padding-right: 9%;"><canvas id="barcode" width=1 height=1 style="border:1px solid #fff"></canvas>
+					<td style="padding-right: 9%;"><svg id="barcode" width=1 height=1 style="border:1px solid #fff"></svg>
 					<div><a id="saveas" class="btn btn-primary" href="javascript:saveCanvas('image/png','.png')" style="display: none">Save As PNG</a></div>
 					</td>
 				</tr>

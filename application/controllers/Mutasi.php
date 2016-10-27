@@ -93,7 +93,7 @@ class Mutasi extends MY_Controller
 			if($this->db->get_where('cart_mutasi',array('product_code'=>$barcode))->num_rows() > 0){
 				echo 'added';
 			}else{
-				$this->db->insert('cart_mutasi',array('product_code' => $barcode, 'quantity' => 1));
+				$this->db->insert('cart_mutasi',array('product_code' => $barcode, 'quantity' => 1,'outlet_id' => $this->id));
 					if($product->quantity>0){
 					echo json_encode($product);
 
