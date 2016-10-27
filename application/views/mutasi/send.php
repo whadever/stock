@@ -32,11 +32,11 @@
 							<td colspan="2"><input type="text" name="transaction_code" placeholder="Kode Transaksi" class="form-control" required="1"></td>
 						</tr>
 						<tr>
-							<td><p class="bebas">PILIH OUTLET</p></td>
+							<td width="50%"><p class="bebas">PILIH OUTLET</p></td>
 							<td><p class="bebas">PILIH DRIVER</p></td>
 						</tr>
 						<tr>
-							<td>
+							<td width="50%">
 								<select required="1" class="form-control" id="" name="outlet_distribute">
 								<option value="new">--Pilih Outlet--</option>
 								<?php foreach($outlets as $outlet): ?>
@@ -45,25 +45,22 @@
 
 								</select>
 							</td>
-							<td>
-								<select required="1" class="form-control" id="" name="select_driver">
-								<option value="">Driver Baru</option>
+							<td id="select-driver-row">
+								<select required="1" class="form-control" id="select-driver" name="select-driver">
+								<option value="others">Driver Baru</option>
 								<?php foreach($drivers as $driver): ?>
 									<option value="<?php echo $driver->id ?>"><?php echo $driver->name ?></option>
 								<?php endforeach; ?>
 								</select>
-							</td>
-						</tr>
-						<tr id="driver-detail">
-							<td></td>
-							<td>
-								<p class="bebas">Data Driver Baru</p>
-								<input type="text" name="driver_name" placeholder="Nama Driver" class="form-control" required="1">
-								<input type="text" name="driver_phone" placeholder="No.Telp Driver" class="form-control" required="1" style="margin-top: 5px;">
-								<div class="fileUpload btn btn-primary" style="margin-top: 5px;">
-								    <span>Upload</span>
-								    <input type="file" id="photo" class="upload" name="photo" />
-								</div></td>
+								<div id="new-driver">
+									<p class="bebas" style="margin-top: 15px;">Data Driver Baru</p>
+									<input type="text" name="driver_name" placeholder="Nama Driver" class="form-control" required="1">
+									<input type="text" name="driver_phone" placeholder="No.Telp Driver" class="form-control" required="1" style="margin-top: 5px;">
+									<div class="fileUpload btn btn-primary" style="margin-top: 5px;">
+									    <span>Upload Foto Driver</span>
+									    <input type="file" id="photo" class="upload" name="photo" />
+									</div>
+								</div>
 							</td>
 						</tr>
 						<tr>
@@ -211,12 +208,14 @@
 		}
 		
 	}
-	$('#select_driver').change(function(){
+	$('#select-driver').change(function(){
 		if($(this).val()=='others'){
-			$('#driver-detail').append('<tr id="customer-row"><td colspan="2" style="padding-left: 40px;padding-right: 20px;"><table width="100%">			<tr><td><p class="bebas small">Nama Customer</p></td><td><input type="text" class="form-control" name="new_customer_name" placeholder="Name" required=1 ></td></tr><tr><td><p class="bebas small">E-Mail</p></td><td><input type="text" class="form-control" name="new_customer_email" placeholder="Email" required=1></td></td></tr><tr><td><p class="bebas small">Telp.</p></td><td><input type="text" class="form-control" name="new_customer_phone" placeholder="Phone" required=1></td></tr><tr><td><p class="bebas small">Alamat</p></td><td><input type="text" class="form-control" name="new_customer_address" placeholder="Address" required=1></td></tr></table></td></tr>")');
+			$('#select-driver-row').append('<div id="new-driver"><p class="bebas" style="margin-top: 15px;">Data Driver Baru</p><input type="text" name="driver_name" placeholder="Nama Driver" class="form-control" required="1"><input type="text" name="driver_phone" placeholder="No.Telp Driver" class="form-control" required="1" style="margin-top: 5px;"><div class="fileUpload btn btn-primary" style="margin-top: 5px;"><span>Upload Foto Driver</span><input type="file" id="photo" class="upload" name="photo" /></div></div>');
+			
 		}
 		else{
-			$('#driver-detail').remove();
+			$('#new-driver').remove();
+			
 		}
 		
 	});
