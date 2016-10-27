@@ -158,7 +158,7 @@
                           if($profile->photo == ''){
                             $photo = base_url()."uploads/photos/no-photo.png";
                           }else{
-                            $photo = base_url().$profile->photo.'?timestamp='.mt_rand(1000000000,9999999999); 
+                            $photo = base_url().$profile->photo.'?timestamp='.mt_rand(100000000,999999999); 
                           }
 
                           $user_id = $user['user_id'];
@@ -191,7 +191,7 @@
                       if($active_user->photo == ''){
                         echo base_url()."uploads/photos/no-photo.png";
                       }else{
-                        echo base_url().$active_user->photo.'?timestamp='.mt_rand(1000000000,9999999999); 
+                        echo base_url().$active_user->photo.'?timestamp='.mt_rand(100000000,999999999); 
                       }
                        
 

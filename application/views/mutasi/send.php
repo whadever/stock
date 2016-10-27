@@ -39,7 +39,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2"><p class="bebas">Daftar Barang</p></td>
+							<td colspan="2"><p class="bebas">Kode Barang</p></td>
 						</tr>
 						<tr>
 							<td colspan="2"><input type="text" name="item_code" id="item_code" placeholder="Kode Barang" class="form-control" required="1" onblur="get_barcode()"></td>
@@ -50,7 +50,7 @@
 				<div class="row">
 					<div class="col-md-6" id="buyrow">
 						<div class="row text-center">
-							<P class="bebas" style="margin-top: 10px">PRODUK YANG DIBELI</P>
+							<P class="bebas" style="margin-top: 10px">PRODUK YANG DIKIRIM</P>
 						</div>
 						<?php echo form_open('selling/sell_product') ?>
 						<div class="table-responsive toggle-circle-filled">
@@ -134,7 +134,7 @@
 		}
 	}
 	function list_item(){
-		var disc = $('')
+		
 		var barcode = $('#item_code').val();
 		if(barcode==''){
 

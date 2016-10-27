@@ -29,7 +29,7 @@
 						<p><strong><?php echo $product->model ?></strong></p>
 						<p><strong><?php echo rupiah($product->selling_price) ?></strong></p>			
 					</div>
-					<div class="col-xs-3 text-center" style="padding-top: 20px">
+					<div class="col-xs-3 text-center" style="padding-top: 5px">
 						<?php foreach ($specs as $spec):?>
 							<p><strong><?php echo $spec->spec ?></strong></p>
 						<?php endforeach; ?>
