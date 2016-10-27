@@ -104,9 +104,30 @@
 
  //    	});
 	// });
+
+
 	$(document).ready(function(){
 		$('.table-mutation').footable();
 	});
+
+	function remove_item(code){
+        
+        var result = confirm('Hapus barang?');
+        if(result){
+            $.ajax({
+              url: "<?php echo base_url('mutasi/remove')?>" + '/' + code,
+              type: 'GET',
+
+              success: function(result){
+ 
+              	$('#row_'+code).remove();
+                    
+                
+              } 
+            });
+        }
+    }
+
 	function get_barcode(){
 		list_item();
 		var barcode = $('#item_code').val();
@@ -140,7 +161,7 @@
 				url:"<?php echo base_url('mutasi/list_item')?>"+'/'+ barcode,
 				type:"GET",
 				success : function(result){
-					
+
 					if(result == 'added'){
 
 					}else{
