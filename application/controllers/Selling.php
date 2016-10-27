@@ -19,7 +19,7 @@ class Selling extends MY_Controller{
 	}
 
 	public function get_barcode($barcode){
-		if($this->db->get_where('products',array('code'=>$barcode))->num_rows() > 0){
+		if($this->db->get_where('products',array('code'=>$barcode,'outlet_id' => $this->id))->num_rows() > 0){
 
 			echo '<script>$(".no-item").remove()</script>';
 			$product = $this->db->get_where('products',array('code'=>$barcode))->row();
@@ -81,7 +81,7 @@ class Selling extends MY_Controller{
 	}
 
 	public function list_item($barcode){
-		if($this->db->get_where('products',array('code'=>$barcode))->num_rows() > 0){
+		if($this->db->get_where('products',array('code'=>$barcode,'outlet_id' => $this->id))->num_rows() > 0){
 			$product = $this->db->get_where('products',array('code'=>$barcode))->row();
 			$customers = $this->crud_model->get_data('customers')->result();
 			

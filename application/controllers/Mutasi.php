@@ -28,6 +28,7 @@ class Mutasi extends MY_Controller
 	}
 
 	public function send(){
+		$this->db->empty_table('cart_mutasi');
 		$data = array(
 				'title' => 'Mutasi Barang',
 				'subtitle' => 'MUTASI BARANG',
@@ -89,10 +90,10 @@ class Mutasi extends MY_Controller
 			$product = $this->db->get_where('products',array('code'=>$barcode))->row();
 			$customers = $this->crud_model->get_data('customers')->result();
 			
-			if($this->db->get_where('cart',array('product_code'=>$barcode))->num_rows() > 0){
+			if($this->db->get_where('cart_mutasi',array('product_code'=>$barcode))->num_rows() > 0){
 				echo 'added';
 			}else{
-				$this->db->insert('cart',array('product_code' => $barcode, 'quantity' => 1));
+				$this->db->insert('cart_mutasi',array('product_code' => $barcode, 'quantity' => 1));
 					if($product->quantity>0){
 					echo json_encode($product);
 

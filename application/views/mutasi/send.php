@@ -144,9 +144,11 @@
 				url:"<?php echo base_url('mutasi/list_item')?>"+'/'+ barcode,
 				type:"GET",
 				success : function(result){
+					
 					if(result == 'added'){
 
 					}else{
+
 						var test = JSON.parse(result);
 						var price = test.selling_price;
 						$('#item_list').append("<tr id='row_"+test.code+"' ><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td><a onclick='remove_item(\""+test.code+"\")' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'><input type='hidden' name='disc_price[]' id='disc_price_"+test.code+"' value='"+test.selling_price+"'> ");
