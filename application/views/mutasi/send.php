@@ -2,6 +2,21 @@
 	.table>tbody>tr>td{
 		border:none !important;
 	}
+	.fileUpload {
+	    position: relative;
+	    overflow: hidden;
+	}
+	.fileUpload input.upload {
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    margin: 0;
+	    padding: 0;
+	    font-size: 20px;
+	    cursor: pointer;
+	    opacity: 0;
+	    filter: alpha(opacity=0);
+	}
 </style>
 		<div class="row content-wrap" style="margin-top: 20px;">
 			<div class="col-md-12">
@@ -23,19 +38,32 @@
 						<tr>
 							<td>
 								<select required="1" class="form-control" id="" name="outlet_distribute">
-								<option value="">--Pilih Outlet--</option>
+								<option value="new">--Pilih Outlet--</option>
 								<?php foreach($outlets as $outlet): ?>
 									<option value="<?php echo $outlet->id ?>"><?php echo $outlet->username ?></option>
 								<?php endforeach; ?>
+
 								</select>
 							</td>
 							<td>
-								<select required="1" class="form-control" id="" name="outlet_distribute">
-								<option value="">--Pilih Driver--</option>
+								<select required="1" class="form-control" id="" name="select_driver">
+								<option value="">Driver Baru</option>
 								<?php foreach($drivers as $driver): ?>
-									<option value="<?php echo $driver->code ?>"><?php echo $driver->name ?></option>
+									<option value="<?php echo $driver->id ?>"><?php echo $driver->name ?></option>
 								<?php endforeach; ?>
 								</select>
+							</td>
+						</tr>
+						<tr id="driver-detail">
+							<td></td>
+							<td>
+								<p class="bebas">Data Driver Baru</p>
+								<input type="text" name="driver_name" placeholder="Nama Driver" class="form-control" required="1">
+								<input type="text" name="driver_phone" placeholder="No.Telp Driver" class="form-control" required="1" style="margin-top: 5px;">
+								<div class="fileUpload btn btn-primary" style="margin-top: 5px;">
+								    <span>Upload</span>
+								    <input type="file" id="photo" class="upload" name="photo" />
+								</div></td>
 							</td>
 						</tr>
 						<tr>
@@ -75,9 +103,6 @@
 						<input type="hidden" name="total_harga" id="total_harga" value="">
 						
 						</div>
-						<div class="row text-center">
-							<input type="submit" name="next" class="btn btn-primary" value="Next">
-						</div>
 						
 					</div>
 					<div class="col-md-6" id="detailrow">
@@ -89,6 +114,9 @@
 						</div>
 						<div class="row" id="detail"></div>
 					</div> 
+				</div>
+				<div class="row text-center" id="continue">
+					
 				</div>
 			</div>
 		</div>
@@ -168,10 +196,12 @@
 
 						var test = JSON.parse(result);
 						var price = test.selling_price;
+						$('#continue').append('<input type="submit" name="next" class="btn btn-default btn-custom" value="Proceed">');
 						$('#item_list').append("<tr id='row_"+test.code+"' ><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td><a onclick='remove_item(\""+test.code+"\")' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'><input type='hidden' name='disc_price[]' id='disc_price_"+test.code+"' value='"+test.selling_price+"'> ");
 						// $('#total_price').empty();
 						// $('#total_price').append('$&nbsp;'+total_price);
 						// $('#total_harga').val(total_price);
+
 					}
 						
 
@@ -181,4 +211,13 @@
 		}
 		
 	}
+	$('#select_driver').change(function(){
+		if($(this).val()=='others'){
+			$('#driver-detail').append('<tr id="customer-row"><td colspan="2" style="padding-left: 40px;padding-right: 20px;"><table width="100%">			<tr><td><p class="bebas small">Nama Customer</p></td><td><input type="text" class="form-control" name="new_customer_name" placeholder="Name" required=1 ></td></tr><tr><td><p class="bebas small">E-Mail</p></td><td><input type="text" class="form-control" name="new_customer_email" placeholder="Email" required=1></td></td></tr><tr><td><p class="bebas small">Telp.</p></td><td><input type="text" class="form-control" name="new_customer_phone" placeholder="Phone" required=1></td></tr><tr><td><p class="bebas small">Alamat</p></td><td><input type="text" class="form-control" name="new_customer_address" placeholder="Address" required=1></td></tr></table></td></tr>")');
+		}
+		else{
+			$('#driver-detail').remove();
+		}
+		
+	});
 </script>
