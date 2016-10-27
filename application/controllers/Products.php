@@ -122,7 +122,7 @@ class Products extends MY_Controller{
 		$data['title'] = 'Products';
 		$data['subtitle'] = 'PRODUCTS';
 		$data['product'] = $this->crud_model->get_by_condition('products',array('code'=>$code))->row();
-		$data['specs'] = $this->crud_model->get_by_condition('spesifikasi',array('kode_barang' => $code))->result();
+		$data['specs'] = $this->crud_model->get_by_condition('spesification',array('product_code' => $code))->result();
 		$this->load->view('products/detail_product',$data);
 	}
 
