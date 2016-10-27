@@ -36,7 +36,7 @@
 
 		<div class="row">
 			<div class="col-xs-6 text-center">
-				<a href="#" class="btn btn-default btn-lg">
+				<a href="<?php echo base_url('mutasi/receive') ?>" class="btn btn-default btn-lg">
 					<div class="row">
 						<div class="col-sm-6"><img class="img-responsive" src="<?php echo base_url('assets/receive.png')?>" style="max-height: 150px;"></div>
 						<div class="col-sm-6"><p class="bebas" style="font-size: 50px;margin-top: 35%">TERIMA</p></div>

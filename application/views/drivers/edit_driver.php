@@ -37,7 +37,7 @@
 			<p>Status User:</p>
 		</div>
 		<div class="row" style="margin-top: 20px;">
-			<?php echo form_open_multipart('drivers/edit_driver/'.$drivers->code) ?>
+			<?php echo form_open_multipart('drivers/edit_driver/'.$drivers->id) ?>
 			<table class="table product-table">
 				<tbody>
 				<tr>
@@ -52,10 +52,10 @@
 					<td class="table_detail"><p class="bebas">DRIVER UNTUK OUTLET</p></td>
 					<td style="padding-right: 9%;"><input type="text" name="driver_outlet" placeholder="Outlet" class="form-control"></td>
 				</tr> -->
-				<tr>
+				<!-- <tr>
 					<td class="table_detail"><p class="bebas">KODE DRIVER</p></td>
 					<td style="padding-right: 9%;"><input type="text" name="driver_code" value="<?php echo $drivers->code?>" readonly="readonly" class="form-control"></td>
-				</tr>
+				</tr> -->
 				<tr>
 					<td class="table_detail"><p class="bebas">UPLOAD IDENTITAS</p></td>
 					<td style="padding-right: 9%;">

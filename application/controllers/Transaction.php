@@ -7,7 +7,6 @@ class Transaction extends MY_Controller{
 
 	function __construct(){
 		parent::__construct();
-		$this->load->model('transaction_model');
 		$this->id = $this->session->userdata('is_active');
 		$this->user_role = $this->crud_model->get_by_condition('outlets',array('id' => $this->session->userdata('is_active')))->row('role');
 	}

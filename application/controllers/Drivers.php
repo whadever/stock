@@ -47,7 +47,6 @@ class Drivers extends MY_Controller
 		    }
 
 			$data = array(
-				'code' =>$this->input->post('driver_code'),
 				'name' => $this->input->post('driver_name'),
 				'address' => $this->input->post('driver_address'),
 				'photo' => $photo
@@ -66,9 +65,9 @@ class Drivers extends MY_Controller
 		
 	}
 
-	public function edit_driver($code){
+	public function edit_driver($id){
 
-		$data['drivers'] = $this->crud_model->get_by_condition('drivers',array('code' => $code))->row();
+		$data['drivers'] = $this->crud_model->get_by_condition('drivers',array('id' => $id))->row();
 
 		if($this->input->post('save')){
 			$config['allowed_types']        = 'jpg|png|jpeg';
@@ -78,7 +77,7 @@ class Drivers extends MY_Controller
 
 		    
 								
-			$config['upload_path']          = 'uploads/driver/' . $this->input->post('driver_code');
+			$config['upload_path']          = 'uploads/driver/' . $this->input->post('driver_name');
 			$config['overwrite']			= True;
 			$config['file_name']			= 'photo.jpg';
 			$this->upload->initialize($config);
@@ -100,13 +99,12 @@ class Drivers extends MY_Controller
 		    }
 
 			$data = array(
-				'code' =>$this->input->post('driver_code'),
 				'name' => $this->input->post('driver_name'),
 				'address' => $this->input->post('driver_address'),
 				'photo' => $photo
 				);
 
-			$this->crud_model->update_data('drivers',$data,array('code' => $code));
+			$this->crud_model->update_data('drivers',$data,array('id' => $id));
 			$this->session->set_flashdata("success","Success");
 
 			redirect('drivers');
@@ -121,8 +119,8 @@ class Drivers extends MY_Controller
 	}
 
 	public function delete(){
-		$code = $this->input->post('code');
-		$this->crud_model->delete_data('drivers',array('code' => $code));
+		$id = $this->input->post('id');
+		$this->crud_model->delete_data('drivers',array('id' => $id));
 		redirect('drivers');
 	}
 }

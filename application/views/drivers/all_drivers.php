@@ -51,7 +51,7 @@
 				<thead>
 					 <tr>
 					 	<th data-type="numeric" data-sort-initial="true">No</th>
-					 	<th data-hide="phone">Code</th>
+					 	<!-- <th data-hide="phone">Code</th> -->
 					 	<th data-toggle="true">Name</th>
 					 	<th data-hide="phone">Address</th>
 					 	<th data-hide="phone">Gambar</th>
@@ -59,21 +59,21 @@
 					 </tr>
 				</thead>
 				<tbody>
-					<?php $i=1; foreach($drivers as $driver): ?>
+					<?php foreach($drivers as $driver): ?>
 						<tr>
-							<td><?php echo $i ?></td>
-							<td><?php echo $driver->code ?></td>
+							<td><?php echo $driver->id ?></td>
+							<!-- <td><?php echo $driver->code ?></td> -->
 							<td><?php echo $driver->name ?></td>
 							<td><?php echo $driver->address ?></td>
 							<td><img src="<?php echo base_url().$driver->photo ?>" alt="<?php echo $driver->name ?>" width="40"/></td>
 							<td>
-								<a href="<?php echo base_url('drivers/edit_driver/'.$driver->code) ?>">Edit</a> | 
-								<a href="" data-toggle="modal" data-target="#deleteDriver" data-code="<?php echo $driver->code?>">
+								<a href="<?php echo base_url('drivers/edit_driver/'.$driver->id) ?>">Edit</a> | 
+								<a href="" data-toggle="modal" data-target="#deleteDriver" data-id="<?php echo $driver->id?>">
 								  Delete
 								</a>
 							</td>
 						</tr>
-					<?php $i++; endforeach; ?>
+					<?php endforeach; ?>
 				</tbody>
 			</table>
 			</div>
@@ -95,7 +95,7 @@
       <p>By doing so, driver will be deleted from database. Proceed?</p>
       </div>
       <div class="modal-footer">
-        <input type="hidden" name="code" value="">
+        <input type="hidden" name="id" value="">
         <input type="submit" name="delete" value="Confirm" class="btn btn-danger">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <?php echo form_close() ?>

@@ -6,7 +6,6 @@ class Selling extends MY_Controller{
 
 	function __construct(){
 		parent::__construct();
-		$this->load->model('product_model');
 		$this->id = $this->session->userdata('is_active');
 		$this->user_role = $this->crud_model->get_by_condition('outlets',array('id' => $this->session->userdata('is_active')))->row('role');
 		if($this->user_role == 'admin'){
@@ -24,7 +23,7 @@ class Selling extends MY_Controller{
 			echo '<script>$(".no-item").remove()</script>';
 			$product = $this->db->get_where('products',array('code'=>$barcode))->row();
 			$category = $this->crud_model->get_by_condition('category',array('id'=>$product->category))->row();
-			$specifications = $this->crud_model->get_by_condition('spesifikasi',array('kode_barang'=>$product->code))->result();
+			$specifications = $this->crud_model->get_by_condition('specification',array('product_code'=>$product->code))->result();
 			//$customers = $this->crud_model->get_data('customers')->result();
 			echo ($product->quantity == 0)? '<div class="text-center"><p class="bebas" style="color:red">Out of Stock</p></div>': null;
 			echo '<style>#table-detail>tbody>tr>th, #table-detail>tfoot>tr>td, #table-detail>tfoot>tr>th, #table-detail>thead>tr>td, #table-detail>thead>tr>th {padding-left: 0px !important;}</style>';
@@ -107,7 +106,7 @@ class Selling extends MY_Controller{
 			$data['transaction_code'] = $this->input->post('transaction_code');
 			$data['product_id'] = $this->input->post('id');
 			$data['disc_price'] = $this->input->post('disc_price');
-			$data['total_harga'] = $this->input->post('total_harga');
+			$data['total_price'] = $this->input->post('total_harga');
 
 			$this->finish_transaction($data);
 		}
@@ -127,7 +126,7 @@ class Selling extends MY_Controller{
 					'transaction_type_id' => 1,
 					'transaction_date' => date('Y-m-d H:i:s'),
 					'detail' => 'unknown',
-					'total_harga' => $this->input->post('total_harga')
+					'total_price' => $this->input->post('total_harga')
 				);
 
 			$this->crud_model->insert_data('transaction',$transaction);
@@ -159,7 +158,7 @@ class Selling extends MY_Controller{
 						'quantity'			=> 1,
 						'from_client_id'	=> $this->id,
 						'to_client_id'		=> $customer_id,
-						'harga_jual'		=> $this->input->post('disc_price')[$i]
+						'selling_price'		=> $this->input->post('disc_price')[$i]
 					);
 
 				$this->db->insert('transaction_detail',$transaction_detail);

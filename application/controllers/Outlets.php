@@ -13,10 +13,6 @@ class Outlets extends MY_Controller{
 	}
 
 	public function index(){
-		$this->all_outlets();
-	}
-
-	public function all_outlets(){
 		$data['title'] = 'Outlets';
 		$data['subtitle'] = 'OUTLETS';
 		$data['outlets']=$this->crud_model->get_by_condition('outlets',array('role' => 'outlet'))->result();

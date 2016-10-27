@@ -9,7 +9,6 @@ class Mutasi extends MY_Controller
 
 	function __construct(){
 		parent::__construct();
-		$this->load->model('product_model');
 		$this->id = $this->session->userdata('is_active');
 		$this->user_role = $this->crud_model->get_by_condition('outlets',array('id' => $this->session->userdata('is_active')))->row('role');
 	}
@@ -28,7 +27,7 @@ class Mutasi extends MY_Controller
 	}
 
 	public function send(){
-		$this->db->empty_table('cart_mutasi');
+		$this->db->empty_table('cart');
 		$data = array(
 				'title' => 'Mutasi Barang',
 				'subtitle' => 'MUTASI BARANG',
@@ -46,7 +45,7 @@ class Mutasi extends MY_Controller
 			echo '<script>$(".no-item").remove()</script>';
 			$product = $this->db->get_where('products',array('code'=>$barcode))->row();
 			$category = $this->crud_model->get_by_condition('category',array('id'=>$product->category))->row();
-			$specifications = $this->crud_model->get_by_condition('spesifikasi',array('kode_barang'=>$product->code))->result();
+			$specifications = $this->crud_model->get_by_condition('specification',array('product_code'=>$product->code))->result();
 			//$customers = $this->crud_model->get_data('customers')->result();
 			echo ($product->quantity == 0)? '<div class="text-center"><p class="bebas" style="color:red">Out of Stock</p></div>': null;
 			echo '<style>#table-detail>tbody>tr>th, #table-detail>tfoot>tr>td, #table-detail>tfoot>tr>th, #table-detail>thead>tr>td, #table-detail>thead>tr>th {padding-left: 0px !important;}</style>';
@@ -90,10 +89,10 @@ class Mutasi extends MY_Controller
 			$product = $this->db->get_where('products',array('code'=>$barcode))->row();
 			$customers = $this->crud_model->get_data('customers')->result();
 			
-			if($this->db->get_where('cart_mutasi',array('product_code'=>$barcode))->num_rows() > 0){
+			if($this->db->get_where('cart',array('product_code'=>$barcode, 'transaction_type'=>3))->num_rows() > 0){
 				echo 'added';
 			}else{
-				$this->db->insert('cart_mutasi',array('product_code' => $barcode, 'quantity' => 1,'outlet_id' => $this->id));
+				$this->db->insert('cart',array('product_code' => $barcode, 'transaction_type'=>3, 'quantity' => 1,'outlet_id' => $this->id));
 					if($product->quantity>0){
 					echo json_encode($product);
 
@@ -104,7 +103,19 @@ class Mutasi extends MY_Controller
 	}
 
 	public function remove($code){
-		$this->db->delete('cart_mutasi',array('product_code' => $code));
+		$this->db->delete('cart',array('product_code' => $code));
+	}
+
+	public function receive(){
+		$data = array(
+				'title' => 'Mutasi Barang',
+				'subtitle' => 'MUTASI BARANG',
+			);
+
+		$data['products'] = $this->product_model->getAllProducts($this->id);
+		$data['outlets'] = $this->crud_model->get_data('outlets')->result();
+		$data['drivers'] = $this->crud_model->get_data('drivers')->result();
+		$this->template->load('default','mutasi/receive',$data);
 	}
 }
 

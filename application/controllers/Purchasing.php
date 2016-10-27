@@ -61,7 +61,7 @@
 						'transaction_type_id' => 2,
 						'transaction_date' => date('Y-m-d H:i:s'),
 						'detail' => 'unknown',
-						'total_harga' => $this->input->post('item_buy')
+						'total_price' => $this->input->post('item_buy')
 					);
 
 					$this->crud_model->insert_data('transaction',$transaction);
@@ -77,7 +77,7 @@
 						'quantity'			=> 1,
 						'from_client_id'	=> 1,
 						'to_client_id'		=> $this->id,
-						'harga_jual'		=> $this->input->post('item_sell')
+						'selling_price'		=> $this->input->post('item_sell')
 					);
 
 				$this->db->insert('transaction_detail',$transaction_detail);
@@ -100,11 +100,11 @@
 						for($i = 0; $i < count($this->input->post('spec')); $i++){
 							if($this->input->post('spec')[$i] != ''){
 								$data_spec = array(
-										'kode_barang' => $code,
+										'product_code' => $code,
 										'spec'		  => $this->input->post('spec')[$i]
 
 									);
-								$this->crud_model->insert_data('spesifikasi',$data_spec);
+								$this->crud_model->insert_data('specification',$data_spec);
 							}
 						}
 						

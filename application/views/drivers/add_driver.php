@@ -52,10 +52,10 @@
 					<td class="table_detail"><p class="bebas">DRIVER UNTUK OUTLET</p></td>
 					<td style="padding-right: 9%;"><input type="text" name="driver_outlet" placeholder="Outlet" class="form-control"></td>
 				</tr> -->
-				<tr>
+				<!-- <tr>
 					<td class="table_detail"><p class="bebas">KODE DRIVER</p></td>
 					<td style="padding-right: 9%;"><input type="text" name="driver_code" placeholder="Kode Driver" class="form-control"></td>
-				</tr>
+				</tr> -->
 				<tr>
 					<td class="table_detail"><p class="bebas">UPLOAD IDENTITAS</p></td>
 					<td style="padding-right: 9%;">
