@@ -116,12 +116,12 @@
 		<table class="table table-condensed table-sell" data-filter="#filter" data-page-size="10" >
 
 			<thead><tr>
-				<th width="22%" data-sort-initial="true" data-toggle="true">Nama</th>
+				<th width="22%" data-sort-initial="true">Nama</th>
 				<th width="12%" data-type="numeric">Qty.</th>
-				<th data-hide="phone" data-type="numeric">Harga</th>
-				<th width="18%" data-hide="phone" data-type="numeric">Disc.</th>
+				<th data-type="numeric">Harga</th>
+				<th width="18%"  data-type="numeric">Disc.</th>
 				<th data-type="numeric">Total</th>
-				<th data-hide="phone"></th>
+				<th></th>
 			</tr></thead>
 			<?php $i=1;?>
 			<tbody id="item_list"><tr class="no-item">

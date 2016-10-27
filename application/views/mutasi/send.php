@@ -112,9 +112,7 @@
 		var barcode = $('#item_code').val();
 		if (barcode == '') {	
 			
-			
 		}else{
-			
 			$('#found').remove();
 			$('#detail').empty();
 			$.ajax({
@@ -123,8 +121,6 @@
 				success : function(result){
 
 					$('#detail').append(result);
-					
-					$('#belum_ada').remove();
 					$('#item_code').val('');
 					$('#item_code').focus();
 

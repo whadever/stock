@@ -102,6 +102,10 @@ class Mutasi extends MY_Controller
 			
 		}
 	}
+
+	public function remove($code){
+		$this->db->delete('cart_mutasi',array('product_code' => $code));
+	}
 }
 
 
