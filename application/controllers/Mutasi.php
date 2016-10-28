@@ -4,8 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Mutasi extends MY_Controller
 {
-	private $id;
-	private $user_role;
 
 	function __construct(){
 		parent::__construct();
@@ -89,11 +87,13 @@ class Mutasi extends MY_Controller
 			$product = $this->db->get_where('products',array('code'=>$barcode))->row();
 			$customers = $this->crud_model->get_data('customers')->result();
 			
-			if($this->db->get_where('cart',array('product_code'=>$barcode, 'transaction_type'=>3))->num_rows() > 0){
+			if($this->db->get_where('cart',array('product_code'=>$barcode, 'transaction_type'=>3, 'outlet_id' => $this->id))->num_rows() > 0){
 				echo 'added';
+
 			}else{
-				$this->db->insert('cart',array('product_code' => $barcode, 'transaction_type'=>3, 'quantity' => 1,'outlet_id' => $this->id));
-					if($product->quantity>0){
+				
+				if($product->quantity>0){
+					$this->db->insert('cart',array('product_code' => $barcode, 'transaction_type'=>3, 'quantity' => 1,'outlet_id' => $this->id));
 					echo json_encode($product);
 
 				}
@@ -104,6 +104,13 @@ class Mutasi extends MY_Controller
 
 	public function remove($code){
 		$this->db->delete('cart',array('product_code' => $code));
+		if($this->db->get_where('cart',array('transaction_type'=>3, 'outlet_id' => $this->id))->num_rows() > 0){
+			echo 'available';
+
+		}
+		else{
+			echo 'empty';
+		}
 	}
 
 	public function receive(){

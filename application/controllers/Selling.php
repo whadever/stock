@@ -1,9 +1,7 @@
 <?php 
-
+defined('BASEPATH') OR exit('No direct script access allowed');
 class Selling extends MY_Controller{
-	private $id;
-	private $user_role;
-
+	
 	function __construct(){
 		parent::__construct();
 		$this->id = $this->session->userdata('is_active');

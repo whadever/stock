@@ -100,7 +100,7 @@
 						<input type="hidden" name="total_harga" id="total_harga" value="">
 						
 						</div>
-						
+						<?php echo form_close() ?>						
 					</div>
 					<div class="col-md-6" id="detailrow">
 						<div class="row text-center">
@@ -112,8 +112,8 @@
 						<div class="row" id="detail"></div>
 					</div> 
 				</div>
-				<div class="row text-center" id="continue">
-					
+				<div class="row text-center">
+					<input type="submit" name="next" class="btn btn-default btn-custom" id="continue" value="Proceed" disabled="disabled" style="display: none">
 				</div>
 			</div>
 		</div>
@@ -144,7 +144,10 @@
               type: 'GET',
 
               success: function(result){
- 
+ 				if (result == 'empty') {
+ 					$('#continue').attr('disabled','disabled');
+					$('#continue').hide();
+ 				}
               	$('#row_'+code).remove();
                 
               } 
@@ -192,7 +195,9 @@
 
 						var test = JSON.parse(result);
 						var price = test.selling_price;
-						$('#continue').append('<input type="submit" name="next" class="btn btn-default btn-custom" value="Proceed">');
+						$('#continue').removeAttr('disabled');
+						$('#continue').show();
+
 						$('#item_list').append("<tr id='row_"+test.code+"' ><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td><a onclick='remove_item(\""+test.code+"\")' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'><input type='hidden' name='disc_price[]' id='disc_price_"+test.code+"' value='"+test.selling_price+"'> ");
 						// $('#total_price').empty();
 						// $('#total_price').append('$&nbsp;'+total_price);
@@ -213,7 +218,7 @@
 	        event.preventDefault();
 	        $('#item_code').blur();
 	    }
-
+	});
 	$('#select-driver').change(function(){
 		if($(this).val()=='others'){
 			$('#select-driver-row').append('<div id="new-driver"><p class="bebas" style="margin-top: 15px;">Data Driver Baru</p><input type="text" name="driver_name" placeholder="Nama Driver" class="form-control" required="1"><input type="text" name="driver_phone" placeholder="No.Telp Driver" class="form-control" required="1" style="margin-top: 5px;"><div class="fileUpload btn btn-primary" style="margin-top: 5px;"><span>Upload Foto Driver</span><input type="file" id="photo" class="upload" name="photo" /></div></div>');

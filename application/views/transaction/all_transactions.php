@@ -58,7 +58,7 @@
 							<td><?php echo date('d-M-Y H:i',$date) ?></td>
 							<td><?php echo $selling->product_name ?></td>
 							<td><?php echo $selling->customer_name ?></td>
-							<td>$ <?php echo $selling->harga_jual ?></td>
+							<td>$ <?php echo $selling->selling_price ?></td>
 							<!-- <td><a href="<?php #echo base_url('transactions/edit_customer').'/'.$selling->code?>">edit</a> | delete</td> -->
 							<!-- <?php //if($role != 'admin'): ?>
 						 		<td><a href="<?php //echo base_url('products/edit_product').'/'.$product->code?>">edit</a> | delete</td>
@@ -114,7 +114,7 @@
 							<td><?php echo date('d-M-Y H:i:s',$date) ?></td>
 							<td><?php echo $row->product_name ?></td>
 							<td><?php echo $row->customer_name ?></td>
-							<td><?php echo rupiah($row->harga_jual) ?></td>
+							<td><?php echo rupiah($row->selling_price) ?></td>
 							
 							
 							<?php if($role != 'admin'): ?>
