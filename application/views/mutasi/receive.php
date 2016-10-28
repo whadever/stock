@@ -21,47 +21,13 @@
 		<div class="row content-wrap" style="margin-top: 20px;">
 			<div class="col-md-12">
 				<div class="row">
-					<?php echo form_open_multipart('products/distribute') ?>
 					<table class="table distribute-table">
 						<tbody>
 						<tr>
 							<td colspan="2"><p class="bebas">Kode Transaksi</p></td>
-							
 						</tr>
 						<tr>
 							<td colspan="2"><input type="text" name="transaction_code" placeholder="Kode Transaksi" class="form-control" required="1"></td>
-						</tr>
-						<tr>
-							<td width="50%"><p class="bebas">PILIH OUTLET</p></td>
-							<td><p class="bebas">PILIH DRIVER</p></td>
-						</tr>
-						<tr>
-							<td width="50%">
-								<select required="1" class="form-control" id="" name="outlet_distribute">
-								<option value="new">--Pilih Outlet--</option>
-								<?php foreach($outlets as $outlet): ?>
-									<option value="<?php echo $outlet->id ?>"><?php echo $outlet->username ?></option>
-								<?php endforeach; ?>
-
-								</select>
-							</td>
-							<td id="select-driver-row">
-								<select required="1" class="form-control" id="select-driver" name="select-driver">
-								<option value="others">Driver Baru</option>
-								<?php foreach($drivers as $driver): ?>
-									<option value="<?php echo $driver->id ?>"><?php echo $driver->name ?></option>
-								<?php endforeach; ?>
-								</select>
-								<div id="new-driver">
-									<p class="bebas" style="margin-top: 15px;">Data Driver Baru</p>
-									<input type="text" name="driver_name" placeholder="Nama Driver" class="form-control" required="1">
-									<input type="text" name="driver_phone" placeholder="No.Telp Driver" class="form-control" required="1" style="margin-top: 5px;">
-									<div class="fileUpload btn btn-primary" style="margin-top: 5px;">
-									    <span>Upload Foto Driver</span>
-									    <input type="file" id="photo" class="upload" name="photo" />
-									</div>
-								</div>
-							</td>
 						</tr>
 						<tr>
 							<td colspan="2"><p class="bebas">Kode Barang</p></td>
