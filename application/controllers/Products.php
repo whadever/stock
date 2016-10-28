@@ -123,6 +123,13 @@ class Products extends MY_Controller{
 		$this->load->view('products/detail_product',$data);
 	}
 
+	public function deactivate_product($code){
+		$this->crud_model->update_data('products',array('active'=>0),array('code'=>$code));
+		$this->session->set_flashdata('success',"alertify.success('Deactivated successfully')");
+		redirect('products');
+
+	}
+
 
 }
 
