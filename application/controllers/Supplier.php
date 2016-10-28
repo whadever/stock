@@ -25,7 +25,7 @@ class Supplier extends MY_Controller
 				'email' => $this->input->post('supplier_mail'),
 			);
 			$this->crud_model->insert_data('suppliers',$supplier);
-			redirect('suppliers');
+			redirect('supplier');
 			
 		}
 		else{
@@ -45,7 +45,7 @@ class Supplier extends MY_Controller
 				'email' => $this->input->post('supplier_mail'),
 			);
 			$this->crud_model->update_data('suppliers',$supplier,array('id'=>$id));
-			redirect('suppliers');
+			redirect('supplier');
 		}
 		else{
 			$data['title'] = 'suppliers';
@@ -59,7 +59,7 @@ class Supplier extends MY_Controller
 	public function delete_supplier($id){
 		$this->crud_model->delete_data('suppliers',array('id' => $id));
 		$this->session->set_flashdata('success',"alertify.success('Deleted successfully')");
-		redirect('suppliers');
+		redirect('supplier');
 	}
 
 	

@@ -209,7 +209,7 @@
         <a href="<?php echo base_url('products') ?>" ><i id="template-button" class="fa fa-archive" aria-hidden="true"></i><span class="menu-text pull-right" >Products</span></a>
         
         <?php if($role == 'admin'): ?>
-          <a href="<?php echo base_url('products/all_category') ?>" ><i id="template-button" class="glyphicon glyphicon-tags" aria-hidden="true"></i><span class="menu-text pull-right" >Category</span></a>
+          <a href="<?php echo base_url('products/all_category') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Category</span></a>
 
           <a href="<?php echo base_url('outlets') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Outlets</span></a>
         <?php else: ?>
@@ -223,8 +223,9 @@
           <a href="<?php echo base_url('purchasing') ?>" ><span class="fa fa-shopping-basket" aria-hidden="true"></span><span class="menu-text pull-right" >Pembelian</span></a>
 
         <?php endif; ?>
-        <a href="<?php echo base_url('customers') ?>" ><i id="template-button" class="fa fa-users" aria-hidden="true"></i><span class="menu-text pull-right" >Customer</span></a>
+        <a href="<?php echo base_url('customers') ?>" ><span class="fa fa-users" aria-hidden="true"></span><span class="menu-text pull-right" >Customer</span></a>
 
+        <a href="<?php echo base_url('supplier') ?>" ><span class="fa fa-users" aria-hidden="true"></span><span class="menu-text pull-right" >Supplier</span></a>
         <!-- <a href="<?php echo base_url('drivers') ?>"><i class="fa fa-car" aria-hidden="true"></i><span class="menu-text pull-right" >Driver</span></a> -->
 
         <a href="<?php echo base_url('') ?>"><i class="fa fa-file-text" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" >Notes</span></a>
