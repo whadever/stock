@@ -23,6 +23,7 @@ class Customers extends MY_Controller
 				'address' => $this->input->post('customer_address'),
 				'phone' => $this->input->post('customer_telp'),
 				'email' => $this->input->post('customer_mail'),
+				
 			);
 			$this->crud_model->insert_data('customers',$customer);
 			redirect('customers');

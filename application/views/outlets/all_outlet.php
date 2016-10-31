@@ -34,7 +34,7 @@
 					<?php foreach($outlets as $outlet): ?>
 						<tr>
 							
-							<td><?php echo $outlet->id ?></td>
+							<td><?php echo $outlet->code ?></td>
 							<td><?php echo $outlet->username ?></td>
 							<td><?php echo $outlet->address ?></td>
 							<td><?php echo $outlet->pic ?></td>

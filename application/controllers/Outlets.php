@@ -58,6 +58,7 @@ class Outlets extends MY_Controller{
 			$address = $this->input->post('outlet_address');
 			$data=array(
 				'username'	=> $name,
+				'code'		=> $this->input->post('outlet_code'),
 				'name' 		=> $name,
 				'pic'		=> $pic,
 				'address'	=> $address,

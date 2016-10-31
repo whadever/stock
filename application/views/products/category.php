@@ -48,9 +48,7 @@
 					</tr>
 				</thead>
 				<tbody>
-				<pre>
-					<?php print_r($categories) ?>
-				</pre>
+
 					<?php foreach($categories as $category) : ?>
 						<?php foreach ($category as $row): ?>
 
