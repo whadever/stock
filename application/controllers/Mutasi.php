@@ -18,7 +18,7 @@ class Mutasi extends MY_Controller
 			);
 
 		$data['products'] = $this->product_model->getAllProducts($this->id);
-		$data['outlets'] = $this->crud_model->get_by_condition('outlets',array('role' => 'outlet'))->result();
+		$data['outlets'] = $this->crud_model->get_by_condition('outlets',array('role' => 'outlet','id !=' => $this->id))->result();
 		$data['drivers'] = $this->crud_model->get_data('drivers')->result();
 		$this->template->load('default','mutasi/main',$data);
 
