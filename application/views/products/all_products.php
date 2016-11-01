@@ -25,7 +25,7 @@
 		<div class="row" style="margin-top: 20px;">
 			<div class="form-group" style="margin-bottom: 20px">
 				<label for="">Search :</label>
-				<input type="text" class="form-control" id="filter">
+				<input type="search" class="form-control" id="filter">
 				<!-- <?php #if($role != 'admin'): ?>
 					<a href="<?php echo base_url('products/add') ?>" class="btn btn-primary pull-right">Add Product</a>
 				<?php #endif; ?> -->

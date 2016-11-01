@@ -18,23 +18,32 @@ class Mutasi extends MY_Controller
 			);
 
 		$data['products'] = $this->product_model->getAllProducts($this->id);
-		$data['outlets'] = $this->crud_model->get_data('outlets')->result();
+		$data['outlets'] = $this->crud_model->get_by_condition('outlets',array('role' => 'outlet'))->result();
 		$data['drivers'] = $this->crud_model->get_data('drivers')->result();
 		$this->template->load('default','mutasi/main',$data);
 
 	}
 
 	public function send(){
-		$this->db->empty_table('cart');
-		$data = array(
+		if($this->input->post('send')){
+			echo "<pre>";
+			print_r($this->input->post());
+			echo "</pre>";
+		}else{
+			$this->db->empty_table('cart');
+			
+			$data = array(
 				'title' => 'Mutasi Barang',
-				'subtitle' => 'MUTASI BARANG',
-			);
+				'subtitle' => 'Kirim BARANG',
+			);	
+			$data['products'] = $this->product_model->getAllProducts($this->id);
+			$data['outlets'] = $this->crud_model->get_by_condition('outlets',array('role' => 'outlet'))->result();
+			$data['drivers'] = $this->crud_model->get_data('drivers')->result();
+			$this->template->load('default','mutasi/send',$data);		
+		}
+		
 
-		$data['products'] = $this->product_model->getAllProducts($this->id);
-		$data['outlets'] = $this->crud_model->get_data('outlets')->result();
-		$data['drivers'] = $this->crud_model->get_data('drivers')->result();
-		$this->template->load('default','mutasi/send',$data);		
+		
 	}
 
 	public function get_barcode($barcode){

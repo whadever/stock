@@ -21,7 +21,7 @@
 		<div class="row content-wrap" style="margin-top: 20px;">
 			<div class="col-md-12">
 				<div class="row">
-					<?php echo form_open_multipart('products/distribute') ?>
+					<?php echo form_open_multipart('mutasi/send') ?>
 					<table class="table distribute-table">
 						<tbody>
 						<tr>
@@ -84,7 +84,6 @@
 							<thead><tr>
 								<th data-sort-initial="true" data-toggle="true">Nama</th>
 								<th data-type="numeric">Qty.</th>
-								<th data-hide="phone" data-type="numeric">Harga</th>
 								<th data-hide="phone"></th>
 							</tr></thead>
 							<?php $i=1;?>
@@ -112,8 +111,13 @@
 						<div class="row" id="detail"></div>
 					</div> 
 				</div>
+				<div class="row">
+					<div class="col-sm-6" style="padding: 20px 0">
+						<textarea name="notes" id="" placeholder="Notes" class="form-control" rows="3"></textarea>
+					</div>
+				</div>
 				<div class="row text-center">
-					<input type="submit" name="next" class="btn btn-default btn-custom" id="continue" value="Proceed" disabled="disabled" style="display: none">
+					<input type="submit" name="send" class="btn btn-default btn-custom" id="continue" value="SEND" disabled="disabled" style="display: none">
 				</div>
 			</div>
 		</div>
@@ -198,7 +202,7 @@
 						$('#continue').removeAttr('disabled');
 						$('#continue').show();
 
-						$('#item_list').append("<tr id='row_"+test.code+"' ><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td><a onclick='remove_item(\""+test.code+"\")' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'><input type='hidden' name='disc_price[]' id='disc_price_"+test.code+"' value='"+test.selling_price+"'> ");
+						$('#item_list').append("<tr id='row_"+test.code+"' ><td>"+test.name+"</td><td>1</td><td><a onclick='remove_item(\""+test.code+"\")' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'> ");
 						// $('#total_price').empty();
 						// $('#total_price').append('$&nbsp;'+total_price);
 						// $('#total_harga').val(total_price);
