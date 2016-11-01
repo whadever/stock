@@ -18,10 +18,11 @@
 	    filter: alpha(opacity=0);
 	}
 </style>
+<?php echo form_open_multipart('mutasi/send'); ?>
 		<div class="row content-wrap" style="margin-top: 20px;">
 			<div class="col-md-12">
 				<div class="row">
-					<?php echo form_open_multipart('mutasi/send') ?>
+					
 					<table class="table distribute-table">
 						<tbody>
 						<tr>
@@ -67,7 +68,7 @@
 							<td colspan="2"><p class="bebas">Kode Barang</p></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" name="item_code" id="item_code" placeholder="Kode Barang" class="form-control" required="1" onblur="get_barcode()"></td>
+							<td colspan="2"><input type="text" name="item_code" id="item_code" placeholder="Kode Barang" class="form-control" onblur="get_barcode()"></td>
 						</tr>
 						</tbody>
 					</table>	
@@ -77,7 +78,7 @@
 						<div class="row text-center">
 							<P class="bebas" style="margin-top: 10px">PRODUK YANG DIKIRIM</P>
 						</div>
-						<?php echo form_open('selling/sell_product') ?>
+						
 						<div class="table-responsive toggle-circle-filled">
 						<table class="table table-condensed table-mutation" data-filter="#filter" data-page-size="10" >
 
@@ -87,7 +88,8 @@
 								<th data-hide="phone"></th>
 							</tr></thead>
 							<?php $i=1;?>
-							<tbody id="item_list"><tr class="no-item">
+							<tbody id="item_list">
+								<tr class="no-item">
 								
 					 			</tr>
 							</tbody>
@@ -96,10 +98,10 @@
 						
 						
 						</p>
-						<input type="hidden" name="total_harga" id="total_harga" value="">
+						
 						
 						</div>
-						<?php echo form_close() ?>						
+											
 					</div>
 					<div class="col-md-6" id="detailrow">
 						<div class="row text-center">
@@ -119,9 +121,10 @@
 				<div class="row text-center">
 					<input type="submit" name="send" class="btn btn-default btn-custom" id="continue" value="SEND" disabled="disabled" style="display: none">
 				</div>
+					
 			</div>
 		</div>
-		
+		<?php echo form_close() ?>
 <script>
 	// jQuery(function(){
  //    	var counter = 1;
@@ -201,8 +204,9 @@
 						var price = test.selling_price;
 						$('#continue').removeAttr('disabled');
 						$('#continue').show();
+						
+						$('#item_list').append("<tr id='row_"+test.code+"' ><td>"+test.name+"</td><td>1</td><td><a onclick='remove_item(\""+test.code+"\")' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'>");
 
-						$('#item_list').append("<tr id='row_"+test.code+"' ><td>"+test.name+"</td><td>1</td><td><a onclick='remove_item(\""+test.code+"\")' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'> ");
 						// $('#total_price').empty();
 						// $('#total_price').append('$&nbsp;'+total_price);
 						// $('#total_harga').val(total_price);

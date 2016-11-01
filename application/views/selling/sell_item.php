@@ -111,7 +111,7 @@
 			<div class="col-sm-5"><label>Kode Transaksi</label><input type="text" name="transaction_code" class="form-control" placeholder="Kode Transaksi" required="1"></div>
 		</div>
 
-		<?php echo form_open('selling/sell_product') ?>
+		
 		<div class="table-responsive toggle-circle-filled">
 		<table class="table table-condensed table-sell" data-filter="#filter" data-page-size="10" >
 
