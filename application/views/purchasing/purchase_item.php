@@ -53,6 +53,15 @@
 					<td style="padding-right: 9%;"><input type="text" name="transaction_code" required="1" placeholder="Kode Transaksi" class="form-control"></td>
 				</tr>
 				<tr>
+					<td class="table_detail"><p class="bebas">SUPPLIER</p></td>
+					<td style="padding-right: 9%;"><select name="supplier_list" required="1" class="form-control" id="">
+						<option value="">--Pilih Kategori--</option>
+						<?php foreach($suppliers as $supplier): ?>
+							<option value="<?php echo $supplier->id ?>"><?php echo $supplier->name ?></option>
+						<?php endforeach; ?>
+					</select></td>
+				</tr>
+				<tr>
 					<td class="table_detail"><p class="bebas">NAMA BARANG</p></td>
 					<td style="padding-right: 9%;"><input type="text" name="item_name" required="1" placeholder="Nama Barang" class="form-control"></td>
 				</tr>

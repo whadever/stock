@@ -60,6 +60,7 @@
 
 						'transaction_type_id' => 2,
 						'transaction_date' => date('Y-m-d H:i:s'),
+						'from_client_id' => $this->input->post('supplier_list'),
 						'detail' => 'unknown',
 						'total_price' => $this->input->post('item_buy')
 					);
@@ -75,12 +76,10 @@
 						'transaction_code'	=> $transaction_code,
 						'product_code'		=> $code,
 						'quantity'			=> 1,
-						'from_client_id'	=> 1,
-						'to_client_id'		=> $this->id,
 						'selling_price'		=> $this->input->post('item_sell')
 					);
 
-				$this->db->insert('transaction_detail',$transaction_detail);
+					$this->db->insert('transaction_detail',$transaction_detail);
 					
 					$data_insert = array(
 
@@ -119,6 +118,7 @@
 				else{
 					$data['title'] = "Pembelian";
 					$data['subtitle'] = "PEMBELIAN";
+					$data['suppliers'] = $this->crud_model->get_data('suppliers')->result();
 					$data['categories'] = $this->crud_model->get_data('category')->result();
 					$this->template->load('default','purchasing/purchase_item',$data);
 				}		

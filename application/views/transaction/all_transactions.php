@@ -73,33 +73,19 @@
 					 	<th data-hide="phone">Kode</th>
 					 	<th data-toggle="true">Tanggal</th>
 					 	
-					 	<th data-hide="phone">Kuantitas</th>
-					 	<th data-type="numeric" data-hide="phone">Supplier</th>
-					 	<th data-type="numeric" data-hide="phone">Detail</th>
-					 	<?php if($role != 'admin'): ?>
-					 		<th data-hide="phone">Tindakan</th>
-						<?php else: ?>
-						 	<th data-hide="phone">Lokasi</th>
-						<?php endif; ?>
+					 	<th data-hide="phone">Supplier</th>
+					 	<th data-type="numeric" data-hide="phone">Harga Beli</th>
 					 </tr>
 				</thead>
 				<tbody>
-					<?php $i=1; foreach($purchasing as $row): ?>
+					<?php $i=1; foreach($purchasings as $purchasing): ?>
 						<tr>
 							<td><?php echo $i ?></td>
-							<td><?php echo $row->transaction_code ?></td>
-							<?php $date = strtotime($row->transaction_date) ?>
-							<td><?php echo date('d-M-Y H:i:s',$date) ?></td>
-							
-							<td><?php echo $row->customer_name ?></td>
-							<td><?php echo rupiah($row->selling_price) ?></td>
-							
-							
-							<?php if($role != 'admin'): ?>
-						 		<td><a href="<?php echo base_url('products/edit_product').'/'.$row->product_code?>">edit</a> | delete</td>
-							<?php else: ?>
-							 	<td><?php echo $row->outlet_name ?></td>
-							<?php endif; ?>
+							<td><?php echo $purchasing->code ?></td>
+							<?php $date = strtotime($purchasing->transaction_date)?>
+							<td><?php echo date('d-M-Y H:i',$date) ?></td>
+							<td><?php echo $purchasing->name ?></td>
+							<td>$ <?php echo $purchasing->total_price ?></td>							
 							
 						</tr>
 					<?php $i++; endforeach; ?>
