@@ -226,7 +226,7 @@
         <?php endif; ?>
         <a href="<?php echo base_url('customers') ?>" ><span class="fa fa-users" aria-hidden="true"></span><span class="menu-text pull-right" >Customer</span></a>
 
-        <a href="<?php echo base_url('supplier') ?>" ><span class="fa fa-users" aria-hidden="true"></span><span class="menu-text pull-right" >Supplier</span></a>
+        <!-- <a href="<?php echo base_url('supplier') ?>" ><span class="fa fa-users" aria-hidden="true"></span><span class="menu-text pull-right" >Supplier</span></a> -->
         <!-- <a href="<?php echo base_url('drivers') ?>"><i class="fa fa-car" aria-hidden="true"></i><span class="menu-text pull-right" >Driver</span></a> -->
 
         <a href="<?php echo base_url('') ?>"><i class="fa fa-file-text" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" >Notes</span></a>
