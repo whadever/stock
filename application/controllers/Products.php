@@ -17,6 +17,7 @@ class Products extends MY_Controller{
 		}else{
 			$data['products'] = $this->product_model->getAdminProducts();
 		}
+		$data['allproducts'] = $this->product_model->getAdminProducts();
 		$this->template->load('default','products/all_products',$data);
 	}
 
