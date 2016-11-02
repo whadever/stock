@@ -119,9 +119,13 @@ class Selling extends MY_Controller{
 	public function print_receipt($code){
 		$data['title'] = 'Transaksi';
 		$data['subtitle'] = 'TRANSAKSI';
-		$data['transaction'] = $this->crud_model->get_where('transaction',array('code'=>$code))->row();
-		$data['detail'] = $this->crud_model->get_where('transaction_detail',array('transaction_code'=>$code))->row();
-		$data['products'] = $this->crud_model->get_where('products',array('code'=>$data['detail']->product_code))->result();
+		$data['transaction']=$this->crud_model->get_by_condition('transaction',array('code' => $code))->row();
+		$this->db->select('transaction_detail.*,product.name,product.selling_price');
+		$this->db->from('transaction_detail');
+		$this->db->join('products','transaction_detail.product_code=product.code');
+		$this->db->where('transaction_detail.transaction_code',$code);
+		$data['transaction_detail']=$this->db->get()->result();
+		$this->load->view('selling/sell_receipt',$data);
 	}
 
 	public function finish_transaction($data= ''){
@@ -162,11 +166,12 @@ class Selling extends MY_Controller{
 						'transaction_code'	=> $code,
 						'product_code'		=> $product_code,
 						'quantity'			=> 1,
-						'from_client_id'	=> $this->id,
-						'to_client_id'		=> $customer_id,
 						'selling_price'		=> $this->input->post('disc_price')[$i]
 					);
-
+			
+				$from_client_id = $this->id;
+				$to_client_id = $customer_id;
+				$this->crud_model->update_data('transaction',array('from_client_id' => $from_client_id,'to_client_id'=>$to_client_id),array('code'=>$code));
 				$this->db->insert('transaction_detail',$transaction_detail);
 
 				if($product->quantity>0){
@@ -178,7 +183,7 @@ class Selling extends MY_Controller{
 				
 			}
 
-			redirect('transaction');
+			redirect('selling/sell_receipt');
 		
 		}else{
 
