@@ -175,8 +175,13 @@
 						$('#total_price').append('$&nbsp;'+total_price);
 						$('#total_harga').val(total_price);
 						$('.table-sell').footable();
+						
 						if(total_price != 0){
+							$('#next').empty();
 							$('#next').append('<input type="submit" name="next" class="btn btn-primary" value="Next">');
+						}
+						else{
+							$('#next').empty();
 						}
 					}
 						

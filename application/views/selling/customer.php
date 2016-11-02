@@ -29,7 +29,7 @@
 									<p class="bebas">TOTAL HARGA</p>
 								</td>
 								<td>
-									<input type="text" name="total_harga" class="form-control" value="<?php echo $total_harga; ?>" readonly="readonly">
+									<input type="text" name="total_harga" class="form-control" value="<?php echo $total_price; ?>" readonly="readonly">
 								</td>
 							</tr>
 							<tr>

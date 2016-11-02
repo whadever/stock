@@ -116,6 +116,14 @@ class Selling extends MY_Controller{
 		}
 	}
 
+	public function print_receipt($code){
+		$data['title'] = 'Transaksi';
+		$data['subtitle'] = 'TRANSAKSI';
+		$data['transaction'] = $this->crud_model->get_where('transaction',array('code'=>$code))->row();
+		$data['detail'] = $this->crud_model->get_where('transaction_detail',array('transaction_code'=>$code))->row();
+		$data['products'] = $this->crud_model->get_where('products',array('code'=>$data['detail']->product_code))->result();
+	}
+
 	public function finish_transaction($data= ''){
 		$data['customers'] = $this->crud_model->get_data('customers')->result();
 		if ($this->input->post('save')) {
