@@ -14,6 +14,7 @@
 </style>
 <?php $role = $this->crud_model->get_by_condition('outlets',array('id' => $this->session->userdata('is_active')))->row('role'); ?>
 
+
 <div class="row">
 	<div class="col-md-12 content-wrap">
 		<div class="row" style="border-bottom: 2px solid #2c3e50">
@@ -38,6 +39,7 @@
 					 	<th data-type="numeric" data-hide="phone">No.Telp</th>
 					 	<th data-hide="phone">E-mail</th>
 					 	<th data-type="numeric" data-hide="phone">Alamat</th>
+					 	<th data-hide="phone">Outlet</th>
 					 	<th data-hide="phone">Tindakan</th>
 						
 					 </tr>
@@ -51,6 +53,7 @@
 							<td><?php echo $customer->phone ?></td>
 							<td><?php echo $customer->email ?></td>
 							<td><?php echo $customer->address ?></td>
+							<td><?php echo $customer->outlet_name ?></td>
 						 	<td><a href="<?php echo base_url('customers/edit_customer').'/'.$customer->id?>">Edit</a> | <a onclick="delete_cust(<?php echo $customer->id ?>)">Delete</a></td>
 							
 						</tr>

@@ -11,7 +11,10 @@ class Customers extends MY_Controller
 	public function index(){
 		$data['title'] = 'Customers';
 		$data['subtitle'] = 'CUSTOMERS';
-		$data['customers'] = $this->crud_model->get_data('customers')->result();
+		$this->db->select('customers.*, outlets.name as outlet_name');
+		$this->db->from('customers');
+		$this->db->join('outlets','customers.outlet_id = outlets.id');
+		$data['customers'] = $this->db->get()->result();
 		$this->template->load('default','customers/all_customers',$data);
 	}
 

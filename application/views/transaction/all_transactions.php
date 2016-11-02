@@ -1,7 +1,3 @@
-
-<!-- <script src="<?php echo base_url() ?>js/JsBarcode.all.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>js/canvas-toblob.js"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>js/filesaver.js"></script> -->
 <link rel="stylesheet" href="<?php echo base_url() ?>fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
 <script type="text/javascript" src="<?php echo base_url() ?>fancybox/source/jquery.fancybox.pack.js"></script>
 
@@ -27,9 +23,6 @@
 			<div class="form-group" style="margin-bottom: 20px">
 				<label for="">Search :</label>
 				<input type="text" class="form-control" id="filter">
-				<?php if($role != 'admin'): ?>
-					<!-- <a href="<?php echo base_url('selling') ?>" class="btn btn-primary pull-right">Transaksi Baru</a> -->
-				<?php endif; ?>
 			</div>
 			<div class="table-responsive toggle-circle-filled">
 			<table class="table table-condensed table_product" data-filter="#filter" data-page-size="10" >
@@ -38,14 +31,9 @@
 					 	<th data-type="numeric" data-sort-initial="true">No</th>
 					 	<th data-hide="phone">Kode</th>
 					 	<th data-toggle="true">Tanggal</th>
-					 	<!-- <th data-hide="phone">Kuantitas</th> -->
 					 	<th data-type="numeric" data-hide="phone">Customer</th>
+					 	<th data-type="numeric" data-hide="phone">Outlet</th>
 					 	<th data-type="numeric" data-hide="phone">Total Transaksi</th>
-					 	<!-- <?php //if($role != 'admin'): ?>
-					 		<th data-hide="phone">Tindakan</th>
-						<?php //else: ?>
-						 	<th data-hide="phone">Lokasi</th>
-						<?php //endif; ?> -->
 					 </tr>
 				</thead>
 				<tbody>
@@ -55,14 +43,9 @@
 							<td><?php echo $selling->code ?></td>
 							<?php $date = strtotime($selling->transaction_date)?>
 							<td><?php echo date('d-M-Y H:i',$date) ?></td>
-							<td><?php echo $selling->name ?></td>
+							<td><?php echo $selling->customer_name ?></td>
+							<td><?php echo $selling->outlet_name ?></td>
 							<td>$ <?php echo $selling->total_price ?></td>
-							<!-- <td><a href="<?php #echo base_url('transactions/edit_customer').'/'.$selling->code?>">edit</a> | delete</td> -->
-							<!-- <?php //if($role != 'admin'): ?>
-						 		<td><a href="<?php //echo base_url('products/edit_product').'/'.$product->code?>">edit</a> | delete</td>
-							<?php //else: ?>
-							 	<td><?php #echo $product->outlet_name ?></td>
-							<?php #endif; ?> -->
 							
 						</tr>
 					<?php $i++; endforeach; ?>
@@ -81,9 +64,6 @@
 			<div class="form-group" style="margin-bottom: 20px">
 				<label for="">Search :</label>
 				<input type="text" class="form-control" id="filter">
-				<?php if($role != 'admin'): ?>
-					<!-- <a href="<?php echo base_url('purchase') ?>" class="btn btn-primary pull-right">Transaksi Baru</a> -->
-				<?php endif; ?>
 			</div>
 			<div class="table-responsive toggle-circle-filled">
 			<table class="table table-condensed table_product" data-filter="#filter" data-page-size="10" >
@@ -138,9 +118,6 @@
 			<div class="form-group" style="margin-bottom: 20px">
 				<label for="">Search :</label>
 				<input type="text" class="form-control" id="filter">
-				<?php if($role != 'admin'): ?>
-					<!-- <a href="<?php echo base_url('selling') ?>" class="btn btn-primary pull-right">Transaksi Baru</a> -->
-				<?php endif; ?>
 			</div>
 			<div class="table-responsive toggle-circle-filled">
 			<table class="table table-condensed table_product" data-filter="#filter" data-page-size="10">
@@ -149,35 +126,19 @@
 					 	<th data-type="numeric" data-sort-initial="true">No</th>
 					 	<th data-hide="phone">Kode</th>
 					 	<th data-toggle="true">Tanggal</th>
-					 	<th data-type="numeric">Nama Barang</th>
-					 	<th data-hide="phone">Kuantitas</th>
-					 	<th data-type="numeric" data-hide="phone">Outlet</th>
-					 	<th data-type="numeric" data-hide="phone">Detail</th>
-					 	<?php if($role != 'admin'): ?>
-					 		<th data-hide="phone">Tindakan</th>
-						<?php else: ?>
-						 	<th data-hide="phone">Lokasi</th>
-						<?php endif; ?>
+					 	<th data-type="numeric">Outlet Pengirim</th>
+					 	<th data-type="numeric">Outlet Penerima</th>
 					 </tr>
 				</thead>
 				<tbody>
-					
-					<?php $i=1; foreach($sellings as $selling): ?>
+					<?php $i=1; foreach($mutations as $mutation): ?>
 						<tr>
 							<td><?php echo $i ?></td>
-							<td><?php echo $selling->transaction_code ?></td>
-							<?php $date = strtotime($selling->transaction_date)?>
+							<td><?php echo $mutation->code ?></td>
+							<?php $date = strtotime($mutation->date)?>
 							<td><?php echo date('d-M-Y H:i',$date) ?></td>
-							<td><?php echo $selling->product_name ?></td>
-							<td><?php echo $selling->customer_name ?></td>
-							<td>$ <?php echo $selling->selling_price ?></td>
-							<!-- <td><a href="<?php #echo base_url('transactions/edit_customer').'/'.$selling->code?>">edit</a> | delete</td> -->
-							<!-- <?php //if($role != 'admin'): ?>
-						 		<td><a href="<?php //echo base_url('products/edit_product').'/'.$product->code?>">edit</a> | delete</td>
-							<?php //else: ?>
-							 	<td><?php #echo $product->outlet_name ?></td>
-							<?php #endif; ?> -->
-							
+							<td><?php echo $this->crud_model->get_by_condition('outlets',array('id'=>$mutation->from_id))->row('name'); ?></td>
+							<td><?php echo $this->crud_model->get_by_condition('outlets',array('id'=>$mutation->to_id))->row('name'); ?></td>
 						</tr>
 					<?php $i++; endforeach; ?>
 				</tbody>
@@ -191,22 +152,7 @@
 		</div>
 	</div>
 </div>
-<!-- <div class="modal fade" id="delete">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				Delete Product
-			</div>
-			<?php //echo form_open('products/delete_product')?>
-			<div class="modal-body">Delete this data?</div>
-			<div class="modal-footer">
-				<
-			</div>
-			<?php //echo form_close()?>
-		</div>
-	</div>
-</div> -->
+
 
 <script>
 	$(document).ready(function() {
