@@ -56,7 +56,7 @@
 							<?php $date = strtotime($selling->transaction_date)?>
 							<td><?php echo date('d-M-Y H:i',$date) ?></td>
 							<td><?php echo $selling->name ?></td>
-							<td>$ <?php echo $selling->total_price ?></td>
+							<td>Rp <?php echo $selling->total_price ?></td>
 							<!-- <td><a href="<?php #echo base_url('transactions/edit_customer').'/'.$selling->code?>">edit</a> | delete</td> -->
 							<!-- <?php //if($role != 'admin'): ?>
 						 		<td><a href="<?php //echo base_url('products/edit_product').'/'.$product->code?>">edit</a> | delete</td>
@@ -81,9 +81,9 @@
 			<div class="form-group" style="margin-bottom: 20px">
 				<label for="">Search :</label>
 				<input type="text" class="form-control" id="filter">
-				<?php if($role != 'admin'): ?>
-					<!-- <a href="<?php echo base_url('purchase') ?>" class="btn btn-primary pull-right">Transaksi Baru</a> -->
-				<?php endif; ?>
+				<!-- <?php #if($role != 'admin'): ?> -->
+					<!-- <a href="<?php //echo base_url('purchase') ?>" class="btn btn-primary pull-right">Transaksi Baru</a> -->
+				<!-- <?php #endif; ?> -->
 			</div>
 			<div class="table-responsive toggle-circle-filled">
 			<table class="table table-condensed table_product" data-filter="#filter" data-page-size="10" >
@@ -93,33 +93,30 @@
 					 	<th data-hide="phone">Kode</th>
 					 	<th data-toggle="true">Tanggal</th>
 					 	
-					 	<th data-hide="phone">Kuantitas</th>
-					 	<th data-type="numeric" data-hide="phone">Supplier</th>
-					 	<th data-type="numeric" data-hide="phone">Detail</th>
-					 	<?php if($role != 'admin'): ?>
+					 	<th data-hide="phone">Supplier</th>
+					 	<th data-type="numeric" data-hide="phone">Harga Beli</th>
+					 	<!-- <?php #if($role != 'admin'): ?>
 					 		<th data-hide="phone">Tindakan</th>
-						<?php else: ?>
+						<?php #else: ?>
 						 	<th data-hide="phone">Lokasi</th>
-						<?php endif; ?>
+						<?php #endif; ?> -->
 					 </tr>
 				</thead>
 				<tbody>
-					<?php $i=1; foreach($purchasing as $row): ?>
+					<?php $i=1; foreach($purchasings as $purchasing): ?>
 						<tr>
 							<td><?php echo $i ?></td>
-							<td><?php echo $row->transaction_code ?></td>
-							<?php $date = strtotime($row->transaction_date) ?>
-							<td><?php echo date('d-M-Y H:i:s',$date) ?></td>
+							<td><?php echo $purchasing->code ?></td>
+							<?php $date = strtotime($purchasing->transaction_date)?>
+							<td><?php echo date('d-M-Y H:i',$date) ?></td>
+							<td><?php echo $purchasing->name ?></td>
+							<td>$ <?php echo $purchasing->total_price ?></td>							
 							
-							<td><?php echo $row->customer_name ?></td>
-							<td><?php echo rupiah($row->selling_price) ?></td>
-							
-							
-							<?php if($role != 'admin'): ?>
-						 		<td><a href="<?php echo base_url('products/edit_product').'/'.$row->product_code?>">edit</a> | delete</td>
-							<?php else: ?>
-							 	<td><?php echo $row->outlet_name ?></td>
-							<?php endif; ?>
+							<!-- <?php #if($role != 'admin'): ?>
+						 		<td><a href="<?php #echo base_url('products/edit_product').'/'.$row->product_code?>">edit</a> | delete</td>
+							<?php #else: ?>
+							 	<td><?php #echo $row->outlet_name ?></td>
+							<?php #endif; ?> -->
 							
 						</tr>
 					<?php $i++; endforeach; ?>

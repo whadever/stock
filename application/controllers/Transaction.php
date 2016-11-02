@@ -14,7 +14,7 @@ class Transaction extends MY_Controller{
 		$data['title'] = 'Transaksi';
 		$data['subtitle'] = 'DAFTAR TRANSAKSI';
 		$data['sellings']=$this->transaction_model->getSelling();
-		// $data['purchasing']=$this->transaction_model->getAllTransactions('2');
+		$data['purchasings']=$this->transaction_model->getPurchasing();
 		// $data['mutations']=$this->transaction_model->getAllTransactions('3');
 
 		$this->template->load('default','transaction/all_transactions',$data);
