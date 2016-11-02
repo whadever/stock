@@ -74,6 +74,16 @@
 					</table>	
 				</div>
 				<div class="row">
+					
+					<div class="col-md-6" id="detailrow">
+						<div class="row text-center">
+							<P class="bebas" style="margin-top: 10px">DETAIL PRODUK</P>
+						</div>
+						<div class="row text-center no-item" style="margin-top: 20PX;">
+							<P class="bebas" style="color:red">BELUM ADA BARANG</P>
+						</div>
+						<div class="row" id="detail"></div>
+					</div>
 					<div class="col-md-6" id="buyrow">
 						<div class="row text-center">
 							<P class="bebas" style="margin-top: 10px">PRODUK YANG DIKIRIM</P>
@@ -102,15 +112,6 @@
 						
 						</div>
 											
-					</div>
-					<div class="col-md-6" id="detailrow">
-						<div class="row text-center">
-							<P class="bebas" style="margin-top: 10px">DETAIL PRODUK</P>
-						</div>
-						<div class="row text-center no-item" style="margin-top: 20PX;">
-							<P class="bebas" style="color:red">BELUM ADA BARANG</P>
-						</div>
-						<div class="row" id="detail"></div>
 					</div> 
 				</div>
 				<div class="row">

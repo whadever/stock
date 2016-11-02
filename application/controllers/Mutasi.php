@@ -51,7 +51,7 @@ class Mutasi extends MY_Controller
 			$this->db->empty_table('cart');
 			
 			$data = array(
-				'title' => 'Mutasi Barang',
+				'title' => 'Mutasi Barang-Kirim',
 				'subtitle' => 'Kirim BARANG',
 			);	
 			$data['products'] = $this->product_model->getAllProducts($this->id);
@@ -217,8 +217,8 @@ class Mutasi extends MY_Controller
 		}
 		else{
 			$data = array(
-					'title' => 'Mutasi Barang',
-					'subtitle' => 'MUTASI BARANG',
+					'title' => 'Mutasi Barang-Terima',
+					'subtitle' => 'Terima BARANG',
 				);
 
 			$data['products'] = $this->crud_model->get_data('products')->result();

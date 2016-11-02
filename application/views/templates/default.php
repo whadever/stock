@@ -182,7 +182,6 @@
                       } ?>
                       <div class="row btn-collection text-center" style="margin:0">
                       <a href="<?php echo base_url('accounts/login') ?>" class="btn btn-primary pop-btn">Add Account</a>
-                      <a href="<?php echo base_url('accounts/logout') ?>" class="btn btn-default pop-btn">Sign Out</a>
                       </div>
                       '
 
@@ -206,14 +205,22 @@
 
         <a href="<?php echo base_url('main') ?>"><i class="fa fa-home" aria-hidden="true"></i><span class="menu-text pull-right">Home</span></a>
        
-        <a href="<?php echo base_url('products') ?>" ><i id="template-button" class="fa fa-archive" aria-hidden="true"></i><span class="menu-text pull-right" >Products</span></a>
+        <a href="<?php echo base_url('products') ?>" ><i id="template-button" class="fa fa-archive" aria-hidden="true"></i><span class="menu-text pull-right" >Produk</span></a>
         
-        <a href="<?php echo base_url('transaction') ?>" ><span class="fa fa-money" aria-hidden="true"></span><span class="menu-text pull-right" >Semua Transaksi</span></a>
+        <a href="<?php echo base_url('transaction') ?>" ><span class="fa fa-money" aria-hidden="true"></span><span class="menu-text pull-right" >Daftar Transaksi</span></a>
 
         <?php if($role == 'admin'): ?>
-          <a href="<?php echo base_url('products/all_category') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Category</span></a>
+          
+          <a href="<?php echo base_url('purchasing') ?>" ><span class="fa fa-shopping-basket" aria-hidden="true"></span><span class="menu-text pull-right" >Pembelian</span></a>
+
+          <a href="<?php echo base_url('products/all_category') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Kategori</span></a>
 
           <a href="<?php echo base_url('outlets') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Outlets</span></a>
+
+          <a href="<?php echo base_url('supplier') ?>" ><span class="fa fa-users" aria-hidden="true"></span><span class="menu-text pull-right" >Supplier</span></a>
+
+          
+
         <?php else: ?>
 
           <a href="<?php echo base_url('mutasi') ?>" ><span class="fa fa-institution" aria-hidden="true"></span><span class="menu-text pull-right" >Mutasi</span></a>
@@ -221,17 +228,21 @@
           <a href="<?php echo base_url('selling') ?>" ><span class="fa fa-shopping-cart" aria-hidden="true"></span><span class="menu-text pull-right" >
           Penjualan</span></a>
 
-          <a href="<?php echo base_url('purchasing') ?>" ><span class="fa fa-shopping-basket" aria-hidden="true"></span><span class="menu-text pull-right" >Pembelian</span></a>
+          
+          
 
         <?php endif; ?>
         <a href="<?php echo base_url('customers') ?>" ><span class="fa fa-users" aria-hidden="true"></span><span class="menu-text pull-right" >Customer</span></a>
 
-        <!-- <a href="<?php echo base_url('supplier') ?>" ><span class="fa fa-users" aria-hidden="true"></span><span class="menu-text pull-right" >Supplier</span></a> -->
+        
         <!-- <a href="<?php echo base_url('drivers') ?>"><i class="fa fa-car" aria-hidden="true"></i><span class="menu-text pull-right" >Driver</span></a> -->
 
         <a href="<?php echo base_url('') ?>"><i class="fa fa-file-text" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" >Notes</span></a>
 
-        <a href="<?php echo base_url('') ?>"><i class="fa fa-comments" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" >Private Message</span></a>
+        <a href="<?php echo base_url('accounts/logout') ?>"><i class="fa fa-sign-out" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" >Sign Out</span></a>
+
+
+        <!-- <a href="<?php echo base_url('') ?>"><i class="fa fa-comments" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" >Private Message</span></a> -->
 
         <div class="bottom-align-text-2 text-center">Hassee Stock System V1.0</div>
         <div class="bottom-align-text text-center">For help and feedback contact office@gethassee.com</div>
