@@ -22,8 +22,6 @@
 			<table class="table table-condensed" data-filter="#filter" data-page-size="10" id="table_product">
 				<thead>
 					 <tr>
-					 	
-					 	<th data-hide="phone">Kode Outlet</th>
 					 	<th data-toggle="true">Nama Outlet</th>
 					 	<th data-hide="phone">Alamat</th>					 	
 					 	<th data-hide="phone">PIC Outlet</th>
@@ -34,7 +32,7 @@
 					<?php foreach($outlets as $outlet): ?>
 						<tr>
 							
-							<td><?php echo $outlet->code ?></td>
+						
 							<td><?php echo $outlet->username ?></td>
 							<td><?php echo $outlet->address ?></td>
 							<td><?php echo $outlet->pic ?></td>
