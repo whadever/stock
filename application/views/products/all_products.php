@@ -42,7 +42,7 @@
 					 	<th data-type="numeric" data-hide="phone">Harga Beli</th>
 					 	<th data-type="numeric" data-hide="phone">Harga Jual</th>
 						<th data-hide="phone">Status</th>
-					 	<th data-hide="phone">Gambar</th>
+					 	<!-- <th data-hide="phone">Gambar</th> -->
 					 	<?php if($role != 'admin'): ?>
 					 		<th data-hide="phone">Tindakan</th>
 						<?php else: ?>
@@ -55,7 +55,7 @@
 						<tr>
 							<td><?php echo $i ?></td>
 							<td><?php echo $product->code ?></td>
-							<td><?php echo $product->name ?></td>
+							<td><a class="fancybox" rel="group" href="<?php echo base_url().$product->photo ?>"><?php echo $product->name ?></a></td>
 							<td><?php echo $product->model ?></td>
 							<td><?php echo $product->category ?></td>
 							<td><?php echo rupiah($product->buying_price) ?></td>
@@ -64,10 +64,10 @@
 							<?php if($product->active==1): ?> 
 							<?php echo ($product->quantity==0)? '<p class="nostock">Out of stock</p>':'Available' ?>
 							<?php else: ?>
-							<p>Deactivated</p>	
+							<p class="nostock">Deactivated</p>	
 							<?php endif; ?>
 							</td>
-							<td><a class="fancybox" rel="group" href="<?php echo base_url().$product->photo ?>"><img src="<?php echo base_url().$product->thumb ?>" alt="<?php echo $product->name ?>" width="40"/></a></td>
+							<!-- <td><a class="fancybox" rel="group" href="<?php //echo base_url().$product->photo ?>"><img src="<?php //echo base_url().$product->thumb ?>" alt="<?php //echo $product->name ?>" width="40"/></a></td> -->
 							<?php if($role != 'admin'): ?>
 						 		<td><a href="<?php echo base_url('products/edit_product').'/'.$product->code?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> | <a onclick="deactivate_product('<?php echo $product->code ?>')"><i class="fa fa-trash" aria-hidden="true"></i></a> | <a target="_blank" href="<?php echo base_url('products/print_product').'/'.$product->code ?>"><i class="fa fa-print" aria-hidden="true"></i></a></td>
 							<?php else: ?>

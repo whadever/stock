@@ -184,6 +184,9 @@
 				},2000)
 				
 		});
+		<?php if($this->session->flashdata('success')): ?>
+				   	 <?php echo $this->session->flashdata('success') ?>
+		<?php endif; ?>
 	});
 </script>
 

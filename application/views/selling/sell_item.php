@@ -105,7 +105,7 @@
 	</div>
 	<div class="col-md-6" style="border-left:8px solid #e8ecf0;margin-bottom: 0px;" id="buyrow">
 		<div class="row text-center">
-			<P class="bebas" style="margin-top: 10px">PRODUK YANG DIBELI</P>
+			<P class="bebas" style="margin-top: 10px">PRODUK TERJUAL</P>
 		</div>
 		<div class="row" style="margin-bottom: 15px;">
 			<div class="col-sm-5"><label>Kode Transaksi</label><input type="text" name="transaction_code" class="form-control" placeholder="Kode Transaksi" required="1"></div>

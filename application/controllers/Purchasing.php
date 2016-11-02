@@ -111,10 +111,10 @@
 					}
 
 					$this->crud_model->insert_data('products',$data_insert);
-
+					$this->session->set_flashdata('success',"alertify.success('Product has been added.')");
 					
 
-					redirect('products');
+					redirect('purchasing');
 				}
 				else{
 					$data['title'] = "Pembelian";
