@@ -120,11 +120,13 @@ class Selling extends MY_Controller{
 		$data['title'] = 'Transaksi';
 		$data['subtitle'] = 'TRANSAKSI';
 		$data['transaction']=$this->crud_model->get_by_condition('transaction',array('code' => $code))->row();
-		$this->db->select('transaction_detail.*,product.name,product.selling_price');
+		$this->db->select('transaction_detail.*,products.name,products.selling_price as real_price');
 		$this->db->from('transaction_detail');
-		$this->db->join('products','transaction_detail.product_code=product.code');
+		$this->db->join('products','transaction_detail.product_code=products.code');
 		$this->db->where('transaction_detail.transaction_code',$code);
-		$data['transaction_detail']=$this->db->get()->result();
+
+		$data['products']=$this->db->get()->result();
+		$data['customer']=$this->crud_model->get_by_condition('customers',array('id'=>$data['transaction']->to_client_id))->row();
 		$this->load->view('selling/sell_receipt',$data);
 	}
 
@@ -183,7 +185,7 @@ class Selling extends MY_Controller{
 				
 			}
 
-			redirect('selling/sell_receipt');
+			redirect('selling/print_receipt/'.$code);
 		
 		}else{
 
