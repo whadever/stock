@@ -11,7 +11,7 @@
 		}
 
 		public function index(){
-			if($this->user_role == 'admin'){
+			if($this->user_role != 'admin'){
 				redirect('products');
 			}
 			else{
