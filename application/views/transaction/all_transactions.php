@@ -163,24 +163,22 @@
 					 </tr>
 				</thead>
 				<tbody>
+					
 					<?php $i=1; foreach($sellings as $selling): ?>
 						<tr>
 							<td><?php echo $i ?></td>
-							<td><?php echo $selling->code ?></td>
-							<td><?php echo $selling->name ?></td>
-							<td><?php echo $product->model ?></td>
-							<td><?php echo $product->category ?></td>
-							<td><?php echo rupiah($product->buying_price) ?></td>
-							<td><?php echo rupiah($product->selling_price) ?></td>
-							<td>
-							<?php echo ($product->quantity==0)? '<p class="nostock">Out of stock</p>':'Available' ?>	
-							</td>
-							<td><a class="fancybox" rel="group" href="<?php echo base_url().$product->photo ?>"><img src="<?php echo base_url().$product->thumb ?>" alt="<?php echo $product->name ?>" width="40"/></a></td>
-							<?php if($role != 'admin'): ?>
-						 		<td><a href="<?php echo base_url('products/edit_product').'/'.$product->code?>">edit</a> | delete</td>
-							<?php else: ?>
-							 	<td><?php echo $product->outlet_name ?></td>
-							<?php endif; ?>
+							<td><?php echo $selling->transaction_code ?></td>
+							<?php $date = strtotime($selling->transaction_date)?>
+							<td><?php echo date('d-M-Y H:i',$date) ?></td>
+							<td><?php echo $selling->product_name ?></td>
+							<td><?php echo $selling->customer_name ?></td>
+							<td>$ <?php echo $selling->selling_price ?></td>
+							<!-- <td><a href="<?php #echo base_url('transactions/edit_customer').'/'.$selling->code?>">edit</a> | delete</td> -->
+							<!-- <?php //if($role != 'admin'): ?>
+						 		<td><a href="<?php //echo base_url('products/edit_product').'/'.$product->code?>">edit</a> | delete</td>
+							<?php //else: ?>
+							 	<td><?php #echo $product->outlet_name ?></td>
+							<?php #endif; ?> -->
 							
 						</tr>
 					<?php $i++; endforeach; ?>
@@ -216,6 +214,9 @@
 	$(document).ready(function() {
    	 $('.table_product').footable();
    	 $(".fancybox").fancybox();
+   	 <?php if($this->session->flashdata('success')): ?>
+   	 <?php echo $this->session->flashdata('success') ?>
+   	 <?php endif; ?>
 	} );
 </script>
 

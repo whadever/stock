@@ -18,55 +18,53 @@
 	    filter: alpha(opacity=0);
 	}
 </style>
+<?php echo form_open('mutasi/receive') ?>
 		<div class="row content-wrap" style="margin-top: 20px;">
 			<div class="col-md-12">
 				<div class="row">
-					<table class="table distribute-table">
-						<tbody>
-						<tr>
-							<td colspan="2"><p class="bebas">Kode Transaksi</p></td>
-						</tr>
-						<tr>
-							<td colspan="2"><input type="text" name="transaction_code" placeholder="Kode Transaksi" class="form-control" required="1"></td>
-						</tr>
-						<tr>
-							<td colspan="2"><p class="bebas">Kode Barang</p></td>
-						</tr>
-						<tr>
-							<td colspan="2"><input type="text" name="item_code" id="item_code" placeholder="Kode Barang" class="form-control" required="1" onblur="get_barcode()"></td>
-						</tr>
-						</tbody>
-					</table>	
+
+				<p class="bebas">Kode Transaksi</p></td>
+
+				<input type="text" name="transaction_code" id="transaction_code" placeholder="Kode Transaksi" class="form-control" required="1" onblur="get_transaction_detail()">
+					
+				<div class="row" id="transaction_detail" style="margin-top: 20px; background-color: ">
+					
+				</div>
+
+				<p class="bebas" style="margin-top: 20px;">Kode Barang</p>
+				<input type="text" name="item_code" disabled="disabled" id="item_code" placeholder="Kode Barang" class="form-control" onblur="get_barcode()">
+
 				</div>
 				<div class="row">
 					<div class="col-md-6" id="buyrow">
 						<div class="row text-center">
-							<P class="bebas" style="margin-top: 10px">PRODUK YANG DIKIRIM</P>
+							<P class="bebas" style="margin-top: 10px">PRODUK YANG DITERIMA</P>
 						</div>
-						<?php echo form_open('selling/sell_product') ?>
+						
 						<div class="table-responsive toggle-circle-filled">
 						<table class="table table-condensed table-mutation" data-filter="#filter" data-page-size="10" >
 
 							<thead><tr>
 								<th data-sort-initial="true" data-toggle="true">Nama</th>
 								<th data-type="numeric">Qty.</th>
-								<th data-hide="phone" data-type="numeric">Harga</th>
 								<th data-hide="phone"></th>
 							</tr></thead>
 							<?php $i=1;?>
-							<tbody id="item_list"><tr class="no-item">
+							<tbody id="item_list">
+								<tr class="no-item">
 								
 					 			</tr>
 							</tbody>
 						</table>
 						<p>
 						
+						<!-- <a href="" data-toggle="modal" data-target="#product_info" data-firstname="<?php echo $order->firstname?>" data-lastname="<?php echo $order->lastname ?>" data-email="<?php echo $order->email?>" data-telephone="<?php echo $order->telephone?>" ><?php echo $order->firstname . ' ' . $order->lastname?></a> -->
 						
 						</p>
-						<input type="hidden" name="total_harga" id="total_harga" value="">
+						
 						
 						</div>
-						
+											
 					</div>
 					<div class="col-md-6" id="detailrow">
 						<div class="row text-center">
@@ -78,12 +76,18 @@
 						<div class="row" id="detail"></div>
 					</div> 
 				</div>
-				<div class="row text-center" id="continue">
-					
+				<div class="row">
+					<div class="col-sm-6" style="padding: 20px 0">
+						<textarea name="notes" id="" placeholder="Notes" class="form-control" rows="3"></textarea>
+					</div>
 				</div>
+				<div class="row text-center">
+					<input type="submit" name="accept" class="btn btn-default btn-custom" id="continue" value="ACCEPT" disabled="disabled" style="display: none">
+				</div>
+					
 			</div>
 		</div>
-		
+<?php echo form_close() ?>
 <script>
 	// jQuery(function(){
  //    	var counter = 1;
@@ -110,7 +114,10 @@
               type: 'GET',
 
               success: function(result){
- 
+ 				if (result == 'empty') {
+ 					$('#continue').attr('disabled','disabled');
+					$('#continue').hide();
+ 				}
               	$('#row_'+code).remove();
                 
               } 
@@ -127,12 +134,11 @@
 			$('#found').remove();
 			$('#detail').empty();
 			$.ajax({
-				url:"<?php echo base_url('mutasi/get_barcode')?>" +'/'+ barcode,
+				url:"<?php echo base_url('mutasi/get_detail')?>" +'/'+ barcode,
 				type: "GET",
 				success : function(result){
-
 					$('#detail').append(result);
-					$('#item_code').val('');
+					// $('#item_code').val('');
 					$('#item_code').focus();
 
 				}
@@ -140,6 +146,27 @@
 
 		}
 	}
+
+	function get_transaction_detail(){
+		var transaction_code = $('#transaction_code').val();
+		if (transaction_code == '') {	
+			
+		}else{
+			$('#found').remove();
+			$('#transaction_detail').empty();
+			$.ajax({
+				url:"<?php echo base_url('mutasi/get_transaction_detail')?>" +'/'+ transaction_code,
+				type: "GET",
+				success : function(result){
+					$('#transaction_detail').append(result);
+					$('#item_code').removeAttr('disabled');
+
+				}
+			});
+
+		}
+	}
+
 	function list_item(){
 		
 		var barcode = $('#item_code').val();
@@ -148,7 +175,7 @@
 		}
 		else{
 			$.ajax({
-				url:"<?php echo base_url('mutasi/list_item')?>"+'/'+ barcode,
+				url:"<?php echo base_url('mutasi/list_item_receive')?>"+'/'+ barcode,
 				type:"GET",
 				success : function(result){
 
@@ -158,8 +185,11 @@
 
 						var test = JSON.parse(result);
 						var price = test.selling_price;
-						$('#continue').append('<input type="submit" name="next" class="btn btn-default btn-custom" value="Proceed">');
-						$('#item_list').append("<tr id='row_"+test.code+"' ><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td><a onclick='remove_item(\""+test.code+"\")' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'><input type='hidden' name='disc_price[]' id='disc_price_"+test.code+"' value='"+test.selling_price+"'> ");
+						$('#continue').removeAttr('disabled');
+						$('#continue').show();
+						
+						$('#item_list').append("<tr id='row_"+test.code+"' ><td>"+test.name+"</td><td>1</td><td><a onclick='remove_item(\""+test.code+"\")' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'>");
+
 						// $('#total_price').empty();
 						// $('#total_price').append('$&nbsp;'+total_price);
 						// $('#total_harga').val(total_price);
@@ -179,7 +209,7 @@
 	        event.preventDefault();
 	        $('#item_code').blur();
 	    }
-
+	});
 	$('#select-driver').change(function(){
 		if($(this).val()=='others'){
 			$('#select-driver-row').append('<div id="new-driver"><p class="bebas" style="margin-top: 15px;">Data Driver Baru</p><input type="text" name="driver_name" placeholder="Nama Driver" class="form-control" required="1"><input type="text" name="driver_phone" placeholder="No.Telp Driver" class="form-control" required="1" style="margin-top: 5px;"><div class="fileUpload btn btn-primary" style="margin-top: 5px;"><span>Upload Foto Driver</span><input type="file" id="photo" class="upload" name="photo" /></div></div>');
