@@ -110,10 +110,10 @@
 		<div class="row" style="margin-bottom: 15px;">
 			<div class="col-sm-5"><label>Kode Transaksi</label><input type="text" name="transaction_code" class="form-control" placeholder="Kode Transaksi" required="1"></div>
 		</div>
-
+	
 		
 		<div class="table-responsive toggle-circle-filled">
-		<table class="table table-condensed table-sell" data-filter="#filter" data-page-size="10" >
+		<table class="table table-condensed table-sell" data-filter="#filter" id="sell" data-page-size="10" >
 
 			<thead><tr>
 				<th width="22%" data-sort-initial="true">Nama</th>
@@ -130,6 +130,7 @@
 			</tbody>
 		</table>
 		<p>
+
 		
 		<strong class="pull-right" id="total_price">$ 0</strong>	
 		<strong class="pull-right" style="margin-right: 20px">Total Price</strong>
@@ -147,6 +148,9 @@
 <script>
 
 	$(document).ready(function(){
+		<?php if ($code != ''): ?>
+			window.open("<?php echo base_url() ?>" + 'selling/print_receipt' + '/' + "<?php echo $code ?>");
+		<?php endif; ?>
 
 		$('#item_code').focus();
 		$('.table-sell').footable();
@@ -170,7 +174,7 @@
 						var price = test.selling_price;
 						total_price = +total_price + +price;
 						total_price = total_price.toFixed(2);
-						$('#item_list').append("<tr id='row_"+test.code+"' ><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td> <div class='input-group'><input type='number' class='form-control' onblur='get_discount("+"\""+test.code+"\""+",this)' max=100 min=0 name='disc'><span class='input-group-addon'>%</span></div></td><td id='harga_disc_"+test.code+"'>$ "+test.selling_price+"</td><td><a onclick='remove_item(\""+test.code+"\")' style='cursor: pointer'>&times;</a></td></tr><input type='hidden' name='id[]' value='"+test.code+"'><input type='hidden' name='disc_price[]' id='disc_price_"+test.code+"' value='"+test.selling_price+"'> ");
+						$('#item_list').append("<tr id='row_"+test.code+"' ><td>"+test.name+"</td><td>1</td><td id='harga_"+test.code+"'>Rp "+test.selling_price+"</td><td> <div class='input-group'><input type='number' class='form-control' onblur='get_discount("+"\""+test.code+"\""+",this)' max=100 min=0 name='disc'><span class='input-group-addon'>%</span></div></td><td id='harga_disc_"+test.code+"'>$ "+test.selling_price+"</td><td><a onclick='remove_item(\""+test.code+"\")' style='cursor: pointer'>&times;</a></td><input type='hidden' name='id[]' value='"+test.code+"'><input type='hidden' name='disc_price[]' id='disc_price_"+test.code+"' value='"+test.selling_price+"'></tr> ");
 						$('#total_price').empty();
 						$('#total_price').append('$&nbsp;'+total_price);
 						$('#total_harga').val(total_price);
@@ -180,10 +184,7 @@
 							$('#next').removeAttr("disabled");
 							
 						}
-						else{
-							$('#next').attr("disabled", true);
-							
-						}
+						
 					}
 						
 
@@ -285,20 +286,18 @@
 
 				$('#total_harga').val(total_price);
               	$('#row_'+code).remove();
-                    
+                
+                
+                if(total_price == 0){
+                	$('#next').attr("disabled", true);
+                }
+
+                
                 
               } 
             });
         }
     }
-
-	function saveCanvas(type, ext) {
-		var canvas = document.getElementById('barcode');
-		canvas.toBlob(function (blob) {
-						  saveAs(blob, $('#item_code').val() + ext);
-					  }, type, 1);
-		
-	}
 
 	function sell_price(){
 		if (!$('#margin').val() || !$('#buy').val()) {

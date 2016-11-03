@@ -85,7 +85,7 @@ class Selling extends MY_Controller{
 			if($this->db->get_where('cart',array('product_code'=>$barcode))->num_rows() > 0){
 				echo 'added';
 			}else{
-				$this->db->insert('cart',array('product_code' => $barcode, 'quantity' => 1,'outlet_id' => $this->id));
+				$this->db->insert('cart',array('product_code' => $barcode, 'quantity' => 1,'outlet_id' => $this->id,'transaction_type' => 1));
 					if($product->quantity>0){
 					echo json_encode($product);
 
@@ -101,6 +101,10 @@ class Selling extends MY_Controller{
 
 	public function sell_product(){
 		if($this->input->post('next')){
+			// echo "<pre>";
+			// print_r($this->input->post());
+			// echo "</pre>";
+			// exit;
 			$data['transaction_code'] = $this->input->post('transaction_code');
 			$data['product_id'] = $this->input->post('id');
 			$data['disc_price'] = $this->input->post('disc_price');
@@ -110,6 +114,7 @@ class Selling extends MY_Controller{
 		}
 		else{
 			$this->db->empty_table('cart');
+			$data['code'] = '';
 			$data['title'] = 'Penjualan';
 			$data['subtitle'] = 'PENJUALAN';
 			$this->template->load('default','selling/sell_item',$data);
@@ -185,7 +190,11 @@ class Selling extends MY_Controller{
 				
 			}
 
-			redirect('selling/print_receipt/'.$code);
+			$this->db->empty_table('cart');
+			$data['code'] = $code;
+			$data['title'] = 'Penjualan';
+			$data['subtitle'] = 'PENJUALAN';
+			$this->template->load('default','selling/sell_item',$data);
 		
 		}else{
 
