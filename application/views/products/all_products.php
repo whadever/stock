@@ -110,7 +110,7 @@
 						<th data-hide="phone">Status</th>
 					 	<!-- <th data-hide="phone">Gambar</th> -->
 						<th data-hide="phone">Lokasi</th>
-						<?php if($role != 'admin'): ?>
+						<?php if($role == 'admin'): ?>
 					 		<th data-hide="phone">Tindakan</th>
 					 	<?php endif; ?>
 						
@@ -135,7 +135,7 @@
 							</td>
 							<!-- <td><a class="fancybox" rel="group" href="<?php //echo base_url().$product->photo ?>"><img src="<?php //echo base_url().$product->thumb ?>" alt="<?php //echo $product->name ?>" width="40"/></a></td> -->
 							 <td><?php echo $allproduct->outlet_name ?></td>
-							 <?php if($role != 'admin'): ?>
+							 <?php if($role == 'admin'): ?>
 						 		<td><a href="<?php echo base_url('products/edit_product').'/'.$allproduct->code?>"><i class="fa fa-pencil" aria-hidden="true"></i></a> | <a onclick="deactivate_product('<?php echo $allproduct->code ?>')"><i class="fa fa-trash" aria-hidden="true"></i></a> | <a target="_blank" href="<?php echo base_url('products/print_product').'/'.$allproduct->code ?>"><i class="fa fa-print" aria-hidden="true"></i></a></td>
 							<?php endif; ?>
 							
