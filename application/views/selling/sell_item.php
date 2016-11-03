@@ -138,7 +138,7 @@
 		
 		</div>
 		<div class="row text-center" id="next">
-			
+			<input type="submit" name="next" class="btn btn-primary" value="Next">
 		</div>	
 	</div>
 	<?php echo form_close(); ?>
@@ -177,11 +177,12 @@
 						$('.table-sell').footable();
 						
 						if(total_price != 0){
-							$('#next').empty();
-							$('#next').append('<input type="submit" name="next" class="btn btn-primary" value="Next">');
+							$('#next').removeAttr('disabled');
+							
 						}
 						else{
-							$('#next').empty();
+							$('#next').attr("disabled",true);
+							
 						}
 					}
 						

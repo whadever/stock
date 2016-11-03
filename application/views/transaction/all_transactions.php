@@ -59,6 +59,7 @@
 			</table>
 		</div>
 	</div>
+<?php if ($role=='admin'):?>
 	<div class="row" style="margin-top: 20px;">
 		<p class="bebas">PEMBELIAN</p>
 			<div class="form-group" style="margin-bottom: 20px">
@@ -99,6 +100,7 @@
 			</table>
 		</div>
 	</div>
+<?php endif?>
 	<div class="row" style="margin-top: 20px;">
 		<p class="bebas">MUTASI</p>
 			<div class="form-group" style="margin-bottom: 20px">
