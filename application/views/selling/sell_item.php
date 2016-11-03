@@ -137,8 +137,8 @@
 		<input type="hidden" name="total_harga" id="total_harga" value="">
 		
 		</div>
-		<div class="row text-center" id="next">
-			<input type="submit" name="next" class="btn btn-primary" value="Next">
+		<div class="row">
+			<input type="submit" name="next" class="btn btn-primary pull-right" value="Next" id="next" disabled="true" style="margin-right: 13px;margin-top: 15px; font-size: 17px;">
 		</div>	
 	</div>
 	<?php echo form_close(); ?>
@@ -177,11 +177,11 @@
 						$('.table-sell').footable();
 						
 						if(total_price != 0){
-							$('#next').removeAttr('disabled');
+							$('#next').removeAttr("disabled");
 							
 						}
 						else{
-							$('#next').attr("disabled",true);
+							$('#next').attr("disabled", true);
 							
 						}
 					}
