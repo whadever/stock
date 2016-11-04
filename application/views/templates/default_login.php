@@ -10,12 +10,15 @@
     <!-- Bootstrap -->
     <link href="<?php echo base_url() ?>css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url() ?>css/custom.css">
-
     <script src="<?php echo base_url() ?>js/jquery-1.12.4.min.js"></script>
     <script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
 
     <!-- CSS and Javascript -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>css/custom.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>alertify/themes/alertify.core.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>alertify/themes/alertify.default.css">
+    <script src="<?php echo base_url() ?>alertify/lib/alertify.min.js"></script>
+    
 
     <style>
       @media screen and (max-width: 767px){

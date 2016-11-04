@@ -115,3 +115,8 @@
 		
 	</div>
 </div>
+<script type="text/javascript">
+	<?php if($this->session->flashdata('fail')): ?>
+   		<?php echo $this->session->flashdata('fail') ?>
+   	<?php endif; ?>
+</script>
