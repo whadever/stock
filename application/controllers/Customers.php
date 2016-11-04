@@ -6,6 +6,7 @@ class Customers extends MY_Controller
 	
 	function __construct(){
 		parent::__construct();
+		$this->id = $this->session->userdata('is_active');
 	}
 
 	public function index(){
@@ -26,6 +27,7 @@ class Customers extends MY_Controller
 				'address' => $this->input->post('customer_address'),
 				'phone' => $this->input->post('customer_telp'),
 				'email' => $this->input->post('customer_mail'),
+				'outlet_id' => $this->id
 				
 			);
 			$this->crud_model->insert_data('customers',$customer);
