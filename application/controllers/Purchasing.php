@@ -11,10 +11,7 @@
 		}
 
 		public function index(){
-			if($this->user_role != 'admin'){
-				redirect('products');
-			}
-			else{
+			
 				if ($this->input->post('save')) {
 
 					$config['allowed_types']        = 'jpg|png|jpeg';
@@ -124,7 +121,7 @@
 				}		
 			}
 			
-		}
+		
 
 	}
 

@@ -209,9 +209,11 @@
         
         <a href="<?php echo base_url('transaction') ?>" ><span class="fa fa-money" aria-hidden="true"></span><span class="menu-text pull-right" >Daftar Transaksi</span></a>
 
+        <a href="<?php echo base_url('purchasing') ?>" ><span class="fa fa-shopping-basket" aria-hidden="true"></span><span class="menu-text pull-right" >Pembelian</span></a>
+
         <?php if($role == 'admin'): ?>
           
-          <a href="<?php echo base_url('purchasing') ?>" ><span class="fa fa-shopping-basket" aria-hidden="true"></span><span class="menu-text pull-right" >Pembelian</span></a>
+          
 
           <a href="<?php echo base_url('products/all_category') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Kategori</span></a>
 

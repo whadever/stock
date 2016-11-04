@@ -55,7 +55,7 @@
 				<tr>
 					<td class="table_detail"><p class="bebas">SUPPLIER</p></td>
 					<td style="padding-right: 9%;"><select name="supplier_list" required="1" class="form-control" id="">
-						<option value="">--Pilih Kategori--</option>
+						<option value="">--Pilih Supplier--</option>
 						<?php foreach($suppliers as $supplier): ?>
 							<option value="<?php echo $supplier->id ?>"><?php echo $supplier->name ?></option>
 						<?php endforeach; ?>
