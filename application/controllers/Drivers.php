@@ -14,6 +14,10 @@ class Drivers extends MY_Controller
 		$data['title'] = 'Drivers';
 		$data['subtitle'] = 'DRIVERS';
 		$data['drivers'] = $this->crud_model->get_data('drivers')->result();
+		$this->db->select('drivers.*, outlets.name as outlet_name');
+		$this->db->from('drivers');
+		$this->db->join('outlets','drivers.outlet_id = outlets.id');
+		$data['drivers'] = $this->db->get()->result();
 		$this->template->load('default','drivers/all_drivers',$data);
 	}
 
@@ -23,10 +27,7 @@ class Drivers extends MY_Controller
 			$config['allowed_types']        = 'jpg|png|jpeg';
 		    $config['max_size']             = 2000;
 		    // $config['max_width']            = 1000;
-		    // $config['max_height']           = 768;
-
-		    
-								
+		    // $config['max_height']           = 768;							
 			$config['upload_path']          = 'uploads/driver/' . $this->input->post('driver_code');
 			$config['overwrite']			= True;
 			$config['file_name']			= 'photo.jpg';
@@ -51,7 +52,8 @@ class Drivers extends MY_Controller
 			$data = array(
 				'name' => $this->input->post('driver_name'),
 				'address' => $this->input->post('driver_address'),
-				'photo' => $photo
+				'photo' => $photo,
+				'outlet_id' => $this->id
 				);
 
 			$this->crud_model->insert_data('drivers',$data);

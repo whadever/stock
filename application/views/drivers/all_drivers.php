@@ -55,6 +55,7 @@
 					 	<th data-toggle="true">Name</th>
 					 	<th data-hide="phone">Address</th>
 					 	<th data-hide="phone">Gambar</th>
+					 	<th data-hide="phone">Lokasi</th>
 					 	<th data-hide="phone">Tindakan</th>
 					 </tr>
 				</thead>
@@ -66,6 +67,7 @@
 							<td><?php echo $driver->name ?></td>
 							<td><?php echo $driver->address ?></td>
 							<td><img src="<?php echo base_url().$driver->photo ?>" alt="<?php echo $driver->name ?>" width="40"/></td>
+							<td><?php echo $driver->outlet_name ?></td>
 							<td>
 								<a href="<?php echo base_url('drivers/edit_driver/'.$driver->id) ?>">Edit</a> | 
 								<a href="" data-toggle="modal" data-target="#deleteDriver" data-id="<?php echo $driver->id?>">
