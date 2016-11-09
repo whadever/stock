@@ -41,10 +41,39 @@
 
 
 
-<div class="row">
-	<div class="col-md-12" style="background-color: #f7fbfe; height: 400px">
-		
-	</div>
-</div>
+<!-- <div class="row">
+	
+      <div class="col-md-1"></div>  
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card" style="width: 400px; height: 200px; margin:auto; background-color:#2ecc71;">
+                
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card" style="width: 400px; height: 200px; background-color:#e74c3c; margin:auto;">
+                
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+          <div class="col-md-6">
+            <div class="card" style="width: 400px; height: 200px; background-color:#f1c40f; margin:auto;">
+                
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card" style="width: 400px; height: 200px; background-color:#34495e; margin:auto;">
+                
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-1"></div>
+      
+	
+</div> -->
 
 

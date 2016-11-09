@@ -95,7 +95,7 @@
     }
 
     .navbar{
-      background-color: rgba(0, 0, 0,1);
+      background-color: #2ABB9B;
       height: 75px;
     }
     .navbar-nav>li>a,.navbar a{
@@ -125,6 +125,15 @@
     }
     #contact{
       background-color: #27ae60;
+    }
+    .navbar-nav > .active > a {
+        color: red;
+    }
+    .card{
+      width: 400px; 
+      height: 200px; 
+      margin:auto; 
+      padding-top: 50px;
     }
 
   </style>
@@ -184,18 +193,58 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav" role="menu">
-            <li><a href="<?php echo base_url('main') ?>" id="home" class="menu-a"><i class="fa fa-home fa-3x" aria-hidden="true"></i><p class="segoe">Home</p></a></li>
+            <li><a href="<?php echo base_url('main') ?>" id="home" class="menu-a text-center"><i class="fa fa-home fa-3x" aria-hidden="true"></i><p class="segoe">Home</p></a></li>
             <!--Transactions-->
             <li class="dropdown yamm-fw">
               <a href="#" class="dropdown-toggle menu-a text-center" data-toggle="dropdown" id="trans"><i class="fa fa-money fa-3x" aria-hidden="true"></i><p class="segoe">Transactions</p></a>
               <div class="dropdown-menu yamm-content">
-                <div class="row">
-                  <div class="col-md-4"><a href="<?php echo base_url('transaction') ?>" ><span class="fa fa-money fa-3x" aria-hidden="true"></span><span>Daftar Transaksi</span></a></div>
-                  <div class="col-md-4"><a href="<?php echo base_url('purchasing') ?>" ><span class="fa fa-shopping-basket fa-3x" aria-hidden="true"></span><span>Pembelian</span></a></div>
-                  <div class="col-md-4"><a href="<?php echo base_url('selling') ?>" ><span class="fa fa-shopping-cart fa-3x" aria-hidden="true"></span><span>
-          Penjualan</span></a></div>
-                </div>
-              </div>
+              <div class="row" style="padding-top: 35px; padding-bottom: 35px;">
+              
+                  <div class="col-md-1"></div>  
+                  <div class="col-md-10">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <a href="<?php echo base_url('selling') ?>" class="text-center">
+                          <div class="card" style="background-color:#2ecc71;">
+                              <span class="fa fa-shopping-cart fa-5x" aria-hidden="true"></span><p class="segoe">Daftar Penjualan</p>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="col-md-6">
+                        <a href="<?php echo base_url('purchasing') ?>" class="text-center">
+                          <div class="card" style="width: 400px; height: 200px; background-color:#e74c3c; margin:auto;">
+                              <span class="fa fa-shopping-basket fa-5x" aria-hidden="true"></span><p class="segoe">Daftar Pembelian</p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 20px;">
+                      <div class="col-md-6">
+                        <a href="<?php echo base_url('selling') ?>" class="text-center">
+                        <div class="card" style="width: 400px; height: 200px; background-color:#f1c40f; margin:auto;">
+                            <span class="fa fa-dollar fa-5x" aria-hidden="true"></span>
+                            <p class="segoe">Penjualan Baru</p>
+                        </div>
+                        </a>
+                      </div>
+                      <div class="col-md-6">
+                        <a href="<?php echo base_url('selling') ?>" class="text-center">
+                        <div class="card" style="width: 400px; height: 200px; background-color:#34495e; margin:auto;">
+                            <span class="fa fa-file-text fa-5x" aria-hidden="true"></span>
+                            <p class="segoe">Penjualan Baru</p>
+                        </div>
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-md-1"></div>
+                  
+              
+            </div>
+            
+            </div>
             </li>
             <!--Transaction end-->
 
@@ -308,9 +357,9 @@
     </nav>
     <!--Navbar Ends-->
     <div class="container-fluid">
-      
+      <div class="col-xs-12">
 
-       <div id="main" >
+       
            
      
              
