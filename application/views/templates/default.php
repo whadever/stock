@@ -18,6 +18,8 @@
     <link href="<?php echo base_url() ?>css/footable.metro.min.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url() ?>alertify/themes/alertify.core.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>alertify/themes/alertify.default.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>css/yamm.css">
+    
     
     
     
@@ -34,7 +36,7 @@
     <script type="text/javascript" src="<?php echo base_url() ?>js/moment.js"></script>
     <script src="<?php echo base_url() ?>js/bootstrap-datepicker.js"></script>
     <script src="<?php echo base_url();?>js/jquery.webui-popover.min.js"></script> 
-    <script src="<?php echo base_url();?>js/script.js"></script> 
+    <script src="<?php echo base_url();?>js/script.js"></script>
 
     <!-- CSS and Javascript -->
     <style>
@@ -50,8 +52,10 @@
       font-weight: bolder;
 
     }
-    .menu-text,fa{
-      font-size: 12px !important;
+    .segoe{
+      font-family: 'Segoe UI';
+      font-size: 12px;
+      line-height: 30px;
     }
     
     .btn-custom{
@@ -66,6 +70,7 @@
       border-radius: 10px;
       min-width: 150px;
     }
+
     .page_subtitle{
       font-size: 60px;
       font-weight: bold;
@@ -82,6 +87,46 @@
     .webui-popover-content{
       width: 175px;
     }
+    .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+      border-top: none;
+      vertical-align: middle;
+      padding-top: 5px;
+      padding-bottom: 0px;
+    }
+
+    .navbar{
+      background-color: rgba(0, 0, 0,1);
+      height: 75px;
+    }
+    .navbar-nav>li>a,.navbar a{
+      color: #fff !important;
+    }
+    .navbar-nav>li{
+      height: 67px;
+    }
+    .navbar-nav>li>a{
+      line-height: 37px;
+    }
+    .menu-a{
+      padding-bottom: 0px !important;
+      padding-top: 5px !important;
+    }
+    .menu-a p{
+      margin-top: -12px !important;
+    }
+    #home{
+      background-color: rgba(192, 57, 43,1.0);
+    }
+    #trans{
+      background-color: #d35400;
+    }
+    #invent{
+      background-color: #f39c12;
+    }
+    #contact{
+      background-color: #27ae60;
+    }
+
   </style>
   
 <script>
@@ -123,135 +168,145 @@
     $role = $this->crud_model->get_by_condition('outlets',array('id' => $this->session->userdata('is_active')))->row('role');
    ?>
   
-  <div id="mySidenav" class="sidenav" >
-       <a id="menu-button" onclick="openNav()" style="cursor:pointer;"><i id="nav-button" class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-        <div class="company_logo" style="margin-bottom: 5px; padding-left: 15px; padding-bottom:10px; border-bottom:1px solid #000">
-          <img src="<?php echo base_url()?>assets/logo1.png" width="100px" style="margin-left:23%;">
+  <nav class="navbar navbar-default yamm">
+      <div class="container-fluid" style="padding-left: 20px;padding-right: 20px">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="<?php echo base_url('main') ?>" style="padding-top: 0px;"><img src="<?php echo base_url() ?>assets/logo1.png" width="62" id="hassee_logo" class="img img-responsive" alt="Hassee Logo"></a>
         </div>
 
-        <div class="company_logo" style="margin-bottom: 10px; padding-left: 15px; padding-bottom:0px; border-bottom:1px solid #000">
-        <table>
-          <tr>
-            <td><a class="show-pop" data-animation="pop"  data-placement="right"
-                    data-content='<?php if($this->session->userdata('user_logged')){
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav" role="menu">
+            <li><a href="<?php echo base_url('main') ?>" id="home" class="menu-a"><i class="fa fa-home fa-3x" aria-hidden="true"></i><p class="segoe">Home</p></a></li>
+            <!--Transactions-->
+            <li class="dropdown yamm-fw">
+              <a href="#" class="dropdown-toggle menu-a text-center" data-toggle="dropdown" id="trans"><i class="fa fa-money fa-3x" aria-hidden="true"></i><p class="segoe">Transactions</p></a>
+              <div class="dropdown-menu yamm-content">
+                <div class="row">
+                  <div class="col-md-4"><a href="<?php echo base_url('transaction') ?>" ><span class="fa fa-money fa-3x" aria-hidden="true"></span><span>Daftar Transaksi</span></a></div>
+                  <div class="col-md-4"><a href="<?php echo base_url('purchasing') ?>" ><span class="fa fa-shopping-basket fa-3x" aria-hidden="true"></span><span>Pembelian</span></a></div>
+                  <div class="col-md-4"><a href="<?php echo base_url('selling') ?>" ><span class="fa fa-shopping-cart fa-3x" aria-hidden="true"></span><span>
+          Penjualan</span></a></div>
+                </div>
+              </div>
+            </li>
+            <!--Transaction end-->
 
-                        
-                        $i = 0;
-                        foreach ($this->session->userdata() as $user)
-                        { 
+            <!--Inventories-->
+            <li class="dropdown yamm-fw">
+              <a href="#" class="dropdown-toggle menu-a text-center" data-toggle="dropdown" id="invent"><i class="fa fa-dropbox fa-3x" aria-hidden="true"></i><p class="segoe">Inventory</p></a>
+              <div class="dropdown-menu yamm-content">
+                <div class="row">
+                  <div class="col-md-4">
+                    <a href="<?php echo base_url('products') ?>" ><i id="template-button" class="fa fa-archive fa-3x" aria-hidden="true"></i><span><p class="segoe">Produk</p></span></a>
+                  </div>
+                  <div class="col-md-4">
+                    <a href="<?php echo base_url('products/all_category') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span>Kategori</span></a>
+                  </div>
+                  <div class="col-md-4">
+                    <a href="<?php echo base_url('mutasi') ?>" ><span class="fa fa-institution fa-3x" aria-hidden="true"></span><span>Mutasi</span></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <!--Inventory End-->
 
-                          //Skip the first 4 keys
+            <!--Contacts-->
+            <li class="dropdown yamm-fw">
+              <a href="#" class="dropdown-toggle menu-a text-center" data-toggle="dropdown" id="contact"><i class="fa fa-phone fa-3x" aria-hidden="true"></i><p class="segoe">Contacts</p></a>
+              <div class="dropdown-menu yamm-content">
+                <div class="row">
+                    <div class="col-md-3">
+                      <a href="<?php echo base_url('customers') ?>" ><span class="fa fa-users fa-3x" aria-hidden="true"></span><span>Customer</span></a>
+                    </div>
+                    <div class="col-md-3">
+                      <a href="<?php echo base_url('outlets') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span>Outlets</span></a>
+                    </div>
+                    <div class="col-md-3">
+                      <a href="<?php echo base_url('drivers') ?>" ><span class="fa fa-car fa-3x" aria-hidden="true"></span><span>Driver</span></a>
+                    </div>
+                    <div class="col-md-3">
+                      <a href="<?php echo base_url('supplier') ?>" ><span class="fa fa-users fa-3x" aria-hidden="true"></span><span>Supplier</span></a>
+                    </div>
+                </div>
+              </div>
+            </li>
+            <!--Contacts End-->
+          </ul>
 
-                          if($i < 3)
-                          {
-                            $i++;
-                            continue;
-                          }else
-                          {
-                            $i++;
-                          }
+          <ul class="nav navbar-nav navbar-right">
+            <li style="padding-bottom: 0px !important;">
+              <table class="table" style="margin-bottom: 0px !important;"><tr>
+                <td>
+                <a class="show-pop" data-animation="pop"  data-placement="right"
+                      data-content='<?php if($this->session->userdata('user_logged')){                        
+                          $i = 0;
+                          foreach ($this->session->userdata() as $user)
+                          { 
+                            //Skip the first 4 keys
+                            if($i < 3)
+                            {
+                              $i++;
+                              continue;
+                            }else
+                            {
+                              $i++;
+                            }
 
-                          $profile = $this->crud_model->get_by_condition('outlets',array('id' => $user['user_id']))->row();
-                          //After 3 keys are bypassed user info are passed!
-                          
-                          
-                          if($profile->photo == ''){
-                            $photo = base_url()."uploads/photos/no-photo.png";
-                          }else{
-                            $photo = base_url().$profile->photo.'?timestamp='.mt_rand(100000000,999999999); 
-                          }
-
-                          $user_id = $user['user_id'];
-
-                          if($user_id != $this->session->userdata('is_active')){
-                            echo'<a href="'.base_url('accounts/switch_account/'.$profile->id).'" style="display:block" class="profile-pop btn btn-default">
-                            <table>
-                            <tr>
-                            <td>
-                            <span class="pop-photo" style="background-image: url('.$photo.')"></span></td><td><div class="pop-detail" style="display:inline-block; width:100px"><p class="pop-name">'.$profile->name.'</p><p>'.$profile->pic.'</p> </div></td></tr></table></a>';
-                          }
-                                                   
-                       
-
-
+                            $profile = $this->crud_model->get_by_condition('outlets',array('id' => $user['user_id']))->row();
+                            //After 3 keys are bypassed user info are passed!
                             
+                            
+                            if($profile->photo == ''){
+                              $photo = base_url()."uploads/photos/no-photo.png";
+                            }else{
+                              $photo = base_url().$profile->photo.'?timestamp='.mt_rand(100000000,999999999); 
+                            }
 
-                        
-                        }
+                            $user_id = $user['user_id'];
 
-                      } ?>
-                      <div class="row btn-collection text-center" style="margin:0">
-                      <a href="<?php echo base_url('accounts/login') ?>" class="btn btn-primary pop-btn">Add Account</a>
-                      </div>
-                      '
+                            if($user_id != $this->session->userdata('is_active')){
+                              echo'<a href="'.base_url('accounts/switch_account/'.$profile->id).'" style="display:block" class="profile-pop btn btn-default">
+                              <table>
+                              <tr>
+                              <td>
+                              <span class="pop-photo" style="background-image: url('.$photo.')"></span></td><td><div class="pop-detail" style="display:inline-block; width:100px"><p class="pop-name">'.$profile->name.'</p><p>'.$profile->pic.'</p> </div></td></tr></table></a>';
+                            }
+                                                                            
+                          }
 
-
-                    style="display:inline-block;cursor:pointer;height: 80px; width: 80px; border-radius: 50%;background-size: cover;background-position: center; background-image: url('<?php
-                      if($active_user->photo == ''){
-                        echo base_url()."uploads/photos/no-photo.png";
-                      }else{
-                        echo base_url().$active_user->photo.'?timestamp='.mt_rand(100000000,999999999); 
-                      }
-                       
-
-                     ?>')"></a></td>
-                     <td style="padding-left: 10px;max-width: 135px"><b style="font-family:'bebas-neue';  font-weight: 100; font-size: 18px;">Welcome</b>,<br><?php echo $active_user->name ?></td>
-          </tr>
-        </table>
-          
-        </div>
-
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="border-bottom: none;font-size:25px!important; display: none">&times;</a>
-
-        <a href="<?php echo base_url('main') ?>"><i class="fa fa-home" aria-hidden="true"></i><span class="menu-text pull-right">Home</span></a>
-       
-        <a href="<?php echo base_url('products') ?>" ><i id="template-button" class="fa fa-archive" aria-hidden="true"></i><span class="menu-text pull-right" >Produk</span></a>
-        
-        <a href="<?php echo base_url('transaction') ?>" ><span class="fa fa-money" aria-hidden="true"></span><span class="menu-text pull-right" >Daftar Transaksi</span></a>
-
-        <a href="<?php echo base_url('purchasing') ?>" ><span class="fa fa-shopping-basket" aria-hidden="true"></span><span class="menu-text pull-right" >Pembelian</span></a>
-
-        <?php if($role == 'admin'): ?>
-          
-          
-
-          <a href="<?php echo base_url('products/all_category') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Kategori</span></a>
-
-          <a href="<?php echo base_url('outlets') ?>" ><span class="glyphicon glyphicon-tags" aria-hidden="true"></span><span class="menu-text pull-right" >Outlets</span></a>
-
-          <a href="<?php echo base_url('supplier') ?>" ><span class="fa fa-users" aria-hidden="true"></span><span class="menu-text pull-right" >Supplier</span></a>
-
-          
-
-        <?php else: ?>
-
-          <a href="<?php echo base_url('mutasi') ?>" ><span class="fa fa-institution" aria-hidden="true"></span><span class="menu-text pull-right" >Mutasi</span></a>
-
-          <a href="<?php echo base_url('selling') ?>" ><span class="fa fa-shopping-cart" aria-hidden="true"></span><span class="menu-text pull-right" >
-          Penjualan</span></a>
-
-          
-          
-
-        <?php endif; ?>
-        <a href="<?php echo base_url('customers') ?>" ><span class="fa fa-users" aria-hidden="true"></span><span class="menu-text pull-right" >Customer</span></a>
-
-        <a href="<?php echo base_url('drivers') ?>" ><span class="fa fa-car" aria-hidden="true"></span><span class="menu-text pull-right" >Driver</span></a>
-        
-        <!-- <a href="<?php echo base_url('drivers') ?>"><i class="fa fa-car" aria-hidden="true"></i><span class="menu-text pull-right" >Driver</span></a> -->
-
-        <a href="<?php echo base_url('') ?>"><i class="fa fa-file-text" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" >Notes</span></a>
-
-        <a href="<?php echo base_url('accounts/logout') ?>"><i class="fa fa-sign-out" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" >Sign Out</span></a>
+                        } ?>
+                        <div class="row btn-collection text-center" style="margin:0">
+                        <a href="<?php echo base_url('accounts/login') ?>" class="btn btn-primary pop-btn">Add Account</a>
+                        </div>
+                        '
 
 
-        <!-- <a href="<?php echo base_url('') ?>"><i class="fa fa-comments" id="service-button" aria-hidden="true"></i><span class="menu-text pull-right" >Private Message</span></a> -->
-
-        <div class="bottom-align-text-2 text-center">Hassee Stock System V1.0</div>
-        <div class="bottom-align-text text-center">For help and feedback contact office@gethassee.com</div>
-      </div>
-
-
+                      style="display:inline-block;cursor:pointer;height: 57px; width: 57px; border-radius: 50%;background-size: cover;background-position: center; background-image: url('<?php
+                        if($active_user->photo == ''){
+                          echo base_url()."uploads/photos/no-photo.png";
+                        }else{
+                          echo base_url().$active_user->photo.'?timestamp='.mt_rand(100000000,999999999); 
+                        }                      
+                       ?>')"></a>
+                  </td>
+                  <td>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b style="font-family:'bebas-neue';  font-weight: 100; font-size: 18px;">Welcome</b>,<br><?php echo $active_user->name ?><span class="caret"></span></a>
+                  </td>
+              </tr></table>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!--Navbar Ends-->
     <div class="container-fluid">
       
 
@@ -306,35 +361,6 @@
       })();
       
     </script>
-     <script>
-    /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
-      function openNav() {
-          document.getElementById("mySidenav").style.width = "250px";
-          
-        
-          
-          $('.menu-text').show();
-          $('.company_logo').show();
-          $('#menu-button').hide();
-          $('.closebtn').show();
-          $('.bottom-align-text').show();
-          $('.bottom-align-text-2').show();
-
-      }
-
-      /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
-      function closeNav() {
-          document.getElementById("mySidenav").style.width = "40px";
-          document.getElementById("main").style.marginLeft = "30px";
-
-          $('.menu-text').hide();
-          $('.company_logo').hide();
-          $('#menu-button').show();
-          $('.closebtn').hide();
-          $('.bottom-align-text').hide();
-          $('.bottom-align-text-2').hide();
-      }
-  </script>
   <script>
       //Tour Script
         var tour = new Tour({
