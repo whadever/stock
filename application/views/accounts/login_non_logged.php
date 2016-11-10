@@ -57,6 +57,9 @@
 		<img src="<?php echo base_url() ?>assets/logo1.png" width="200" id="hassee_logo" class="img img-responsive" alt="Hassee Logo">
 
 		<form action="<?php echo base_url('accounts/login') ?>" method="post">
+				
+				Login
+
 				<div class="form-group">
 
 					<input type="text" name="username" placeholder="Username" class="form-control" aria-describedby="username-addon">

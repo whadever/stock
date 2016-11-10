@@ -130,7 +130,7 @@
         color: red;
     }
     .card{
-      width: 400px; 
+      width: 100%; 
       height: 200px; 
       margin:auto; 
       padding-top: 50px;
@@ -205,34 +205,46 @@
                     <div class="row">
                       <div class="col-md-6">
                         <a href="<?php echo base_url('selling') ?>" class="text-center">
-                          <div class="card" style="background-color:#2ecc71;">
+                          <div class="card" style="background-color:#2ecc71; height: 420px;">
                               <span class="fa fa-shopping-cart fa-5x" aria-hidden="true"></span><p class="segoe">Daftar Penjualan</p>
                           </div>
                         </a>
                       </div>
                       <div class="col-md-6">
-                        <a href="<?php echo base_url('purchasing') ?>" class="text-center">
-                          <div class="card" style="width: 400px; height: 200px; background-color:#e74c3c; margin:auto;">
-                              <span class="fa fa-shopping-basket fa-5x" aria-hidden="true"></span><p class="segoe">Daftar Pembelian</p>
-                          </div>
-                        </a>
+                        <div class="row">
+                          <a href="<?php echo base_url('purchasing') ?>" class="text-center">
+                            <div class="card" style=" height: 200px; background-color:#e74c3c; margin:auto;">
+                                <span class="fa fa-shopping-basket fa-5x" aria-hidden="true"></span><p class="segoe">Daftar Pembelian</p>
+                            </div>
+                          </a>  
+                        </div>
+                        <div class="row" style="margin-top: 20px;">
+                          <a href="<?php echo base_url('purchasing') ?>" class="text-center">
+                            <div class="card" style=" height: 200px; background-color:#e74c3c; margin:auto;">
+                                <span class="fa fa-shopping-basket fa-5x" aria-hidden="true"></span><p class="segoe">Daftar Pembelian</p>
+                            </div>
+                          </a>  
+                        </div>
                       </div>
+
                     </div>
 
                     <div class="row" style="margin-top: 20px;">
                       <div class="col-md-6">
                         <a href="<?php echo base_url('selling') ?>" class="text-center">
-                        <div class="card" style="width: 400px; height: 200px; background-color:#f1c40f; margin:auto;">
+                        <div class="card" style=" height: 200px; background-color:#f1c40f; margin:auto;">
                             <span class="fa fa-dollar fa-5x" aria-hidden="true"></span>
                             <p class="segoe">Penjualan Baru</p>
                         </div>
                         </a>
                       </div>
                       <div class="col-md-6">
+                          <div class="row"> 
                         <a href="<?php echo base_url('selling') ?>" class="text-center">
-                        <div class="card" style="width: 400px; height: 200px; background-color:#34495e; margin:auto;">
-                            <span class="fa fa-file-text fa-5x" aria-hidden="true"></span>
+                        <div class="card" style=" height: 200px; background-color:#f1c40f; margin:auto;">
+                            <span class="fa fa-dollar fa-5x" aria-hidden="true"></span>
                             <p class="segoe">Penjualan Baru</p>
+                            </div>
                         </div>
                         </a>
                       </div>
