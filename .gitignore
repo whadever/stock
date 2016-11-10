@@ -55,3 +55,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+application/views/templates/default.php
