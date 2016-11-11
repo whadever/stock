@@ -129,11 +129,25 @@
     .navbar-nav > .active > a {
         color: red;
     }
-    .card{
-      width: 400px; 
-      height: 200px; 
-      margin:auto; 
-      padding-top: 50px;
+
+    .overlay{
+      width: 100%;
+      height: 0;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 75px;
+      background-color: #fff;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      transition: 0.5s;
+    }
+    .overlay-content {
+      position: relative;
+      top: 0%; /* 25% from the top */
+      width: 100%; /* 100% width */
+      text-align: center; /* Centered text/links */
+      margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
     }
 
   </style>
@@ -195,53 +209,95 @@
           <ul class="nav navbar-nav" role="menu">
             <li><a href="<?php echo base_url('main') ?>" id="home" class="menu-a text-center"><i class="fa fa-home fa-3x" aria-hidden="true"></i><p class="segoe">Home</p></a></li>
             <!--Transactions-->
-            <li class="dropdown yamm-fw">
-              <a href="#" class="dropdown-toggle menu-a text-center" data-toggle="dropdown" id="trans"><i class="fa fa-money fa-3x" aria-hidden="true"></i><p class="segoe">Transactions</p></a>
-              <div class="dropdown-menu yamm-content">
-              <div class="row" style="padding-top: 35px; padding-bottom: 35px;">
-              
-                  <div class="col-md-1"></div>  
-                  <div class="col-md-10">
+            <li class="dropdown">
+              <a onclick="opennav()" href="#" class="dropdown-toggle menu-a text-center" data-toggle="dropdown" id="trans"><i class="fa fa-money fa-3x" aria-hidden="true"></i><p class="segoe">Transactions</p></a>
+
+              <div class="container-fluid overlay" id="trans-drop">
+              <div class="row overlay-content" style="padding-bottom: 35px;">
+                  <div class="col-md-6">
+                    <div class="row">
+                      <p class="bebas">Penjualan</p>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                      <div class="col-md-12">
+                        <a href="<?php echo base_url('selling') ?>" class="text-center">
+                          <div class="card" style="background-color:#FF8270; height: 160px;">
+
+                              <span class="fa fa-shopping-cart fa-5x" aria-hidden="true"></span><p class="segoe">Daftar Penjualan</p>
+                          </div>
+                        </a>  
+                      </div>
+                      
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                      <div class="col-md-6">
+                        <a href="<?php echo base_url('selling') ?>" class="text-center">
+                            <div class="card" style=" height: 160px; background-color:#FFB37D; margin:auto;">
+                                <span class="fa fa-dollar fa-5x" aria-hidden="true"></span>
+                                <p class="segoe">Penjualan Baru</p>
+                            </div>
+                        </a>
+                      </div>
+                      <div class="col-md-6">
+                        <a href="<?php echo base_url('selling') ?>" class="text-center">
+                            <div class="card" style=" height: 160px; background-color:#E89171;">
+                                <span class="fa fa-dollar fa-5x" aria-hidden="true"></span>
+                                <p class="segoe">Booking</p>
+                            </div>
+
+                        </a>
+                      </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-12">
+                      <a href="<?php echo base_url('selling') ?>" class="text-center">
+                        <div class="card" style="background-color:#E8717B; height: 160px;">
+                            <span class="fa fa-shopping-cart fa-5x" aria-hidden="true"></span><p class="segoe">Daftar Booking</p>
+                        </div>
+                      </a>
+                      </div>  
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row"><p class="bebas">Pembelian</p></div>
                     <div class="row">
                       <div class="col-md-6">
                         <a href="<?php echo base_url('selling') ?>" class="text-center">
-                          <div class="card" style="background-color:#2ecc71;">
+
+                          <div class="card" style="background-color:#BD6EFF; height: 500px;">
                               <span class="fa fa-shopping-cart fa-5x" aria-hidden="true"></span><p class="segoe">Daftar Penjualan</p>
                           </div>
                         </a>
                       </div>
                       <div class="col-md-6">
-                        <a href="<?php echo base_url('purchasing') ?>" class="text-center">
-                          <div class="card" style="width: 400px; height: 200px; background-color:#e74c3c; margin:auto;">
-                              <span class="fa fa-shopping-basket fa-5x" aria-hidden="true"></span><p class="segoe">Daftar Pembelian</p>
-                          </div>
-                        </a>
+                        <div class="row" style="margin-bottom: 10px;">
+                          <a href="<?php echo base_url('selling') ?>" class="text-center">
+                              <div class="card" style=" height: 160px; background-color:#6486E8;">
+                                  <span class="fa fa-dollar fa-5x" aria-hidden="true"></span>
+                                  <p class="segoe">Booking</p>
+                              </div>
+                          </a>
+                        </div>
+                        <div class="row" style="margin-bottom: 10px;">
+                          <a href="<?php echo base_url('selling') ?>" class="text-center">
+                              <div class="card" style=" height: 160px; background-color:#7B7BFF;">
+                                  <span class="fa fa-dollar fa-5x" aria-hidden="true"></span>
+                                  <p class="segoe">Booking</p>
+                              </div>
+                          </a>
+                        </div>
+                        <div class="row">
+                          <a href="<?php echo base_url('selling') ?>" class="text-center">
+                              <div class="card" style=" height: 160px; background-color:#6EBAFF;">
+                                  <span class="fa fa-dollar fa-5x" aria-hidden="true"></span>
+                                  <p class="segoe">Booking</p>
+                              </div>
+                          </a>
+                        </div>
                       </div>
                     </div>
-
-                    <div class="row" style="margin-top: 20px;">
-                      <div class="col-md-6">
-                        <a href="<?php echo base_url('selling') ?>" class="text-center">
-                        <div class="card" style="width: 400px; height: 200px; background-color:#f1c40f; margin:auto;">
-                            <span class="fa fa-dollar fa-5x" aria-hidden="true"></span>
-                            <p class="segoe">Penjualan Baru</p>
-                        </div>
-                        </a>
-                      </div>
-                      <div class="col-md-6">
-                        <a href="<?php echo base_url('selling') ?>" class="text-center">
-                        <div class="card" style="width: 400px; height: 200px; background-color:#34495e; margin:auto;">
-                            <span class="fa fa-file-text fa-5x" aria-hidden="true"></span>
-                            <p class="segoe">Penjualan Baru</p>
-                        </div>
-                        </a>
-                      </div>
-                    </div>
-
                   </div>
-                  <div class="col-md-1"></div>
                   
-              
             </div>
             
             </div>
@@ -495,6 +551,11 @@
             tour.restart();
         });
     });
+    function opennav() {
+        document.getElementById("trans-drop").style.height = "100%";
+
+    }
+
   </script>
 
   
